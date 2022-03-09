@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */; };
 		EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */; };
-		EEE5DF8F27D837C100F26C8D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8E27D837C100F26C8D /* ViewController.swift */; };
+		EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8E27D837C100F26C8D /* signInViewController.swift */; };
 		EEE5DF9227D837C100F26C8D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DF9027D837C100F26C8D /* Main.storyboard */; };
 		EEE5DF9427D837C100F26C8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DF9327D837C100F26C8D /* Assets.xcassets */; };
 		EEE5DF9727D837C100F26C8D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DF9527D837C100F26C8D /* LaunchScreen.storyboard */; };
@@ -39,7 +39,7 @@
 		EEE5DF8727D837C100F26C8D /* Music-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		EEE5DF8E27D837C100F26C8D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		EEE5DF8E27D837C100F26C8D /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 		EEE5DF9127D837C100F26C8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EEE5DF9327D837C100F26C8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEE5DF9627D837C100F26C8D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +101,7 @@
 			children = (
 				EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */,
 				EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */,
-				EEE5DF8E27D837C100F26C8D /* ViewController.swift */,
+				EEE5DFBA27D839D400F26C8D /* View Controllers */,
 				EEE5DF9027D837C100F26C8D /* Main.storyboard */,
 				EEE5DF9327D837C100F26C8D /* Assets.xcassets */,
 				EEE5DF9527D837C100F26C8D /* LaunchScreen.storyboard */,
@@ -125,6 +125,14 @@
 				EEE5DFAD27D837C100F26C8D /* Music_AppUITestsLaunchTests.swift */,
 			);
 			path = "Music-AppUITests";
+			sourceTree = "<group>";
+		};
+		EEE5DFBA27D839D400F26C8D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EEE5DF8E27D837C100F26C8D /* signInViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEE5DF8F27D837C100F26C8D /* ViewController.swift in Sources */,
+				EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */,
 				EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */,
 				EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */,
 			);

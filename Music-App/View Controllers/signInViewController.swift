@@ -7,8 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class signInViewController: UIViewController {
+    
+//MARK: OUTLETS
+    @IBOutlet weak var usernameTextfield: UITextField!
+    
+    @IBOutlet weak var passwordTextfield: UITextField!
+    
+//MARK: VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
