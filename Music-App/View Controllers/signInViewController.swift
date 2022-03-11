@@ -14,6 +14,18 @@ class signInViewController: UIViewController {
     
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    
+    @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
+        
+        //we need to authenticate the user here with the apple API
+        //for now, you can log in by just clicking the button
+        performSegue(withIdentifier: "loginToAppleMusic", sender: self)
+        
+    }
+    
+    
+    
+    
 //MARK: VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
