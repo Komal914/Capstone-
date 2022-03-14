@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var table: UITableView!
     
     
     
@@ -21,24 +21,29 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         navigationItem.title = "Home"
         
-        tableView.delegate = self
-        tableView.delegate = self
+        table.delegate = self
+        table.delegate = self
+        
+        print("Home screen")
+        
 
         // Do any additional setup after loading the view.
     }
     
     
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //should return number of posts
-        return 1
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeCell
+        let cell = UITableViewCell()
         
-        cell.usernameLabel.text = "Komal"
+        cell.textLabel?.text = "text"
+        print("inside cell for row")
         
         return cell
     }

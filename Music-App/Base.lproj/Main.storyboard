@@ -136,7 +136,7 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="bzn-5d-iNY" kind="relationship" relationship="rootViewController" id="WRC-fA-JVn"/>
+                        <segue destination="bzn-5d-iNY" kind="relationship" relationship="rootViewController" id="hGV-uc-RZt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yTL-Dz-aMw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -151,15 +151,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-rC-ztD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="AXR-rC-ztD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCell" rowHeight="546" id="L0F-L7-K97" customClass="HomeCell" customModule="Music_App" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="546"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeCell" rowHeight="367" id="L0F-L7-K97" customClass="HomeCell" customModule="Music_App" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="367"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="L0F-L7-K97" id="3l3-rH-GoS">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="546"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="367"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ut-1Q-7A4">
@@ -181,21 +182,15 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8lW-Ne-Ejw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="AXR-rC-ztD" secondAttribute="bottom" id="6J2-N1-3ZH"/>
-                            <constraint firstItem="AXR-rC-ztD" firstAttribute="leading" secondItem="8lW-Ne-Ejw" secondAttribute="leading" id="Ub2-co-zcN"/>
-                            <constraint firstAttribute="trailing" secondItem="AXR-rC-ztD" secondAttribute="trailing" id="cR6-2b-mur"/>
-                            <constraint firstItem="AXR-rC-ztD" firstAttribute="top" secondItem="jR4-Is-OcY" secondAttribute="top" id="zMs-Wn-SoH"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cXL-k1-Yxt"/>
                     <connections>
-                        <outlet property="tableView" destination="AXR-rC-ztD" id="1ZE-CZ-grP"/>
+                        <outlet property="table" destination="AXR-rC-ztD" id="1ZE-CZ-grP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0qB-S7-g4p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-120.28985507246378" y="2950.4464285714284"/>
+            <point key="canvasLocation" x="-181" y="2731"/>
         </scene>
         <!--Post Screen-->
         <scene sceneID="3mm-cR-fEy">
