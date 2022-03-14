@@ -105,9 +105,14 @@
             <objects>
                 <navigationController id="GnJ-8M-5gR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Music Videos" image="video" catalog="system" id="Lou-aM-qax"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="t8K-id-5MX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="t8K-id-5MX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="AxL-Hf-5lP" kind="relationship" relationship="rootViewController" id="tb9-Q5-ZmL"/>
@@ -154,6 +159,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F5X-PM-w7T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="sXy-so-W3y" kind="relationship" relationship="rootViewController" id="OIF-8m-WlS"/>
@@ -229,6 +238,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r2N-Aa-DZS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="J8m-Jl-DGr" kind="relationship" relationship="rootViewController" id="kux-Ix-Vyj"/>
@@ -246,6 +259,10 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nkx-c2-BSy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="Dxs-k6-EZU" kind="relationship" relationship="rootViewController" id="9De-p7-bxQ"/>
