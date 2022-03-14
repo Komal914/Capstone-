@@ -86,11 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EEE03B9A27DFABA500E0B658 /* Custom Cells */ = {
+		EEE03BAA27DFFE1F00E0B658 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
+				EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */,
+				EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */,
 			);
-			path = "Custom Cells";
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		EEE5DF7E27D837C000F26C8D = {
@@ -116,10 +118,8 @@
 		EEE5DF8927D837C100F26C8D /* Music-App */ = {
 			isa = PBXGroup;
 			children = (
-				EEE03B9A27DFABA500E0B658 /* Custom Cells */,
 				EEE5DFBB27D83E7D00F26C8D /* Assets */,
-				EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */,
-				EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */,
+				EEE03BAA27DFFE1F00E0B658 /* Delegates */,
 				EEE5DFBA27D839D400F26C8D /* View Controllers */,
 				EEE5DF9027D837C100F26C8D /* Main.storyboard */,
 				EEE5DF9327D837C100F26C8D /* Assets.xcassets */,
