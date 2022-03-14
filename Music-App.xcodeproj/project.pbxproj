@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */; };
 		EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */; };
 		EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */; };
 		EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8E27D837C100F26C8D /* signInViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		EEE5DF8727D837C100F26C8D /* Music-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				EEE5DF8E27D837C100F26C8D /* signInViewController.swift */,
+				EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */,
 				EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */,
 				EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */,
 				EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */,
