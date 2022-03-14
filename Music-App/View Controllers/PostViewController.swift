@@ -12,10 +12,21 @@ class PostViewController: UIViewController {
 //MARK: OUTLETS
     
 
+    @IBAction func searchBarItemButton(_ sender: Any) {
+    }
     
 
+    @IBAction func postButton(_ sender: Any) {
+    }
     
     
+    @IBOutlet weak var albumCoverImageView: UIImageView!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    
+    @IBAction func userCaptionTextfield(_ sender: Any) {
+    }
     
     
 //MARK: VIEWDIDLOAD
