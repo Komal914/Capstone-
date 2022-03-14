@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */; };
+		EEE03BA027DFB4A600E0B658 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE03B9F27DFB4A600E0B658 /* search.png */; };
 		EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */; };
 		EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */; };
 		EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8E27D837C100F26C8D /* signInViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		EEE03B9F27DFB4A600E0B658 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		EEE5DF8727D837C100F26C8D /* Music-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EEE03B9A27DFABA500E0B658 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		EEE5DF7E27D837C000F26C8D = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +116,7 @@
 		EEE5DF8927D837C100F26C8D /* Music-App */ = {
 			isa = PBXGroup;
 			children = (
+				EEE03B9A27DFABA500E0B658 /* Custom Cells */,
 				EEE5DFBB27D83E7D00F26C8D /* Assets */,
 				EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */,
 				EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */,
@@ -138,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				EEE5DF8E27D837C100F26C8D /* signInViewController.swift */,
+				EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -146,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				EEE5DFC027D83EC200F26C8D /* logo.png */,
+				EEE03B9F27DFB4A600E0B658 /* search.png */,
 				EEE5DFC227D83ED200F26C8D /* love.png */,
 				EEE5DFBC27D83E9700F26C8D /* message.png */,
 			);
@@ -259,6 +273,7 @@
 				EEE5DF9727D837C100F26C8D /* LaunchScreen.storyboard in Resources */,
 				EEE5DFC127D83EC200F26C8D /* logo.png in Resources */,
 				EEE5DF9427D837C100F26C8D /* Assets.xcassets in Resources */,
+				EEE03BA027DFB4A600E0B658 /* search.png in Resources */,
 				EEE5DF9227D837C100F26C8D /* Main.storyboard in Resources */,
 				EEE5DFBD27D83E9700F26C8D /* message.png in Resources */,
 				EEE5DFC327D83ED200F26C8D /* love.png in Resources */,
@@ -286,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */,
 				EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */,
 				EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */,
 				EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */,
