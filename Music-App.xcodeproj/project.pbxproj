@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */; };
 		EEE03BA027DFB4A600E0B658 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE03B9F27DFB4A600E0B658 /* search.png */; };
+		EEE03BAC27DFFEA400E0B658 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */; };
 		EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */; };
 		EEE5DF8D27D837C100F26C8D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */; };
 		EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8E27D837C100F26C8D /* signInViewController.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		EEE03B9F27DFB4A600E0B658 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
+		EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEE5DF8727D837C100F26C8D /* Music-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EEE5DF8C27D837C100F26C8D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			children = (
 				EEE5DF8E27D837C100F26C8D /* signInViewController.swift */,
 				EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */,
+				EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEE03BAC27DFFEA400E0B658 /* HomeViewController.swift in Sources */,
 				EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */,
 				EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */,
 				EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */,
