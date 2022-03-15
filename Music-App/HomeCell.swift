@@ -9,7 +9,32 @@ import UIKit
 
 class HomeCell: UITableViewCell {
     
+//MARK: OUTLETS
+    
+    @IBOutlet weak var artistProfilePic: UIImageView!
+    
+    
+    @IBOutlet weak var userProfilePic: UIImageView!
+    
+    
+    @IBOutlet weak var albumCoverPic: UIImageView!
+    
+    
+    @IBOutlet weak var artistNameLabel: UILabel!
+    
+    
+    @IBOutlet weak var albumNameAndSongLabel: UILabel!
+    
+    
+    @IBOutlet weak var userDisplayNameLabel: UILabel!
+    
+    
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    
+    @IBOutlet weak var captionFromTheUserLabel: UILabel!
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
