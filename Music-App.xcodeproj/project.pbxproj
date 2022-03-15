@@ -88,6 +88,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE9364F227E03E970097C3A5 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
 		EEE03BAA27DFFE1F00E0B658 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,11 +131,11 @@
 				EEE5DFBB27D83E7D00F26C8D /* Assets */,
 				EEE03BAA27DFFE1F00E0B658 /* Delegates */,
 				EEE5DFBA27D839D400F26C8D /* View Controllers */,
+				EE9364F227E03E970097C3A5 /* Custom Cells */,
 				EEE5DF9027D837C100F26C8D /* Main.storyboard */,
 				EEE5DF9327D837C100F26C8D /* Assets.xcassets */,
 				EEE5DF9527D837C100F26C8D /* LaunchScreen.storyboard */,
 				EEE5DF9827D837C100F26C8D /* Info.plist */,
-				EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */,
 			);
 			path = "Music-App";
 			sourceTree = "<group>";
