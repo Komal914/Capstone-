@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE9364F027E03DB90097C3A5 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9364EE27E03DB90097C3A5 /* message.png */; };
+		EE9364F127E03DB90097C3A5 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9364EF27E03DB90097C3A5 /* love.png */; };
 		EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */; };
-		EEE03BA027DFB4A600E0B658 /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE03B9F27DFB4A600E0B658 /* search.png */; };
 		EEE03BAC27DFFEA400E0B658 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */; };
 		EEE03BAE27DFFFD300E0B658 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */; };
 		EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DF8A27D837C100F26C8D /* AppDelegate.swift */; };
@@ -20,9 +21,7 @@
 		EEE5DFA227D837C100F26C8D /* Music_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DFA127D837C100F26C8D /* Music_AppTests.swift */; };
 		EEE5DFAC27D837C100F26C8D /* Music_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DFAB27D837C100F26C8D /* Music_AppUITests.swift */; };
 		EEE5DFAE27D837C100F26C8D /* Music_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE5DFAD27D837C100F26C8D /* Music_AppUITestsLaunchTests.swift */; };
-		EEE5DFBD27D83E9700F26C8D /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DFBC27D83E9700F26C8D /* message.png */; };
 		EEE5DFC127D83EC200F26C8D /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DFC027D83EC200F26C8D /* logo.png */; };
-		EEE5DFC327D83ED200F26C8D /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EEE5DFC227D83ED200F26C8D /* love.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,8 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE9364EE27E03DB90097C3A5 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		EE9364EF27E03DB90097C3A5 /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
 		EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		EEE03B9F27DFB4A600E0B658 /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		EEE5DF8727D837C100F26C8D /* Music-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Music-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,9 +60,7 @@
 		EEE5DFA727D837C100F26C8D /* Music-AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Music-AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEE5DFAB27D837C100F26C8D /* Music_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music_AppUITests.swift; sourceTree = "<group>"; };
 		EEE5DFAD27D837C100F26C8D /* Music_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		EEE5DFBC27D83E9700F26C8D /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		EEE5DFC027D83EC200F26C8D /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		EEE5DFC227D83ED200F26C8D /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,10 +162,9 @@
 		EEE5DFBB27D83E7D00F26C8D /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				EE9364EF27E03DB90097C3A5 /* love.png */,
+				EE9364EE27E03DB90097C3A5 /* message.png */,
 				EEE5DFC027D83EC200F26C8D /* logo.png */,
-				EEE03B9F27DFB4A600E0B658 /* search.png */,
-				EEE5DFC227D83ED200F26C8D /* love.png */,
-				EEE5DFBC27D83E9700F26C8D /* message.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -279,10 +276,9 @@
 				EEE5DF9727D837C100F26C8D /* LaunchScreen.storyboard in Resources */,
 				EEE5DFC127D83EC200F26C8D /* logo.png in Resources */,
 				EEE5DF9427D837C100F26C8D /* Assets.xcassets in Resources */,
-				EEE03BA027DFB4A600E0B658 /* search.png in Resources */,
 				EEE5DF9227D837C100F26C8D /* Main.storyboard in Resources */,
-				EEE5DFBD27D83E9700F26C8D /* message.png in Resources */,
-				EEE5DFC327D83ED200F26C8D /* love.png in Resources */,
+				EE9364F027E03DB90097C3A5 /* message.png in Resources */,
+				EE9364F127E03DB90097C3A5 /* love.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

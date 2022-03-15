@@ -36,6 +36,17 @@ class HomeCell: UITableViewCell {
     
     
     
+    @IBAction func likeButton(_ sender: Any) {
+    }
+    
+    
+    
+    
+    @IBAction func commentButton(_ sender: Any) {
+    }
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
