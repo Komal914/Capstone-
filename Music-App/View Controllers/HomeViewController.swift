@@ -22,7 +22,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationItem.title = "Home"
         
         table.delegate = self
-        table.delegate = self
+        table.dataSource = self
         
         print("Home screen")
         
@@ -40,9 +40,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = table.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeCell
         
-        cell.textLabel?.text = "text"
+        cell.usernameLabel.text = "Komal"
         print("inside cell for row")
         
         return cell
