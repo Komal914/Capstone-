@@ -30,6 +30,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Music Videos"
         
         table.delegate = self
         table.dataSource = self
@@ -42,7 +43,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        return 700  //or whatever you need
+        return 700//or whatever you need
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

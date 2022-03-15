@@ -8,6 +8,27 @@
 import UIKit
 
 class MusicVideosCell: UITableViewCell {
+    
+//MARK: OUTLETS
+    
+    
+    @IBOutlet weak var artistNameLabel: UILabel!
+    
+    @IBOutlet weak var albumNameandSongNameLabel: UILabel!
+    
+    
+    @IBAction func likeButton(_ sender: Any) {
+    }
+    
+    
+    @IBAction func commentButton(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
