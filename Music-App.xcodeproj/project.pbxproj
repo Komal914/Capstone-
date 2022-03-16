@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		EE9364F027E03DB90097C3A5 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9364EE27E03DB90097C3A5 /* message.png */; };
 		EE9364F127E03DB90097C3A5 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9364EF27E03DB90097C3A5 /* love.png */; };
+		EE9364F427E1046C0097C3A5 /* MusicVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9364F327E1046C0097C3A5 /* MusicVideosViewController.swift */; };
+		EE9364F627E104CB0097C3A5 /* MusicVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE9364F527E104CB0097C3A5 /* MusicVideosCell.swift */; };
 		EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */; };
 		EEE03BAC27DFFEA400E0B658 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */; };
 		EEE03BAE27DFFFD300E0B658 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */; };
@@ -44,6 +46,8 @@
 /* Begin PBXFileReference section */
 		EE9364EE27E03DB90097C3A5 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		EE9364EF27E03DB90097C3A5 /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
+		EE9364F327E1046C0097C3A5 /* MusicVideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosViewController.swift; sourceTree = "<group>"; };
+		EE9364F527E104CB0097C3A5 /* MusicVideosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosCell.swift; sourceTree = "<group>"; };
 		EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				EEE03BAD27DFFFD300E0B658 /* HomeCell.swift */,
+				EE9364F527E104CB0097C3A5 /* MusicVideosCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -163,6 +168,7 @@
 				EEE5DF8E27D837C100F26C8D /* signInViewController.swift */,
 				EEE03B9D27DFAEA300E0B658 /* PostViewController.swift */,
 				EEE03BAB27DFFEA400E0B658 /* HomeViewController.swift */,
+				EE9364F327E1046C0097C3A5 /* MusicVideosViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -312,7 +318,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEE03BAC27DFFEA400E0B658 /* HomeViewController.swift in Sources */,
+				EE9364F427E1046C0097C3A5 /* MusicVideosViewController.swift in Sources */,
 				EEE03B9E27DFAEA300E0B658 /* PostViewController.swift in Sources */,
+				EE9364F627E104CB0097C3A5 /* MusicVideosCell.swift in Sources */,
 				EEE5DF8F27D837C100F26C8D /* signInViewController.swift in Sources */,
 				EEE5DF8B27D837C100F26C8D /* AppDelegate.swift in Sources */,
 				EEE03BAE27DFFFD300E0B658 /* HomeCell.swift in Sources */,
