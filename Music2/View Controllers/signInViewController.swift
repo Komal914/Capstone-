@@ -93,6 +93,8 @@ class signInViewController: UIViewController {
 
         controller.requestUserToken(forDeveloperToken: developerToken) { userToken, error in
             // Use this value for recommendation requests.
+            print("User token")
+            //print(userToken)
         }
         
     
@@ -113,7 +115,7 @@ class signInViewController: UIViewController {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                print(json)
+//                print(json)
                 print("inside the do")
             }
             catch {
