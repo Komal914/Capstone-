@@ -23,7 +23,7 @@ class signInViewController: UIViewController {
         //for now, you can log in by just clicking the button
         
 //MARK: UNCOMMENT THIS AFTER
-        //performSegue(withIdentifier: "loginToAppleMusic", sender: self)
+        performSegue(withIdentifier: "loginToAppleMusic", sender: self)
         
     }
     
