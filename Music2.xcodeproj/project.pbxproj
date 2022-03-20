@@ -25,6 +25,7 @@
 		EEC7BF3127E7E7F200A882F6 /* MusicVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */; };
 		EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */; };
 		EEC7BF3527E7E8BB00A882F6 /* MusicVideosCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */; };
+		EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF3627E7F22700A882F6 /* HomeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosViewController.swift; sourceTree = "<group>"; };
 		EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosCell.swift; sourceTree = "<group>"; };
+		EEC7BF3627E7F22700A882F6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */,
+				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				EEC7BF3127E7E7F200A882F6 /* MusicVideosViewController.swift in Sources */,
 				EEC7BF2D27E7BBEA00A882F6 /* AppleMusicAPI.swift in Sources */,
 				EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */,
+				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
 				EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */,
 				EEC7BF3527E7E8BB00A882F6 /* MusicVideosCell.swift in Sources */,
 				AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */,
