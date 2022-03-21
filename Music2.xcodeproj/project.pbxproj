@@ -10,13 +10,13 @@
 		AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */; };
 		AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */; };
 		AAADCCFA27E7A58E0077CB34 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF927E7A58E0077CB34 /* ViewController.swift */; };
-		AAADCCFD27E7A58E0077CB34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADCCFB27E7A58E0077CB34 /* Main.storyboard */; };
 		AAADCD0027E7A58E0077CB34 /* Music2.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCFE27E7A58E0077CB34 /* Music2.xcdatamodeld */; };
 		AAADCD0227E7A5910077CB34 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AAADCD0127E7A5910077CB34 /* Assets.xcassets */; };
 		AAADCD0527E7A5910077CB34 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADCD0327E7A5910077CB34 /* LaunchScreen.storyboard */; };
 		AAADCD1027E7A5910077CB34 /* Music2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD0F27E7A5910077CB34 /* Music2Tests.swift */; };
 		AAADCD1A27E7A5920077CB34 /* Music2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1927E7A5920077CB34 /* Music2UITests.swift */; };
 		AAADCD1C27E7A5920077CB34 /* Music2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */; };
+		AAADCD3A27E7ACA30077CB34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AAADCD3927E7ACA30077CB34 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +41,6 @@
 		AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AAADCCF927E7A58E0077CB34 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AAADCCFC27E7A58E0077CB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AAADCCFF27E7A58E0077CB34 /* Music2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Music2.xcdatamodel; sourceTree = "<group>"; };
 		AAADCD0127E7A5910077CB34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AAADCD0427E7A5910077CB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		AAADCD1527E7A5920077CB34 /* Music2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Music2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADCD1927E7A5920077CB34 /* Music2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITests.swift; sourceTree = "<group>"; };
 		AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AAADCD3927E7ACA30077CB34 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +104,8 @@
 				AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */,
 				AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */,
 				AAADCCF927E7A58E0077CB34 /* ViewController.swift */,
-				AAADCCFB27E7A58E0077CB34 /* Main.storyboard */,
 				AAADCD0127E7A5910077CB34 /* Assets.xcassets */,
+				AAADCD3927E7ACA30077CB34 /* Main.storyboard */,
 				AAADCD0327E7A5910077CB34 /* LaunchScreen.storyboard */,
 				AAADCD0627E7A5910077CB34 /* Info.plist */,
 				AAADCCFE27E7A58E0077CB34 /* Music2.xcdatamodeld */,
@@ -234,9 +234,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAADCD3A27E7ACA30077CB34 /* Main.storyboard in Resources */,
 				AAADCD0527E7A5910077CB34 /* LaunchScreen.storyboard in Resources */,
 				AAADCD0227E7A5910077CB34 /* Assets.xcassets in Resources */,
-				AAADCCFD27E7A58E0077CB34 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +301,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AAADCCFB27E7A58E0077CB34 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AAADCCFC27E7A58E0077CB34 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AAADCD0327E7A5910077CB34 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
