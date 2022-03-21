@@ -93,32 +93,32 @@ class signInViewController: UIViewController {
                 }
             }
         }
-
-        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-        
-        let session = URLSession.shared
-        
-        print("before task")
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-            
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                //print(json)
-                //print("inside the do")
-            }
-            catch {
-            }
-        
-        }
-        task.resume()
-        print("after task")
+//MARK: API REQUEST
+//        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
+//
+//        var request = URLRequest(url: url)
+//        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+//
+//        let session = URLSession.shared
+//
+//        print("Starting task")
+//        let task = session.dataTask(with: request) { data, response, error in
+//            guard let data = data else {
+//
+//                return
+//            }
+//
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+//                //print(json)
+//                //print("inside the do")
+//            }
+//            catch {
+//            }
+//
+//        }
+//        task.resume()
+//        print("after task")
 
     }
     
@@ -144,13 +144,18 @@ class signInViewController: UIViewController {
     func didTapAppleButton() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
+        print("")
         request.requestedScopes = [.fullName, .email]
+        
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         
         authorizationController.performRequests()
+        
+        
+        
     }
     
     // segue to send info over
@@ -168,7 +173,7 @@ class signInViewController: UIViewController {
 extension signInViewController: ASAuthorizationControllerDelegate {
     // if fails
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("uh oh!: ", error)
+        print("Error in authorization: ", error)
     }
     
     // if authorization passes
