@@ -94,31 +94,32 @@ class signInViewController: UIViewController {
             }
         }
 //MARK: API REQUEST
-//        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
-//
-//        var request = URLRequest(url: url)
-//        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-//
-//        let session = URLSession.shared
-//
-//        print("Starting task")
-//        let task = session.dataTask(with: request) { data, response, error in
-//            guard let data = data else {
-//
-//                return
-//            }
-//
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-//                //print(json)
-//                //print("inside the do")
-//            }
-//            catch {
-//            }
-//
-//        }
-//        task.resume()
-//        print("after task")
+        
+        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+
+        let session = URLSession.shared
+
+        print("Starting task")
+        let task = session.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+
+                return
+            }
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                //print(json)
+                //print("inside the do")
+            }
+            catch {
+            }
+
+        }
+        task.resume()
+        print("after task")
 
     }
     
@@ -163,6 +164,7 @@ class signInViewController: UIViewController {
         if let mainVC = segue.destination as? HomeViewController, let user =
             sender as? User {
             mainVC.user = user
+            print("The User: ", user.firstName)
         }
     }
 
@@ -185,6 +187,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         // if credentials are passed through and are correct, break and continue with authorization process
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
+            print("the user is here: ", user.firstName)
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             
