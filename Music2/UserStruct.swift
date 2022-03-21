@@ -15,10 +15,10 @@ struct User {
     let email: String
     
     init(credentials: ASAuthorizationAppleIDCredential) {
-        self.id = credentials.user
-        self.firstName = credentials.fullName?.givenName ?? ""
-        self.lastName = credentials.fullName?.familyName ?? ""
-        self.email = credentials.email ?? ""
+        self.id = credentials.user 
+        self.firstName = credentials.fullName?.givenName ?? "no first name"
+        self.lastName = credentials.fullName?.familyName ?? "no last name"
+        self.email = credentials.email ?? "no email"
     }
 }
 

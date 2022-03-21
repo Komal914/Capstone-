@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -24,9 +25,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.delegate = self
         table.dataSource = self
         
-        print(user?.debugDescription ?? "")
+        func getUserToken() {
+            let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjQ3OTM4MTg0LCJpYXQiOjE2NDc4OTQ5ODR9.sKU-6mJISE8Q-_vGLdWS1aUuEXxl3ufxrZO3jpI6Ghgw9o-8ZnafwP3IV_6i-Gqbz_JFr54GLBP3xJvu4CNK8w"
+            var userToken = String()
+            
+            SKCloudServiceController().requestUserToken(forDeveloperToken: developerToken) { (receivedToken, error) in
+                guard error == nil else { return }
+                
+                if let token = receivedToken {
+                    userToken = token
+                    print(userToken)
+                }
+            }
+        }
         
-        print("Print statement for ID: ", user?.id ?? "default")
+        print(user?.debugDescription)
+        
+        print("Print statement for ID: ", user?.id)
         
 
         // Do any additional setup after loading the view.

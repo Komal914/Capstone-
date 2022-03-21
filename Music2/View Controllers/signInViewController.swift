@@ -1,8 +1,8 @@
 import UIKit
 import StoreKit
 import MediaPlayer
+import MusicKit
 import AuthenticationServices
-
 
 class signInViewController: UIViewController {
     
@@ -11,13 +11,10 @@ class signInViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
-        
+        //MARK: UNCOMMENT THIS AFTER
         //we need to authenticate the user here with the apple API
         //for now, you can log in by just clicking the button
-        
-//MARK: UNCOMMENT THIS AFTER
-        performSegue(withIdentifier: "loginToAppleMusic", sender: self)
-        
+        //performSegue(withIdentifier: "loginToAppleMusic", sender: self)
     }
     
     
@@ -29,7 +26,11 @@ class signInViewController: UIViewController {
         // sets up signIn apple button
         setupView()
         
+        // gets user token
+        getUserToken()
         
+        
+        // Gain Access to User's Media Library
         let status = MPMediaLibrary.authorizationStatus()
         switch status {
         case .authorized: break
@@ -50,6 +51,23 @@ class signInViewController: UIViewController {
             print("unknown")
         }
         
+        // request access to
+/*        let controller = SKCloudServiceController()
+        guard SKCloudServiceController.authorizationStatus() == .notDetermined else { return }
+        
+        SKCloudServiceController.requestAuthorization { [weak self] (authorizationStatus) in
+            switch authorizationStatus {
+            case .authorized:
+                self?.requestCloudServiceCapabilities()
+                self?.requestUserToken()
+            default:
+                break
+            }
+            
+            NotificationCenter.default.post(name: AuthorizationManager.authorizationDidUpdateNotification, object: nil)
+        }*/
+        
+        
         func requestAccess(_ completion: @escaping(Bool) -> Void) {
             SKCloudServiceController.requestAuthorization { (status) in
                 switch status {
@@ -67,59 +85,22 @@ class signInViewController: UIViewController {
         let controller = SKCloudServiceController()
         controller.requestStorefrontCountryCode { countryCode, error in
             // Use the value in countryCode for subsequent API requests
+            print("bad countryCode")
         }
         
         
-        //user token
+        // developer token
         let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
 
-        /*
-        controller.requestUserToken(forDeveloperToken: developerToken) { userToken, error in
-            // Use this value for recommendation requests.
-            print("User token")
-            //print(userToken)
-        }*/
-        
-        
-        func getUserToken() {
-            var userToken = String()
+        SKCloudServiceController().requestUserToken(forDeveloperToken: "\(developerToken)") { (userToken, err) in
+            if let e = err {
+                print(e)
+            }
             
-            SKCloudServiceController().requestUserToken(forDeveloperToken: developerToken) { (receivedToken, error) in
-                guard error == nil else { return }
-                
-                if let token = receivedToken {
-                    userToken = token
-                    print(userToken)
-                }
+            if let token = userToken {
+                print(token)
             }
         }
-
-        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
-        
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-        
-        let session = URLSession.shared
-        
-        print("before task")
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-            
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                //print(json)
-                //print("inside the do")
-            }
-            catch {
-            }
-        
-        }
-        task.resume()
-        print("after task")
-
     }
     
     func setupView() {
@@ -146,6 +127,7 @@ class signInViewController: UIViewController {
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
         
+        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -160,8 +142,20 @@ class signInViewController: UIViewController {
             mainVC.user = user
         }
     }
-
-
+    
+    func getUserToken() {
+        var userToken = String()
+        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+        
+        SKCloudServiceController().requestUserToken(forDeveloperToken: developerToken) { (receivedToken, error) in
+            guard error == nil else { return }
+            
+            if let token = receivedToken {
+                userToken = token
+                print(userToken)
+            }
+        }
+    }
 }
 
 
@@ -183,7 +177,8 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             
-        default: break
+        default:
+            print("bad sign in")
         }
     }
 }
