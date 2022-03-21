@@ -164,7 +164,7 @@ class signInViewController: UIViewController {
         if let mainVC = segue.destination as? HomeViewController, let user =
             sender as? User {
             mainVC.user = user
-            print("The User: ", user.firstName)
+            print("The User: ", user.id)
         }
     }
 
@@ -187,7 +187,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         // if credentials are passed through and are correct, break and continue with authorization process
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
-            print("the user is here: ", user.firstName)
+            print("the user is here: ", user.id)
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             
