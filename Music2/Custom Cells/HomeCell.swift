@@ -10,24 +10,14 @@ import UIKit
 class HomeCell: UITableViewCell {
     
     @IBOutlet weak var artistImage: UIImageView!
-    
-    
     @IBOutlet weak var albumNameSongName: UILabel!
-    
-    
     @IBOutlet weak var albumCover: UIImageView!
-    
-    
     @IBOutlet weak var profileImage: UIImageView!
-    
-    
     
     
     @IBOutlet weak var userName: UILabel!
     
-    
     @IBOutlet weak var captionFromTheUser: UILabel!
-    
     
     @IBAction func likeButton(_ sender: Any) {
     }

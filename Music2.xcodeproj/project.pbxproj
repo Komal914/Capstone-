@@ -20,6 +20,7 @@
 		AAADCD1027E7A5910077CB34 /* Music2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD0F27E7A5910077CB34 /* Music2Tests.swift */; };
 		AAADCD1A27E7A5920077CB34 /* Music2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1927E7A5920077CB34 /* Music2UITests.swift */; };
 		AAADCD1C27E7A5920077CB34 /* Music2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */; };
+		AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD3C27E811BC0077CB34 /* UserStruct.swift */; };
 		EEC7BF2727E7B40200A882F6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2427E7B40100A882F6 /* message.png */; };
 		EEC7BF2827E7B40200A882F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2527E7B40200A882F6 /* logo.png */; };
 		EEC7BF2927E7B40200A882F6 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2627E7B40200A882F6 /* love.png */; };
@@ -67,6 +68,8 @@
 		AAADCD1527E7A5920077CB34 /* Music2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Music2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADCD1927E7A5920077CB34 /* Music2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITests.swift; sourceTree = "<group>"; };
 		AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AAADCD3B27E810F40077CB34 /* Music2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Music2.entitlements; sourceTree = "<group>"; };
+		AAADCD3C27E811BC0077CB34 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
 		EEC7BF2427E7B40100A882F6 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		EEC7BF2527E7B40200A882F6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		EEC7BF2627E7B40200A882F6 /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
@@ -135,11 +138,13 @@
 		AAADCCF427E7A58E0077CB34 /* Music2 */ = {
 			isa = PBXGroup;
 			children = (
+				AAADCD3B27E810F40077CB34 /* Music2.entitlements */,
 				EEC7BF2327E7B3E700A882F6 /* Assets */,
 				25C42D5027E7FAB300C9C14A /* Header */,
 				EEC7BF2127E7B3BC00A882F6 /* Custom Cells */,
 				EEC7BF2027E7B3B000A882F6 /* View Controllers */,
 				EEC7BF2227E7B3C900A882F6 /* Delegates */,
+				AAADCD3C27E811BC0077CB34 /* UserStruct.swift */,
 				AAADCCFB27E7A58E0077CB34 /* Main.storyboard */,
 				AAADCD0127E7A5910077CB34 /* Assets.xcassets */,
 				AAADCD0327E7A5910077CB34 /* LaunchScreen.storyboard */,
@@ -352,6 +357,7 @@
 				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
 				EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */,
 				25C42D4D27E7F9F500C9C14A /* profileCollectionViewCell.swift in Sources */,
+				AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */,
 				EEC7BF3527E7E8BB00A882F6 /* MusicVideosCell.swift in Sources */,
 				AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */,
 				AAADCD0027E7A58E0077CB34 /* Music2.xcdatamodeld in Sources */,
@@ -531,6 +537,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Music2/Music2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4VS3XAPXTV;
@@ -560,6 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Music2/Music2.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4VS3XAPXTV;

@@ -13,7 +13,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     
     @IBOutlet weak var table: UITableView!
-    
+    var user: User?
     
     
     
@@ -24,7 +24,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.delegate = self
         table.dataSource = self
         
-        print("Home screen")
+        print(user?.debugDescription ?? "")
+        
+        print("Print statement for ID: ", user?.id ?? "default")
         
 
         // Do any additional setup after loading the view.

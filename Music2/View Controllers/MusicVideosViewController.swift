@@ -12,20 +12,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     
     
 //MARK: OUTLETS
-    
-
-    
+        
     @IBOutlet weak var table: UITableView!
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
 //MARK: VIEWDIDLOAD
     
