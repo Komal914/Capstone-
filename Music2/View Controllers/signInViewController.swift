@@ -89,7 +89,7 @@ class signInViewController: UIViewController {
                 
                 if let token = receivedToken {
                     userToken = token
-                    print(userToken)
+                   //print(userToken)
                 }
             }
         }
@@ -102,7 +102,7 @@ class signInViewController: UIViewController {
 
         let session = URLSession.shared
 
-        print("Starting task")
+        //print("Starting task")
         let task = session.dataTask(with: request) { data, response, error in
             guard let data = data else {
 
@@ -145,7 +145,7 @@ class signInViewController: UIViewController {
     func didTapAppleButton() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        print("")
+        //print("")
         request.requestedScopes = [.fullName, .email]
         
         
@@ -164,7 +164,7 @@ class signInViewController: UIViewController {
         if let mainVC = segue.destination as? HomeViewController, let user =
             sender as? User {
             mainVC.user = user
-            print("The User: ", user.id)
+           //print("The User: ", user.id)
         }
     }
 
@@ -175,7 +175,7 @@ class signInViewController: UIViewController {
 extension signInViewController: ASAuthorizationControllerDelegate {
     // if fails
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-        print("Error in authorization: ", error)
+        //print("Error in authorization: ", error)
     }
     
     // if authorization passes

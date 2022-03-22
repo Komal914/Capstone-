@@ -27,6 +27,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
         table.delegate = self
         table.dataSource = self
+   
 //MARK: API REQUEST
         //store front
         
@@ -62,20 +63,20 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let baseAPIUrl = "https://api.music.apple.com/v1/catalog/"
+        //let baseAPIUrl = "https://api.music.apple.com/v1/catalog/"
         
         //let base2Url = baseUrl + Storefront
         
         
         
-        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/music-videos/1553279848")!
+        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/music-videos?ids=1553279848,1549013065")!
 
         var request = URLRequest(url: url)
         request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
 
         let session = URLSession.shared
 
-        print("Starting task")
+  
         let task = session.dataTask(with: request) { [self] data, response, error in
             guard let data = data else {
 
@@ -84,18 +85,28 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                self.videoData = json?["data"] as! [[String: Any]]
-                self.filteredVideoData = self.videoData.flatMap { $0 }
-                //print(filteredVideoData)
+               self.videoData = json?["data"] as! [[String: Any]]
+               print("got the goods")
+                DispatchQueue.main.async {
+                    self.table.reloadData()
+                    print("reloaded")
+                }
+                
+                //self.filteredVideoData = self.videoData.flatMap { $0 }
+                //print("Json Below:")
+                //print(videoData)
                 //print("inside the do")
             }
             catch {
             }
+            
 
         }
         task.resume()
         print("after task")
         // Do any additional setup after loading the view.
+        
+        table.reloadData()
     }
     
 
@@ -109,18 +120,22 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         //should return .count of the number of music videos
-        return 1
+        return videoData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
-        //let video = filteredVideoData["data"]
+        
                 
-        print("Number of recipes in tableview: ", filteredVideoData.count)
+        let video = videoData[indexPath.row]
+        //cell.artistNameLabel.text = video["artistName"] as! String
+        //print(title)
+        print("Number of videos in tableview: ", videoData.count)
+        
                 
         //getting title
         //let title = video["title"] as? String
-        print("title below: ")
+        //print("title below: ")
         //print(title)
         return cell
     }
