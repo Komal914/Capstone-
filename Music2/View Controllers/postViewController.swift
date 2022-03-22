@@ -29,6 +29,7 @@ class postViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Post"
 
         // Do any additional setup after loading the view.
     }
