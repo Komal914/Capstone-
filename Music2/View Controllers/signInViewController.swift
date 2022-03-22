@@ -10,13 +10,13 @@ class signInViewController: UIViewController {
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
+    
+//MARK: SIGN IN BUTTON
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
         
         //we need to authenticate the user here with the apple API
         //for now, you can log in by just clicking the button
-        
-//MARK: UNCOMMENT THIS AFTER
-        performSegue(withIdentifier: "loginToAppleMusic", sender: self)
+                performSegue(withIdentifier: "loginToAppleMusic", sender: self)
         
     }
     
@@ -29,7 +29,7 @@ class signInViewController: UIViewController {
         // sets up signIn apple button
         setupView()
         
-        
+//MARK: REQUEST MUSIC LIBRARY
         let status = MPMediaLibrary.authorizationStatus()
         switch status {
         case .authorized: break
@@ -187,7 +187,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         // if credentials are passed through and are correct, break and continue with authorization process
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
-            print("the user is here: ", user.id)
+            print("the user ID here: ", user.id)
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             
