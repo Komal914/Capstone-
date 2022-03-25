@@ -25,4 +25,5 @@ class profileHeaderCollectionReusableView: UICollectionReusableView {
     
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var editButton: UIButton!
 }

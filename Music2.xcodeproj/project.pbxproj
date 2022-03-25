@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		254427E827EE2C9C008198D1 /* rock.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 254427E727EE2C9C008198D1 /* rock.jpg */; };
 		25C42D4D27E7F9F500C9C14A /* profileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D4C27E7F9F500C9C14A /* profileCollectionViewCell.swift */; };
 		25C42D4F27E7FA4200C9C14A /* profileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D4E27E7FA4200C9C14A /* profileCollectionViewController.swift */; };
 		25C42D5227E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5127E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift */; };
@@ -55,6 +56,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		254427E727EE2C9C008198D1 /* rock.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = rock.jpg; path = ../../../rock.jpg; sourceTree = "<group>"; };
 		25C42D4C27E7F9F500C9C14A /* profileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileCollectionViewCell.swift; sourceTree = "<group>"; };
 		25C42D4E27E7FA4200C9C14A /* profileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileCollectionViewController.swift; sourceTree = "<group>"; };
 		25C42D5127E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 		EEC7BF2327E7B3E700A882F6 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				254427E727EE2C9C008198D1 /* rock.jpg */,
 				EEC7BF2527E7B40200A882F6 /* logo.png */,
 				EEC7BF2627E7B40200A882F6 /* love.png */,
 				EEC7BF2427E7B40100A882F6 /* message.png */,
@@ -341,6 +344,7 @@
 				AAADCCFD27E7A58E0077CB34 /* Main.storyboard in Resources */,
 				EEC7BF2727E7B40200A882F6 /* message.png in Resources */,
 				EEC7BF2927E7B40200A882F6 /* love.png in Resources */,
+				254427E827EE2C9C008198D1 /* rock.jpg in Resources */,
 				EE2428B727EA2EB500A754AF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
