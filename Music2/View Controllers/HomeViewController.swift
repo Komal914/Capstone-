@@ -19,7 +19,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Home"
+        //navigationItem.title = "Home"
+        self.navigationController?.navigationBar.isHidden = true
         
         table.delegate = self
         table.dataSource = self

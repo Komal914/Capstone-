@@ -23,7 +23,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Music Videos"
+        self.navigationController?.navigationBar.isHidden = true
         
         table.delegate = self
         table.dataSource = self
@@ -43,6 +43,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             // Use the value in countryCode for subsequent API requests
             if #available(iOS 15.0, *) {
                 print("Storyboard:", Storefront.self)
+                print(countryCode)
             } else {
                 // Fallback on earlier versions
                 print("NO storefront")
@@ -56,7 +57,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
         func requestUserToken(forDeveloperToken developerToken: String,
                               completionHandler: @escaping (String?, Error?) -> Void){
-            print()
+            
         }
         
         
@@ -127,10 +128,19 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
         
                 
-        let video = videoData[indexPath.row]
-        //cell.artistNameLabel.text = video["artistName"] as! String
-        //print(title)
-        print("Number of videos in tableview: ", videoData.count)
+        let video = videoData[indexPath.row] //each video data
+        let attributes = video["attributes"] //attributes for each video
+        var data = [attributes] as? Any
+
+        
+        
+        //let thing = video["attributes"][Optional("url")] as? String
+      //  print("thing: ", thing)
+       // cell.artistNameLabel.text = video["albums"] as? String
+       //print("video below:")
+       // print(video.count)
+       // print("Number of videos in tableview: ", videoData.count)
+       // print("title of the artist: ", title)
         
                 
         //getting title
