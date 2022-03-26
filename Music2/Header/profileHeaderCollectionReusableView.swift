@@ -21,8 +21,8 @@ class profileHeaderCollectionReusableView: UICollectionReusableView {
     @IBOutlet weak var followingNumberLabel: UILabel!
     
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var genreLabel: UILabel!
     
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var editButton: UIButton!
 }
