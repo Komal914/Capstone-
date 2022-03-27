@@ -2,6 +2,7 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AuthenticationServices
+import FirebaseFirestore
 
 
 class signInViewController: UIViewController {
@@ -9,6 +10,17 @@ class signInViewController: UIViewController {
 //MARK: OUTLETS
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    
+    
+//MARK: FIREBASE FUNCTIONS
+    
+    let database = Firestore.firestore() //ref to the firebase database
+    
+    func saveData(text: String){
+        let docRef = database.document("MusicApp/Users")
+        docRef.setData(["ID": text])
+        
+    }
     
     
 //MARK: SIGN IN BUTTON
@@ -28,6 +40,18 @@ class signInViewController: UIViewController {
         
         // sets up signIn apple button
         setupView()
+        
+//MARK: FIREBASE
+        
+        let docRef = database.document("MusicApp/Users")
+        docRef.getDocument{
+            snapshot, error in
+            guard let data = snapshot?.data(), error == nil else {
+                return
+            }
+            
+            print(data)
+        }
         
 //MARK: REQUEST MUSIC LIBRARY
         let status = MPMediaLibrary.authorizationStatus()
@@ -89,7 +113,8 @@ class signInViewController: UIViewController {
                 
                 if let token = receivedToken {
                     userToken = token
-                   //print(userToken)
+                    print("userToken below:" )
+                print(userToken)
                 }
             }
         }
@@ -165,6 +190,7 @@ class signInViewController: UIViewController {
             sender as? User {
             mainVC.user = user
            //print("The User: ", user.id)
+        
         }
     }
 
@@ -188,6 +214,9 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         case let credentials as ASAuthorizationAppleIDCredential:
             let user = User(credentials: credentials)
             print("the user ID here: ", user.id)
+            print("user name: ", user.firstName)
+    //MARK: FIREBASE USER SAVE
+            saveData(text: user.id)
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             
