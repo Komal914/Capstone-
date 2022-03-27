@@ -10,7 +10,6 @@
 		254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EB27EE7D5A008198D1 /* profileViewController.swift */; };
 		254427EE27EE7F7A008198D1 /* genreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */; };
 		254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */; };
-		25C42D5227E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5127E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift */; };
 		25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5527E7FD7300C9C14A /* postViewController.swift */; };
 		AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */; };
 		AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */; };
@@ -61,7 +60,6 @@
 		254427EB27EE7D5A008198D1 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genreCollectionViewCell.swift; sourceTree = "<group>"; };
 		254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsCollectionViewCell.swift; sourceTree = "<group>"; };
-		25C42D5127E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		25C42D5527E7FD7300C9C14A /* postViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		AAADCCF227E7A58E0077CB34 /* Music2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 		25C42D5027E7FAB300C9C14A /* Header */ = {
 			isa = PBXGroup;
 			children = (
-				25C42D5127E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift */,
 			);
 			path = Header;
 			sourceTree = "<group>";
@@ -390,7 +387,6 @@
 				EEC7BF3527E7E8BB00A882F6 /* MusicVideosCell.swift in Sources */,
 				AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */,
 				AAADCD0027E7A58E0077CB34 /* Music2.xcdatamodeld in Sources */,
-				25C42D5227E7FAFB00C9C14A /* profileHeaderCollectionReusableView.swift in Sources */,
 				AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

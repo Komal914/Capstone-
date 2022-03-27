@@ -9,6 +9,21 @@ import UIKit
 
 class profileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var postsLabel: UILabel!
+    @IBOutlet weak var postsNumberLabel: UILabel!
+    
+    @IBOutlet weak var fansLabel: UILabel!
+    @IBOutlet weak var fansNumberLabel: UILabel!
+    
+    @IBOutlet weak var followingLabel: UILabel!
+    @IBOutlet weak var followingNumberLabel: UILabel!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    
+    @IBOutlet weak var editButton: UIButton!
+    
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
@@ -24,8 +39,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        let layout = genreCollectionView.collectionViewLayout as? UICollectionViewFlowLayout // casting is required because UICollectionViewLayout doesn't offer header pin. Its feature of UICollectionViewFlowLayout
-        layout?.sectionHeadersPinToVisibleBounds = true
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -53,7 +66,7 @@ extension profileViewController {
         
         if (collectionView == genreCollectionView)
         {
-            return 10
+            return 8
         }
         
         return 30
@@ -75,34 +88,6 @@ extension profileViewController {
 
         return cell
     }
-    
-     func collectionView(
-        _ collectionView: UICollectionView,
-        viewForSupplementaryElementOfKind kind: String,
-        at indexPath: IndexPath
-    ) -> UICollectionReusableView {
-        switch kind {
-            // 1
-        case UICollectionView.elementKindSectionHeader:
-            // 2
-            let headerView = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: "\(profileHeaderCollectionReusableView.self)",
-                for: indexPath)
-            
-            // 3
-            guard let typedHeaderView = headerView as? profileHeaderCollectionReusableView
-            else { return headerView }
-            
-            // 4
-            //let searchTerm = searches[indexPath.section].searchTerm
-            //typedHeaderView.titleLabel.text = searchTerm
-            return typedHeaderView
-        default:
-            // 5
-            assert(false, "Invalid element type")
-        }
-    }
 }
 
 // MARK: UICollectionViewDelegate
@@ -115,6 +100,16 @@ extension profileViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         // 2
+        
+        if (collectionView == genreCollectionView)
+        {
+            let itemsPerRow: CGFloat = 4
+            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / itemsPerRow
+            
+            return CGSize(width: widthPerItem, height: widthPerItem/5)
+        }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
