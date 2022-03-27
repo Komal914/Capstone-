@@ -78,7 +78,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let session = URLSession.shared
 
   
-        let task = session.dataTask(with: request) { [self] data, response, error in
+        let task = session.dataTask(with: request) {(data, response, error) in
             guard let data = data else {
 
                 return
@@ -87,10 +87,10 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                self.videoData = json?["data"] as! [[String: Any]]
-               print("got the goods")
+              // print("got the goods")
                 DispatchQueue.main.async {
                     self.table.reloadData()
-                    print("reloaded")
+                  //  print("reloaded")
                 }
                 
                 //self.filteredVideoData = self.videoData.flatMap { $0 }
@@ -104,7 +104,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 
         }
         task.resume()
-        print("after task")
+       // print("after task")
         // Do any additional setup after loading the view.
         
         table.reloadData()
@@ -130,6 +130,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 
         let video = videoData[indexPath.row] //each video data
         let attributes = video["attributes"] //attributes for each video
+       // print(attributes)
         var data = [attributes] as? Any
 
         
