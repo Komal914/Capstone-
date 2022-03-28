@@ -21,6 +21,11 @@
 		AAADCD1A27E7A5920077CB34 /* Music2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1927E7A5920077CB34 /* Music2UITests.swift */; };
 		AAADCD1C27E7A5920077CB34 /* Music2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */; };
 		AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD3C27E811BC0077CB34 /* UserStruct.swift */; };
+		AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD8827F26FE80077CB34 /* swipeViewController.swift */; };
+		AAADCD8C27F271A00077CB34 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD8B27F271A00077CB34 /* FirebaseAnalytics */; };
+		AAADCD8E27F271A00077CB34 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD8D27F271A00077CB34 /* FirebaseAuth */; };
+		AAADCD9027F271A00077CB34 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD8F27F271A00077CB34 /* FirebaseDatabase */; };
+		AAADCD9227F271A00077CB34 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD9127F271A00077CB34 /* FirebaseFirestore */; };
 		EE2428B727EA2EB500A754AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */; };
 		EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EE72603627F0F4100083A171 /* AlamofireImage */; };
 		EE9507D827EFBEE90098FD6C /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9507D727EFBEE90098FD6C /* rock.png */; };
@@ -77,6 +82,7 @@
 		AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AAADCD3B27E810F40077CB34 /* Music2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Music2.entitlements; sourceTree = "<group>"; };
 		AAADCD3C27E811BC0077CB34 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		AAADCD8827F26FE80077CB34 /* swipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeViewController.swift; sourceTree = "<group>"; };
 		EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE9507D727EFBEE90098FD6C /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		EEC7BF2427E7B40100A882F6 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
@@ -98,8 +104,12 @@
 			files = (
 				EE9507DF27EFC13C0098FD6C /* FirebaseDatabase in Frameworks */,
 				EE9507E127EFC13C0098FD6C /* FirebaseFirestore in Frameworks */,
+				AAADCD8C27F271A00077CB34 /* FirebaseAnalytics in Frameworks */,
 				EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */,
 				EE9507DB27EFC13C0098FD6C /* FirebaseAnalytics in Frameworks */,
+				AAADCD9227F271A00077CB34 /* FirebaseFirestore in Frameworks */,
+				AAADCD8E27F271A00077CB34 /* FirebaseAuth in Frameworks */,
+				AAADCD9027F271A00077CB34 /* FirebaseDatabase in Frameworks */,
 				EE9507DD27EFC13C0098FD6C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -195,6 +205,7 @@
 				EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */,
 				25C42D5527E7FD7300C9C14A /* postViewController.swift */,
 				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
+				AAADCD8827F26FE80077CB34 /* swipeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -252,6 +263,10 @@
 				EE9507DE27EFC13C0098FD6C /* FirebaseDatabase */,
 				EE9507E027EFC13C0098FD6C /* FirebaseFirestore */,
 				EE72603627F0F4100083A171 /* AlamofireImage */,
+				AAADCD8B27F271A00077CB34 /* FirebaseAnalytics */,
+				AAADCD8D27F271A00077CB34 /* FirebaseAuth */,
+				AAADCD8F27F271A00077CB34 /* FirebaseDatabase */,
+				AAADCD9127F271A00077CB34 /* FirebaseFirestore */,
 			);
 			productName = Music2;
 			productReference = AAADCCF227E7A58E0077CB34 /* Music2.app */;
@@ -328,6 +343,7 @@
 			packageReferences = (
 				EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AAADCCF327E7A58E0077CB34 /* Products */;
 			projectDirPath = "";
@@ -382,6 +398,7 @@
 				EEC7BF2D27E7BBEA00A882F6 /* AppleMusicAPI.swift in Sources */,
 				25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */,
 				254427EE27EE7F7A008198D1 /* genreCollectionViewCell.swift in Sources */,
+				AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */,
 				EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */,
 				254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */,
 				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
@@ -739,6 +756,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
@@ -758,6 +783,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AAADCD8B27F271A00077CB34 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AAADCD8D27F271A00077CB34 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AAADCD8F27F271A00077CB34 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		AAADCD9127F271A00077CB34 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD8A27F2719F0077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		EE72603627F0F4100083A171 /* AlamofireImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
