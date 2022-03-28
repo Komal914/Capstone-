@@ -30,9 +30,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
-        top: 40.0,
+        top: 50.0,
         left: 10.0,
-        bottom: 40.0,
+        bottom: 50.0,
         right: 10.0)
     
     

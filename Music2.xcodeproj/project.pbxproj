@@ -21,6 +21,14 @@
 		AAADCD1A27E7A5920077CB34 /* Music2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1927E7A5920077CB34 /* Music2UITests.swift */; };
 		AAADCD1C27E7A5920077CB34 /* Music2UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */; };
 		AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD3C27E811BC0077CB34 /* UserStruct.swift */; };
+		AAADCD5227F0CFA70077CB34 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD5127F0CFA70077CB34 /* FirebaseAnalytics */; };
+		AAADCD5427F0CFA70077CB34 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD5327F0CFA70077CB34 /* FirebaseAuth */; };
+		AAADCD5627F0CFA70077CB34 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD5527F0CFA70077CB34 /* FirebaseDatabase */; };
+		AAADCD5827F0CFA70077CB34 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = AAADCD5727F0CFA70077CB34 /* FirebaseFirestore */; };
+		AAADCD5C27F120E30077CB34 /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD5B27F120E30077CB34 /* signInViewController.swift */; };
+		AAADCD5E27F121B30077CB34 /* swipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD5D27F121B30077CB34 /* swipeViewController.swift */; };
+		AAADCD6127F144560077CB34 /* thumbsdown.png in Resources */ = {isa = PBXBuildFile; fileRef = AAADCD5F27F144560077CB34 /* thumbsdown.png */; };
+		AAADCD6227F144560077CB34 /* thumbsup.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = AAADCD6027F144560077CB34 /* thumbsup.jpeg */; };
 		EE2428B727EA2EB500A754AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */; };
 		EE9507D827EFBEE90098FD6C /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9507D727EFBEE90098FD6C /* rock.png */; };
 		EE9507DB27EFC13C0098FD6C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EE9507DA27EFC13C0098FD6C /* FirebaseAnalytics */; };
@@ -30,7 +38,6 @@
 		EEC7BF2727E7B40200A882F6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2427E7B40100A882F6 /* message.png */; };
 		EEC7BF2827E7B40200A882F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2527E7B40200A882F6 /* logo.png */; };
 		EEC7BF2927E7B40200A882F6 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2627E7B40200A882F6 /* love.png */; };
-		EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF2A27E7B46700A882F6 /* signInViewController.swift */; };
 		EEC7BF2D27E7BBEA00A882F6 /* AppleMusicAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF2C27E7BBEA00A882F6 /* AppleMusicAPI.swift */; };
 		EEC7BF2F27E7BC3700A882F6 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF2E27E7BC3700A882F6 /* Song.swift */; };
 		EEC7BF3127E7E7F200A882F6 /* MusicVideosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */; };
@@ -76,12 +83,15 @@
 		AAADCD1B27E7A5920077CB34 /* Music2UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music2UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		AAADCD3B27E810F40077CB34 /* Music2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Music2.entitlements; sourceTree = "<group>"; };
 		AAADCD3C27E811BC0077CB34 /* UserStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStruct.swift; sourceTree = "<group>"; };
+		AAADCD5B27F120E30077CB34 /* signInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = signInViewController.swift; path = ../../../../.Trash/signInViewController.swift; sourceTree = "<group>"; };
+		AAADCD5D27F121B30077CB34 /* swipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeViewController.swift; sourceTree = "<group>"; };
+		AAADCD5F27F144560077CB34 /* thumbsdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsdown.png; sourceTree = "<group>"; };
+		AAADCD6027F144560077CB34 /* thumbsup.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumbsup.jpeg; sourceTree = "<group>"; };
 		EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE9507D727EFBEE90098FD6C /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		EEC7BF2427E7B40100A882F6 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		EEC7BF2527E7B40200A882F6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		EEC7BF2627E7B40200A882F6 /* love.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = love.png; sourceTree = "<group>"; };
-		EEC7BF2A27E7B46700A882F6 /* signInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInViewController.swift; sourceTree = "<group>"; };
 		EEC7BF2C27E7BBEA00A882F6 /* AppleMusicAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMusicAPI.swift; sourceTree = "<group>"; };
 		EEC7BF2E27E7BC3700A882F6 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicVideosViewController.swift; sourceTree = "<group>"; };
@@ -96,8 +106,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE9507DF27EFC13C0098FD6C /* FirebaseDatabase in Frameworks */,
+				AAADCD5427F0CFA70077CB34 /* FirebaseAuth in Frameworks */,
 				EE9507E127EFC13C0098FD6C /* FirebaseFirestore in Frameworks */,
 				EE9507DB27EFC13C0098FD6C /* FirebaseAnalytics in Frameworks */,
+				AAADCD5227F0CFA70077CB34 /* FirebaseAnalytics in Frameworks */,
+				AAADCD5827F0CFA70077CB34 /* FirebaseFirestore in Frameworks */,
+				AAADCD5627F0CFA70077CB34 /* FirebaseDatabase in Frameworks */,
 				EE9507DD27EFC13C0098FD6C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -158,9 +172,9 @@
 				AAADCD3C27E811BC0077CB34 /* UserStruct.swift */,
 				EEC7BF2C27E7BBEA00A882F6 /* AppleMusicAPI.swift */,
 				AAADCCFB27E7A58E0077CB34 /* Main.storyboard */,
-				AAADCD0127E7A5910077CB34 /* Assets.xcassets */,
 				AAADCD0327E7A5910077CB34 /* LaunchScreen.storyboard */,
 				AAADCD0627E7A5910077CB34 /* Info.plist */,
+				AAADCD0127E7A5910077CB34 /* Assets.xcassets */,
 				EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */,
 				AAADCCFE27E7A58E0077CB34 /* Music2.xcdatamodeld */,
 				EEC7BF2E27E7BC3700A882F6 /* Song.swift */,
@@ -188,11 +202,12 @@
 		EEC7BF2027E7B3B000A882F6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				EEC7BF2A27E7B46700A882F6 /* signInViewController.swift */,
 				EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */,
 				EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */,
+				AAADCD5B27F120E30077CB34 /* signInViewController.swift */,
 				25C42D5527E7FD7300C9C14A /* postViewController.swift */,
 				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
+				AAADCD5D27F121B30077CB34 /* swipeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -222,6 +237,8 @@
 			children = (
 				EEC7BF2527E7B40200A882F6 /* logo.png */,
 				EEC7BF2627E7B40200A882F6 /* love.png */,
+				AAADCD5F27F144560077CB34 /* thumbsdown.png */,
+				AAADCD6027F144560077CB34 /* thumbsup.jpeg */,
 				EEC7BF2427E7B40100A882F6 /* message.png */,
 				EE9507D727EFBEE90098FD6C /* rock.png */,
 			);
@@ -249,6 +266,10 @@
 				EE9507DC27EFC13C0098FD6C /* FirebaseAuth */,
 				EE9507DE27EFC13C0098FD6C /* FirebaseDatabase */,
 				EE9507E027EFC13C0098FD6C /* FirebaseFirestore */,
+				AAADCD5127F0CFA70077CB34 /* FirebaseAnalytics */,
+				AAADCD5327F0CFA70077CB34 /* FirebaseAuth */,
+				AAADCD5527F0CFA70077CB34 /* FirebaseDatabase */,
+				AAADCD5727F0CFA70077CB34 /* FirebaseFirestore */,
 			);
 			productName = Music2;
 			productReference = AAADCCF227E7A58E0077CB34 /* Music2.app */;
@@ -324,6 +345,7 @@
 			mainGroup = AAADCCE927E7A58E0077CB34;
 			packageReferences = (
 				EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = AAADCCF327E7A58E0077CB34 /* Products */;
 			projectDirPath = "";
@@ -342,6 +364,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAADCD0527E7A5910077CB34 /* LaunchScreen.storyboard in Resources */,
+				AAADCD6227F144560077CB34 /* thumbsup.jpeg in Resources */,
+				AAADCD6127F144560077CB34 /* thumbsdown.png in Resources */,
 				EEC7BF2827E7B40200A882F6 /* logo.png in Resources */,
 				EE9507D827EFBEE90098FD6C /* rock.png in Resources */,
 				AAADCD0227E7A5910077CB34 /* Assets.xcassets in Resources */,
@@ -382,9 +406,10 @@
 				254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */,
 				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
 				254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */,
-				EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */,
 				AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */,
 				EEC7BF3527E7E8BB00A882F6 /* MusicVideosCell.swift in Sources */,
+				AAADCD5E27F121B30077CB34 /* swipeViewController.swift in Sources */,
+				AAADCD5C27F120E30077CB34 /* signInViewController.swift in Sources */,
 				AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */,
 				AAADCD0027E7A58E0077CB34 /* Music2.xcdatamodeld in Sources */,
 				AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */,
@@ -735,6 +760,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -746,6 +779,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		AAADCD5127F0CFA70077CB34 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		AAADCD5327F0CFA70077CB34 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		AAADCD5527F0CFA70077CB34 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		AAADCD5727F0CFA70077CB34 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AAADCD5027F0CFA70077CB34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		EE9507DA27EFC13C0098FD6C /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

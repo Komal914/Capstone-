@@ -26,6 +26,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.dataSource = self
         
         print(user?.debugDescription ?? "")
+        print("homeview ERROR")
         
         print("Print statement for ID: ", user?.id ?? "default")
         
