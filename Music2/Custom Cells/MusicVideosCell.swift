@@ -14,7 +14,8 @@ class MusicVideosCell: UITableViewCell {
     @IBOutlet weak var albumNameandSongNameLabel: UILabel!
     
     
-    @IBOutlet weak var musicVideoView: UIView!
+  
+    @IBOutlet weak var musicVideoView: PlayerViewClass!
     
     @IBOutlet weak var likeButton: UIButton!
     
