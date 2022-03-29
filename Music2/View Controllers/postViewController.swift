@@ -122,7 +122,7 @@ class postViewController: UIViewController {
                        
                    
                         
-                        //print(finalUrl)
+                        print(finalUrl)
                         
                         let url = NSURL(string:finalUrl)
                                 let imagedata = NSData.init(contentsOf: url as! URL)
