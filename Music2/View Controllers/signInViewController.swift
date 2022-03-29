@@ -50,7 +50,7 @@ class signInViewController: UIViewController {
                 return
             }
             
-            print(data)
+            print("Firebase: ", data)
         }
         
 //MARK: REQUEST MUSIC LIBRARY
@@ -189,7 +189,7 @@ class signInViewController: UIViewController {
         if let mainVC = segue.destination as? HomeViewController, let user =
             sender as? User {
             mainVC.user = user
-           print("The User: ", user.id)
+          // print("The User: ", user.id)
         
         }
     }

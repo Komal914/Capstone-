@@ -8,8 +8,13 @@
 import UIKit
 import StoreKit
 import MediaPlayer
+import AVFoundation
+
 
 class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var player : AVPlayer!
+    var avPlayerLayer : AVPlayerLayer!
   
     var videoData = [[String: Any?]]() //array of dictionaries
     var filteredVideoData = [[String: Any?]]()
@@ -128,28 +133,34 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
         
                 
-        let video = videoData[indexPath.row] //each video data
-        let attributes = video["attributes"] //attributes for each video
-       // print(attributes)
-        var data = [attributes] as? Any
+        let video = videoData[indexPath.row] as! NSDictionary //each video data
+        let attributes = video["attributes"] as! NSDictionary//attributes for each video
+        let name = attributes["name"] as! String
+        let previews = attributes["previews"] as! NSArray
+        let artwork = previews[0] as! NSDictionary
+        let musicVideoUrl = artwork["url"] as! String
+        print(musicVideoUrl)
+        let artistName = attributes["artistName"] as! String
+        cell.artistNameLabel!.text = artistName
+        cell.albumNameandSongNameLabel!.text = name
+        
+        
+//        let videoURL = URL(string: musicVideoUrl)
+//        let player = AVPlayer(url: videoURL!)
+//        let playerLayer = AVPlayerLayer(player: player)
+//        playerLayer.frame = self.view.bounds
+//        self.view.layer.addSublayer(playerLayer)
+//        player.play()
 
         
         
-        //let thing = video["attributes"][Optional("url")] as? String
-      //  print("thing: ", thing)
-       // cell.artistNameLabel.text = video["albums"] as? String
-       //print("video below:")
-       // print(video.count)
-       // print("Number of videos in tableview: ", videoData.count)
-       // print("title of the artist: ", title)
         
-                
-        //getting title
-        //let title = video["title"] as? String
-        //print("title below: ")
-        //print(title)
+  
+        
+        
         return cell
     }
+    
 
     
     
