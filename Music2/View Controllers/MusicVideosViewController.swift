@@ -145,7 +145,16 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         cell.albumNameandSongNameLabel!.text = name
         
         
-//        let videoURL = URL(string: musicVideoUrl)
+        let videoURL = NSURL(string: musicVideoUrl)
+        
+        
+        let avPlayer = AVPlayer(url: videoURL! as URL)
+        
+        cell.musicVideoView?.playerLayer.player = avPlayer
+        
+        cell.musicVideoView.player?.play()
+        
+        
 //        let player = AVPlayer(url: videoURL!)
 //        let playerLayer = AVPlayerLayer(player: player)
 //        playerLayer.frame = self.view.bounds
