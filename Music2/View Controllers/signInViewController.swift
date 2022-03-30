@@ -2,7 +2,7 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AuthenticationServices
-import FirebaseFirestore
+
 
 
 class signInViewController: UIViewController {
@@ -14,13 +14,9 @@ class signInViewController: UIViewController {
     
 //MARK: FIREBASE FUNCTIONS
     
-    let database = Firestore.firestore() //ref to the firebase database
     
-    func saveData(text: String){
-        let docRef = database.document("MusicApp/Users")
-        docRef.setData(["ID": text])
-        
-    }
+    
+   
     
     
 //MARK: SIGN IN BUTTON
@@ -43,15 +39,7 @@ class signInViewController: UIViewController {
         
 //MARK: FIREBASE
         
-        let docRef = database.document("MusicApp/Users")
-        docRef.getDocument{
-            snapshot, error in
-            guard let data = snapshot?.data(), error == nil else {
-                return
-            }
-            
-            print("Firebase: ", data)
-        }
+      
         
 //MARK: REQUEST MUSIC LIBRARY
         let status = MPMediaLibrary.authorizationStatus()
@@ -216,7 +204,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             print("the user ID here: ", user.id)
             print("user name: ", user.firstName)
     //MARK: FIREBASE USER SAVE
-            saveData(text: user.id)
+            
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
             break
             

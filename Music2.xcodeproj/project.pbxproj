@@ -26,10 +26,6 @@
 		EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28469B27F3B15300633677 /* PlayerViewClass.swift */; };
 		EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EE72603627F0F4100083A171 /* AlamofireImage */; };
 		EE9507D827EFBEE90098FD6C /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9507D727EFBEE90098FD6C /* rock.png */; };
-		EE9507DB27EFC13C0098FD6C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = EE9507DA27EFC13C0098FD6C /* FirebaseAnalytics */; };
-		EE9507DD27EFC13C0098FD6C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EE9507DC27EFC13C0098FD6C /* FirebaseAuth */; };
-		EE9507DF27EFC13C0098FD6C /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = EE9507DE27EFC13C0098FD6C /* FirebaseDatabase */; };
-		EE9507E127EFC13C0098FD6C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EE9507E027EFC13C0098FD6C /* FirebaseFirestore */; };
 		EEC7BF2727E7B40200A882F6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2427E7B40100A882F6 /* message.png */; };
 		EEC7BF2827E7B40200A882F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2527E7B40200A882F6 /* logo.png */; };
 		EEC7BF2927E7B40200A882F6 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2627E7B40200A882F6 /* love.png */; };
@@ -100,11 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE9507DF27EFC13C0098FD6C /* FirebaseDatabase in Frameworks */,
-				EE9507E127EFC13C0098FD6C /* FirebaseFirestore in Frameworks */,
 				EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */,
-				EE9507DB27EFC13C0098FD6C /* FirebaseAnalytics in Frameworks */,
-				EE9507DD27EFC13C0098FD6C /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,10 +245,6 @@
 			);
 			name = Music2;
 			packageProductDependencies = (
-				EE9507DA27EFC13C0098FD6C /* FirebaseAnalytics */,
-				EE9507DC27EFC13C0098FD6C /* FirebaseAuth */,
-				EE9507DE27EFC13C0098FD6C /* FirebaseDatabase */,
-				EE9507E027EFC13C0098FD6C /* FirebaseFirestore */,
 				EE72603627F0F4100083A171 /* AlamofireImage */,
 			);
 			productName = Music2;
@@ -332,7 +320,6 @@
 			);
 			mainGroup = AAADCCE927E7A58E0077CB34;
 			packageReferences = (
-				EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = AAADCCF327E7A58E0077CB34 /* Products */;
@@ -755,14 +742,6 @@
 				minimumVersion = 4.0.0;
 			};
 		};
-		EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -770,26 +749,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
-		};
-		EE9507DA27EFC13C0098FD6C /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		EE9507DC27EFC13C0098FD6C /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		EE9507DE27EFC13C0098FD6C /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		EE9507E027EFC13C0098FD6C /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = EE9507D927EFC13C0098FD6C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 
