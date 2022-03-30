@@ -2,6 +2,7 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AuthenticationServices
+import Parse
 
 
 
@@ -37,9 +38,6 @@ class signInViewController: UIViewController {
         // sets up signIn apple button
         setupView()
         
-//MARK: FIREBASE
-        
-      
         
 //MARK: REQUEST MUSIC LIBRARY
         let status = MPMediaLibrary.authorizationStatus()
@@ -124,8 +122,6 @@ class signInViewController: UIViewController {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                //print(json)
-                //print("inside the do")
             }
             catch {
             }
@@ -200,12 +196,27 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         
         // if credentials are passed through and are correct, break and continue with authorization process
         case let credentials as ASAuthorizationAppleIDCredential:
-            let user = User(credentials: credentials)
+            var user = User(credentials: credentials)
             print("the user ID here: ", user.id)
             print("user name: ", user.firstName)
-    //MARK: FIREBASE USER SAVE
-            
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
+            
+    //MARK: PARSE
+            
+
+//            var parseUser = PFUser()
+//            parseUser.username = user.id
+//            parseUser.password = "no password"
+//
+//            parseUser.signUpInBackground{(success, error) in
+//                if success {
+//                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
+//                }
+//                else{
+//                    print("error on sign up: \(error) ")
+//                }
+//            }
+            
             break
             
         default: break
