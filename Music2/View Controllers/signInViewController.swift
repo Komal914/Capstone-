@@ -2,7 +2,8 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AuthenticationServices
-import FirebaseFirestore
+import Parse
+
 
 
 class signInViewController: UIViewController {
@@ -14,13 +15,9 @@ class signInViewController: UIViewController {
     
 //MARK: FIREBASE FUNCTIONS
     
-    let database = Firestore.firestore() //ref to the firebase database
     
-    func saveData(text: String){
-        let docRef = database.document("MusicApp/Users")
-        docRef.setData(["ID": text])
-        
-    }
+    
+   
     
     
 //MARK: SIGN IN BUTTON
@@ -41,17 +38,6 @@ class signInViewController: UIViewController {
         // sets up signIn apple button
         setupView()
         
-//MARK: FIREBASE
-        
-        let docRef = database.document("MusicApp/Users")
-        docRef.getDocument{
-            snapshot, error in
-            guard let data = snapshot?.data(), error == nil else {
-                return
-            }
-            
-            print("Firebase: ", data)
-        }
         
 //MARK: REQUEST MUSIC LIBRARY
         let status = MPMediaLibrary.authorizationStatus()
@@ -136,8 +122,6 @@ class signInViewController: UIViewController {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                //print(json)
-                //print("inside the do")
             }
             catch {
             }
@@ -212,12 +196,27 @@ extension signInViewController: ASAuthorizationControllerDelegate {
         
         // if credentials are passed through and are correct, break and continue with authorization process
         case let credentials as ASAuthorizationAppleIDCredential:
-            let user = User(credentials: credentials)
+            var user = User(credentials: credentials)
             print("the user ID here: ", user.id)
             print("user name: ", user.firstName)
-    //MARK: FIREBASE USER SAVE
-            saveData(text: user.id)
             performSegue(withIdentifier: "loginToAppleMusic", sender: user)
+            
+    //MARK: PARSE
+            
+
+//            var parseUser = PFUser()
+//            parseUser.username = user.id
+//            parseUser.password = "no password"
+//
+//            parseUser.signUpInBackground{(success, error) in
+//                if success {
+//                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
+//                }
+//                else{
+//                    print("error on sign up: \(error) ")
+//                }
+//            }
+            
             break
             
         default: break
