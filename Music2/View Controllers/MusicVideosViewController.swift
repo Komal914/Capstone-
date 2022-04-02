@@ -40,8 +40,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         table.delegate = self
         table.dataSource = self
         visibleIP = IndexPath.init(row: 0, section: 0)
-<<<<<<< HEAD
-=======
         
         
 
@@ -53,37 +51,42 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
        
         
->>>>>>> video-updates
         
         
-
         
         
-   
-//MARK: Storefront
         
-        // store front
         let controller = SKCloudServiceController()
         controller.requestStorefrontCountryCode { countryCode, error in
-            
             // Use the value in countryCode for subsequent API requests
             if #available(iOS 15.0, *) {
                 print("Storyboard:", Storefront.self)
                 print(countryCode)
-            }
-            
-            else {
+            } else {
                 // Fallback on earlier versions
                 print("NO storefront")
             }
         }
-
-// MARK: API REQUEST
         
+        
+        //user token
         let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+
+        
+        func requestUserToken(forDeveloperToken developerToken: String,
+                              completionHandler: @escaping (String?, Error?) -> Void){
+            
+        }
+        
+        
+        
+//MARK: API REQUEST
         
         //let baseAPIUrl = "https://api.music.apple.com/v1/catalog/"
+        
         //let base2Url = baseUrl + Storefront
+        
+        
         
         let url = URL(string:"https://api.music.apple.com/v1/catalog/us/music-videos?ids=1553279848,1549013065")!
 
@@ -95,17 +98,17 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
   
         let task = session.dataTask(with: request) {(data, response, error) in
             guard let data = data else {
+
                 return
             }
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                self.videoData = json?["data"] as! [[String: Any]]
-                // print("got the goods")
-                
+               self.videoData = json?["data"] as! [[String: Any]]
+              // print("got the goods")
                 DispatchQueue.main.async {
                     self.table.reloadData()
-                    //  print("reloaded")
+                  //  print("reloaded")
                 }
                 
                 //self.filteredVideoData = self.videoData.flatMap { $0 }
@@ -113,13 +116,13 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 //print(videoData)
                 //print("inside the do")
             }
-            
             catch {
             }
+            
+
         }
         task.resume()
-        
-        // print("after task")
+       // print("after task")
         // Do any additional setup after loading the view.
         
         table.reloadData()
@@ -144,7 +147,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
                 
         let video = videoData[indexPath.row] as! NSDictionary //each video data
-        let attributes = video["attributes"] as! NSDictionary //attributes for each video
+        let attributes = video["attributes"] as! NSDictionary//attributes for each video
         let name = attributes["name"] as! String
         let previews = attributes["previews"] as! NSArray
         let artwork = previews[0] as! NSDictionary
@@ -169,19 +172,12 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 //
 //        avPlayer.volume = 3
         
-<<<<<<< HEAD
-        cell.musicVideoView?.playerLayer.player = avPlayer
-=======
         
         
         
         //cell.musicVideoView?.playerLayer.player = avPlayer
-<<<<<<< HEAD
->>>>>>> video-updates
-=======
->>>>>>> video-updates
         
-        //if the scroll view has the content to its top -> then play the vid
+        //if the scrol view has the content to its top -> then play the vid
         //right now all vids are playing, so i need a case statement here
         
         //cell.musicVideoView.player?.play()
@@ -192,6 +188,8 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 //        playerLayer.frame = self.view.bounds
 //        self.view.layer.addSublayer(playerLayer)
 //        player.play()
+
+        
         
         return cell
     }
