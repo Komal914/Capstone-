@@ -201,7 +201,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdk-BW-CWq" customClass="PlayerViewClass" customModule="Music2" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jdk-BW-CWq">
                                                     <rect key="frame" x="0.0" y="145" width="414" height="327"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemPinkColor"/>
@@ -223,7 +223,7 @@
                                             <outlet property="artistNameLabel" destination="6on-v2-YbY" id="x9A-UF-LNA"/>
                                             <outlet property="commentButton" destination="t2W-cx-lFr" id="fk0-Mh-ueo"/>
                                             <outlet property="likeButton" destination="hyE-VZ-sEn" id="fqN-Qe-Lq2"/>
-                                            <outlet property="musicVideoView" destination="Jdk-BW-CWq" id="5rv-k2-VEa"/>
+                                            <outlet property="musicVideoView" destination="Jdk-BW-CWq" id="3dY-RQ-y21"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -469,6 +469,7 @@
                     <navigationItem key="navigationItem" id="6VG-Bw-aTK"/>
                     <connections>
                         <outlet property="albumCoverImageView" destination="ZKA-En-5eR" id="A3o-kt-TKk"/>
+                        <outlet property="searchBar" destination="Kdx-Ox-Iwo" id="71x-6u-B3l"/>
                         <outlet property="usernameLabel" destination="2Xy-Lm-xwS" id="TQv-3z-5DZ"/>
                     </connections>
                 </viewController>
