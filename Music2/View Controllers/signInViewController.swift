@@ -17,9 +17,6 @@ class signInViewController: UIViewController {
     
     
     
-   
-    
-    
 //MARK: SIGN IN BUTTON
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
         
@@ -104,8 +101,8 @@ class signInViewController: UIViewController {
                 }
             }
         }
-//MARK: API REQUEST
         
+        // MARK: API REQUEST
         let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
 
         var request = URLRequest(url: url)
@@ -128,8 +125,6 @@ class signInViewController: UIViewController {
 
         }
         task.resume()
-        print("after task")
-
     }
     
     func setupView() {
@@ -143,9 +138,9 @@ class signInViewController: UIViewController {
         // add button to view
         view.addSubview(appleButton)
         NSLayoutConstraint.activate([
-            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
-            appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
+            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 70),
+            appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -70)
         ])
     }
     
@@ -154,7 +149,6 @@ class signInViewController: UIViewController {
     func didTapAppleButton() {
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
-        //print("")
         request.requestedScopes = [.fullName, .email]
         
         
@@ -163,9 +157,6 @@ class signInViewController: UIViewController {
         authorizationController.presentationContextProvider = self
         
         authorizationController.performRequests()
-        
-        
-        
     }
     
     // segue to send info over
@@ -173,7 +164,7 @@ class signInViewController: UIViewController {
         if let mainVC = segue.destination as? HomeViewController, let user =
             sender as? User {
             mainVC.user = user
-          // print("The User: ", user.id)
+            print("The User: ", user.firstName)
         
         }
     }

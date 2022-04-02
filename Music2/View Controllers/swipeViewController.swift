@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import StoreKit
 import UIKit
 
 class SwipeViewController: UIViewController {
@@ -14,11 +15,66 @@ class SwipeViewController: UIViewController {
     @IBOutlet var thumbImageView: UIImageView!
     var dividend: CGFloat!
     
+    var topGenresArr = [String]()
+    var userStorefront = "bad"
+    var urlString = "https://api.music.apple.com/v1/catalog/"
+    
+    var finalURL = String()
+    
     override func viewDidLoad() {
         
         // 0.61 is 35 degrees which is the highest extent of rotation needed
-        // divdee the width of the screen by 2, and then that number by 0.61 to find out how far the x point needs to be in order to be rotated
+        // divide the width of the screen by 2, and then that number by 0.61 to find out how far the x point needs to be in order to be rotated
         dividend = (view.frame.width / 2) / 0.61
+        
+        // store front
+        let controller = SKCloudServiceController()
+        controller.requestStorefrontCountryCode { countryCode, error in
+            // Use the value in countryCode for subsequent API requests
+            guard let countryCode = countryCode else {
+                return
+            }
+        
+            do {
+                //print(countryCode)
+                
+                let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+                
+                self.urlString += countryCode + "/genres"
+                
+                let url = URL(string: self.urlString as String)!
+
+                var request = URLRequest(url: url)
+                request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+
+                let session = URLSession.shared
+                let task = session.dataTask(with: request) {(data, response, error) in
+                    guard let data = data else {
+                        return
+                    }
+
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
+                        
+                        let data = json?["data"] as! [[String:Any]]
+                        print(data)
+                        
+                        
+                        //for
+                        let temp = data[3]
+                        //print(temp)
+                        let attributes = temp["attributes"] as! NSDictionary
+                        let name = attributes["name"] as! String
+                        print(name)
+                    }
+                    
+                    catch {
+                        
+                    }
+                }
+                task.resume()
+            }
+        }
     }
     
     
@@ -39,12 +95,12 @@ class SwipeViewController: UIViewController {
         card.transform = CGAffineTransform(rotationAngle: xFromCenter / dividend).scaledBy(x: scale, y: scale)
         
         if xFromCenter > 0 {
-            thumbImageView.image = UIImage(named: "thumbsup")
+            thumbImageView.image = UIImage(systemName: "hand.thumbsup.fill")
             thumbImageView.tintColor = UIColor.green
         }
         
         else {
-            thumbImageView.image = UIImage(named: "thumbsdown")
+            thumbImageView.image = UIImage(systemName: "hand.thumbsdown.fill")
             thumbImageView.tintColor = UIColor.systemRed
         }
         
