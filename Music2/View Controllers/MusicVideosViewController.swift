@@ -262,6 +262,18 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        let center = CGPoint(x: table.center.x + table.contentOffset.x,y: table.center.y + table.contentOffset.y)
+        
+        guard let centerIndex = self.table.indexPathForRow(at: center) else {return}
+        print("center point - \(center)")
+        print("centerIndex - \(centerIndex.row)")
+        let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
+        autoPlayCell?.stopPlayback()
+    }
+    
 
     
     
