@@ -73,7 +73,7 @@
                                 <rect key="frame" x="23" y="275" width="368" height="543"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
                                         <rect key="frame" x="63" y="52" width="242" height="74"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
@@ -101,7 +101,9 @@
                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                     </view>
                     <connections>
+                        <outlet property="artistPictureView" destination="8iy-YM-G9t" id="uE0-fI-2ZD"/>
                         <outlet property="card" destination="L7C-A9-50P" id="ZYG-iA-67g"/>
+                        <outlet property="genreLabel" destination="05A-oE-k88" id="LoB-jL-pEJ"/>
                         <outlet property="thumbImageView" destination="cjj-pE-Uuw" id="Rzf-HB-gc2"/>
                         <segue destination="0U9-SI-CbS" kind="presentation" identifier="afterSelection" modalPresentationStyle="fullScreen" id="UjS-sM-iFE"/>
                     </connections>
