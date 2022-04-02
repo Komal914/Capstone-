@@ -40,6 +40,20 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         table.delegate = self
         table.dataSource = self
         visibleIP = IndexPath.init(row: 0, section: 0)
+<<<<<<< HEAD
+=======
+        
+        
+
+        
+        
+   
+//MARK: API REQUEST
+        //store front
+        
+       
+        
+>>>>>>> video-updates
         
         
 
@@ -162,6 +176,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
         
         //cell.musicVideoView?.playerLayer.player = avPlayer
+<<<<<<< HEAD
+>>>>>>> video-updates
+=======
 >>>>>>> video-updates
         
         //if the scroll view has the content to its top -> then play the vid
