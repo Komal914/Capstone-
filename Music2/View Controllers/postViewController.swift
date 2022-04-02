@@ -10,13 +10,15 @@ import StoreKit
 import MediaPlayer
 import AlamofireImage
 
-class postViewController: UIViewController {
+class postViewController: UIViewController, UISearchBarDelegate {
     
     //MARK: - OUTLETS
     //var songData = [String: Any?]() //one dictionary
     //var songData = [[String]]()
     
     var songData = NSDictionary()
+    
+ 
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -33,10 +35,33 @@ class postViewController: UIViewController {
     @IBAction func userCaptionTextField(_ sender: Any) {
     }
     
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+            print("searchText \(searchText)")
+        }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+            print("searchText \(searchBar.text)")
+        }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+            searchBar.showsCancelButton = false
+            searchBar.text = ""
+            searchBar.resignFirstResponder()
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        searchBar.delegate = self
         
         
         //MARK: API REQUEST
@@ -171,3 +196,7 @@ class postViewController: UIViewController {
     */
 
 }
+
+
+    
+
