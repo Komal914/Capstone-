@@ -14,6 +14,10 @@ class SwipeViewController: UIViewController {
     @IBOutlet var card: UIView!
     @IBOutlet var thumbImageView: UIImageView!
     var dividend: CGFloat!
+    var ptr = 0
+    
+    @IBOutlet var genreLabel: UILabel!
+    @IBOutlet var artistPictureView: UIImageView!
     
     var topGenresArr = [String]()
     var userStorefront = "bad"
@@ -57,20 +61,21 @@ class SwipeViewController: UIViewController {
                         let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any]
                         
                         let data = json?["data"] as! [[String:Any]]
-                        print(data)
                         
-                        
-                        //for
-                        let temp = data[3]
-                        //print(temp)
-                        let attributes = temp["attributes"] as! NSDictionary
-                        let name = attributes["name"] as! String
-                        print(name)
+                        for i in data {
+                            let temp = i
+                            //print(temp)
+                            let attributes = temp["attributes"] as! NSDictionary
+                            let name = attributes["name"] as! String
+                            self.topGenresArr.append(name)
+                        }
                     }
                     
                     catch {
                         
                     }
+                    
+                    print(self.topGenresArr)
                 }
                 task.resume()
             }
@@ -82,6 +87,7 @@ class SwipeViewController: UIViewController {
         // card is set onto the view of screen, point is where the card is on the screen
         let card = sender.view!
         let point = sender.translation(in: view)
+        
         
         // xFromCenter is a point that is used to understand how far the x point of the card is from the center of the screen
         let xFromCenter = card.center.x - view.center.x
@@ -115,10 +121,27 @@ class SwipeViewController: UIViewController {
             if card.center.x < 75 {
                 // take screen off to the left
                 UIView.animate(withDuration: 0.3, animations: {
-                    card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 75)
+                    //card.center = CGPoint(x: card.center.x - 200, y: card.center.y + 75)
+                    
+                    //print(self.topGenresArr[self.ptr])
+                    if self.topGenresArr[self.ptr] != "Music" {
+                        self.genreLabel.text = self.topGenresArr[self.ptr]
+                    }
+                    
+                    card.center = self.view.center
+                    self.thumbImageView.alpha = 0
+                    self.card.alpha = 1
+                    self.card.transform = CGAffineTransform.identity
                 })
                 
-                performSegue(withIdentifier: "afterSelection", sender: self)
+                // go to next genre
+                if self.ptr + 1 <= 7 {
+                    self.ptr += 1
+                }
+                else {
+                    performSegue(withIdentifier: "afterSelection", sender: self)
+                }
+                
                 return
             }
             
@@ -127,8 +150,25 @@ class SwipeViewController: UIViewController {
                 // take screen off to the right
                 UIView.animate(withDuration: 0.3, animations: {
                     card.center = CGPoint(x: card.center.x + 200, y: card.center.y + 75)
+                    
+                    if self.topGenresArr[self.ptr] != "Music" {
+                        self.genreLabel.text = self.topGenresArr[self.ptr]
+                    }
+                    
+                    card.center = self.view.center
+                    self.thumbImageView.alpha = 0
+                    self.card.alpha = 1
+                    self.card.transform = CGAffineTransform.identity
                 })
-                performSegue(withIdentifier: "afterSelection", sender: self)
+                
+                // go to next genre
+                if self.ptr + 1 <= 7 {
+                    self.ptr += 1
+                }
+                
+                else {
+                    performSegue(withIdentifier: "afterSelection", sender: self)
+                }
                 return
             }
             
