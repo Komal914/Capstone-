@@ -29,6 +29,7 @@ class SwipeViewController: UIViewController {
         
         // 0.61 is 35 degrees which is the highest extent of rotation needed
         // divide the width of the screen by 2, and then that number by 0.61 to find out how far the x point needs to be in order to be rotated
+        genreLabel.lineBreakMode = NSLineBreakMode.byWordWrapping
         dividend = (view.frame.width / 2) / 0.61
         
         // store front
