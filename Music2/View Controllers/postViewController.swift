@@ -21,6 +21,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     //MARK: Global VARIABLES
     
     var songData = NSDictionary()
+    var songMenu = NSArray()
     
     let menu: DropDown = {
         let menu = DropDown()
@@ -56,16 +57,18 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             print("searchText \(searchText)")
-            //menu.show()
+           
         }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
+        print(songMenu)
+            menu.show()
         }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
-            menu.show()
+            //menu.show()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -103,6 +106,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
         gesture.numberOfTapsRequired = 1
         searchBar.addGestureRecognizer(gesture)
         menu.anchorView = viewBelowSearch
+        
+        menu.selectionAction = { index, title in
+            print("index \(index) at \(title)")
+        }
         
         
         //MARK: Storefront Gathering
@@ -163,6 +170,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 //print(songs)
                 
                 let numberOfSongs = songs["data"] as! NSArray
+                
+                
                 
                 print("amount of song: ", numberOfSongs.count)
                 let firstSong = numberOfSongs[0] as! NSDictionary
