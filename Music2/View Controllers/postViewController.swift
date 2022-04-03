@@ -9,20 +9,39 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AlamofireImage
+import DropDown
+import SwiftUI
 
 class postViewController: UIViewController, UISearchBarDelegate {
     
-    //MARK: - OUTLETS
+    
     //var songData = [String: Any?]() //one dictionary
     //var songData = [[String]]()
     
+    //MARK: Global VARIABLES
+    
     var songData = NSDictionary()
     
+    let menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = ["song1", "song2"]
+        return menu
+        
+    }()
+    
+    
  
+    //MARK: - OUTLETS
+    
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
+    @IBOutlet weak var viewBelowSearch: UIView!
+    
     @IBAction func postButton(_ sender: Any) {
+        //this function should send the data over to the home screen view and post our song
     }
     
     
@@ -35,16 +54,18 @@ class postViewController: UIViewController, UISearchBarDelegate {
     @IBAction func userCaptionTextField(_ sender: Any) {
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             print("searchText \(searchText)")
+            //menu.show()
         }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
         }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
+            menu.show()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -57,11 +78,31 @@ class postViewController: UIViewController, UISearchBarDelegate {
         
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //menu.show()
+    }
+    
+    //MARK: SEARCH BAR SELECTOR
+    
+    @objc func didTapSearchBar() {
+        //menu.show()
+    }
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        //MARK: SEARCH BAR SETTINGS
         searchBar.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(gesture)
+        menu.anchorView = viewBelowSearch
         
         
         //MARK: Storefront Gathering

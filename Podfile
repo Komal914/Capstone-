@@ -10,6 +10,7 @@ target 'Music2' do
     pod 'Parse'
     pod 'DropDown'
 
+
   target 'Music2Tests' do
     inherit! :search_paths
     # Pods for testing
