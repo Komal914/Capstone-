@@ -69,36 +69,75 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-A9-50P">
-                                <rect key="frame" x="23" y="275" width="368" height="543"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-A9-50P">
+                                <rect key="frame" x="21" y="211" width="372" height="474"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
-                                        <rect key="frame" x="63" y="52" width="242" height="74"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <color key="textColor" systemColor="systemPinkColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yay or nay?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
+                                        <rect key="frame" x="0.0" y="20" width="372" height="57"/>
+                                        <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="40"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="love.png" translatesAutoresizingMaskIntoConstraints="NO" id="8iy-YM-G9t">
-                                        <rect key="frame" x="80" y="195" width="215" height="197"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjj-pE-Uuw">
-                                        <rect key="frame" x="109" y="216" width="156" height="134"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <imageReference key="image" image="hand.thumbsup.fill" catalog="system" symbolScale="medium"/>
-                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fv-nh-Mf8" customClass="InsideView">
+                                        <rect key="frame" x="33" y="111" width="306" height="321"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="love.png" translatesAutoresizingMaskIntoConstraints="NO" id="8iy-YM-G9t">
+                                                <rect key="frame" x="113" y="120.5" width="80" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="TGg-e8-eDa"/>
+                                                    <constraint firstAttribute="width" constant="80" id="Zds-xX-AYd"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cjj-pE-Uuw">
+                                                <rect key="frame" x="0.0" y="0.0" width="306" height="321"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageReference key="image" image="hand.thumbsup.fill" catalog="system" symbolScale="medium"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="8iy-YM-G9t" firstAttribute="centerX" secondItem="2Fv-nh-Mf8" secondAttribute="centerX" id="GJ5-z8-4Bg"/>
+                                            <constraint firstItem="8iy-YM-G9t" firstAttribute="centerY" secondItem="2Fv-nh-Mf8" secondAttribute="centerY" id="fzc-in-4Ev"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="2Fv-nh-Mf8" firstAttribute="top" secondItem="L7C-A9-50P" secondAttribute="top" constant="111" id="L6b-6p-7uv"/>
+                                    <constraint firstItem="05A-oE-k88" firstAttribute="leading" secondItem="L7C-A9-50P" secondAttribute="leading" id="MpZ-Oo-TKj"/>
+                                    <constraint firstItem="2Fv-nh-Mf8" firstAttribute="leading" secondItem="L7C-A9-50P" secondAttribute="leading" constant="33" id="NYT-g7-Z0A"/>
+                                    <constraint firstAttribute="bottom" secondItem="2Fv-nh-Mf8" secondAttribute="bottom" constant="42" id="Yod-9u-Izf"/>
+                                    <constraint firstItem="2Fv-nh-Mf8" firstAttribute="top" relation="lessThanOrEqual" secondItem="05A-oE-k88" secondAttribute="bottom" constant="34" id="eHO-U6-fjt"/>
+                                    <constraint firstAttribute="trailing" secondItem="05A-oE-k88" secondAttribute="trailing" id="qyr-Od-ENM"/>
+                                    <constraint firstItem="05A-oE-k88" firstAttribute="top" secondItem="L7C-A9-50P" secondAttribute="top" constant="20" symbolic="YES" id="uV5-FD-I9h"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Fv-nh-Mf8" secondAttribute="trailing" constant="33" id="zd7-JB-cON"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Hqk-vJ-jq3" appends="YES" id="ZYh-LW-pn6"/>
                                 </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eh9-FE-Nv5"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="L7C-A9-50P" firstAttribute="centerX" secondItem="heg-AN-Jke" secondAttribute="centerX" id="H12-Ac-Xpx"/>
+                            <constraint firstItem="L7C-A9-50P" firstAttribute="leading" secondItem="eh9-FE-Nv5" secondAttribute="leading" constant="21" id="Ph4-Ij-Oct"/>
+                            <constraint firstItem="L7C-A9-50P" firstAttribute="centerY" secondItem="heg-AN-Jke" secondAttribute="centerY" id="kXK-Ed-lTX"/>
+                            <constraint firstItem="L7C-A9-50P" firstAttribute="top" secondItem="eh9-FE-Nv5" secondAttribute="top" constant="167" id="mtt-4g-DTw"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="artistPictureView" destination="8iy-YM-G9t" id="uE0-fI-2ZD"/>
