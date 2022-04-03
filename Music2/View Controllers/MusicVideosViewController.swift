@@ -128,6 +128,21 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         table.reloadData()
     }
     
+//MARK: VIEWDIDAPPEAR
+    
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(true)
+
+        let center = CGPoint(x: table.center.x + table.contentOffset.x,y: table.center.y + table.contentOffset.y)
+        
+        guard let centerIndex = self.table.indexPathForRow(at: center) else {return}
+        print("center point - \(center)")
+        print("centerIndex - \(centerIndex.row)")
+        let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
+        autoPlayCell?.startPlayback()
+        
+    }
+    
 
 //MARK: TABLE FUNCTIONS
     
