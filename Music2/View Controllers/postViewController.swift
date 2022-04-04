@@ -21,11 +21,15 @@ class postViewController: UIViewController, UISearchBarDelegate {
     //MARK: Global VARIABLES
     
     var songData = NSDictionary()
-    var songMenu = NSArray()
+    var songMenu = [String]()
     
     let menu: DropDown = {
         let menu = DropDown()
         menu.dataSource = ["song1", "song2"]
+        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        menu.customCellConfiguration = { index, title, cell in
+            guard let cell = cell as? SearchMenuCell else { return }
+        }
         return menu
         
     }()
@@ -62,7 +66,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
-        print(songMenu)
+       // print(songMenu)
             menu.show()
         }
     
@@ -178,6 +182,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 //print(firstSong)
                 let attributes = firstSong["attributes"] as! NSDictionary
                 let artWork = attributes["artwork"] as! NSDictionary
+                let name = attributes["name"] as! String
+                self.songMenu.append(name)
                 // print(artWork)
                 let urlOfArt = artWork["url"] as! String
                     
