@@ -9,20 +9,44 @@ import UIKit
 import StoreKit
 import MediaPlayer
 import AlamofireImage
+import DropDown
+import SwiftUI
 
 class postViewController: UIViewController, UISearchBarDelegate {
     
-    //MARK: - OUTLETS
+    
     //var songData = [String: Any?]() //one dictionary
     //var songData = [[String]]()
     
+    //MARK: Global VARIABLES
+    
     var songData = NSDictionary()
+    var songMenu = [String]()
+    
+    let menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = ["song1", "song2"]
+        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        menu.customCellConfiguration = { index, title, cell in
+            guard let cell = cell as? SearchMenuCell else { return }
+        }
+        return menu
+        
+    }()
+    
     
  
+    //MARK: - OUTLETS
+    
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    
+    @IBOutlet weak var viewBelowSearch: UIView!
+    
     @IBAction func postButton(_ sender: Any) {
+        //this function should send the data over to the home screen view and post our song
     }
     
     
@@ -35,16 +59,20 @@ class postViewController: UIViewController, UISearchBarDelegate {
     @IBAction func userCaptionTextField(_ sender: Any) {
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             print("searchText \(searchText)")
+           
         }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
+       // print(songMenu)
+            menu.show()
         }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
+            //menu.show()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -57,11 +85,35 @@ class postViewController: UIViewController, UISearchBarDelegate {
         
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //menu.show()
+    }
+    
+    //MARK: SEARCH BAR SELECTOR
+    
+    @objc func didTapSearchBar() {
+        //menu.show()
+    }
+    
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        //MARK: SEARCH BAR SETTINGS
         searchBar.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(gesture)
+        menu.anchorView = viewBelowSearch
+        
+        menu.selectionAction = { index, title in
+            print("index \(index) at \(title)")
+        }
         
         
         //MARK: Storefront Gathering
@@ -123,11 +175,15 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 
                 let numberOfSongs = songs["data"] as! NSArray
                 
+                
+                
                 print("amount of song: ", numberOfSongs.count)
                 let firstSong = numberOfSongs[0] as! NSDictionary
                 //print(firstSong)
                 let attributes = firstSong["attributes"] as! NSDictionary
                 let artWork = attributes["artwork"] as! NSDictionary
+                let name = attributes["name"] as! String
+                self.songMenu.append(name)
                 // print(artWork)
                 let urlOfArt = artWork["url"] as! String
                     

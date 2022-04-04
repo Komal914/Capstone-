@@ -27,6 +27,8 @@
 		D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */; };
 		EE2428B727EA2EB500A754AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */; };
 		EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28469B27F3B15300633677 /* PlayerViewClass.swift */; };
+		EE380F2A27FA6B2900ADF3A1 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */; };
+		EE380F2B27FA6B2900ADF3A1 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */; };
 		EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EE72603627F0F4100083A171 /* AlamofireImage */; };
 		EE9507D827EFBEE90098FD6C /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9507D727EFBEE90098FD6C /* rock.png */; };
 		EEC7BF2727E7B40200A882F6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2427E7B40100A882F6 /* message.png */; };
@@ -90,6 +92,8 @@
 		D82320016FA93CDA8DD8982F /* Pods-Music2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2.debug.xcconfig"; path = "Target Support Files/Pods-Music2/Pods-Music2.debug.xcconfig"; sourceTree = "<group>"; };
 		EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EE28469B27F3B15300633677 /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
+		EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		EE9507D727EFBEE90098FD6C /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		EEC7BF2427E7B40100A882F6 /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
 		EEC7BF2527E7B40200A882F6 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -221,7 +225,6 @@
 				8CA0D52791760A124B66C52F /* Pods-Music2Tests.debug.xcconfig */,
 				7C461D8C7C192D7BAF4F7731 /* Pods-Music2Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +248,8 @@
 				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
 				254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */,
 				254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */,
+				EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */,
+				EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 				AAADCD0527E7A5910077CB34 /* LaunchScreen.storyboard in Resources */,
 				EEC7BF2827E7B40200A882F6 /* logo.png in Resources */,
 				EE9507D827EFBEE90098FD6C /* rock.png in Resources */,
+				EE380F2B27FA6B2900ADF3A1 /* DropDownCell.xib in Resources */,
 				AAADCD0227E7A5910077CB34 /* Assets.xcassets in Resources */,
 				AAADCCFD27E7A58E0077CB34 /* Main.storyboard in Resources */,
 				EEC7BF2727E7B40200A882F6 /* message.png in Resources */,
@@ -521,6 +527,7 @@
 			files = (
 				EEC7BF2F27E7BC3700A882F6 /* Song.swift in Sources */,
 				EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */,
+				EE380F2A27FA6B2900ADF3A1 /* DropDownCell.swift in Sources */,
 				EEC7BF3127E7E7F200A882F6 /* MusicVideosViewController.swift in Sources */,
 				EEC7BF2D27E7BBEA00A882F6 /* AppleMusicAPI.swift in Sources */,
 				25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */,
