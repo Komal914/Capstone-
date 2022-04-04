@@ -23,16 +23,12 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var songData = NSDictionary()
     var songMenu = [String]()
     
-    let menu: DropDown = {
-        let menu = DropDown()
-        menu.dataSource = ["song1", "song2"]
-        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-        menu.customCellConfiguration = { index, title, cell in
-            guard let cell = cell as? SearchMenuCell else { return }
-        }
-        return menu
-        
-    }()
+    let dropDown = DropDown()
+  
+    
+   
+    
+    
     
     
  
@@ -67,7 +63,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
        // print(songMenu)
-            menu.show()
+            dropDown.show()
         }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -92,7 +88,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     //MARK: SEARCH BAR SELECTOR
     
     @objc func didTapSearchBar() {
-        //menu.show()
+        //dropDown.show()
     }
     
     
@@ -102,18 +98,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        //MARK: SEARCH BAR SETTINGS
-        searchBar.delegate = self
         
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
-        gesture.numberOfTouchesRequired = 1
-        gesture.numberOfTapsRequired = 1
-        searchBar.addGestureRecognizer(gesture)
-        menu.anchorView = viewBelowSearch
-        
-        menu.selectionAction = { index, title in
-            print("index \(index) at \(title)")
-        }
+      
+     
+     
         
         
         //MARK: Storefront Gathering
@@ -184,6 +172,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let artWork = attributes["artwork"] as! NSDictionary
                 let name = attributes["name"] as! String
                 self.songMenu.append(name)
+                //print(self.songMenu)
+                self.dropDown.dataSource = self.songMenu
                 // print(artWork)
                 let urlOfArt = artWork["url"] as! String
                     
@@ -220,18 +210,36 @@ class postViewController: UIViewController, UISearchBarDelegate {
         task.resume()
         //  print("after task")
         // Do any additional setup after loading the view.
+        
+        
+        
+        //MARK: SEARCH BAR SETTINGS
+        searchBar.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(gesture)
+        
+        //MARK: Dropdown
+        
+        dropDown.anchorView = viewBelowSearch
+        
+        print("songmenu")
+        print(songMenu)
+        
+        dropDown.selectionAction = { index, title in
+            print("index \(index) at \(title)")
+        }
+        
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+
+    
 
 }
 
