@@ -463,25 +463,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" barStyle="blackTranslucent" text="Search for songs" translatesAutoresizingMaskIntoConstraints="NO" id="Kdx-Ox-Iwo">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <searchBar contentMode="redraw" barStyle="blackTranslucent" text="Search for songs" translatesAutoresizingMaskIntoConstraints="NO" id="Kdx-Ox-Iwo">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemPinkColor"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" systemColor="systemPinkColor"/>
                                 <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hf9-3g-N94">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hf9-3g-N94">
                                 <rect key="frame" x="0.0" y="44" width="414" height="764"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZKA-En-5eR">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="music.quarternote.3" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZKA-En-5eR">
                                         <rect key="frame" x="0.0" y="48" width="414" height="431"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" systemColor="systemPinkColor"/>
                                     </imageView>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gng-PY-GUn">
-                                        <rect key="frame" x="123" y="487" width="283" height="34"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xy-Lm-xwS">
+                                        <rect key="frame" x="8" y="539" width="84" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add a caption !" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gng-PY-GUn">
+                                        <rect key="frame" x="109" y="532" width="283" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -490,18 +496,33 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0IR-SA-ndV">
-                                        <rect key="frame" x="142" y="545" width="131" height="31"/>
+                                        <rect key="frame" x="142" y="588" width="131" height="31"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
-                                        <color key="tintColor" systemColor="systemPinkColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Post"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Post">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="20"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="postButton:" destination="RNR-p3-rEx" eventType="touchUpInside" id="xb9-Rb-Kxc"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Xy-Lm-xwS">
-                                        <rect key="frame" x="8" y="494" width="79" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SongName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dx-3z-D6H">
+                                        <rect key="frame" x="8" y="17" width="85" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ArtistName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaQ-R6-OUv">
+                                        <rect key="frame" x="118" y="18" width="86" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -513,11 +534,22 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nBl-Op-rd6"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstItem="Kdx-Ox-Iwo" firstAttribute="top" secondItem="nBl-Op-rd6" secondAttribute="top" id="77u-Ni-vMs"/>
+                            <constraint firstItem="hf9-3g-N94" firstAttribute="trailing" secondItem="nBl-Op-rd6" secondAttribute="trailing" id="IkN-6c-4jZ"/>
+                            <constraint firstItem="Kdx-Ox-Iwo" firstAttribute="leading" secondItem="nBl-Op-rd6" secondAttribute="leading" id="SmO-gw-6l2"/>
+                            <constraint firstAttribute="bottom" secondItem="hf9-3g-N94" secondAttribute="bottom" id="U7z-v8-gyI"/>
+                            <constraint firstItem="hf9-3g-N94" firstAttribute="leading" secondItem="nBl-Op-rd6" secondAttribute="leading" id="Xik-vd-OVd"/>
+                            <constraint firstItem="Kdx-Ox-Iwo" firstAttribute="trailing" secondItem="nBl-Op-rd6" secondAttribute="trailing" id="eYV-hU-Gtc"/>
+                            <constraint firstItem="hf9-3g-N94" firstAttribute="top" secondItem="nBl-Op-rd6" secondAttribute="top" constant="44" id="p79-k8-IjK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6VG-Bw-aTK"/>
                     <connections>
                         <outlet property="albumCoverImageView" destination="ZKA-En-5eR" id="A3o-kt-TKk"/>
+                        <outlet property="artistName" destination="GaQ-R6-OUv" id="1j6-z1-pcQ"/>
                         <outlet property="searchBar" destination="Kdx-Ox-Iwo" id="71x-6u-B3l"/>
+                        <outlet property="songName" destination="0Dx-3z-D6H" id="XQQ-Rw-7Mh"/>
                         <outlet property="usernameLabel" destination="2Xy-Lm-xwS" id="TQv-3z-5DZ"/>
                         <outlet property="viewBelowSearch" destination="hf9-3g-N94" id="rVU-tw-6Ey"/>
                     </connections>
@@ -677,6 +709,7 @@
         <image name="logo.png" width="384" height="384"/>
         <image name="love.png" width="135" height="135"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="music.quarternote.3" catalog="system" width="128" height="103"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="pianokeys" catalog="system" width="128" height="93"/>
         <image name="rock.png" width="384" height="384"/>

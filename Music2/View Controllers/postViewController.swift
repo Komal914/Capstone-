@@ -35,6 +35,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
     //MARK: - OUTLETS
     
     
+    @IBOutlet weak var songName: UILabel!
+    
+    
+    @IBOutlet weak var artistName: UILabel!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -62,13 +66,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
             print("searchText \(searchBar.text)")
-       // print(songMenu)
             dropDown.show()
         }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
-            //menu.show()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -221,12 +223,16 @@ class postViewController: UIViewController, UISearchBarDelegate {
         gesture.numberOfTapsRequired = 1
         searchBar.addGestureRecognizer(gesture)
         
-        //MARK: Dropdown
+        //MARK: Dropdown settings 
         
         dropDown.anchorView = viewBelowSearch
-        
-        print("songmenu")
-        print(songMenu)
+        dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        dropDown.customCellConfiguration = {index, title, cell in
+            guard let cell = cell as? SearchMenuCell else {
+                return
+            }
+            //cell.image = etc
+        }
         
         dropDown.selectionAction = { index, title in
             print("index \(index) at \(title)")
