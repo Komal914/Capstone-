@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -55,6 +55,7 @@
                     </view>
                     <connections>
                         <segue destination="CoJ-DP-z4r" kind="presentation" identifier="loginToAppleMusic" modalPresentationStyle="fullScreen" id="uQ2-dV-8vY"/>
+                        <segue destination="aOw-Tz-Yuw" kind="presentation" identifier="currentUserSignIn" id="zRE-Bc-z9I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DL-jG-e3Q" sceneMemberID="firstResponder"/>
@@ -287,7 +288,7 @@
             <objects>
                 <viewController id="aOw-Tz-Yuw" customClass="HomeViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XVS-kH-Ef4">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lD9-wQ-bTP">
@@ -390,7 +391,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVr-Mt-p5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1504" y="2851"/>
+            <point key="canvasLocation" x="442" y="1104"/>
         </scene>
         <!--Profile-->
         <scene sceneID="YSy-pN-W93">
@@ -448,12 +449,12 @@
                         </textAttributes>
                     </navigationBar>
                     <connections>
-                        <segue destination="aOw-Tz-Yuw" kind="relationship" relationship="rootViewController" id="Wnz-6z-IUo"/>
+                        <segue destination="aOw-Tz-Yuw" kind="relationship" relationship="rootViewController" id="fay-uv-OBv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HF-y9-6Wi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1503" y="2048"/>
+            <point key="canvasLocation" x="442" y="301"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="JF8-w0-F0j">
@@ -699,9 +700,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="2851"/>
+            <point key="canvasLocation" x="895.6521739130435" y="2850.6696428571427"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="zRE-Bc-z9I"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>

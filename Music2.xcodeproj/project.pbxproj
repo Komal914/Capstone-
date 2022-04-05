@@ -10,6 +10,7 @@
 		254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EB27EE7D5A008198D1 /* profileViewController.swift */; };
 		254427EE27EE7F7A008198D1 /* genreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */; };
 		254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */; };
+		25579FE027FC9F0800428040 /* Pods_Music2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */; };
 		25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5527E7FD7300C9C14A /* postViewController.swift */; };
 		A721DA9907EC69912CAB0B61 /* Pods_Music2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782BDE178D9065D7A64D2C89 /* Pods_Music2Tests.framework */; };
 		AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */; };
@@ -24,7 +25,6 @@
 		AAADCD3D27E811BC0077CB34 /* UserStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD3C27E811BC0077CB34 /* UserStruct.swift */; };
 		AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD8827F26FE80077CB34 /* swipeViewController.swift */; };
 		C5E51134E16BC36C3DF00FDE /* Pods_Music2_Music2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65C0FBCBA1712F0FED5AD9E /* Pods_Music2_Music2UITests.framework */; };
-		D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */; };
 		EE2428B727EA2EB500A754AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EE2428B627EA2EB500A754AF /* GoogleService-Info.plist */; };
 		EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28469B27F3B15300633677 /* PlayerViewClass.swift */; };
 		EE380F2A27FA6B2900ADF3A1 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */; };
@@ -113,7 +113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */,
-				D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */,
+				25579FE027FC9F0800428040 /* Pods_Music2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
