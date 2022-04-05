@@ -55,7 +55,7 @@
                     </view>
                     <connections>
                         <segue destination="CoJ-DP-z4r" kind="presentation" identifier="loginToAppleMusic" modalPresentationStyle="fullScreen" id="uQ2-dV-8vY"/>
-                        <segue destination="aOw-Tz-Yuw" kind="presentation" identifier="currentUserSignIn" modalPresentationStyle="fullScreen" id="qRN-JX-tXg"/>
+                        <segue destination="0U9-SI-CbS" kind="presentation" identifier="currentUserSignIn" modalPresentationStyle="fullScreen" id="BWV-Gj-bZk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DL-jG-e3Q" sceneMemberID="firstResponder"/>
@@ -716,7 +716,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Wnz-6z-IUo"/>
+        <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
