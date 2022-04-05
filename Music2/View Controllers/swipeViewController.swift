@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 import UIKit
+import Parse
 
 class SwipeViewController: UIViewController {
     
@@ -114,7 +115,8 @@ class SwipeViewController: UIViewController {
         //
         thumbImageView.alpha = abs(xFromCenter) / view.center.x
         
-        
+        var likedGenres = PFObject(className:"likedGenres")
+
         // if the user has let go of the card
         if sender.state == UIGestureRecognizer.State.ended {
             
@@ -133,6 +135,17 @@ class SwipeViewController: UIViewController {
                     self.thumbImageView.alpha = 0
                     self.card.alpha = 1
                     self.card.transform = CGAffineTransform.identity
+                    
+//                    //storing data TEST
+//                    likedGenres["genre"] = self.topGenresArr[self.ptr]
+//                    likedGenres.saveInBackground {
+//                        (success: Bool, error: Error?) in
+//                        if (success) {
+//                            // The object has been saved.
+//                        } else {
+//                            // There was a problem, check error.description
+//                        }
+//                    }
                 })
                 
                 // go to next genre
