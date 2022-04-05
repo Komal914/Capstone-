@@ -198,11 +198,24 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             let userID = appleIDCredential.user
             print("UserID: " + userID)
             
+            var parseUser = PFUser()
+            parseUser.username = userID
+            parseUser.password = "no password"
+            
+            parseUser.signUpInBackground{(success, error) in
+                if success {
+                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
+                }
+                else{
+                    print("error on sign up: \(error) ")
+                }
+            }
+            
             var currentUser = PFUser.current()
             if currentUser != nil {
                 performSegue(withIdentifier: "currentUserSignIn", sender: userID)
             } else {
-                performSegue(withIdentifier: "loginToAppleMusic", sender: userID)
+                return
             }
             
             // if needed, save it to user defaults by uncommenting the line below
@@ -236,35 +249,6 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                 print("Authorization Code: " + (authorizationCode ?? "no auth code") )
             }
             
-            // checking to see if user signs in with apple credential
-            //        switch authorization.credential {
-            //
-            //        // if credentials are passed through and are correct, break and continue with authorization process
-            //        case let credentials as ASAuthorizationAppleIDCredential:
-            //            var user = User(credentials: credentials)
-            //            print("the user ID here: ", user.id)
-            //            print("user name: ", user.firstName)
-            //            performSegue(withIdentifier: "loginToAppleMusic", sender: user)
-            
-            //    //MARK: PARSE
-            //
-            //
-            //            var parseUser = PFUser()
-            //            parseUser.username = user.id
-            //            parseUser.password = "no password"
-            //
-            //            parseUser.signUpInBackground{(success, error) in
-            //                if success {
-            //                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
-            //                }
-            //                else{
-            //                    print("error on sign up: \(error) ")
-            //                }
-            //            }
-            //
-            //            break
-            //
-            //        default: break
         }
     }
 }
