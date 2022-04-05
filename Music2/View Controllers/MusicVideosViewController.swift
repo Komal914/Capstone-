@@ -179,32 +179,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
         
         
- 
-               
-//
-//
-//        let avPlayer = AVPlayer(url: videoURL! as URL)
-//
-//        avPlayer.volume = 3
-        
-        
-        
-        
-        //cell.musicVideoView?.playerLayer.player = avPlayer
-        
-        //if the scrol view has the content to its top -> then play the vid
-        //right now all vids are playing, so i need a case statement here
-        
-        //cell.musicVideoView.player?.play()
-        
-        
-//        let player = AVPlayer(url: videoURL!)
-//        let playerLayer = AVPlayerLayer(player: player)
-//        playerLayer.frame = self.view.bounds
-//        self.view.layer.addSublayer(playerLayer)
-//        player.play()
-
-        
         
         return cell
     }

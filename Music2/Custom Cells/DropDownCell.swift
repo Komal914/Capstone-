@@ -9,7 +9,10 @@ import UIKit
 import DropDown
 
 class SearchMenuCell: DropDownCell {
-
+    
+    
+    @IBOutlet weak var albumCover: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
