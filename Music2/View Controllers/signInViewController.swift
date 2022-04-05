@@ -4,7 +4,15 @@ import MediaPlayer
 import AuthenticationServices
 import Parse
 
-
+class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
+    func restoreAuthentication(withAuthData authData: [String : String]?) -> Bool {
+        return true
+    }
+    
+    func restoreAuthenticationWithAuthData(authData: [String : String]?) -> Bool {
+        return true
+    }
+}
 
 class signInViewController: UIViewController {
     
@@ -182,35 +190,81 @@ extension signInViewController: ASAuthorizationControllerDelegate {
     // if authorization passes
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         
-        // checking to see if user signs in with apple credential
-        switch authorization.credential {
+//      let authURL = URL(string: "appleid.apple.com/auth/authorize/scope=name%20email")!
         
-        // if credentials are passed through and are correct, break and continue with authorization process
-        case let credentials as ASAuthorizationAppleIDCredential:
-            var user = User(credentials: credentials)
-            print("the user ID here: ", user.id)
-            print("user name: ", user.firstName)
-            performSegue(withIdentifier: "loginToAppleMusic", sender: user)
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             
-    //MARK: PARSE
+            // unique ID for each user, this uniqueID will always be returned
+            let userID = appleIDCredential.user
+            print("UserID: " + userID)
             
-
-//            var parseUser = PFUser()
-//            parseUser.username = user.id
-//            parseUser.password = "no password"
-//
-//            parseUser.signUpInBackground{(success, error) in
-//                if success {
-//                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
-//                }
-//                else{
-//                    print("error on sign up: \(error) ")
-//                }
-//            }
+            var currentUser = PFUser.current()
+            if currentUser != nil {
+                performSegue(withIdentifier: "currentUserSignIn", sender: userID)
+            } else {
+                performSegue(withIdentifier: "loginToAppleMusic", sender: userID)
+            }
             
-            break
+            // if needed, save it to user defaults by uncommenting the line below
+            //UserDefaults.standard.set(appleIDCredential.user, forKey: "userID")
             
-        default: break
+            // optional, might be nil
+            let email = appleIDCredential.email
+            print("Email: " + (email ?? "no email") )
+            
+            // optional, might be nil
+            let givenName = appleIDCredential.fullName?.givenName
+            print("Given Name: " + (givenName ?? "no given name") )
+            
+            // optional, might be nil
+            let familyName = appleIDCredential.fullName?.familyName
+            print("Family Name: " + (familyName ?? "no family name") )
+            
+            /*
+             useful for server side, the app can send identityToken and authorizationCode
+             to the server for verification purpose
+             */
+            var identityToken : String?
+            if let token = appleIDCredential.identityToken {
+                identityToken = String(bytes: token, encoding: .utf8)
+                print("Identity Token: " + (identityToken ?? "no identity token"))
+            }
+            
+            var authorizationCode : String?
+            if let code = appleIDCredential.authorizationCode {
+                authorizationCode = String(bytes: code, encoding: .utf8)
+                print("Authorization Code: " + (authorizationCode ?? "no auth code") )
+            }
+            
+            // checking to see if user signs in with apple credential
+            //        switch authorization.credential {
+            //
+            //        // if credentials are passed through and are correct, break and continue with authorization process
+            //        case let credentials as ASAuthorizationAppleIDCredential:
+            //            var user = User(credentials: credentials)
+            //            print("the user ID here: ", user.id)
+            //            print("user name: ", user.firstName)
+            //            performSegue(withIdentifier: "loginToAppleMusic", sender: user)
+            
+            //    //MARK: PARSE
+            //
+            //
+            //            var parseUser = PFUser()
+            //            parseUser.username = user.id
+            //            parseUser.password = "no password"
+            //
+            //            parseUser.signUpInBackground{(success, error) in
+            //                if success {
+            //                    self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
+            //                }
+            //                else{
+            //                    print("error on sign up: \(error) ")
+            //                }
+            //            }
+            //
+            //            break
+            //
+            //        default: break
         }
     }
 }

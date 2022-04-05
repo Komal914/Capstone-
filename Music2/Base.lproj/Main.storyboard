@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -55,6 +55,7 @@
                     </view>
                     <connections>
                         <segue destination="CoJ-DP-z4r" kind="presentation" identifier="loginToAppleMusic" modalPresentationStyle="fullScreen" id="uQ2-dV-8vY"/>
+                        <segue destination="aOw-Tz-Yuw" kind="presentation" identifier="currentUserSignIn" modalPresentationStyle="fullScreen" id="qRN-JX-tXg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2DL-jG-e3Q" sceneMemberID="firstResponder"/>
@@ -154,7 +155,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-936.23188405797111" y="300.66964285714283"/>
+            <point key="canvasLocation" x="67" y="-551"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a7a-51-lhl">
@@ -178,7 +179,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMb-uC-RhC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-936" y="1234"/>
+            <point key="canvasLocation" x="67" y="261"/>
         </scene>
         <!--Music Videos-->
         <scene sceneID="nPz-j0-xHL">
@@ -201,7 +202,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yuv-fZ-HnG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2812" y="2049"/>
+            <point key="canvasLocation" x="-1552" y="1097"/>
         </scene>
         <!--Music Videos Screen-->
         <scene sceneID="iMK-Pz-Rfb">
@@ -285,7 +286,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0LK-UH-ZDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2813.04347826087" y="2850.6696428571427"/>
+            <point key="canvasLocation" x="-1552" y="1908"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="WW4-j3-kLn">
@@ -395,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVr-Mt-p5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1504" y="2851"/>
+            <point key="canvasLocation" x="-470" y="1908"/>
         </scene>
         <!--Profile-->
         <scene sceneID="YSy-pN-W93">
@@ -416,7 +417,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uHJ-PK-jeb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="2048"/>
+            <point key="canvasLocation" x="1777" y="1097"/>
         </scene>
         <!--Post-->
         <scene sceneID="W52-47-4a0">
@@ -437,7 +438,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FQi-NY-LgU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323" y="2048"/>
+            <point key="canvasLocation" x="645" y="1097"/>
         </scene>
         <!--Home-->
         <scene sceneID="eAc-g1-6pg">
@@ -458,7 +459,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0HF-y9-6Wi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1503" y="2048"/>
+            <point key="canvasLocation" x="-470" y="1097"/>
         </scene>
         <!--Post View Controller-->
         <scene sceneID="JF8-w0-F0j">
@@ -568,7 +569,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EGf-V0-S8c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323.1884057971015" y="2850.6696428571427"/>
+            <point key="canvasLocation" x="645" y="1908"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="MpO-Az-R8c">
@@ -711,9 +712,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="896" y="2851"/>
+            <point key="canvasLocation" x="1777" y="1908"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Wnz-6z-IUo"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
         <image name="heart" catalog="system" width="128" height="109"/>
