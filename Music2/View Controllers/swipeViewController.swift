@@ -8,6 +8,7 @@
 import Foundation
 import StoreKit
 import UIKit
+import Parse
 
 class SwipeViewController: UIViewController {
     
@@ -184,6 +185,19 @@ class SwipeViewController: UIViewController {
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
                     print(userGenres)
+                    
+                    //Disliked Preferences ATTEMPT
+//                    let dislikedGenres = PFObject(className:"likedGenres")
+//                    dislikedGenres["username"] = PFUser.current()?.username
+//                    dislikedGenres["genre"] = self.userGenres
+//                    dislikedGenres.saveInBackground { (succeeded, error)  in
+//                        if (succeeded) {
+//                            // The object has been saved.
+//                        } else {
+//                            print("error on saving data: \(error?.localizedDescription)")
+//                        }
+//                    }
+//
                 }
                 
                 return
@@ -214,6 +228,19 @@ class SwipeViewController: UIViewController {
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
                     print(userGenres)
+                    
+                    //Preferences ATTEMPT
+                    let likedGenres = PFObject(className:"likedGenres")
+                    likedGenres["username"] = PFUser.current()?.username
+                    likedGenres["genre"] = self.userGenres
+                    likedGenres.saveInBackground { (succeeded, error)  in
+                        if (succeeded) {
+                            // The object has been saved.
+                        } else {
+                            print("error on saving data: \(error?.localizedDescription)")
+                        }
+                    }
+
                 }
                 return
             }

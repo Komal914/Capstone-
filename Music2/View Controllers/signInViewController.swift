@@ -216,7 +216,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                 if user != nil {
                     self.performSegue(withIdentifier: "currentUserSignIn", sender: userID)
             } else {
-                print("error on sign up: \(error?.localizedDescription)")
+                print("error on sign in: \(error?.localizedDescription)")
             }
             }
             
