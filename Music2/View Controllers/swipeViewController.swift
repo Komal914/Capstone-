@@ -8,7 +8,6 @@
 import Foundation
 import StoreKit
 import UIKit
-import Parse
 
 class SwipeViewController: UIViewController {
     
@@ -17,11 +16,15 @@ class SwipeViewController: UIViewController {
     var dividend: CGFloat!
     var ptr = 0
     
+    
+    @IBOutlet var welcomeLabel: UILabel!
     @IBOutlet var genreLabel: UILabel!
     @IBOutlet var artistPictureView: UIImageView!
     
     var topGenresArr = [String]()
-    var userStorefront = "bad"
+    
+    //MARK: SUMIYA ITS OVER HERE
+    var userGenres = [String]()
     var urlString = "https://api.music.apple.com/v1/catalog/"
     
     var finalURL = String()
@@ -78,12 +81,52 @@ class SwipeViewController: UIViewController {
                     }
                     
                     print(self.topGenresArr)
+                    if self.topGenresArr[self.ptr] != "Music" {
+                        self.genreLabel.text = self.topGenresArr[self.ptr]
+                    }
+                    
+                    if self.ptr + 1 <= 10 {
+                        self.ptr += 1
+                    }
+                    
                 }
                 task.resume()
             }
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        animateWelcome()
+    }
+    
+    func animateWelcome() {
+        UIView.animate(withDuration: 4.0, animations: {
+            self.welcomeLabel.alpha = 1.0
+        }, completion: {
+            (Completed: Bool) -> Void in
+            
+            self.welcomeLabel.alpha = 1.0
+            
+            UIView.animate(withDuration: 2.0, animations: {
+                self.welcomeLabel.alpha = 0.0
+            }, completion: {
+                (Completed: Bool) -> Void in
+                
+                self.welcomeLabel.text = "Welcome to Music App."
+                UIView.animate(withDuration: 4.0, animations: {
+                    self.welcomeLabel.alpha = 1.0
+                }, completion: {
+                    (Completed: Bool) -> Void in
+                    
+                    UIView.animate(withDuration: 6.0, animations: {
+                        self.card.alpha = 1.0
+                    })
+                    self.card.alpha = 1.0
+                    
+                })
+            })
+        })
+    }
     
     @IBAction func panCard(_ sender: UIPanGestureRecognizer) {
         // card is set onto the view of screen, point is where the card is on the screen
@@ -94,7 +137,6 @@ class SwipeViewController: UIViewController {
         // xFromCenter is a point that is used to understand how far the x point of the card is from the center of the screen
         let xFromCenter = card.center.x - view.center.x
         let scale = min(100 / abs(xFromCenter), 1)
-        
         
         
         // center of card is set to wherever the user drags it, making it able to move
@@ -112,11 +154,9 @@ class SwipeViewController: UIViewController {
             thumbImageView.tintColor = UIColor.systemRed
         }
         
-        //
         thumbImageView.alpha = abs(xFromCenter) / view.center.x
         
-        var likedGenres = PFObject(className:"likedGenres")
-
+        
         // if the user has let go of the card
         if sender.state == UIGestureRecognizer.State.ended {
             
@@ -135,25 +175,15 @@ class SwipeViewController: UIViewController {
                     self.thumbImageView.alpha = 0
                     self.card.alpha = 1
                     self.card.transform = CGAffineTransform.identity
-                    
-//                    //storing data TEST
-//                    likedGenres["genre"] = self.topGenresArr[self.ptr]
-//                    likedGenres.saveInBackground {
-//                        (success: Bool, error: Error?) in
-//                        if (success) {
-//                            // The object has been saved.
-//                        } else {
-//                            // There was a problem, check error.description
-//                        }
-//                    }
                 })
                 
                 // go to next genre
-                if self.ptr + 1 <= 7 {
+                if self.ptr + 1 <= 10 {
                     self.ptr += 1
                 }
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
+                    print(userGenres)
                 }
                 
                 return
@@ -168,6 +198,7 @@ class SwipeViewController: UIViewController {
                     if self.topGenresArr[self.ptr] != "Music" {
                         self.genreLabel.text = self.topGenresArr[self.ptr]
                     }
+                    self.userGenres.append(self.topGenresArr[self.ptr])
                     
                     card.center = self.view.center
                     self.thumbImageView.alpha = 0
@@ -176,12 +207,13 @@ class SwipeViewController: UIViewController {
                 })
                 
                 // go to next genre
-                if self.ptr + 1 <= 7 {
+                if self.ptr + 1 <= 10 {
                     self.ptr += 1
                 }
                 
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
+                    print(userGenres)
                 }
                 return
             }
@@ -196,9 +228,4 @@ class SwipeViewController: UIViewController {
             })
         }
     }
-    
-    
-    
-    
-    
 }

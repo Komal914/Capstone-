@@ -70,12 +70,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-A9-50P">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7C-A9-50P">
                                 <rect key="frame" x="21" y="211" width="372" height="474"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="yay or nay?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
-                                        <rect key="frame" x="0.0" y="20" width="372" height="57"/>
-                                        <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="40"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe to find your genres!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="05A-oE-k88">
+                                        <rect key="frame" x="0.0" y="20" width="372" height="70"/>
+                                        <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="35"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -130,21 +130,45 @@
                                     <outletCollection property="gestureRecognizers" destination="Hqk-vJ-jq3" appends="YES" id="ZYh-LW-pn6"/>
                                 </connections>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCl-4j-xUd" userLabel="WelcomeView">
+                                <rect key="frame" x="21" y="75" width="372" height="117"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdy-Q9-gCZ" userLabel="welcomeLabel">
+                                        <rect key="frame" x="31" y="8" width="311" height="101"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="35"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="cdy-Q9-gCZ" secondAttribute="bottom" constant="8" id="QrP-Ny-xfx"/>
+                                    <constraint firstItem="cdy-Q9-gCZ" firstAttribute="leading" secondItem="aCl-4j-xUd" secondAttribute="leading" constant="31" id="XDA-2I-SBz"/>
+                                    <constraint firstItem="cdy-Q9-gCZ" firstAttribute="top" secondItem="aCl-4j-xUd" secondAttribute="top" constant="8" id="t1L-ae-zce"/>
+                                    <constraint firstAttribute="trailing" secondItem="cdy-Q9-gCZ" secondAttribute="trailing" constant="30" id="u1v-Mq-VCA"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="eh9-FE-Nv5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="aCl-4j-xUd" firstAttribute="top" secondItem="eh9-FE-Nv5" secondAttribute="top" constant="31" id="Esx-ed-b0f"/>
+                            <constraint firstItem="eh9-FE-Nv5" firstAttribute="trailing" secondItem="aCl-4j-xUd" secondAttribute="trailing" constant="21" id="Fcg-Bz-3lq"/>
                             <constraint firstItem="L7C-A9-50P" firstAttribute="centerX" secondItem="heg-AN-Jke" secondAttribute="centerX" id="H12-Ac-Xpx"/>
+                            <constraint firstItem="L7C-A9-50P" firstAttribute="top" secondItem="aCl-4j-xUd" secondAttribute="bottom" constant="19" id="JCH-bv-ROu"/>
                             <constraint firstItem="L7C-A9-50P" firstAttribute="leading" secondItem="eh9-FE-Nv5" secondAttribute="leading" constant="21" id="Ph4-Ij-Oct"/>
+                            <constraint firstItem="aCl-4j-xUd" firstAttribute="leading" secondItem="eh9-FE-Nv5" secondAttribute="leading" constant="21" id="duV-zF-r3P"/>
                             <constraint firstItem="L7C-A9-50P" firstAttribute="centerY" secondItem="heg-AN-Jke" secondAttribute="centerY" id="kXK-Ed-lTX"/>
                             <constraint firstItem="L7C-A9-50P" firstAttribute="top" secondItem="eh9-FE-Nv5" secondAttribute="top" constant="167" id="mtt-4g-DTw"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="artistPictureView" destination="8iy-YM-G9t" id="uE0-fI-2ZD"/>
+                        <outlet property="artistPictureView" destination="cjj-pE-Uuw" id="C75-Dr-JQm"/>
                         <outlet property="card" destination="L7C-A9-50P" id="ZYG-iA-67g"/>
-                        <outlet property="genreLabel" destination="05A-oE-k88" id="LoB-jL-pEJ"/>
+                        <outlet property="genreLabel" destination="05A-oE-k88" id="5re-rf-7TU"/>
                         <outlet property="thumbImageView" destination="cjj-pE-Uuw" id="Rzf-HB-gc2"/>
+                        <outlet property="welcomeLabel" destination="cdy-Q9-gCZ" id="5oj-nI-aHQ"/>
                         <segue destination="0U9-SI-CbS" kind="presentation" identifier="afterSelection" modalPresentationStyle="fullScreen" id="UjS-sM-iFE"/>
                     </connections>
                 </viewController>
@@ -155,7 +179,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="67" y="-551"/>
+            <point key="canvasLocation" x="66.666666666666671" y="-551.11607142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a7a-51-lhl">
@@ -716,7 +740,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="BWV-Gj-bZk"/>
+        <segue reference="UjS-sM-iFE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
