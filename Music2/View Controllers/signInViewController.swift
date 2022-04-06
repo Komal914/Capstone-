@@ -198,24 +198,26 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             let userID = appleIDCredential.user
             print("UserID: " + userID)
             
-            var parseUser = PFUser()
+            let parseUser = PFUser()
             parseUser.username = userID
             parseUser.password = "no password"
-            
+
             parseUser.signUpInBackground{(success, error) in
                 if success {
                     self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
                 }
                 else{
-                    print("error on sign up: \(error) ")
+                    print("error on sign up: \(error?.localizedDescription)")
                 }
             }
-            
-            var currentUser = PFUser.current()
-            if currentUser != nil {
-                performSegue(withIdentifier: "currentUserSignIn", sender: userID)
+
+            //let currentUser = PFUser.current()
+            PFUser.logInWithUsername(inBackground: userID, password: "no password") { (user, error) in
+                if user != nil {
+                    self.performSegue(withIdentifier: "currentUserSignIn", sender: userID)
             } else {
-                return
+                print("error on sign in: \(error?.localizedDescription)")
+            }
             }
             
             // if needed, save it to user defaults by uncommenting the line below
