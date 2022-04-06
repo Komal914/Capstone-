@@ -22,6 +22,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     var songData = NSDictionary()
     var songMenu = [String]()
+    var genre = NSArray()
     var searchText = " "
     struct menuData {
 
@@ -46,7 +47,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var songName: UILabel!
     
     
-    @IBOutlet weak var artistName: UILabel!
+    @IBOutlet weak var genresLabel: UILabel!
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -129,8 +131,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 
                 let countForSongs = numberOfSongs.count
                 
+//MARK: ONE SONG DATA
+                
+                
                 let firstSong = numberOfSongs[0] as! NSDictionary
-                print(firstSong)
+               // print(firstSong) api data for one song
                 let attributes = firstSong["attributes"] as! NSDictionary
                 let artWork = attributes["artwork"] as! NSDictionary
                 let name = attributes["name"] as! String
@@ -142,6 +147,39 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 self.dropDown.dataSource = self.songMenu
                 //self.dropDown.dataSource = self.images
                 // print(artWork)
+                let albumName = attributes["albumName"] as! String
+                let songInfo = albumName + "- " + name
+                let previews = attributes["previews"] //music audio
+               
+                let songLabel = songInfo
+                //MARK: GENRE STUFF
+                
+                let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
+                let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
+                let myRed = UIColor(red: 247.0/255, green: 118.0/255, blue: 113.0/255, alpha: 1.0)
+                let myYellow = UIColor(red: 255.0/255, green: 190.0/255, blue: 106.0/255, alpha: 1.0)
+                
+                let myColors = [myRed, myBlue, myGreen, myYellow]
+                
+                func random(colors: [UIColor]) -> UIColor {
+                    return colors[Int(arc4random_uniform(UInt32(myColors.count)))]
+                }
+                
+                
+
+                
+                let genres = attributes["genreNames"] as! NSArray
+                self.genre = genres
+                
+                let genreInfo = self.genre[0] as! String
+                print("GENRE", genreInfo)
+                DispatchQueue.main.async {
+                self.genresLabel.text = genreInfo
+                    self.genresLabel.backgroundColor = random(colors: myColors)
+                    self.genresLabel.layer.masksToBounds = true
+                    self.genresLabel.layer.cornerRadius = 8
+                }
+                
                 let urlOfArt = artWork["url"] as! String
                     
                 let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
@@ -160,8 +198,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 DispatchQueue.main.async {
                     if imagedata != nil {
                         self.albumCoverImageView.image = UIImage(data:imagedata! as Data)
-                        self.songName.text = name
-                        self.artistName.text = artistName
+                        self.songName.text = songLabel
+                        
+                        //self.artistName.text = artist
                         print("Updated the UI on Post Screen ")
                     }
                             
@@ -267,6 +306,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
         }
         
     }
+    
     
 
     
