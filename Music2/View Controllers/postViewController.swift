@@ -152,7 +152,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let previews = attributes["previews"] //music audio
                
                 let songLabel = songInfo
-                //GENRE STUFF
+                //MARK: GENRE STUFF
                 
                 let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
                 let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
