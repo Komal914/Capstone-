@@ -74,7 +74,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-            print("searchText \(searchText)")
+            //print("searchText \(searchText)")
            
         }
     
@@ -119,10 +119,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 self.songData = json?["results"] as! NSDictionary
-                print("got the songs")
+              //  print("got the songs")
                         
                 //print(self.songData)
-                print(self.songData.count)
+               // print(self.songData.count)
                 let songs = self.songData["songs"] as! NSDictionary
                         
                 //print(songs)
@@ -186,7 +186,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 self.genre = genres
                 
                 let genreInfo = self.genre[0] as! String
-                print("GENRE", genreInfo)
+                //print("GENRE", genreInfo)
                 DispatchQueue.main.async {
                     //STORE THIS
                 self.genresLabel.text = genreInfo
@@ -201,8 +201,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
                 let menuData: [menuData] = [menuData(songName: name, albumCover: finalUrl)
                     ]
-                print("MenuData", menuData)
-                print(finalUrl)
+               // print("MenuData", menuData)
+               // print(finalUrl)
                         
                 let url = NSURL(string:finalUrl)
                 let imagedata = NSData.init(contentsOf: url! as URL)
@@ -217,11 +217,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
                         self.songName.text = songLabel
                         
                         //self.artistName.text = artist
-                        print("Updated the UI on Post Screen ")
+                        //print("Updated the UI on Post Screen ")
                     }
                             
                     else {
-                        print("NO IMAGE")
+                       // print("NO IMAGE")
                     }
                         
                 }
@@ -234,6 +234,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
             dropDown.show()
         }
     @IBAction func onPost(_ sender: Any) {
+        //Saving the post in the backend
         let posts = PFObject(className: "posts")
         posts["username"] = PFUser.current()?.username
         posts["genre"] = self.genresLabel.text
@@ -246,9 +247,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
-                print("saved!")
+               // print("saved!")
             } else {
-                print("error on saving data: \(error?.localizedDescription)")
+               // print("error on saving data: \(error?.localizedDescription)")
             }
         }
     }
@@ -291,13 +292,13 @@ class postViewController: UIViewController, UISearchBarDelegate {
         controller.requestStorefrontCountryCode { countryCode, error in
             // Use the value in countryCode for subsequent API requests
             if #available(iOS 15.0, *) {
-                print("Storyboard:", Storefront.self)
-                print(countryCode)
+                //print("Storyboard:", Storefront.self)
+                //print(countryCode)
             }
             
             else {
                 // Fallback on earlier versions
-                print("NO storefront")
+               // print("NO storefront")
             }
         }
         
@@ -337,7 +338,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
         }
         
         dropDown.selectionAction = { index, title in
-            print("index \(index) at \(title)")
+           // print("index \(index) at \(title)")
         }
         
     }
@@ -349,13 +350,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             
-//        // Create a variable to store the name the user entered on textField
-        let name = songName.text ?? ""
-//
-//       // Create a new variable to store the instance of the SecondViewController
-//       // set the variable from the SecondViewController that will receive the data
-        let destinationVC = segue.destination as! HomeCell
-        destinationVC.albumNameSongName.text  = name
+
     }
 
 
