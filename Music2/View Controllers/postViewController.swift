@@ -11,6 +11,7 @@ import MediaPlayer
 import AlamofireImage
 import DropDown
 import SwiftUI
+import Parse
 
 class postViewController: UIViewController, UISearchBarDelegate {
     
@@ -187,6 +188,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let genreInfo = self.genre[0] as! String
                 print("GENRE", genreInfo)
                 DispatchQueue.main.async {
+                    //STORE THIS
                 self.genresLabel.text = genreInfo
                     self.genresLabel.backgroundColor = random(colors: myColors)
                     self.genresLabel.layer.masksToBounds = true
@@ -210,6 +212,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 //adding this dispatch queue elimates warnings
                 DispatchQueue.main.async {
                     if imagedata != nil {
+                        //STORE THESE TWO
                         self.albumCoverImageView.image = UIImage(data:imagedata! as Data)
                         self.songName.text = songLabel
                         
@@ -230,6 +233,25 @@ class postViewController: UIViewController, UISearchBarDelegate {
         task.resume()
             dropDown.show()
         }
+    @IBAction func onPost(_ sender: Any) {
+        let posts = PFObject(className: "posts")
+        posts["username"] = PFUser.current()?.username
+        posts["genre"] = self.genresLabel.text
+        posts["song"] = self.songName.text
+        
+        let imageData = albumCoverImageView.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        posts["cover"] = file
+        
+        posts.saveInBackground { (succeeded, error)  in
+            if (succeeded) {
+                // The object has been saved.
+                print("saved!")
+            } else {
+                print("error on saving data: \(error?.localizedDescription)")
+            }
+        }
+    }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
