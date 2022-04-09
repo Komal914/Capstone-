@@ -57,6 +57,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBAction func postButton(_ sender: Any) {
         //this function should send the data over to the home screen view and post our song
+        
+        
+        
     }
     
     
@@ -321,6 +324,17 @@ class postViewController: UIViewController, UISearchBarDelegate {
 
     
     // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+//        // Create a variable to store the name the user entered on textField
+        let name = songName.text ?? ""
+//
+//       // Create a new variable to store the instance of the SecondViewController
+//       // set the variable from the SecondViewController that will receive the data
+        let destinationVC = segue.destination as! HomeCell
+        destinationVC.albumNameSongName.text  = name
+    }
 
 
     
