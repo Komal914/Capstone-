@@ -169,7 +169,7 @@
                         <outlet property="genreLabel" destination="05A-oE-k88" id="5re-rf-7TU"/>
                         <outlet property="thumbImageView" destination="cjj-pE-Uuw" id="Rzf-HB-gc2"/>
                         <outlet property="welcomeLabel" destination="cdy-Q9-gCZ" id="5oj-nI-aHQ"/>
-                        <segue destination="0U9-SI-CbS" kind="presentation" identifier="afterSelection" modalPresentationStyle="fullScreen" id="UjS-sM-iFE"/>
+                        <segue destination="kVi-Ji-h66" kind="presentation" identifier="afterSelection" modalPresentationStyle="fullScreen" id="HJt-HQ-3Xv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s9c-EI-Ley" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -180,6 +180,54 @@
                 </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="-551.11607142857144"/>
+        </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="CN4-Cj-TgB">
+            <objects>
+                <viewController id="kVi-Ji-h66" customClass="welcomeViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1fv-wn-uku" customClass="welcomeView">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please Enter a Username Below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkR-Kx-U2f">
+                                <rect key="frame" x="26" y="87" width="363" height="186"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S9M-d5-6cJ">
+                                <rect key="frame" x="151" y="506" width="113" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Done">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="onDoneButton:" destination="kVi-Ji-h66" eventType="touchUpInside" id="LQF-Gl-gB7"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="epv-bu-Qog">
+                                <rect key="frame" x="110" y="333" width="194" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wUk-zX-1MO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="instructionsLabel" destination="RkR-Kx-U2f" id="Bmb-qE-vkV"/>
+                        <outlet property="nameTextField" destination="epv-bu-Qog" id="Yyl-hp-FbN"/>
+                        <segue destination="0U9-SI-CbS" kind="presentation" identifier="afterName" modalPresentationStyle="fullScreen" id="1yH-ZG-9jg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dgG-wd-cdl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1082.608695652174" y="-551.11607142857144"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a7a-51-lhl">
@@ -736,7 +784,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UjS-sM-iFE"/>
+        <segue reference="1yH-ZG-9jg"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
