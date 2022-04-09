@@ -57,6 +57,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBAction func postButton(_ sender: Any) {
         //this function should send the data over to the home screen view and post our song
+        
+        
+        
     }
     
     
@@ -158,8 +161,18 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
                 let myRed = UIColor(red: 247.0/255, green: 118.0/255, blue: 113.0/255, alpha: 1.0)
                 let myYellow = UIColor(red: 255.0/255, green: 190.0/255, blue: 106.0/255, alpha: 1.0)
+                let lightblue = UIColor(red: 0.00, green: 1.00, blue: 1.00, alpha: 1.00)
+                let hotpink = UIColor(red: 1.00, green: 0.00, blue: 0.82, alpha: 1.00)
+                let neongreen = UIColor(red: 0.35, green: 1.00, blue: 0.00, alpha: 1.00)
+                let yellowgreen = UIColor(red: 0.87, green: 1.00, blue: 0.00, alpha: 1.00)
+                let lavender = UIColor(red: 0.87, green: 0.78, blue: 1.00, alpha: 1.00)
+                let lightgreen = UIColor(red: 0.85, green: 1.00, blue: 0.78, alpha: 1.00)
+                let blue = UIColor(red: 0.66, green: 1.00, blue: 0.97, alpha: 1.00)
+                let purple = UIColor(red: 0.50, green: 0.00, blue: 1.00, alpha: 1.00)
+                let orange = UIColor(red: 1.00, green: 0.55, blue: 0.00, alpha: 1.00)
+                let pink = UIColor(red: 1.00, green: 0.73, blue: 0.85, alpha: 1.00)
                 
-                let myColors = [myRed, myBlue, myGreen, myYellow]
+                let myColors = [myRed, myBlue, myGreen, myYellow, lightblue, hotpink, neongreen, yellowgreen, lavender, lightgreen, blue, purple, orange, pink]
                 
                 func random(colors: [UIColor]) -> UIColor {
                     return colors[Int(arc4random_uniform(UInt32(myColors.count)))]
@@ -311,6 +324,17 @@ class postViewController: UIViewController, UISearchBarDelegate {
 
     
     // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            
+//        // Create a variable to store the name the user entered on textField
+        let name = songName.text ?? ""
+//
+//       // Create a new variable to store the instance of the SecondViewController
+//       // set the variable from the SecondViewController that will receive the data
+        let destinationVC = segue.destination as! HomeCell
+        destinationVC.albumNameSongName.text  = name
+    }
 
 
     
