@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class HomeCell: UITableViewCell {
     
     @IBOutlet weak var artistImage: UIImageView!

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -15,6 +16,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     var user: User?
     
+    var posts = [PFObject]()
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("hello")
+        let query = PFQuery(className: "posts")
+        query.findObjectsInBackground{(posts, error) in
+            if posts != nil{
+                self.posts = posts! //storing from backend to this file
+                self.table.reloadData()
+                print(self.posts)
+            }
+            else {print("error quering for posts: \(error)")}
+            
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -39,7 +57,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //should return number of posts
-        return 1
+        return posts.count
         
         
     }
@@ -52,7 +70,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = table.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeCell
-        
+        let post = posts[indexPath.row]
+
+        cell.albumNameSongName.text = post["song"] as! String
+
+        let imageFile = post["cover"] as! PFFileObject
+        let urlString = imageFile.url!
+        let url = URL(string: urlString)!
+        cell.albumCover.af_setImage(withURL: url)
+         
       
         
         return cell
