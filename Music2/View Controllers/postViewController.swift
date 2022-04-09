@@ -69,9 +69,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var usernameLabel: UILabel!
     
-    
-    @IBAction func userCaptionTextField(_ sender: Any) {
-    }
+    @IBOutlet weak var userCaptionTextField: UITextField!
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             //print("searchText \(searchText)")
@@ -236,9 +234,13 @@ class postViewController: UIViewController, UISearchBarDelegate {
     @IBAction func onPost(_ sender: Any) {
         //Saving the post in the backend
         let posts = PFObject(className: "posts")
-        posts["username"] = PFUser.current()?.username
+        posts["author"] = PFUser.current()
+        posts["appleID"] = PFUser.current()?.username
+        posts["username"] = " "
+        
         posts["genre"] = self.genresLabel.text
         posts["song"] = self.songName.text
+        posts["caption"] = self.userCaptionTextField.text!
         
         let imageData = albumCoverImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)

@@ -516,7 +516,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add a caption !" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gng-PY-GUn">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add a caption !" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gng-PY-GUn">
                                         <rect key="frame" x="116" y="590" width="283" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -582,6 +582,7 @@
                         <outlet property="genresLabel" destination="YHJ-HG-6tC" id="mgh-J4-cyL"/>
                         <outlet property="searchBar" destination="Kdx-Ox-Iwo" id="71x-6u-B3l"/>
                         <outlet property="songName" destination="0Dx-3z-D6H" id="XQQ-Rw-7Mh"/>
+                        <outlet property="userCaptionTextField" destination="gng-PY-GUn" id="Hdm-wa-k6A"/>
                         <outlet property="usernameLabel" destination="2Xy-Lm-xwS" id="TQv-3z-5DZ"/>
                         <outlet property="viewBelowSearch" destination="hf9-3g-N94" id="rVU-tw-6Ey"/>
                     </connections>
