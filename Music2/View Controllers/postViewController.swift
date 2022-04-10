@@ -48,6 +48,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
     @IBOutlet weak var songName: UILabel!
     
     
+    
+    @IBOutlet weak var captionTextfield: UITextField!
+    
     @IBOutlet weak var genresLabel: UILabel!
     
     
@@ -69,7 +72,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var usernameLabel: UILabel!
     
-    @IBOutlet weak var userCaptionTextField: UITextField!
+  
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             //print("searchText \(searchText)")
@@ -232,15 +235,22 @@ class postViewController: UIViewController, UISearchBarDelegate {
             dropDown.show()
         }
     @IBAction func onPost(_ sender: Any) {
+        print("starting post")
         //Saving the post in the backend
         let posts = PFObject(className: "posts")
+        print("post 2")
         posts["author"] = PFUser.current()
+        print("post 3")
         posts["appleID"] = PFUser.current()?.username
+        print("post 4")
         posts["username"] = " "
+        print("post 5")
         
         posts["genre"] = self.genresLabel.text
+        print("post 6")
         posts["song"] = self.songName.text
-        posts["caption"] = self.userCaptionTextField.text!
+        print("post 7")
+        posts["caption"] = self.captionTextfield.text!
         
         let imageData = albumCoverImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)
@@ -249,7 +259,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
-               // print("saved!")
+              print("saved!")
             } else {
                // print("error on saving data: \(error?.localizedDescription)")
             }
