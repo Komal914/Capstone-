@@ -30,7 +30,11 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 
     
     
-  
+    @IBAction func commentsButton(_ sender: Any) {
+        performSegue(withIdentifier: "onCommentTap" , sender: nil)
+
+    }
+    
     //MARK: VIEWDIDLOAD
 
     override func viewDidLoad() {
