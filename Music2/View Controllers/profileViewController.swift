@@ -19,12 +19,16 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followingNumberLabel: UILabel!
     
+    @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var followButton: UIButton!
-    @IBOutlet weak var editButton: UIButton!
+    @IBAction func editButton(_ sender: Any) {
+        performSegue(withIdentifier: "afterEdit", sender: nil)
+        
+    }
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
