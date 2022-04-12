@@ -24,7 +24,6 @@ class SwipeViewController: UIViewController {
     
     var topGenresArr = [String]()
     
-    //MARK: SUMIYA ITS OVER HERE
     var userGenres = [String]()
     var urlString = "https://api.music.apple.com/v1/catalog/"
     
@@ -113,7 +112,7 @@ class SwipeViewController: UIViewController {
             }, completion: {
                 (Completed: Bool) -> Void in
                 
-                self.welcomeLabel.text = "Welcome to Music App."
+                self.welcomeLabel.text = "Welcome to Aria."
                 UIView.animate(withDuration: 4.0, animations: {
                     self.welcomeLabel.alpha = 1.0
                 }, completion: {
@@ -237,7 +236,7 @@ class SwipeViewController: UIViewController {
                         if (succeeded) {
                             // The object has been saved.
                         } else {
-                            print("error on saving data: \(error?.localizedDescription)")
+                            print("error on saving data: \(String(describing: error?.localizedDescription))")
                         }
                     }
 

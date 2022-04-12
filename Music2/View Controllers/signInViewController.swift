@@ -207,7 +207,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                     self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
                 }
                 else{
-                    print("error on sign up: \(error?.localizedDescription)")
+                    print("error on sign up: \(String(describing: error?.localizedDescription))")
                 }
             }
 
@@ -216,7 +216,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                 if user != nil {
                     self.performSegue(withIdentifier: "currentUserSignIn", sender: userID)
             } else {
-                print("error on sign in: \(error?.localizedDescription)")
+                print("error on sign in: \(String(describing: error?.localizedDescription))")
             }
             }
             
