@@ -30,7 +30,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //var nickName: String = ""
     var profileInfo: PFObject?
-    var name: String
+    var name: String = ""
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -48,8 +48,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
                // self.usernameLabel = profileInfo["username"] //storing from backend to this file
-                self.profileInfo = profileInfo!
-                profileInfo["username"] = name
+                //self.profileInfo = profileInfo!
+                //profileInfo["username"] = name
                 //self.usernameLabel.text = name
                 //print(profileInfo)
             }
