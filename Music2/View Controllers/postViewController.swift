@@ -15,12 +15,7 @@ import Parse
 
 class postViewController: UIViewController, UISearchBarDelegate {
     
-    
-    //var songData = [String: Any?]() //one dictionary
-    //var songData = [[String]]()
-    
     //MARK: Global VARIABLES
-    
     var songData = NSDictionary()
     var songMenu = [String]()
     var genre = NSArray()
@@ -32,71 +27,39 @@ class postViewController: UIViewController, UISearchBarDelegate {
 
     }
     var images = ["bookmark", "home"]
-    
     let dropDown = DropDown()
-  
-    
-   
-    
-    
-    
-    
  
     //MARK: - OUTLETS
-    
-    
     @IBOutlet weak var songName: UILabel!
-    
-    
-    
     @IBOutlet weak var captionTextfield: UITextField!
-    
     @IBOutlet weak var genresLabel: UILabel!
-    
     @IBOutlet weak var artistNameLabel: UILabel!
-    
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    
     @IBOutlet weak var viewBelowSearch: UIView!
     
     @IBAction func postButton(_ sender: Any) {
         //this function should send the data over to the home screen view and post our song
         
-        
-        
     }
     
     
     @IBOutlet weak var albumCoverImageView: UIImageView!
-    
-    
     @IBOutlet weak var usernameLabel: UILabel!
-    
-  
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             //print("searchText \(searchText)")
            
-        }
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("searchText \(searchBar.text)")
-        searchText = searchBar.text as! String
+        //print("searchText \(searchBar.text)")
+        searchText = searchBar.text!
         
-        
-        //MARK: API REQUEST
-        
-        //let baseAPIUrl = "https://api.music.apple.com/v1/catalog/"
-        //let base2Url = baseUrl + Storefront
         //MARK: Replace
-        
         let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
-       
-        
         let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
         let final = base + replaced
-        print("URL TO CALL: ", final)
+        //print("URL TO CALL: ", final)
 //        let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
 //        let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
  
@@ -121,37 +84,26 @@ class postViewController: UIViewController, UISearchBarDelegate {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 self.songData = json?["results"] as! NSDictionary
-              //  print("got the songs")
-                        
-                //print(self.songData)
-               // print(self.songData.count)
+                
                 let songs = self.songData["songs"] as! NSDictionary
-                        
-                //print(songs)
-                
                 let numberOfSongs = songs["data"] as! NSArray
-                
-                
-                
-                print("amount of song: ", numberOfSongs.count)
+                //print("amount of song: ", numberOfSongs.count)
                 
                 let countForSongs = numberOfSongs.count
                 
 //MARK: ONE SONG DATA
-                
-                
                 let firstSong = numberOfSongs[0] as! NSDictionary
-               // print(firstSong) api data for one song
+                // print(firstSong) api data for one song
                 let attributes = firstSong["attributes"] as! NSDictionary
                 let artWork = attributes["artwork"] as! NSDictionary
                 let name = attributes["name"] as! String
                 let artistName = attributes["artistName"] as! String
                 
-                print("hello there")
-                print(artistName)
+                //print("hello there")
+                //print(artistName)
                 
                 
-               // self.artistNameLabel.text = artistName
+                // self.artistNameLabel.text = artistName
                 self.songMenu.append(name)
                
                 //print(menuData.songName)
@@ -161,11 +113,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 // print(artWork)
                 let albumName = attributes["albumName"] as! String
                 let songInfo = albumName + "- " + name
-                let previews = attributes["previews"] //music audio
+                let previews = attributes["previews"]   //music audio
                
                 let songLabel = songInfo
-                //MARK: GENRE STUFF
                 
+                //MARK: GENRE STUFF
                 let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
                 let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
                 let myRed = UIColor(red: 247.0/255, green: 118.0/255, blue: 113.0/255, alpha: 1.0)
@@ -186,9 +138,6 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 func random(colors: [UIColor]) -> UIColor {
                     return colors[Int(arc4random_uniform(UInt32(myColors.count)))]
                 }
-                
-                
-
                 
                 let genres = attributes["genreNames"] as! NSArray
                 self.genre = genres
@@ -224,42 +173,33 @@ class postViewController: UIViewController, UISearchBarDelegate {
                         //STORE THESE TWO
                         self.albumCoverImageView.image = UIImage(data:imagedata! as Data)
                         self.songName.text = songLabel
-                        
-                        //self.artistName.text = artist
-                        //print("Updated the UI on Post Screen ")
                     }
                             
                     else {
                        // print("NO IMAGE")
                     }
-                        
                 }
             }
                     
             catch {
             }
         }
+        
         task.resume()
             dropDown.show()
         }
+    
     @IBAction func onPost(_ sender: Any) {
         print("starting post")
         //Saving the post in the backend
         let posts = PFObject(className: "posts")
-       
         posts["author"] = PFUser.current()
-        
         posts["appleID"] = PFUser.current()?.username
-        
         posts["username"] = " "
-       
         
         posts["genre"] = self.genresLabel.text
-        
         posts["song"] = self.songName.text
-        
         posts["caption"] = self.captionTextfield.text!
-        
         posts["artistName"] = self.artistNameLabel.text!
         
         let imageData = albumCoverImageView.image!.pngData()
@@ -320,26 +260,16 @@ class postViewController: UIViewController, UISearchBarDelegate {
             
             else {
                 // Fallback on earlier versions
-               // print("NO storefront")
+                // print("NO storefront")
             }
         }
-        
-        
-        
         
         func requestUserToken(forDeveloperToken developerToken: String,
                               completionHandler: @escaping (String?, Error?) -> Void){
             
         }
-                
-                
-                
         
-       
         // Do any additional setup after loading the view.
-        
-        
-        
         //MARK: SEARCH BAR SETTINGS
         searchBar.delegate = self
         
@@ -348,12 +278,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
         gesture.numberOfTapsRequired = 1
         searchBar.addGestureRecognizer(gesture)
         
-        //MARK: Dropdown settings 
-        
+        //MARK: Dropdown settings
         dropDown.anchorView = viewBelowSearch
         dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
         dropDown.customCellConfiguration = {index, title, cell in
-            guard let cell = cell as? SearchMenuCell else {
+            guard cell is SearchMenuCell else {
                 return
             }
             //cell.albumCover.image = UIImage(systemName: self.images[index])
@@ -362,22 +291,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
         dropDown.selectionAction = { index, title in
            // print("index \(index) at \(title)")
         }
-        
     }
-    
-    
-
-    
-    // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            
-
     }
-
-
     
-
 }
 
 

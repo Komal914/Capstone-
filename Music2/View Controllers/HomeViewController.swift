@@ -10,30 +10,25 @@ import Parse
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
-
-    
     @IBOutlet weak var table: UITableView!
     var user: User?
-    
     var posts = [PFObject]()
-    
-    
+        
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("hello")
+        //print("hello")
         let query = PFQuery(className: "posts")
         query.findObjectsInBackground{(posts, error) in
             if posts != nil{
                 self.posts = posts! //storing from backend to this file
                 self.table.reloadData()
-                print(self.posts)
+                //print(self.posts)
             }
-            else {print("error quering for posts: \(error)")}
-            
+            else {
+                print("error quering for posts: \(String(describing: error))")
+            }
         }
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,27 +38,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         table.delegate = self
         table.dataSource = self
         
-        print(user?.debugDescription ?? "")
-        
-        print("Print statement for ID: ", user?.id ?? "default")
-        
+        //print(user?.debugDescription ?? "")
+        //print("Print statement for ID: ", user?.id ?? "default")
 
         // Do any additional setup after loading the view.
     }
     
-    
-   
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         //should return number of posts
         return posts.count
-        
-        
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    @IBAction func homeCommentButton(_ sender: Any) {
+        performSegue(withIdentifier: "homeCommentSegue", sender: self)
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 550 //or whatever you need
     }
     
@@ -73,33 +62,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var reversePosts = [PFObject]()
         reversePosts = posts.reversed()
-        print("reversed:", reversePosts)
+        //print("reversed:", reversePosts)
         let post = reversePosts[indexPath.row]
 
-        cell.albumNameSongName.text = post["song"] as! String
+        cell.albumNameSongName.text = post["song"] as? String
 
         let imageFile = post["cover"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
-        cell.albumCover.af_setImage(withURL: url)
+        cell.albumCover.af.setImage(withURL: url)
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
-        cell.artistNameLabel.text = post["artistName"] as! String
-         
-      
+        cell.artistNameLabel.text = post["artistName"] as? String
         
         return cell
     }
-    
-
-    /*
-     MARK: - Navigation
-
-     In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         Get the new view controller using segue.destination.
-         Pass the selected object to the new view controller.
-    }
-    */
-
 }
