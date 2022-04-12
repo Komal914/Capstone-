@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -351,19 +351,20 @@
             </objects>
             <point key="canvasLocation" x="-1552" y="1908"/>
         </scene>
-        <!--Comments View Controller-->
+        <!--Video Comments View Controller-->
         <scene sceneID="YDE-8H-3xr">
             <objects>
-                <viewController id="Upd-jq-qyx" customClass="commentsViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Upd-jq-qyx" customClass="videoCommentsViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Uc8-8p-H9E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wXv-hM-hfk">
-                                <rect key="frame" x="20" y="104" width="374" height="704"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wXv-hM-hfk">
+                                <rect key="frame" x="20" y="60" width="374" height="716"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sfm-2B-PYf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoCommentCell" id="sfm-2B-PYf" customClass="videoCommentCell" customModule="Music2" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfm-2B-PYf" id="Wfi-NW-WIP">
@@ -386,31 +387,41 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="commentLabel" destination="hDT-l3-eV2" id="DM9-b1-ZY8"/>
+                                            <outlet property="usernameLabel" destination="xoI-tC-fQf" id="qoE-Dw-P4O"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g25-fv-tZ8">
-                                <rect key="frame" x="143" y="52" width="128" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Comments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g25-fv-tZ8">
+                                <rect key="frame" x="143" y="8" width="97.5" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Rockwell-Regular" family="Rockwell" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Add Comment here " borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P5q-oA-QFs">
+                                <rect key="frame" x="20" y="774" width="285" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sP-HE-yJF">
+                                <rect key="frame" x="305" y="776" width="89" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="tinted" title="Comment"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HC7-mW-fCI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="wXv-hM-hfk" firstAttribute="leading" secondItem="HC7-mW-fCI" secondAttribute="leading" constant="20" id="1LX-kx-uty"/>
-                            <constraint firstItem="wXv-hM-hfk" firstAttribute="top" secondItem="HC7-mW-fCI" secondAttribute="top" constant="60" id="1uG-y5-TEO"/>
-                            <constraint firstItem="g25-fv-tZ8" firstAttribute="top" secondItem="HC7-mW-fCI" secondAttribute="top" constant="8" id="7tA-Gg-4r8"/>
-                            <constraint firstItem="HC7-mW-fCI" firstAttribute="trailing" secondItem="wXv-hM-hfk" secondAttribute="trailing" constant="20" id="HBk-ah-1sh"/>
-                            <constraint firstItem="HC7-mW-fCI" firstAttribute="bottom" secondItem="wXv-hM-hfk" secondAttribute="bottom" constant="34" id="LNQ-mu-V0W"/>
-                            <constraint firstItem="g25-fv-tZ8" firstAttribute="leading" secondItem="HC7-mW-fCI" secondAttribute="leading" constant="143" id="Z0q-L3-qNg"/>
-                            <constraint firstItem="wXv-hM-hfk" firstAttribute="top" secondItem="g25-fv-tZ8" secondAttribute="bottom" constant="17" id="gpM-Lg-gCo"/>
-                            <constraint firstItem="HC7-mW-fCI" firstAttribute="trailing" secondItem="g25-fv-tZ8" secondAttribute="trailing" constant="143" id="hjp-vb-iTt"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="addCommentTextfield" destination="P5q-oA-QFs" id="6p1-yI-PfQ"/>
+                        <outlet property="commentButton" destination="9sP-HE-yJF" id="4vQ-00-PMv"/>
                         <outlet property="commentsTableView" destination="wXv-hM-hfk" id="6c3-a0-5u8"/>
+                        <outlet property="table" destination="wXv-hM-hfk" id="dPg-pU-WlJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKj-zc-Q96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
