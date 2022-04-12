@@ -13,13 +13,14 @@ class welcomeViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
-    
+    //var name = String()
     @IBAction func onDoneButton(_ sender: Any) {
         performSegue(withIdentifier: "afterName" , sender: nil)
         
         let profileInfo = PFObject(className:"profileInfo")
         profileInfo["appleID"] = PFUser.current()?.username
         profileInfo["username"] = nameTextField.text!
+        //name = nameTextField.text!
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
@@ -52,10 +53,10 @@ class welcomeViewController: UIViewController {
      //MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let nickName = nameTextField.text ?? ""
-        let destinationVC = segue.destination as! profileViewController
-        destinationVC.nickName = nickName
-        //self.navigationController?.pushViewController(destinationVC, animated: false)
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let name = nameTextField.text ?? ""
+//        let destinationVC = segue.destination as! profileViewController
+//        destinationVC.usernameLabel.text = name
+//        //self.navigationController?.pushViewController(destinationVC, animated: false)
+//    }
 }
