@@ -43,6 +43,20 @@ class postViewController: UIViewController, UISearchBarDelegate {
     }
     
     
+    @IBAction func onPlayButton(_ sender: Any) {
+    }
+    
+    
+    
+    @IBAction func onPauseButton(_ sender: Any) {
+    }
+    
+    
+    
+    
+    
+    
+    
     @IBOutlet weak var albumCoverImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     
