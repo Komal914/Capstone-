@@ -784,6 +784,13 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p6-pn-d7v">
+                                <rect key="frame" x="343" y="20" width="51" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="music.note" catalog="system" title=" "/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e8l-ef-EWP"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -793,6 +800,7 @@
                         <outlet property="editButton" destination="xrL-c3-G3a" id="9MD-tf-LJT"/>
                         <outlet property="fansLabel" destination="Sxb-LS-okS" id="sUS-nt-MHk"/>
                         <outlet property="fansNumberLabel" destination="DTb-iS-t7O" id="nF1-II-2Xg"/>
+                        <outlet property="followButton" destination="2p6-pn-d7v" id="h3e-d0-QmF"/>
                         <outlet property="followingLabel" destination="jgg-yU-JlD" id="eaQ-pJ-RqP"/>
                         <outlet property="followingNumberLabel" destination="gI0-mG-dv8" id="6kz-pZ-aFB"/>
                         <outlet property="genreCollectionView" destination="cCk-MX-NZm" id="VZ7-2C-DPY"/>
@@ -805,7 +813,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="1908"/>
+            <point key="canvasLocation" x="1776.8115942028987" y="1907.8125"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -818,6 +826,7 @@
         <image name="logo.png" width="384" height="384"/>
         <image name="love.png" width="135" height="135"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="music.note" catalog="system" width="97" height="128"/>
         <image name="music.quarternote.3" catalog="system" width="128" height="103"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="pianokeys" catalog="system" width="128" height="93"/>
