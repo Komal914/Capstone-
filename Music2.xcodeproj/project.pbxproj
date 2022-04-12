@@ -12,6 +12,7 @@
 		254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */; };
 		25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5527E7FD7300C9C14A /* postViewController.swift */; };
 		25F1E56F2802318000B891DF /* welcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E56E2802318000B891DF /* welcomeViewController.swift */; };
+		25F1E5712805E5D500B891DF /* commentsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E5702805E5D500B891DF /* commentsTableViewController.swift */; };
 		A721DA9907EC69912CAB0B61 /* Pods_Music2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782BDE178D9065D7A64D2C89 /* Pods_Music2Tests.framework */; };
 		AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */; };
 		AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */; };
@@ -69,6 +70,7 @@
 		254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsCollectionViewCell.swift; sourceTree = "<group>"; };
 		25C42D5527E7FD7300C9C14A /* postViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		25F1E56E2802318000B891DF /* welcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeViewController.swift; sourceTree = "<group>"; };
+		25F1E5702805E5D500B891DF /* commentsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsTableViewController.swift; sourceTree = "<group>"; };
 		46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		782BDE178D9065D7A64D2C89 /* Pods_Music2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C461D8C7C192D7BAF4F7731 /* Pods-Music2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2Tests.release.xcconfig"; path = "Target Support Files/Pods-Music2Tests/Pods-Music2Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
 				AAADCD8827F26FE80077CB34 /* swipeViewController.swift */,
 				25F1E56E2802318000B891DF /* welcomeViewController.swift */,
+				25F1E5702805E5D500B891DF /* commentsTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */,
 				EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */,
 				254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */,
+				25F1E5712805E5D500B891DF /* commentsTableViewController.swift in Sources */,
 				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
 				254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */,
 				EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */,
