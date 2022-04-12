@@ -28,6 +28,7 @@ class HomeCell: UITableViewCell {
     }
     
     
+    @IBOutlet weak var artistNameLabel: UILabel!
     
 
     override func awakeFromNib() {
