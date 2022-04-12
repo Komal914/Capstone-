@@ -314,7 +314,7 @@
                                                     <buttonConfiguration key="configuration" style="filled" image="text.bubble" catalog="system" title=" "/>
                                                     <connections>
                                                         <action selector="commentsButton:" destination="Gdk-5l-1j5" eventType="touchUpInside" id="gfn-in-lpc"/>
-                                                        <segue destination="YLT-vg-Phc" kind="presentation" identifier="onCommentTap" id="EHr-eM-sOv"/>
+                                                        <segue destination="Upd-jq-qyx" kind="presentation" identifier="onCommentTap" id="clB-q2-XDa"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -351,33 +351,40 @@
             </objects>
             <point key="canvasLocation" x="-1552" y="1908"/>
         </scene>
-        <!--Comments Table View Controller-->
-        <scene sceneID="apm-YC-y2h">
+        <!--Comments View Controller-->
+        <scene sceneID="YDE-8H-3xr">
             <objects>
-                <tableViewController id="YLT-vg-Phc" customClass="commentsTableViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="Eqe-FL-NPN">
+                <viewController id="Upd-jq-qyx" customClass="commentsViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uc8-8p-H9E">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="wXv-hM-hfk">
+                                <rect key="frame" x="20" y="20" width="374" height="788"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="sfm-2B-PYf">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sfm-2B-PYf" id="Wfi-NW-WIP">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HC7-mW-fCI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="esp-bd-Dvf">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="esp-bd-Dvf" id="e6a-d4-71I">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="YLT-vg-Phc" id="Aym-s9-ofq"/>
-                            <outlet property="delegate" destination="YLT-vg-Phc" id="tAf-nJ-TV6"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GAc-2Q-cfX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <connections>
+                        <outlet property="commentsTableView" destination="wXv-hM-hfk" id="6c3-a0-5u8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vKj-zc-Q96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1552" y="2626"/>
+            <point key="canvasLocation" x="-1552.1739130434785" y="2659.8214285714284"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="WW4-j3-kLn">
