@@ -812,6 +812,10 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Edit Profile">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="editButton:" destination="4Nh-b3-u2E" eventType="touchUpInside" id="3IW-wW-frS"/>
+                                    <segue destination="1TG-c6-nok" kind="presentation" identifier="afterEdit" id="gbr-Lj-gLV"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rock.png" highlightedImage="rock.png" translatesAutoresizingMaskIntoConstraints="NO" id="w8i-Qt-dmF">
                                 <rect key="frame" x="0.0" y="28" width="159" height="161"/>
@@ -824,8 +828,15 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Zc-iB-I2L">
+                                <rect key="frame" x="133" y="197" width="261" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2p6-pn-d7v">
-                                <rect key="frame" x="343" y="20" width="51" height="41"/>
+                                <rect key="frame" x="167" y="20" width="51" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -837,7 +848,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="or7-dX-e04"/>
                     <connections>
-                        <outlet property="editButton" destination="xrL-c3-G3a" id="9MD-tf-LJT"/>
+                        <outlet property="bioLabel" destination="1Zc-iB-I2L" id="kUZ-Ei-03m"/>
                         <outlet property="fansLabel" destination="Sxb-LS-okS" id="sUS-nt-MHk"/>
                         <outlet property="fansNumberLabel" destination="DTb-iS-t7O" id="nF1-II-2Xg"/>
                         <outlet property="followButton" destination="2p6-pn-d7v" id="h3e-d0-QmF"/>
@@ -854,6 +865,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1776.8115942028987" y="1907.8125"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="Uf4-Kf-nQw">
+            <objects>
+                <viewController id="1TG-c6-nok" customClass="editViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Une-h3-ozP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Bio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Xx-nj-1qf">
+                                <rect key="frame" x="20" y="83" width="81" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="q7e-Gp-inU">
+                                <rect key="frame" x="20" y="119" width="374" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aga-w5-RPV">
+                                <rect key="frame" x="178" y="216" width="59" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Done"/>
+                                <connections>
+                                    <action selector="doneButton:" destination="1TG-c6-nok" eventType="touchUpInside" id="hKC-1M-aZD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="orQ-Le-t1W"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <outlet property="captionLabel" destination="7Xx-nj-1qf" id="E04-ue-8hj"/>
+                        <outlet property="editBioTextField" destination="q7e-Gp-inU" id="xRE-Gs-Ozi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bpo-AV-d5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2621.739130434783" y="1907.8125"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

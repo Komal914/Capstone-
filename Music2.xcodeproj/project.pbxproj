@@ -10,6 +10,7 @@
 		254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EB27EE7D5A008198D1 /* profileViewController.swift */; };
 		254427EE27EE7F7A008198D1 /* genreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */; };
 		254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */; };
+		25741ED828060B3E00C5FB23 /* editViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25741ED628060B3E00C5FB23 /* editViewController.swift */; };
 		25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25C42D5527E7FD7300C9C14A /* postViewController.swift */; };
 		25F1E56F2802318000B891DF /* welcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E56E2802318000B891DF /* welcomeViewController.swift */; };
 		25F1E5732805EAD600B891DF /* commentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1E5722805EAD600B891DF /* commentsViewController.swift */; };
@@ -68,6 +69,7 @@
 		254427EB27EE7D5A008198D1 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
 		254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genreCollectionViewCell.swift; sourceTree = "<group>"; };
 		254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsCollectionViewCell.swift; sourceTree = "<group>"; };
+		25741ED628060B3E00C5FB23 /* editViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editViewController.swift; sourceTree = "<group>"; };
 		25C42D5527E7FD7300C9C14A /* postViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postViewController.swift; sourceTree = "<group>"; };
 		25F1E56E2802318000B891DF /* welcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = welcomeViewController.swift; sourceTree = "<group>"; };
 		25F1E5722805EAD600B891DF /* commentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				AAADCD8827F26FE80077CB34 /* swipeViewController.swift */,
 				25F1E56E2802318000B891DF /* welcomeViewController.swift */,
 				25F1E5722805EAD600B891DF /* commentsViewController.swift */,
+				25741ED628060B3E00C5FB23 /* editViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEC7BF2F27E7BC3700A882F6 /* Song.swift in Sources */,
+				25741ED828060B3E00C5FB23 /* editViewController.swift in Sources */,
 				EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */,
 				EE380F2A27FA6B2900ADF3A1 /* DropDownCell.swift in Sources */,
 				EEC7BF3127E7E7F200A882F6 /* MusicVideosViewController.swift in Sources */,
