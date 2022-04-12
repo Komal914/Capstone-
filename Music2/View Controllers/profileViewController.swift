@@ -99,11 +99,14 @@ extension profileViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         cell.backgroundColor = .systemBlue
+        //cell.albumCover.image = UIImage(named:"bookmark")
         
         if (collectionView == genreCollectionView)
         {
             let cell2 = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
-            cell2.backgroundColor = .cyan
+            cell2.backgroundColor = .systemTeal
+            cell2.genreLabel.text = "Genre"
+            cell2.genreLabel.backgroundColor = .white
             return cell2
         }
 
