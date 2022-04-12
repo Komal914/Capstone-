@@ -223,18 +223,6 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             // if needed, save it to user defaults by uncommenting the line below
             //UserDefaults.standard.set(appleIDCredential.user, forKey: "userID")
             
-            // optional, might be nil
-            let email = appleIDCredential.email
-            print("Email: " + (email ?? "no email") )
-            
-            // optional, might be nil
-            let givenName = appleIDCredential.fullName?.givenName
-            print("Given Name: " + (givenName ?? "no given name") )
-            
-            // optional, might be nil
-            let familyName = appleIDCredential.fullName?.familyName
-            print("Family Name: " + (familyName ?? "no family name") )
-            
             /*
              useful for server side, the app can send identityToken and authorizationCode
              to the server for verification purpose

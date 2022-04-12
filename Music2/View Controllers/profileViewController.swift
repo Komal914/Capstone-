@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class profileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -27,6 +28,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
+    //var nickName: String = ""
+    var profileInfo: PFObject?
+    var name: String
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -40,6 +44,20 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
+        let query = PFQuery(className: "profileInfo")
+        query.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil{
+               // self.usernameLabel = profileInfo["username"] //storing from backend to this file
+                self.profileInfo = profileInfo!
+                profileInfo["username"] = name
+                //self.usernameLabel.text = name
+                //print(profileInfo)
+            }
+            else {print("error quering for posts: \(error)")}
+
+        }
+
+        //usernameLabel.text = nickName
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
