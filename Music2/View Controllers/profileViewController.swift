@@ -23,6 +23,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
