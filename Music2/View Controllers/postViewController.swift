@@ -53,6 +53,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var genresLabel: UILabel!
     
+    @IBOutlet weak var artistNameLabel: UILabel!
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -145,6 +146,12 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let artWork = attributes["artwork"] as! NSDictionary
                 let name = attributes["name"] as! String
                 let artistName = attributes["artistName"] as! String
+                
+                print("hello there")
+                print(artistName)
+                
+                
+               // self.artistNameLabel.text = artistName
                 self.songMenu.append(name)
                
                 //print(menuData.songName)
@@ -191,6 +198,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 DispatchQueue.main.async {
                     //STORE THIS
                 self.genresLabel.text = genreInfo
+                    self.artistNameLabel.text = artistName
                     self.genresLabel.backgroundColor = random(colors: myColors)
                     self.genresLabel.layer.masksToBounds = true
                     self.genresLabel.layer.cornerRadius = 8
@@ -238,19 +246,21 @@ class postViewController: UIViewController, UISearchBarDelegate {
         print("starting post")
         //Saving the post in the backend
         let posts = PFObject(className: "posts")
-        print("post 2")
+       
         posts["author"] = PFUser.current()
-        print("post 3")
+        
         posts["appleID"] = PFUser.current()?.username
-        print("post 4")
+        
         posts["username"] = " "
-        print("post 5")
+       
         
         posts["genre"] = self.genresLabel.text
-        print("post 6")
+        
         posts["song"] = self.songName.text
-        print("post 7")
+        
         posts["caption"] = self.captionTextfield.text!
+        
+        posts["artistName"] = self.artistNameLabel.text!
         
         let imageData = albumCoverImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)

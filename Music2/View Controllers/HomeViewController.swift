@@ -82,6 +82,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.albumCover.af_setImage(withURL: url)
+        let caption = post["caption"] as! String
+        cell.captionFromTheUser.text = caption
+        cell.artistNameLabel.text = post["artistName"] as! String
          
       
         
