@@ -9,4 +9,10 @@ import UIKit
 
 class postsCollectionViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var albumCover: UIImageView!
+    
+    
+    
+    
 }

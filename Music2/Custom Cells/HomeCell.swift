@@ -16,6 +16,11 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var profileImage: UIImageView!
     
     
+    @IBOutlet weak var onPlayButton: UIButton!
+    
+    
+    @IBOutlet weak var onPauseButton: UIButton!
+    
     @IBOutlet weak var userName: UILabel!
     
     @IBOutlet weak var captionFromTheUser: UILabel!

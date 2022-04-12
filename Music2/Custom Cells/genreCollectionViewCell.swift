@@ -9,4 +9,9 @@ import UIKit
 
 class genreCollectionViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var genreLabel: UILabel!
+    
+    
+    
 }
