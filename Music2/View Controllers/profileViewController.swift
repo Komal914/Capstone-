@@ -91,7 +91,7 @@ extension profileViewController {
         
         if (collectionView == genreCollectionView)
         {
-            return 8
+            return 4
         }
         
         return 30
