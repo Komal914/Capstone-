@@ -91,7 +91,7 @@ extension profileViewController {
         
         if (collectionView == genreCollectionView)
         {
-            return 8
+            return 4
         }
         
         return 30
@@ -100,8 +100,8 @@ extension profileViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
-        cell.backgroundColor = .systemBlue
-        cell.albumCover.image = UIImage(named:"bookmark")
+        //cell.backgroundColor = .systemBlue
+        //cell.albumCover.image = UIImage(named:"bookmark")
         
         if (collectionView == genreCollectionView)
         {
