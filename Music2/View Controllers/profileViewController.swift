@@ -34,7 +34,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
     //var nickName: String = ""
-    var profileInfo: PFObject?
+    var profileUser = [PFObject]()
     var name: String = ""
     
     private let itemsPerRow: CGFloat = 2
@@ -52,15 +52,23 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let query = PFQuery(className: "profileInfo")
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-               // self.usernameLabel = profileInfo["username"] //storing from backend to this file
-                //self.profileInfo = profileInfo!
-                //profileInfo["username"] = name
-                //self.usernameLabel.text = name
-                //print(profileInfo)
+                print(profileInfo)
+                let first = profileInfo?[1]
+                print(first)
+                let name = first?["username"] as! String
+                self.usernameLabel.text = name
+               
+    
+                
             }
             else {print("error quering for posts: \(error)")}
 
         }
+        
+        //let first = profileUser[0]
+       
+       // print(profileUser)
+//        usernameLabel.text = first["username"] as! String
         genreCollectionView.dataSource = self
         postsCollectionView.dataSource = self
 
