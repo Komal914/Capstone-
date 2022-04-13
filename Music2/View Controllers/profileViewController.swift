@@ -61,6 +61,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             else {print("error quering for posts: \(error)")}
 
         }
+        genreCollectionView.dataSource = self
+        postsCollectionView.dataSource = self
 
         //usernameLabel.text = nickName
         // Uncomment the following line to preserve selection between presentations
@@ -99,14 +101,14 @@ extension profileViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         cell.backgroundColor = .systemBlue
-        //cell.albumCover.image = UIImage(named:"bookmark")
+        cell.albumCover.image = UIImage(named:"bookmark")
         
         if (collectionView == genreCollectionView)
         {
             let cell2 = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
-            cell2.backgroundColor = .systemTeal
+            //cell2.backgroundColor = .systemTeal
             cell2.genreLabel.text = "Genre"
-            cell2.genreLabel.backgroundColor = .white
+            cell2.genreLabel.backgroundColor = .purple
             return cell2
         }
 
