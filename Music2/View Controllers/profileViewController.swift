@@ -35,7 +35,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //var nickName: String = ""
     var profileUser = [PFObject]()
+    var covers = [PFFileObject]()
     var name: String = ""
+    var genre: String = ""
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -46,6 +48,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     override func viewDidLoad() {
+        print("Genres: ", genre)
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
@@ -65,20 +68,21 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
 
         }
         
-        //let first = profileUser[0]
-       
-       // print(profileUser)
-//        usernameLabel.text = first["username"] as! String
+   
         genreCollectionView.dataSource = self
         postsCollectionView.dataSource = self
 
-        //usernameLabel.text = nickName
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
 
-        // Do any additional setup after loading the view.
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        print("Covers: ", covers)
+        
+        
+    }
+    
         
 }
 
@@ -108,8 +112,27 @@ extension profileViewController {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
+        
+        //MARK: PARSE POSTS
+        let query = PFQuery(className: "posts")
+        query.findObjectsInBackground{(posts, error) in
+            if posts != nil{
+
+                for post in posts! {
+                    let cover = post["cover"]  as! PFFileObject
+                    self.covers.append(cover)
+                    print("Covers: ", self.covers)
+                }
+
+
+            }
+            else {print("error quering for posts: \(error)")}
+
+        }
+        
         //cell.backgroundColor = .systemBlue
         //cell.albumCover.image = UIImage(named:"bookmark")
+        
         
         if (collectionView == genreCollectionView)
         {

@@ -308,6 +308,16 @@ class postViewController: UIViewController, UISearchBarDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let data = genresLabel.text
+        print(data)
+                
+            // Create a new variable to store the instance of the SecondViewController
+            // set the variable from the SecondViewController that will receive the data
+        let destinationVC = segue.destination as! profileViewController
+        destinationVC.genre = data! 
+        
+        
     }
     
 }
