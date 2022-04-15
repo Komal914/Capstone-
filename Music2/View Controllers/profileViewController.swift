@@ -35,6 +35,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     //var nickName: String = ""
     var profileUser = [PFObject]()
+    var lPosts = [PFObject]()
     var covers = [PFFileObject]()
     var name: String = ""
     var genre: String = ""
@@ -79,6 +80,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidAppear(animated)
         
 //        print("Covers: ", covers)
+      
         
         
     }
@@ -111,7 +113,7 @@ extension profileViewController {
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
+        let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         
         //MARK: PARSE POSTS
         let query = PFQuery(className: "posts")
@@ -119,9 +121,19 @@ extension profileViewController {
             if posts != nil{
 
                 for post in posts! {
+                    self.lPosts = posts!
                     let cover = post["cover"]  as! PFFileObject
                     self.covers.append(cover)
-                    print("Covers: ", self.covers)
+                   // print("Covers: ", self.covers)
+                   // self.postsCollectionView.reloadData()
+                    let post = self.lPosts[indexPath.row]
+                    //let user = post["appleID"] as! PFUser
+                    let imageFile = self.covers[indexPath.row]
+                    let urlString = imageFile.url!
+                    let url = URL(string: urlString)
+                    print(url)
+                    albumCell.albumCover.af_setImage(withURL: url!)
+                    
                 }
 
 
@@ -130,22 +142,28 @@ extension profileViewController {
 
         }
         
+     
+        
+       
+        
+        
+        
         //cell.backgroundColor = .systemBlue
         //cell.albumCover.image = UIImage(named:"bookmark")
         
         
         if (collectionView == genreCollectionView)
         {
-            let cell2 = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
+            let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
             //cell2.backgroundColor = .systemTeal
-            cell2.genreLabel.text = "Genre"
-            cell2.genreLabel.backgroundColor = .purple
-            return cell2
+            genreCell.genreLabel.text = "Genre"
+            genreCell.genreLabel.backgroundColor = .purple
+            return genreCell
         }
 
         // Configure the cell
 
-        return cell
+        return albumCell
     }
 }
 
