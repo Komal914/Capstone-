@@ -164,7 +164,6 @@
 		AAADCCE927E7A58E0077CB34 = {
 			isa = PBXGroup;
 			children = (
-				EE28469B27F3B15300633677 /* PlayerViewClass.swift */,
 				AAADCCF427E7A58E0077CB34 /* Music2 */,
 				AAADCD0E27E7A5910077CB34 /* Music2Tests */,
 				AAADCD1827E7A5920077CB34 /* Music2UITests */,
@@ -248,6 +247,7 @@
 				25F1E56E2802318000B891DF /* welcomeViewController.swift */,
 				25F1E5722805EAD600B891DF /* videoCommentsViewController.swift */,
 				25741ED628060B3E00C5FB23 /* editViewController.swift */,
+				EE28469B27F3B15300633677 /* PlayerViewClass.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
