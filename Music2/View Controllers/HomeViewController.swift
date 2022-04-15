@@ -74,6 +74,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
         cell.artistNameLabel.text = post["artistName"] as? String
+        print(indexPath.row)
         
         return cell
     }

@@ -12,6 +12,7 @@ import AlamofireImage
 import DropDown
 import SwiftUI
 import Parse
+import AVFoundation
 
 class postViewController: UIViewController, UISearchBarDelegate {
     
@@ -19,7 +20,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var songData = NSDictionary()
     var songMenu = [String]()
     var genre = NSArray()
+    var audios = [String]()
     var searchText = " "
+    var player: AVPlayer? //player for sound
     struct menuData {
 
         let songName: String
@@ -44,11 +47,47 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     
     @IBAction func onPlayButton(_ sender: Any) {
+        let sound = audios[0]
+        
+        
+        do {
+            //set up
+            try AVAudioSession.sharedInstance().setMode(.default)
+            try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            let url = URL(string: sound)
+            let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
+            print("dang")
+            player = AVPlayer(playerItem: playerItem)
+           
+            
+            print("dang")
+        
+            
+            
+            print("nooooo")
+            
+            guard let player = player else {
+    
+                return
+            }
+            print("about to play")
+            
+            player.play()
+            print("playing")
+
+
+            
+            
+        }
+        catch {print("something went wrong")}
+        
+        
     }
     
     
     
     @IBAction func onPauseButton(_ sender: Any) {
+        player?.pause()
     }
     
     
@@ -127,8 +166,15 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 // print(artWork)
                 let albumName = attributes["albumName"] as! String
                 let songInfo = albumName + "- " + name
-                let previews = attributes["previews"]   //music audio
-               
+                let previews = attributes["previews"] as! NSArray  //music audio
+                print("Music Audio: ",previews)
+                let audioDic = previews[0] as! NSDictionary //going inside the music preview array
+                print(audioDic)
+                let musicUrl = audioDic["url"] as! String
+                print(musicUrl)
+                self.audios.append(musicUrl)
+                
+                
                 let songLabel = songInfo
                 
                 //MARK: GENRE STUFF
