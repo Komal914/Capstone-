@@ -75,7 +75,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
         cell.artistNameLabel.text = post["artistName"] as? String
+        cell.genreLabel.text = post["genre"] as? String
+        cell.genreLabel.layer.masksToBounds = true
+        cell.genreLabel.layer.cornerRadius = 8
         let sound = post["audio"] as! String
+        
         
         let soundUrl = URL(string: sound)
         

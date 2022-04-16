@@ -14,6 +14,11 @@ class HomeCell: UITableViewCell {
     //MARK: GLOBAL VARS
         
     var avPlayer: AVPlayer?
+    
+    
+    @IBOutlet weak var genreLabel: UILabel!
+    
+    
 
     //This will be called everytime a new value is set on the videoplayer item
        var videoPlayerItem: AVPlayerItem? = nil {

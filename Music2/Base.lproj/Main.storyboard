@@ -477,7 +477,7 @@
                                                     <rect key="frame" x="143" y="531" width="45" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" systemColor="systemGreenColor"/>
+                                                    <color key="tintColor" red="0.68438058140000002" green="0.96921318769999998" blue="0.85198162649999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="play" catalog="system" title=" "/>
                                                     <connections>
@@ -488,15 +488,15 @@
                                                     <rect key="frame" x="208" y="531" width="41" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" systemColor="systemPinkColor"/>
+                                                    <color key="tintColor" red="0.91916561129999996" green="0.2468101915" blue="0.41641056999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="pause" catalog="system" title=" "/>
                                                     <connections>
                                                         <action selector="onPause:" destination="ddu-YV-UWV" eventType="touchUpInside" id="GHA-dT-rUL"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption from the user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1B-lo-ypF">
-                                                    <rect key="frame" x="128" y="581" width="166" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption from the user" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1B-lo-ypF">
+                                                    <rect key="frame" x="128" y="581" width="279" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -510,12 +510,15 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud2-DE-QHY">
-                                                    <rect key="frame" x="28" y="531" width="87" height="25"/>
+                                                    <rect key="frame" x="15" y="531" width="100" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" systemColor="systemPurpleColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dtf-K2-NY6">
                                                     <rect key="frame" x="279" y="531" width="50" height="31"/>
@@ -542,6 +545,7 @@
                                             <outlet property="albumNameSongName" destination="ajy-HM-Hy6" id="9cA-mR-k05"/>
                                             <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="uuk-bS-7MB"/>
                                             <outlet property="captionFromTheUser" destination="G1B-lo-ypF" id="Uwb-eM-Zhk"/>
+                                            <outlet property="genreLabel" destination="Ud2-DE-QHY" id="HuC-xx-Rpo"/>
                                             <outlet property="userName" destination="DjZ-2K-4G4" id="qXt-I9-TXC"/>
                                         </connections>
                                     </tableViewCell>
@@ -989,7 +993,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="mRQ-7C-fyw"/>
-        <segue reference="1yH-ZG-9jg"/>
+        <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="hand.thumbsup.fill" catalog="system" width="128" height="121"/>
@@ -1013,9 +1017,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
