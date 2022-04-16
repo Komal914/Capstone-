@@ -512,7 +512,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ud2-DE-QHY">
                                                     <rect key="frame" x="15" y="531" width="100" height="25"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                                                    <color key="backgroundColor" red="0.90588235294117647" green="0.27058823529411763" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -526,6 +526,9 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=" "/>
+                                                    <connections>
+                                                        <action selector="onLike:" destination="ddu-YV-UWV" eventType="touchUpInside" id="pHy-Fc-eyw"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjZ-2K-4G4">
                                                     <rect key="frame" x="28" y="585" width="45" height="14"/>
@@ -543,6 +546,7 @@
                                             <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="uuk-bS-7MB"/>
                                             <outlet property="captionFromTheUser" destination="G1B-lo-ypF" id="Uwb-eM-Zhk"/>
                                             <outlet property="genreLabel" destination="Ud2-DE-QHY" id="HuC-xx-Rpo"/>
+                                            <outlet property="likeButton" destination="dtf-K2-NY6" id="0Su-ak-joP"/>
                                             <outlet property="userName" destination="DjZ-2K-4G4" id="qXt-I9-TXC"/>
                                         </connections>
                                     </tableViewCell>
@@ -1017,9 +1021,6 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemPurpleColor">
-            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

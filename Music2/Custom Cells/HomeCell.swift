@@ -46,10 +46,18 @@ class HomeCell: UITableViewCell {
     
     //MARK: Outlets
     
-    @IBOutlet weak var artistImage: UIImageView!
     @IBOutlet weak var albumNameSongName: UILabel!
     @IBOutlet weak var albumCover: UIImageView!
-    @IBOutlet weak var profileImage: UIImageView!
+   
+    
+    @IBOutlet weak var likeButton: UIButton!
+    
+    @IBAction func onLike(_ sender: Any) {
+        likeButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+    }
+    
+    
+    
     
     
    
