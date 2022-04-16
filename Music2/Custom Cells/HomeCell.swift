@@ -14,6 +14,7 @@ class HomeCell: UITableViewCell {
     //MARK: GLOBAL VARS
         
     var avPlayer: AVPlayer?
+    var isActive: Bool = false
     
     
     @IBOutlet weak var genreLabel: UILabel!
@@ -72,8 +73,8 @@ class HomeCell: UITableViewCell {
     
     @IBOutlet weak var captionFromTheUser: UILabel!
     
-    @IBAction func likeButton(_ sender: Any) {
-    }
+    
+ 
     
     
     @IBAction func commentButton(_ sender: Any) {
