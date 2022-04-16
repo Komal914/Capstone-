@@ -22,6 +22,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var genre = NSArray()
     var audios = [String]()
     var searchText = " "
+    var audioDict = [String:String]()
     var player: AVPlayer? //player for sound
     struct menuData {
 
@@ -47,35 +48,30 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     
     @IBAction func onPlayButton(_ sender: Any) {
+        
+        
         let sound = audios[0]
+        
+        print(audios)
         
         
         do {
-            //set up
+            //setting up player settings
             try AVAudioSession.sharedInstance().setMode(.default)
             try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+            //Url to play
             let url = URL(string: sound)
             let playerItem:AVPlayerItem = AVPlayerItem(url: url!)
-            print("dang")
+            
             player = AVPlayer(playerItem: playerItem)
-           
-            
-            print("dang")
-        
-            
-            
-            print("nooooo")
-            
+            //guard incase player is nil
             guard let player = player else {
     
                 return
             }
-            print("about to play")
             
             player.play()
-            print("playing")
-
-
+    
             
             
         }
@@ -137,13 +133,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 self.songData = json?["results"] as! NSDictionary
-                
                 let songs = self.songData["songs"] as! NSDictionary
                 let numberOfSongs = songs["data"] as! NSArray
-                //print("amount of song: ", numberOfSongs.count)
-                
-                let countForSongs = numberOfSongs.count
-                
+            
+    
 //MARK: ONE SONG DATA
                 let firstSong = numberOfSongs[0] as! NSDictionary
                 // print(firstSong) api data for one song
@@ -152,18 +145,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let name = attributes["name"] as! String
                 let artistName = attributes["artistName"] as! String
                 
-                //print("hello there")
-                //print(artistName)
-                
-                
-                // self.artistNameLabel.text = artistName
+    
                 self.songMenu.append(name)
                
-                //print(menuData.songName)
-                //print(self.songMenu)
+//MARK: DROPDOWN DATASOURCE
                 self.dropDown.dataSource = self.songMenu
-                //self.dropDown.dataSource = self.images
-                // print(artWork)
                 let albumName = attributes["albumName"] as! String
                 let songInfo = albumName + "- " + name
                 let previews = attributes["previews"] as! NSArray  //music audio
