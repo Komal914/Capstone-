@@ -144,13 +144,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		25C42D5027E7FAB300C9C14A /* Header */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
 		641EC123B813413A39BC5924 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -188,7 +181,6 @@
 			children = (
 				AAADCD3B27E810F40077CB34 /* Music2.entitlements */,
 				EEC7BF2327E7B3E700A882F6 /* Assets */,
-				25C42D5027E7FAB300C9C14A /* Header */,
 				EEC7BF2127E7B3BC00A882F6 /* Custom Cells */,
 				EEC7BF2027E7B3B000A882F6 /* View Controllers */,
 				EEC7BF2227E7B3C900A882F6 /* Delegates */,

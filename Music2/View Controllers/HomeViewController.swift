@@ -7,6 +7,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -64,17 +65,40 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         reversePosts = posts.reversed()
         //print("reversed:", reversePosts)
         let post = reversePosts[indexPath.row]
-
+        
+        //songinfo
         cell.albumNameSongName.text = post["song"] as? String
-
+        
+        //song cover
         let imageFile = post["cover"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.albumCover.af.setImage(withURL: url)
+        
+        //caption
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
+        
+        //artist name
         cell.artistNameLabel.text = post["artistName"] as? String
-        print(indexPath.row)
+        
+        //genres
+        cell.genreLabel.text = post["genre"] as? String
+        cell.genreLabel.layer.masksToBounds = true
+        cell.genreLabel.layer.cornerRadius = 8
+        
+        
+        //sound file
+        let sound = post["audio"] as! String
+        let soundUrl = URL(string: sound)
+        //sendng music url to cell class
+        cell.videoPlayerItem = AVPlayerItem.init(url: soundUrl!)
+        
+        
+        //like button
+        //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
+       
+       
         
         return cell
     }
