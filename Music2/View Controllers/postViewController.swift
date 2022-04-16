@@ -12,7 +12,7 @@ import AlamofireImage
 import DropDown
 import SwiftUI
 import Parse
-import AVFoundation
+
 
 class postViewController: UIViewController, UISearchBarDelegate {
     

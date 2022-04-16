@@ -7,6 +7,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -74,7 +75,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
         cell.artistNameLabel.text = post["artistName"] as? String
-        print(indexPath.row)
+        let sound = post["audio"] as! String
+        
+        let soundUrl = URL(string: sound)
+        
+        print("sound at Home: ", sound, " for cell ", indexPath.row)
+        cell.videoPlayerItem = AVPlayerItem.init(url: soundUrl!)
+        
+        
+       
+       
         
         return cell
     }
