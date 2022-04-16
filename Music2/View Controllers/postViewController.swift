@@ -22,7 +22,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var genre = NSArray()
     var audios = [String]()
     var searchText = " "
-    var audioDict = [String:String]()
+    var audioIndex = 0
+    var sound: String = ""
     var player: AVPlayer? //player for sound
     struct menuData {
 
@@ -49,8 +50,16 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     @IBAction func onPlayButton(_ sender: Any) {
         
+        if audios.count == 0 { return} //incase the user did not search and my array is empty
+        //if there is one sound in array, play that sound
+        if(audios.count == 1){
+            sound = audios[0]
+        }
+        //more than one audio in array
+        else{
+            sound = audios.last!
+        }
         
-        let sound = audios[0]
         
         print(audios)
         
@@ -101,17 +110,13 @@ class postViewController: UIViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //print("searchText \(searchBar.text)")
-        searchText = searchBar.text!
+        searchText = searchBar.text! //user input
         
         //MARK: Replace
         let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
         let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
         let final = base + replaced
-        //print("URL TO CALL: ", final)
-//        let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
-//        let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
- 
+  
         
         // user token
         let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
@@ -159,6 +164,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 let musicUrl = audioDic["url"] as! String
                 print(musicUrl)
                 self.audios.append(musicUrl)
+                
+                
+               
+                
+                
                 
                 
                 let songLabel = songInfo
