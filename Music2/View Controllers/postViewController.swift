@@ -49,8 +49,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
     
     
     @IBAction func onPlayButton(_ sender: Any) {
-        
-        if audios.count == 0 { return} //incase the user did not search and my array is empty
+        //incase the user did not search and my array is empty
+        if audios.count == 0 { return}
         //if there is one sound in array, play that sound
         if(audios.count == 1){
             sound = audios[0]
@@ -60,8 +60,6 @@ class postViewController: UIViewController, UISearchBarDelegate {
             sound = audios.last!
         }
         
-        
-        print(audios)
         
         
         do {
@@ -261,6 +259,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
         let imageData = albumCoverImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)
         posts["cover"] = file
+        posts["audio"] = audios.last!
         
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
