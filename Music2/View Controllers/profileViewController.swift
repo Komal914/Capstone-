@@ -125,16 +125,17 @@ extension profileViewController {
                     let cover = post["cover"]  as! PFFileObject
                     self.covers.append(cover)
                    // print("Covers: ", self.covers)
-                   // self.postsCollectionView.reloadData()
+                    self.postsCollectionView.reloadData()
                     let post = self.lPosts[indexPath.row]
-                    print("post: ", post, " at ", indexPath.row)
-                    //let user = post["appleID"] as! PFUser
-                    //let imageFile = self.covers[indexPath.row]
-                    //print(imageFile)
-                    //let urlString = imageFile.url!
-                    //let url = URL(string: urlString)
-                    //print(url)
-                   // albumCell.albumCover.af.setImage(withURL: url!)
+                    //print("post: ", post, " at ", indexPath.row)
+                    let user = post["author"] as! PFUser
+                    //print(user)
+//                    let imageFile = self.covers[indexPath.row]
+//                    //print(imageFile)
+//                    let urlString = imageFile.url!
+//                    let url = URL(string: urlString)
+//                    //print(url)
+//                    albumCell.albumCover.af.setImage(withURL: url!)
                     
                 }
 
