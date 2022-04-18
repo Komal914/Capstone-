@@ -548,7 +548,7 @@
                                         <connections>
                                             <outlet property="albumCover" destination="pL4-cu-iY2" id="xsh-GV-27Q"/>
                                             <outlet property="albumNameSongName" destination="ajy-HM-Hy6" id="9cA-mR-k05"/>
-                                            <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="uuk-bS-7MB"/>
+                                            <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="DbL-JG-SaT"/>
                                             <outlet property="captionFromTheUser" destination="G1B-lo-ypF" id="Uwb-eM-Zhk"/>
                                             <outlet property="genreLabel" destination="Ud2-DE-QHY" id="HuC-xx-Rpo"/>
                                             <outlet property="likeButton" destination="dtf-K2-NY6" id="0Su-ak-joP"/>
@@ -998,7 +998,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="clB-q2-XDa"/>
+        <segue reference="mRQ-7C-fyw"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>

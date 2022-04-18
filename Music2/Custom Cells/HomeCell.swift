@@ -49,6 +49,7 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var albumNameSongName: UILabel!
     @IBOutlet weak var albumCover: UIImageView!
    
+    @IBOutlet weak var artistNameLabel: UILabel!
     
     @IBOutlet weak var likeButton: UIButton!
     
@@ -56,17 +57,45 @@ class HomeCell: UITableViewCell {
     
     
     @IBAction func onLike(_ sender: UIButton) {
+        let homeLikes = PFObject(className: "homeLikes")
         if isActive {
             isActive = false
             likeButton.tintColor = .systemPink
+            homeLikes["author"] = PFUser.current()
+            homeLikes["appleID"] = PFUser.current()?.username
+            homeLikes["username"] = " "
             
+            homeLikes["genre"] = self.genreLabel.text
+           
+            homeLikes["artistName"] = self.artistNameLabel.text
+            
+            homeLikes.saveInBackground { (succeeded, error)  in
+                if (succeeded) {
+                    // The object has been saved.
+                  print("home like saved!")
+                } else {
+                   // print("error on saving data: \(error?.localizedDescription)")
+                }
+            }
         }
         
         else {
-            isActive = true            
+            isActive = true
             likeButton.tintColor = .white
+            homeLikes.deleteInBackground() { (success, error) in
+                if success{
+                    print("deleted")
+                }
+                else{
+                    print("not deleted ")
+                }
+            }
+            
         }
+        
+
     }
+    
     
     
    
@@ -98,7 +127,7 @@ class HomeCell: UITableViewCell {
     }
     
     
-    @IBOutlet weak var artistNameLabel: UILabel!
+
     
 
     override func awakeFromNib() {
