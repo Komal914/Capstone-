@@ -18,13 +18,34 @@ class MusicVideosCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton!
     
+    
+    @IBAction func onLike(_ sender: UIButton) {
+        
+        if isActive {
+            isActive = false
+            likeButton.tintColor = .systemPink
+            
+        }
+        
+        else {
+            isActive = true
+            likeButton.tintColor = .white
+        }
+        
+    }
+    
+    
+    
+    
     @IBOutlet weak var commentButton: UIButton!
+    
     
 //MARK: GLOBAL VARS
     
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
     var paused: Bool = false
+    var isActive: Bool = true //for like button
     
     
     //This will be called everytime a new value is set on the videoplayer item

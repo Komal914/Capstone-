@@ -285,8 +285,12 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyE-VZ-sEn">
                                                     <rect key="frame" x="364" y="480" width="50" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" image="heart" catalog="system" title=" "/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="heart" catalog="system" title=" "/>
+                                                    <connections>
+                                                        <action selector="onLike:" destination="ax3-9t-CTV" eventType="touchUpInside" id="cNn-ON-10H"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Album name- song Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aA9-1F-ZJN">
                                                     <rect key="frame" x="9" y="521" width="194" height="21"/>
@@ -310,8 +314,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t2W-cx-lFr">
                                                     <rect key="frame" x="363" y="511" width="53" height="31"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="filled" image="text.bubble" catalog="system" title=" "/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="text.bubble" catalog="system" title=" "/>
                                                     <connections>
                                                         <action selector="commentsButton:" destination="Gdk-5l-1j5" eventType="touchUpInside" id="gfn-in-lpc"/>
                                                         <segue destination="Upd-jq-qyx" kind="presentation" identifier="musicCommentSegue" id="clB-q2-XDa"/>
@@ -993,7 +998,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mRQ-7C-fyw"/>
+        <segue reference="clB-q2-XDa"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>
