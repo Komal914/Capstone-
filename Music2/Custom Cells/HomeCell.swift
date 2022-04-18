@@ -14,7 +14,7 @@ class HomeCell: UITableViewCell {
     //MARK: GLOBAL VARS
         
     var avPlayer: AVPlayer?
-    var isActive: Bool = false
+    var isActive: Bool = true
     
     
     @IBOutlet weak var genreLabel: UILabel!
@@ -52,12 +52,21 @@ class HomeCell: UITableViewCell {
     
     @IBOutlet weak var likeButton: UIButton!
     
-    @IBAction func onLike(_ sender: Any) {
-        likeButton.setImage(UIImage(named: "heart.fill"), for: .normal)
+ 
+    
+    
+    @IBAction func onLike(_ sender: UIButton) {
+        if isActive {
+            isActive = false
+            likeButton.tintColor = .systemPink
+            
+        }
+        
+        else {
+            isActive = true            
+            likeButton.tintColor = .white
+        }
     }
-    
-    
-    
     
     
    
