@@ -36,7 +36,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     //var nickName: String = ""
     var profileUser = [PFObject]()
     var lPosts = [PFObject]()
-    var covers = [PFFileObject]()
+    //var covers = [PFFileObject]()
     var name: String = ""
     var genre: String = ""
     
@@ -56,16 +56,16 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let query = PFQuery(className: "profileInfo")
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-                print(profileInfo)
+                //print(profileInfo)
                 let first = profileInfo?[1]
-                print(first)
+                //print(first)
                 let name = first?["username"] as! String
                 self.usernameLabel.text = name
                
     
                 
             }
-            else {print("error quering for posts: \(error)")}
+            else {print("error quering for posts: \(String(describing: error))")}
 
         }
         
@@ -80,6 +80,15 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidAppear(animated)
         
 //        print("Covers: ", covers)
+//        let query = PFQuery(className: "posts")
+//        query.includeKey("author")
+//
+//        query.findObjectsInBackground{ (posts, error) in
+//            if posts != nil {
+//                self.lPosts = posts!
+//                self.postsCollectionView.reloadData()
+//            }
+//        }
       
         
         
@@ -108,7 +117,7 @@ extension profileViewController {
             return 4
         }
         
-        return 30
+        return lPosts.count
     }
     
     
@@ -116,34 +125,55 @@ extension profileViewController {
         let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         
         //MARK: PARSE POSTS
+        
         let query = PFQuery(className: "posts")
-        query.findObjectsInBackground{(posts, error) in
-            if posts != nil{
-
-                for post in posts! {
-                    self.lPosts = posts!
-                    let cover = post["cover"]  as! PFFileObject
-                    self.covers.append(cover)
-                   // print("Covers: ", self.covers)
-                    self.postsCollectionView.reloadData()
-                    let post = self.lPosts[indexPath.row]
-                    //print("post: ", post, " at ", indexPath.row)
-                    let user = post["author"] as! PFUser
-                    //print(user)
+        query.includeKey("author")
+        query.limit = 20
+        
+        query.findObjectsInBackground{ (posts, error) in
+            if posts != nil {
+                self.lPosts = posts!
+                self.postsCollectionView.reloadData()
+                let post = self.lPosts[indexPath.row]
+                let user = post["author"] as! PFUser
+                
+                let imageFile = post["cover"] as! PFFileObject
+                let urlString = imageFile.url!
+                let url = URL(string: urlString)
+                albumCell.albumCover.af.setImage(withURL: url!)
+            }
+        }
+        
+        
+//        let query = PFQuery(className: "posts")
+//        query.findObjectsInBackground{(posts, error) in
+//            if posts != nil{
+//
+//                for post in posts! {
+//                    self.posts = posts!
+//                    let cover = post["cover"]  as! PFFileObject
+//                    self.covers.append(cover)
+//                   // print("Covers: ", self.covers)
+//                    //self.postsCollectionView.reloadData()
+//                    let post = self.posts[indexPath.row]
+//                    //print("post: ", post, " at ", indexPath.row)
+//                    let user = post["author"] as! PFUser
+//                    //print(user)
 //                    let imageFile = self.covers[indexPath.row]
 //                    //print(imageFile)
 //                    let urlString = imageFile.url!
 //                    let url = URL(string: urlString)
 //                    //print(url)
 //                    albumCell.albumCover.af.setImage(withURL: url!)
-                    
-                }
-
-
-            }
-            else {print("error quering for posts: \(error)")}
-
-        }
+//
+//                }
+//
+//
+//            }
+//            else {print("error quering for posts: \(error)")}
+//
+//        }
+        
         
      
         
