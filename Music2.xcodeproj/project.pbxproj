@@ -227,19 +227,59 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		EEC7BF2027E7B3B000A882F6 /* View Controllers */ = {
+		EE145239280FA89A009EC85B /* intro */ = {
 			isa = PBXGroup;
 			children = (
 				EEC7BF2A27E7B46700A882F6 /* signInViewController.swift */,
-				EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */,
-				EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */,
-				25C42D5527E7FD7300C9C14A /* postViewController.swift */,
-				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
 				AAADCD8827F26FE80077CB34 /* swipeViewController.swift */,
 				25F1E56E2802318000B891DF /* welcomeViewController.swift */,
-				25F1E5722805EAD600B891DF /* videoCommentsViewController.swift */,
-				25741ED628060B3E00C5FB23 /* editViewController.swift */,
+			);
+			path = intro;
+			sourceTree = "<group>";
+		};
+		EE14523A280FA900009EC85B /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		EE14523B280FA917009EC85B /* Music Videos */ = {
+			isa = PBXGroup;
+			children = (
 				EE28469B27F3B15300633677 /* PlayerViewClass.swift */,
+				EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */,
+				25F1E5722805EAD600B891DF /* videoCommentsViewController.swift */,
+			);
+			path = "Music Videos";
+			sourceTree = "<group>";
+		};
+		EE14523D280FA955009EC85B /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				25C42D5527E7FD7300C9C14A /* postViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		EE14523E280FA976009EC85B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
+				25741ED628060B3E00C5FB23 /* editViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		EEC7BF2027E7B3B000A882F6 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EE14523E280FA976009EC85B /* Profile */,
+				EE14523D280FA955009EC85B /* Post */,
+				EE145239280FA89A009EC85B /* intro */,
+				EE14523A280FA900009EC85B /* Home */,
+				EE14523B280FA917009EC85B /* Music Videos */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";

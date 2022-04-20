@@ -135,7 +135,7 @@ extension profileViewController {
                 self.lPosts = posts!
                 self.postsCollectionView.reloadData()
                 let post = self.lPosts[indexPath.row]
-                let user = post["author"] as! PFUser
+                //let user = post["author"] as! PFUser
                 
                 let imageFile = post["cover"] as! PFFileObject
                 let urlString = imageFile.url!
