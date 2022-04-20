@@ -130,13 +130,15 @@ extension profileViewController {
         let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         
         
-        let secondsToDelay = 0.1
+        let secondsToDelay = 0.2
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
            print("This message is delayed")
            // Put any code you want to be delayed here
            // print(self.lPosts)
+            var reversePosts = [PFObject]()
+            reversePosts = self.lPosts.reversed()
             
-            let post = self.lPosts[indexPath.row]
+            let post = reversePosts[indexPath.row]
             let user = post["author"] as! PFUser
     
             let imageFile = post["cover"] as! PFFileObject
