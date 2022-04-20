@@ -49,14 +49,16 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     override func viewDidLoad() {
-        print("Genres: ", genre)
+        //print("Genres: ", genre)
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        
+        
         
         let query = PFQuery(className: "profileInfo")
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-                //print(profileInfo)
+                print(profileInfo)
                 let first = profileInfo?[1]
                 //print(first)
                 let name = first?["username"] as! String
@@ -79,16 +81,19 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        print("Covers: ", covers)
-//        let query = PFQuery(className: "posts")
-//        query.includeKey("author")
-//
-//        query.findObjectsInBackground{ (posts, error) in
-//            if posts != nil {
-//                self.lPosts = posts!
-//                self.postsCollectionView.reloadData()
-//            }
-//        }
+        //MARK: PARSE POSTS
+        
+        let query = PFQuery(className: "posts")
+        query.includeKey("author")
+        query.limit = 20
+        
+        query.findObjectsInBackground{ (posts, error) in
+            if posts != nil {
+                self.lPosts = posts!
+                self.postsCollectionView.reloadData()
+                
+            }
+        }
       
         
         
@@ -124,65 +129,25 @@ extension profileViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         
-        //MARK: PARSE POSTS
         
-        let query = PFQuery(className: "posts")
-        query.includeKey("author")
-        query.limit = 20
-        
-        query.findObjectsInBackground{ (posts, error) in
-            if posts != nil {
-                self.lPosts = posts!
-                self.postsCollectionView.reloadData()
-                let post = self.lPosts[indexPath.row]
-                let user = post["author"] as! PFUser
-                
-                let imageFile = post["cover"] as! PFFileObject
-                let urlString = imageFile.url!
-                let url = URL(string: urlString)
-                albumCell.albumCover.af.setImage(withURL: url!)
-            }
+        let secondsToDelay = 0.1
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
+           print("This message is delayed")
+           // Put any code you want to be delayed here
+           // print(self.lPosts)
+            
+            let post = self.lPosts[indexPath.row]
+            let user = post["author"] as! PFUser
+    
+            let imageFile = post["cover"] as! PFFileObject
+            let urlString = imageFile.url!
+            let url = URL(string: urlString)
+            albumCell.albumCover.af.setImage(withURL: url!)
         }
-        
-        
-//        let query = PFQuery(className: "posts")
-//        query.findObjectsInBackground{(posts, error) in
-//            if posts != nil{
-//
-//                for post in posts! {
-//                    self.posts = posts!
-//                    let cover = post["cover"]  as! PFFileObject
-//                    self.covers.append(cover)
-//                   // print("Covers: ", self.covers)
-//                    //self.postsCollectionView.reloadData()
-//                    let post = self.posts[indexPath.row]
-//                    //print("post: ", post, " at ", indexPath.row)
-//                    let user = post["author"] as! PFUser
-//                    //print(user)
-//                    let imageFile = self.covers[indexPath.row]
-//                    //print(imageFile)
-//                    let urlString = imageFile.url!
-//                    let url = URL(string: urlString)
-//                    //print(url)
-//                    albumCell.albumCover.af.setImage(withURL: url!)
-//
-//                }
-//
-//
-//            }
-//            else {print("error quering for posts: \(error)")}
-//
-//        }
-        
-        
-     
-        
-       
+
         
         
         
-        //cell.backgroundColor = .systemBlue
-        //cell.albumCover.image = UIImage(named:"bookmark")
         
         
         if (collectionView == genreCollectionView)
