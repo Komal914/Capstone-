@@ -25,7 +25,7 @@ class welcomeViewController: UIViewController {
             if (succeeded) {
                 // The object has been saved.
             } else {
-                print("error on saving data: \(error?.localizedDescription)")
+                //print("error on saving data: \(error?.localizedDescription)")
             }
         }
         
