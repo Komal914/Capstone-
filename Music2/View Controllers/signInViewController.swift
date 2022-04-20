@@ -126,7 +126,7 @@ class signInViewController: UIViewController {
             }
 
             do {
-                _ = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             }
             catch {
             }
