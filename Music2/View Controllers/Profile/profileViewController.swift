@@ -8,6 +8,7 @@
 import UIKit
 import Parse
 
+
 class profileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     @IBOutlet weak var postsLabel: UILabel!
@@ -56,13 +57,24 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         let query = PFQuery(className: "profileInfo")
+        
+        let user = PFUser.current()
+        print("user: ", user)
+        let userID = user!["username"] as! String
+        print(userID)
+        
+        query.whereKey("appleID", equalTo: userID)
+        
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-                print(profileInfo)
-                let first = profileInfo?[1]
-                //print(first)
-                let name = first?["username"] as! String
-                self.usernameLabel.text = name
+                
+                let array = profileInfo
+              
+                let obj = array?[0]
+                let userName = obj!["username"] as! String 
+                self.usernameLabel.text = userName
+                                       
+             
                
     
                 
@@ -129,18 +141,18 @@ extension profileViewController {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "postsCollectionViewCell", for: indexPath) as! postsCollectionViewCell
         
+        if lPosts.count == 0 {
+            print("empty")
+        }
         
-        let secondsToDelay = 0.2
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
-           print("This message is delayed")
-           // Put any code you want to be delayed here
-           // print(self.lPosts)
+        
+//avoids the app from crashing
+//the lpost array is empty while the database is being queried
+        if lPosts.count != 0 {
             var reversePosts = [PFObject]()
             reversePosts = self.lPosts.reversed()
-            
             let post = reversePosts[indexPath.row]
-            let user = post["author"] as! PFUser
-    
+            //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
             let urlString = imageFile.url!
             let url = URL(string: urlString)
