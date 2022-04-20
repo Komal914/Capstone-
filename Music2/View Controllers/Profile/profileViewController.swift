@@ -56,7 +56,10 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let query = PFQuery(className: "profileInfo")
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-                //print(profileInfo)
+                print(profileInfo)
+                let index = profileInfo!.last
+                print("This is the index:")
+                print(index)
                 let first = profileInfo?[1]
                 //print(first)
                 let name = first?["username"] as! String
@@ -135,7 +138,7 @@ extension profileViewController {
                 self.lPosts = posts!
                 self.postsCollectionView.reloadData()
                 let post = self.lPosts[indexPath.row]
-                //let user = post["author"] as! PFUser
+                let user = post["author"] as! PFUser
                 
                 let imageFile = post["cover"] as! PFFileObject
                 let urlString = imageFile.url!
