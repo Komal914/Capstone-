@@ -56,10 +56,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let query = PFQuery(className: "profileInfo")
         query.findObjectsInBackground{(profileInfo, error) in
             if profileInfo != nil{
-                print(profileInfo)
-                let index = profileInfo!.last
-                print("This is the index:")
-                print(index)
+                //print(profileInfo)
                 let first = profileInfo?[1]
                 //print(first)
                 let name = first?["username"] as! String

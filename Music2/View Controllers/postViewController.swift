@@ -211,7 +211,10 @@ class postViewController: UIViewController, UISearchBarDelegate {
                     
                 let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
                 let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
-               
+                let menuData: [menuData] = [menuData(songName: name, albumCover: finalUrl)
+                    ]
+               // print("MenuData", menuData)
+               // print(finalUrl)
                         
                 let url = NSURL(string:finalUrl)
                 let imagedata = NSData.init(contentsOf: url! as URL)
@@ -348,7 +351,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let data = genresLabel.text
-        //print(data)
+        print(data)
                 
             // Create a new variable to store the instance of the SecondViewController
             // set the variable from the SecondViewController that will receive the data
