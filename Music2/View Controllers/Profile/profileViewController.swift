@@ -96,6 +96,11 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         //MARK: PARSE POSTS
         
         let query = PFQuery(className: "posts")
+        
+        let user = PFUser.current()
+        let userID = user!["username"] as! String
+                
+        query.whereKey("appleID", equalTo: userID)
         query.includeKey("author")
         query.limit = 20
         

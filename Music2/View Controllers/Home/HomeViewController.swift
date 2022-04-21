@@ -14,33 +14,33 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     var user: User?
     var posts = [PFObject]()
+    var Name = String()
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //print("hello")
+        
         let query = PFQuery(className: "posts")
         query.findObjectsInBackground{(posts, error) in
             if posts != nil{
                 self.posts = posts! //storing from backend to this file
                 self.table.reloadData()
-                //print(self.posts)
             }
             else {
                 print("error quering for posts: \(String(describing: error))")
             }
         }
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //navigationItem.title = "Home"
         self.navigationController?.navigationBar.isHidden = true
         
         table.delegate = self
         table.dataSource = self
         
-        //print(user?.debugDescription ?? "")
-        //print("Print statement for ID: ", user?.id ?? "default")
+        
 
         // Do any additional setup after loading the view.
     }
@@ -63,7 +63,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var reversePosts = [PFObject]()
         reversePosts = posts.reversed()
-        //print("reversed:", reversePosts)
         let post = reversePosts[indexPath.row]
         
         //songinfo
@@ -89,6 +88,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         //sound file
+        
         let sound = post["audio"] as! String
         let soundUrl = URL(string: sound)
         //sendng music url to cell class
@@ -97,6 +97,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         //like button
         //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
+        
+        //username
+        let userName = post["username"] as! String
+        cell.userName.text = userName
+        
+                
+        
     
             
        
