@@ -25,7 +25,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var audioIndex = 0
     var sound: String = ""
     var player: AVPlayer? //player for sound
-    var userName = String()
+    var userName = [PFObject]()
     struct menuData {
 
         let songName: String
@@ -244,22 +244,39 @@ class postViewController: UIViewController, UISearchBarDelegate {
             dropDown.show()
         }
     
-    @IBAction func onPost(_ sender: Any) {
-        print("starting post")
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //MARK: USERNAME
         
-        //Saving the post in the backend
-        print("before post")
-        print(userName)
+        let query = PFQuery(className: "profileInfo") //search this class
+        let user = PFUser.current()
+        let userID = user!["username"] as! String
+        query.whereKey("appleID", equalTo: userID) //search by current user
+        query.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil{
+                //accessing the data inside
+                self.userName = profileInfo!
+            }
+            else {print("error quering for posts: \(String(describing: error))")}
+        
+
+        }
+    }
+    
+    @IBAction func onPost(_ sender: Any) {
+        
+        let obj = self.userName[0]
+        let name = obj["username"] as! String
+        let username = name
+        
         let posts = PFObject(className: "posts")
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
-        
-        
-        
         posts["genre"] = self.genresLabel.text
         posts["song"] = self.songName.text
         posts["caption"] = self.captionTextfield.text!
         posts["artistName"] = self.artistNameLabel.text!
+        posts["username"] = username
         
         let imageData = albumCoverImageView.image!.pngData()
         let file = PFFileObject(data: imageData!)
@@ -280,26 +297,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
 
         
         
-        //MARK: USERNAME
-        
-        let query = PFQuery(className: "profileInfo") //search this class
-        let user = PFUser.current()
-        let userID = user!["username"] as! String
-        query.whereKey("appleID", equalTo: userID) //search by current user
-        query.findObjectsInBackground{(profileInfo, error) in
-            if profileInfo != nil{
-                //accessing the data inside
-                let array = profileInfo
-                let obj = array?[0]
-                let name = obj!["username"] as! String
-                self.userName = name
-               
-            }
-            else {print("error quering for posts: \(String(describing: error))")}
-            
-            print("the user name inside: 2", self.userName)
-
-        }
+       
 
         
         print(userName)
