@@ -73,6 +73,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 let obj = array?[0]
                 let userName = obj!["username"] as! String 
                 self.usernameLabel.text = userName
+                let bio = obj!["bio"] as! String
+                self.bioLabel.text = bio
             }
             else {print("error quering for posts: \(String(describing: error))")}
         }

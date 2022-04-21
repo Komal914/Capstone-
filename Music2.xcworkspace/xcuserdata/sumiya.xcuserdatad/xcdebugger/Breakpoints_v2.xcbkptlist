@@ -14,8 +14,8 @@
             filePath = "Music2/View Controllers/Profile/editViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "doneButton(_:)"
             landmarkType = "7">
          </BreakpointContent>

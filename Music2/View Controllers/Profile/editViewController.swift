@@ -14,6 +14,26 @@ class editViewController: UIViewController {
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBAction func doneButton(_ sender: Any) {
+        
+        let query = PFQuery(className: "profileInfo")
+        let user = PFUser.current()
+        //print("user: ", user)
+        let userID = user!["username"] as! String
+        //print(userID)
+        query.whereKey("appleID", equalTo: userID)
+        
+        query.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil{
+                let profInfo = PFObject(className: "profileInfo")
+                let array = profileInfo
+                let obj = array?[0]
+                var bio = obj!["bio"] as! String
+                bio = self.editBioTextField.text!
+                profInfo["bio"] = self.editBioTextField.text!
+                profInfo.saveInBackground()
+            }
+            else {print("error quering for posts: \(String(describing: error))")}
+        }
 //        let profileInfo = PFObject(className:"profileInfo")
 //        profileInfo["appleID"] = PFUser.current()?.username
 //        profileInfo["bio"] = editBioTextField.text!
