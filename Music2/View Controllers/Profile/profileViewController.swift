@@ -31,10 +31,12 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+
+    
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
-    //var nickName: String = ""
+    var bioText: String = ""
     var profileUser = [PFObject]()
     var lPosts = [PFObject]()
     //var covers = [PFFileObject]()
@@ -54,6 +56,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
+        bioLabel.text = bioText
         
         
         let query = PFQuery(className: "profileInfo")

@@ -7,27 +7,14 @@
 
 import UIKit
 import Parse
+import LocalAuthentication
 
 class editViewController: UIViewController {
     
-    var bioText = ""
+    
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBAction func doneButton(_ sender: Any) {
-//        let profileInfo = PFObject(className:"profileInfo")
-//        profileInfo["appleID"] = PFUser.current()?.username
-//        profileInfo["bio"] = editBioTextField.text!
-//
-//        profileInfo.saveInBackground { (succeeded, error)  in
-//            if (succeeded) {
-//                // The object has been saved.
-//            } else {
-//                print("error on saving data: \(String(describing: error?.localizedDescription))")
-//            }
-//        }
-//
-        self.dismiss(animated: true, completion: nil)
-        self.bioText = editBioTextField.text!
     }
     @IBOutlet weak var editBioTextField: UITextField!
     
@@ -44,14 +31,17 @@ class editViewController: UIViewController {
     }
 
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let bioText = editBioTextField.text ?? ""
+
+        let destinationVC = segue.destination as! profileViewController
+        destinationVC.bioText = bioText
     }
-    */
 
 }
