@@ -31,6 +31,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         
+        
+        
     }
     
     override func viewDidLoad() {
@@ -51,7 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func homeCommentButton(_ sender: Any) {
-        performSegue(withIdentifier: "homeCommentSegue", sender: self)
+        performSegue(withIdentifier: "homeComment", sender: self)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 672 //or whatever you need
@@ -99,8 +101,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
         
         //username
-        //let userName = post["username"] as! String
-        //cell.userName.text = userName
+        let userName = post["username"] as! String
+        cell.userName.text = userName
         
                 
         
