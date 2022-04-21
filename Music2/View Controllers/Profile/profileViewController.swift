@@ -59,9 +59,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         let query = PFQuery(className: "profileInfo")
         
         let user = PFUser.current()
-        print("user: ", user)
+        //print("user: ", user)
         let userID = user!["username"] as! String
-        print(userID)
+        //print(userID)
         
         query.whereKey("appleID", equalTo: userID)
         
@@ -73,14 +73,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 let obj = array?[0]
                 let userName = obj!["username"] as! String 
                 self.usernameLabel.text = userName
-                                       
-             
-               
-    
-                
             }
             else {print("error quering for posts: \(String(describing: error))")}
-
         }
         
    

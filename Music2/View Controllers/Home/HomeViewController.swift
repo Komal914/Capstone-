@@ -99,8 +99,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
         
         //username
-        let userName = post["username"] as! String
-        cell.userName.text = userName
+        //let userName = post["username"] as! String
+        //cell.userName.text = userName
         
                 
         

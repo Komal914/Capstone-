@@ -82,14 +82,15 @@ class HomeCell: UITableViewCell {
         else {
             isActive = true
             likeButton.tintColor = .white
-            homeLikes.deleteInBackground() { (success, error) in
-                if success{
-                    print("deleted")
-                }
-                else{
-                    print("not deleted ")
-                }
-            }
+            homeLikes.deleteEventually()
+//            homeLikes.deleteInBackground() { (success, error) in
+//                if success{
+//                    print("deleted")
+//                }
+//                else{
+//                    print("not deleted ")
+//                }
+//            }
             
         }
         

@@ -14,18 +14,18 @@ class editViewController: UIViewController {
     @IBOutlet weak var captionLabel: UILabel!
     
     @IBAction func doneButton(_ sender: Any) {
-        let profileInfo = PFObject(className:"profileInfo")
-        profileInfo["appleID"] = PFUser.current()?.username
-        profileInfo["bio"] = editBioTextField.text!
-        //profileInfo["username"] = nameTextField.text!
-        //name = nameTextField.text!
-        profileInfo.saveInBackground { (succeeded, error)  in
-            if (succeeded) {
-                // The object has been saved.
-            } else {
-                print("error on saving data: \(error?.localizedDescription)")
-            }
-        }
+//        let profileInfo = PFObject(className:"profileInfo")
+//        profileInfo["appleID"] = PFUser.current()?.username
+//        profileInfo["bio"] = editBioTextField.text!
+//
+//        profileInfo.saveInBackground { (succeeded, error)  in
+//            if (succeeded) {
+//                // The object has been saved.
+//            } else {
+//                print("error on saving data: \(String(describing: error?.localizedDescription))")
+//            }
+//        }
+//
         self.dismiss(animated: true, completion: nil)
         self.bioText = editBioTextField.text!
     }

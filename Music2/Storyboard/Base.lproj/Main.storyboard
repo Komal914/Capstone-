@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cua-az-Xvj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -432,7 +432,37 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vKj-zc-Q96" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1014.4927536231885" y="2659.8214285714284"/>
+            <point key="canvasLocation" x="-1552" y="2741"/>
+        </scene>
+        <!--Home Comments View Controller-->
+        <scene sceneID="wxn-f7-0wL">
+            <objects>
+                <viewController id="EQe-p7-OU9" customClass="homeCommentsViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Asu-Xc-Ndv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="FfN-77-HtR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="etC-d0-shN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-806" y="2741"/>
+        </scene>
+        <!--User Profile View Controller-->
+        <scene sceneID="6Ut-tO-JsU">
+            <objects>
+                <viewController id="BP6-vB-xLb" customClass="userProfileViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="u0v-mS-QzK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9ci-z1-AL3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EDv-F4-mYX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-61" y="2741"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="WW4-j3-kLn">
@@ -470,6 +500,7 @@
                                                     <connections>
                                                         <action selector="commentButton:" destination="ddu-YV-UWV" eventType="touchUpInside" id="aKZ-pN-9Ac"/>
                                                         <action selector="homeCommentButton:" destination="aOw-Tz-Yuw" eventType="touchUpInside" id="6xz-HI-e2d"/>
+                                                        <segue destination="EQe-p7-OU9" kind="presentation" id="o4V-Oh-fgw"/>
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pianokeys" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pL4-cu-iY2">
@@ -564,7 +595,6 @@
                     <navigationItem key="navigationItem" id="3MX-ec-ETs"/>
                     <connections>
                         <outlet property="table" destination="lD9-wQ-bTP" id="RCd-0M-dex"/>
-                        <segue destination="Upd-jq-qyx" kind="presentation" identifier="homeCommentSegue" id="mRQ-7C-fyw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NVr-Mt-p5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -879,6 +909,7 @@
                                         <size key="customSize" width="189" height="168"/>
                                         <connections>
                                             <outlet property="albumCover" destination="BEZ-20-gth" id="c2B-ID-g5D"/>
+                                            <segue destination="tGY-cO-9jP" kind="presentation" id="Ow4-kv-MMT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -953,6 +984,21 @@
             </objects>
             <point key="canvasLocation" x="1776.8115942028987" y="1907.8125"/>
         </scene>
+        <!--Song View Controller-->
+        <scene sceneID="XYJ-MG-8At">
+            <objects>
+                <viewController id="tGY-cO-9jP" customClass="songViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Zcz-cE-4iI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="f3W-wg-88F"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="puC-iM-7Lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1777" y="2678"/>
+        </scene>
         <!--Edit View Controller-->
         <scene sceneID="Uf4-Kf-nQw">
             <objects>
@@ -998,7 +1044,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mRQ-7C-fyw"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>
