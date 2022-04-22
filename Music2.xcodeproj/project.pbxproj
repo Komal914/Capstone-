@@ -67,7 +67,7 @@
 /* Begin PBXFileReference section */
 		0D1143DE614A96CA28BC69C6 /* Pods-Music2-Music2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2-Music2UITests.release.xcconfig"; path = "Target Support Files/Pods-Music2-Music2UITests/Pods-Music2-Music2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		14F46E7531E9CB6B79A5F752 /* Pods-Music2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2.release.xcconfig"; path = "Target Support Files/Pods-Music2/Pods-Music2.release.xcconfig"; sourceTree = "<group>"; };
-		254427EB27EE7D5A008198D1 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; };
+		254427EB27EE7D5A008198D1 /* profileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = profileViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = genreCollectionViewCell.swift; sourceTree = "<group>"; };
 		254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postsCollectionViewCell.swift; sourceTree = "<group>"; };
 		25741ED628060B3E00C5FB23 /* editViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editViewController.swift; sourceTree = "<group>"; };

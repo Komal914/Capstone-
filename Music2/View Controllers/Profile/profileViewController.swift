@@ -56,7 +56,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
         
-        bioLabel.text = bioText
+        //bioLabel.text = bioText
         
         
         let query = PFQuery(className: "profileInfo")
@@ -74,7 +74,10 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 let array = profileInfo
               
                 let obj = array?[0]
-                let userName = obj!["username"] as! String 
+                let userName = obj!["username"] as! String
+                //let bio = obj!["bio"] as! String
+                //self.bioLabel.text = bio
+                //self.bioLabel.reloadInputViews()
                 self.usernameLabel.text = userName
             }
             else {print("error quering for posts: \(String(describing: error))")}
@@ -108,8 +111,28 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 
             }
         }
-      
         
+        let query2 = PFQuery(className: "profileInfo")
+        //let user = PFUser.current()
+        //self.userID = user!["username"] as! String
+        
+        query2.whereKey("appleID", equalTo: userID)
+        //print(profInfo)
+        query2.findObjectsInBackground{(bio, error) in
+            if bio != nil {
+                //print(bio!)
+                var newInfo = bio?.first
+                //print(newInfo!)
+                var data = newInfo!["bio"] as! String
+                self.bioText = data
+                //data = self.editBioTextField.text!
+                //self.bioLabel.text = data
+                //print(data)
+                self.bioLabel.text = self.bioText
+
+            }
+        }
+        //print(bioText)
         
     }
     
