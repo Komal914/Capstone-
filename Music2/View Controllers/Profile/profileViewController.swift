@@ -31,6 +31,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         
     }
     
+    
+    
 
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
@@ -90,6 +92,32 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
 
     }
     
+    func updateLabels() {
+        let query2 = PFQuery(className: "profileInfo")
+        let user = PFUser.current()
+        let userID = user!["username"] as! String
+        
+        
+        query2.whereKey("appleID", equalTo: userID)
+        //print(profInfo)
+        query2.findObjectsInBackground{(bio, error) in
+            if bio != nil {
+                //print(bio!)
+                var newInfo = bio?.first
+                //print(newInfo!)
+                var data = newInfo!["bio"] as! String
+                self.bioText = data
+                //data = self.editBioTextField.text!
+                //self.bioLabel.text = data
+                //print(data)
+                self.bioLabel.text = self.bioText
+
+            }
+        }
+        
+        
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -111,27 +139,9 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 
             }
         }
+        updateLabels()
         
-        let query2 = PFQuery(className: "profileInfo")
-        //let user = PFUser.current()
-        //self.userID = user!["username"] as! String
         
-        query2.whereKey("appleID", equalTo: userID)
-        //print(profInfo)
-        query2.findObjectsInBackground{(bio, error) in
-            if bio != nil {
-                //print(bio!)
-                var newInfo = bio?.first
-                //print(newInfo!)
-                var data = newInfo!["bio"] as! String
-                self.bioText = data
-                //data = self.editBioTextField.text!
-                //self.bioLabel.text = data
-                //print(data)
-                self.bioLabel.text = self.bioText
-
-            }
-        }
         //print(bioText)
         
     }
