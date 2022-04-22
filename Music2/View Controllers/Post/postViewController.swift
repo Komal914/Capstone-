@@ -19,7 +19,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 672 //or whatever you need
+        return 718 //or whatever you need
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,15 +29,21 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         cell.artistName.text = name
         cell.songInfo.text = SongInfo
         let cover = self.AlbumCover.image
-        print(AlbumCover)
         cell.albumCover.image = cover
-        print(SongInfo)
-        print(name)
-//        cell.artistName.textColor = .white
+        cell.genres.text = Genre
         
-//        let cell = UITableViewCell()
-//        cell.textLabel?.text = "hi: \(name)"
-//        print("printing", self.ArtistName)
+ 
+        
+//
+//        if (caption == ""){
+//            print("empty")
+//        }
+//        else{
+//            print(caption)
+//        }
+       
+        
+       
         
 
         return cell
@@ -46,6 +52,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     
     //MARK: Global VARIABLES
+    var userName = [PFObject]()
     var songData = NSDictionary()
     var songMenu = [String]()
     var genre = NSArray()
@@ -54,29 +61,22 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var audioIndex = 0
     var sound: String = ""
     var player: AVPlayer? //player for sound
-    var userName = [PFObject]()
     let dropDown = DropDown()
     //table view vars
     var ArtistName = String()
     var SongInfo = String()
     var AlbumCover = UIImageView()
+    var Genre = String()
+    var Caption = String()
+
  
     //MARK: - OUTLETS
     
     
     @IBOutlet weak var table: UITableView!
-    
-    
-    
-    @IBOutlet weak var captionTextfield: UITextField!
-    @IBOutlet weak var genresLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBelowSearch: UIView!
     
-    @IBAction func postButton(_ sender: Any) {
-        //this function should send the data over to the home screen view and post our song
-        
-    }
     
     
     @IBAction func onPlayButton(_ sender: Any) {
@@ -125,13 +125,51 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     
+    @IBAction func onPost(_ sender: Any) {
+        let obj = self.userName[0]
+        let name = obj["username"] as! String
+        let username = name
+        
+        let posts = PFObject(className: "posts")
+        posts["author"] = PFUser.current()
+        posts["appleID"] = PFUser.current()?.username
+        posts["genre"] = Genre
+        posts["song"] = SongInfo
+        let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
+        let caption = cell.caption.text as! String
+        print("caption", caption)
+        //posts["caption"] = Caption
+        posts["artistName"] = ArtistName
+        posts["username"] = username
+        
+        let imageData = AlbumCover.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        posts["cover"] = file
+        if audios.count != 0 {
+        posts["audio"] = audios.last!
+        }
+        
+        posts.saveInBackground { (succeeded, error)  in
+            if (succeeded) {
+                // The object has been saved.
+              print("saved!")
+                print(posts)
+            } else {
+               // print("error on saving data: \(error?.localizedDescription)")
+            }
+        
+        
+    }
+    }
     
     
     
     
     
-    @IBOutlet weak var albumCoverImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
+    
+    
+    
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             //print("searchText \(searchText)")
@@ -200,27 +238,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 
                 let songLabel = songInfo
                 
-                //MARK: GENRE STUFF
-                let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
-                let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
-                let myRed = UIColor(red: 247.0/255, green: 118.0/255, blue: 113.0/255, alpha: 1.0)
-                let myYellow = UIColor(red: 255.0/255, green: 190.0/255, blue: 106.0/255, alpha: 1.0)
-                let lightblue = UIColor(red: 0.00, green: 1.00, blue: 1.00, alpha: 1.00)
-                let hotpink = UIColor(red: 1.00, green: 0.00, blue: 0.82, alpha: 1.00)
-                let neongreen = UIColor(red: 0.35, green: 1.00, blue: 0.00, alpha: 1.00)
-                let yellowgreen = UIColor(red: 0.87, green: 1.00, blue: 0.00, alpha: 1.00)
-                let lavender = UIColor(red: 0.87, green: 0.78, blue: 1.00, alpha: 1.00)
-                let lightgreen = UIColor(red: 0.85, green: 1.00, blue: 0.78, alpha: 1.00)
-                let blue = UIColor(red: 0.66, green: 1.00, blue: 0.97, alpha: 1.00)
-                let purple = UIColor(red: 0.50, green: 0.00, blue: 1.00, alpha: 1.00)
-                let orange = UIColor(red: 1.00, green: 0.55, blue: 0.00, alpha: 1.00)
-                let pink = UIColor(red: 1.00, green: 0.73, blue: 0.85, alpha: 1.00)
                 
-                let myColors = [myRed, myBlue, myGreen, myYellow, lightblue, hotpink, neongreen, yellowgreen, lavender, lightgreen, blue, purple, orange, pink]
-                
-                func random(colors: [UIColor]) -> UIColor {
-                    return colors[Int(arc4random_uniform(UInt32(myColors.count)))]
-                }
                 
                 let genres = attributes["genreNames"] as! NSArray
                 self.genre = genres
@@ -229,11 +247,11 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 
                 DispatchQueue.main.async {
                     //STORE THIS
-                self.genresLabel.text = genreInfo
+                self.Genre = genreInfo
                 self.ArtistName = artistName
-                self.genresLabel.backgroundColor = random(colors: myColors)
-                self.genresLabel.layer.masksToBounds = true
-                self.genresLabel.layer.cornerRadius = 8
+//                self.genresLabel.backgroundColor = random(colors: myColors)
+//                self.genresLabel.layer.masksToBounds = true
+//                self.genresLabel.layer.cornerRadius = 8
                     self.table.reloadData()
                 }
                 
@@ -273,7 +291,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //MARK: USERNAME
         
         let query = PFQuery(className: "profileInfo") //search this class
         let user = PFUser.current()
@@ -301,45 +318,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
 
     
-    @IBAction func onPost(_ sender: Any) {
-        
-        let obj = self.userName[0]
-        let name = obj["username"] as! String
-        let username = name
-        
-        let posts = PFObject(className: "posts")
-        posts["author"] = PFUser.current()
-        posts["appleID"] = PFUser.current()?.username
-        posts["genre"] = self.genresLabel.text
-        posts["song"] = self.SongInfo
-        posts["caption"] = self.captionTextfield.text!
-        posts["artistName"] = self.ArtistName
-        posts["username"] = username
-        
-        let imageData = albumCoverImageView.image!.pngData()
-        let file = PFFileObject(data: imageData!)
-        posts["cover"] = file
-        if audios.count != 0 {
-        posts["audio"] = audios.last!
-        }
-        
-        posts.saveInBackground { (succeeded, error)  in
-            if (succeeded) {
-                // The object has been saved.
-              print("saved!")
-                print(posts)
-            } else {
-               // print("error on saving data: \(error?.localizedDescription)")
-            }
-        }
-
-        
-        
-       
-
-        
-        print(userName)
-    }
+ 
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
@@ -423,13 +402,13 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let data = genresLabel.text
+        let data = Genre
         print(data)
                 
             // Create a new variable to store the instance of the SecondViewController
             // set the variable from the SecondViewController that will receive the data
         let destinationVC = segue.destination as! profileViewController
-        destinationVC.genre = data! 
+        destinationVC.genre = data 
         
         
     }
