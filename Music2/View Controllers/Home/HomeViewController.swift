@@ -19,6 +19,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        //MARK: PARSE: Queries to backend
         let query = PFQuery(className: "posts")
         query.findObjectsInBackground{(posts, error) in
             if posts != nil{
@@ -29,6 +30,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error quering for posts: \(String(describing: error))")
             }
         }
+        
+//        let query = PFQuery(className: "homeLikes")
+//        query.findObjectsInBackground{(posts, error) in
+//            if posts != nil{
+//                self.posts = posts! //storing from backend to this file
+//                self.table.reloadData()
+//            }
+//            else {
+//                print("error quering for posts: \(String(describing: error))")
+//            }
+//        }
+        
+        
         
         
         
