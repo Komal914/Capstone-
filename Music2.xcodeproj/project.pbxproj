@@ -32,6 +32,7 @@
 		C5E51134E16BC36C3DF00FDE /* Pods_Music2_Music2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65C0FBCBA1712F0FED5AD9E /* Pods_Music2_Music2UITests.framework */; };
 		D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */; };
 		EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28469B27F3B15300633677 /* PlayerViewClass.swift */; };
+		EE3131D42813208F00F023F7 /* PostScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3131D32813208F00F023F7 /* PostScreenCell.swift */; };
 		EE380F2A27FA6B2900ADF3A1 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */; };
 		EE380F2B27FA6B2900ADF3A1 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */; };
 		EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EE72603627F0F4100083A171 /* AlamofireImage */; };
@@ -101,6 +102,7 @@
 		B65C0FBCBA1712F0FED5AD9E /* Pods_Music2_Music2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music2_Music2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82320016FA93CDA8DD8982F /* Pods-Music2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2.debug.xcconfig"; path = "Target Support Files/Pods-Music2/Pods-Music2.debug.xcconfig"; sourceTree = "<group>"; };
 		EE28469B27F3B15300633677 /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
+		EE3131D32813208F00F023F7 /* PostScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenCell.swift; sourceTree = "<group>"; };
 		EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		EE9507D727EFBEE90098FD6C /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			children = (
 				EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */,
 				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
+				EE3131D32813208F00F023F7 /* PostScreenCell.swift */,
 				254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */,
 				254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */,
 				EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */,
@@ -589,6 +592,7 @@
 				AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */,
 				EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */,
 				254427EC27EE7D5A008198D1 /* profileViewController.swift in Sources */,
+				EE3131D42813208F00F023F7 /* PostScreenCell.swift in Sources */,
 				EEC7BF3727E7F22700A882F6 /* HomeCell.swift in Sources */,
 				254427F027EE7F8A008198D1 /* postsCollectionViewCell.swift in Sources */,
 				EEC7BF2B27E7B46700A882F6 /* signInViewController.swift in Sources */,

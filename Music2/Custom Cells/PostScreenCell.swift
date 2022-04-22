@@ -8,7 +8,15 @@
 import UIKit
 
 class PostScreenCell: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var artistName: UILabel!
+    
+    @IBOutlet weak var songInfo: UILabel!
+    
+    
+    @IBOutlet weak var albumCover: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

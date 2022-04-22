@@ -14,7 +14,36 @@ import SwiftUI
 import Parse
 
 
-class postViewController: UIViewController, UISearchBarDelegate {
+class postViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 672 //or whatever you need
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
+        let name = self.ArtistName
+        cell.artistName.text = name
+        cell.songInfo.text = SongInfo
+        let cover = self.AlbumCover.image
+        print(AlbumCover)
+        cell.albumCover.image = cover
+        print(SongInfo)
+        print(name)
+//        cell.artistName.textColor = .white
+        
+//        let cell = UITableViewCell()
+//        cell.textLabel?.text = "hi: \(name)"
+//        print("printing", self.ArtistName)
+        
+
+        return cell
+                                             
+        }
+    
     
     //MARK: Global VARIABLES
     var songData = NSDictionary()
@@ -26,20 +55,21 @@ class postViewController: UIViewController, UISearchBarDelegate {
     var sound: String = ""
     var player: AVPlayer? //player for sound
     var userName = [PFObject]()
-    struct menuData {
-
-        let songName: String
-        let albumCover: String
-
-    }
-    var images = ["bookmark", "home"]
     let dropDown = DropDown()
+    //table view vars
+    var ArtistName = String()
+    var SongInfo = String()
+    var AlbumCover = UIImageView()
  
     //MARK: - OUTLETS
-    @IBOutlet weak var songName: UILabel!
+    
+    
+    @IBOutlet weak var table: UITableView!
+    
+    
+    
     @IBOutlet weak var captionTextfield: UITextField!
     @IBOutlet weak var genresLabel: UILabel!
-    @IBOutlet weak var artistNameLabel: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBelowSearch: UIView!
     
@@ -111,13 +141,11 @@ class postViewController: UIViewController, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchText = searchBar.text! //user input
         
-        //MARK: Replace
+        //MARK: Replace api call
         let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
         let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
         let final = base + replaced
-  
         
-        // user token
         let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
 
         
@@ -198,24 +226,21 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 self.genre = genres
                 
                 let genreInfo = self.genre[0] as! String
-                //print("GENRE", genreInfo)
+                
                 DispatchQueue.main.async {
                     //STORE THIS
                 self.genresLabel.text = genreInfo
-                    self.artistNameLabel.text = artistName
-                    self.genresLabel.backgroundColor = random(colors: myColors)
-                    self.genresLabel.layer.masksToBounds = true
-                    self.genresLabel.layer.cornerRadius = 8
+                self.ArtistName = artistName
+                self.genresLabel.backgroundColor = random(colors: myColors)
+                self.genresLabel.layer.masksToBounds = true
+                self.genresLabel.layer.cornerRadius = 8
+                    self.table.reloadData()
                 }
                 
                 let urlOfArt = artWork["url"] as! String
                     
                 let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
                 let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
-                let menuData: [menuData] = [menuData(songName: name, albumCover: finalUrl)
-                    ]
-               // print("MenuData", menuData)
-               // print(finalUrl)
                         
                 let url = NSURL(string:finalUrl)
                 let imagedata = NSData.init(contentsOf: url! as URL)
@@ -226,8 +251,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
                 DispatchQueue.main.async {
                     if imagedata != nil {
                         //STORE THESE TWO
-                        self.albumCoverImageView.image = UIImage(data:imagedata! as Data)
-                        self.songName.text = songLabel
+                        self.AlbumCover.image = UIImage(data:imagedata! as Data)
+                        self.SongInfo = songLabel
+                        self.table.reloadData()
                     }
                             
                     else {
@@ -242,6 +268,7 @@ class postViewController: UIViewController, UISearchBarDelegate {
         
         task.resume()
             dropDown.show()
+        table.reloadData()
         }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -284,9 +311,9 @@ class postViewController: UIViewController, UISearchBarDelegate {
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
         posts["genre"] = self.genresLabel.text
-        posts["song"] = self.songName.text
+        posts["song"] = self.SongInfo
         posts["caption"] = self.captionTextfield.text!
-        posts["artistName"] = self.artistNameLabel.text!
+        posts["artistName"] = self.ArtistName
         posts["username"] = username
         
         let imageData = albumCoverImageView.image!.pngData()
@@ -345,6 +372,8 @@ class postViewController: UIViewController, UISearchBarDelegate {
         
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
+        table.delegate = self
+        table.dataSource = self
         
         
         //MARK: Storefront Gathering
