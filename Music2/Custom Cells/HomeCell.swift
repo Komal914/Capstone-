@@ -103,19 +103,10 @@ class HomeCell: UITableViewCell {
             
             
             query.findObjectsInBackground{(like, error) in
-                print("hello")
-                print(like)
                 if like != nil{
                     self.homeLikes = like! //storing from backend to this file
-                    print("queried")
-                    print(like)
-                    print(self.homeLikes)
-                    
-                    var obj = PFObject.self
                     for like in self.homeLikes{
                         if(like.objectId == self.objID){
-                            print("same")
-                            print(like)
                             like.deleteInBackground{(success, error) in
                                 if (success) {
                                     // The object has been saved
@@ -126,13 +117,6 @@ class HomeCell: UITableViewCell {
                         }
                         
                     }
-                    
-//                    homeLikes.deleteInBackground{(success, error) in
-//                        if (success) {
-//                            // The object has been saved
-//                            print("deleted")
-//                        }
-//                    }
 
                 }
                 else {
