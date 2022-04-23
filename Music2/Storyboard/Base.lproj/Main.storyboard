@@ -763,13 +763,13 @@
                                         </prototypes>
                                     </tableView>
                                     <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yt5-Xp-BPn">
-                                        <rect key="frame" x="28" y="498" width="358" height="34"/>
+                                        <rect key="frame" x="28" y="473" width="358" height="34"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="54V-ph-orJ">
-                                        <rect key="frame" x="172" y="550" width="70" height="41"/>
+                                        <rect key="frame" x="172" y="527" width="70" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -785,6 +785,7 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="onPost:" destination="RNR-p3-rEx" eventType="touchUpInside" id="W4x-aY-yaF"/>
+                                            <action selector="postButton:" destination="RNR-p3-rEx" eventType="touchUpInside" id="1ma-jq-Wib"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -806,6 +807,7 @@
                     <navigationItem key="navigationItem" id="6VG-Bw-aTK"/>
                     <connections>
                         <outlet property="caption" destination="yt5-Xp-BPn" id="T1n-Xw-WeA"/>
+                        <outlet property="postButton" destination="54V-ph-orJ" id="jA6-sh-dyi"/>
                         <outlet property="searchBar" destination="Kdx-Ox-Iwo" id="71x-6u-B3l"/>
                         <outlet property="table" destination="Cad-GU-etu" id="ii1-Fj-2L3"/>
                         <outlet property="viewBelowSearch" destination="hf9-3g-N94" id="rVU-tw-6Ey"/>

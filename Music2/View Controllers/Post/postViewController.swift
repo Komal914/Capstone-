@@ -15,40 +15,6 @@ import Parse
 
 
 class postViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450//or whatever you need
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
-        let name = self.ArtistName
-        cell.artistName.text = name
-        cell.songInfo.text = SongInfo
-        let cover = self.AlbumCover.image
-        cell.albumCover.image = cover
-        cell.genres.text = Genre
-        
- 
-        
-//
-//        if (caption == ""){
-//            print("empty")
-//        }
-//        else{
-//            print(caption)
-//        }
-       
-        
-       
-        
-
-        return cell
-                                             
-        }
     
     
     //MARK: Global VARIABLES
@@ -68,6 +34,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var AlbumCover = UIImageView()
     var Genre = String()
     var Caption = String()
+    var searched = false
 
  
     //MARK: - OUTLETS
@@ -78,6 +45,8 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @IBOutlet weak var viewBelowSearch: UIView!
     @IBOutlet weak var caption: UITextField!
     
+    
+    @IBOutlet weak var postButton: UIButton!
     
     @IBAction func onPlayButton(_ sender: Any) {
         //incase the user did not search and my array is empty
@@ -165,6 +134,33 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 450//or whatever you need
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
+        //hiding cell until user searches
+        if searched == false {
+            cell.isHidden = true
+          } else {
+              cell.isHidden = false
+          }
+        //updating data
+        let name = self.ArtistName
+        cell.artistName.text = name
+        cell.songInfo.text = SongInfo
+        let cover = self.AlbumCover.image
+        cell.albumCover.image = cover
+        cell.genres.text = Genre
+        
+        return cell
+    }
+    
     
     
     
@@ -180,7 +176,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        caption.isHidden = false
+        postButton.isHidden = false
         searchText = searchBar.text! //user input
+        searched = true
         
         //MARK: Replace api call
         let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
@@ -288,9 +287,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         }
         
         task.resume()
-            dropDown.show()
+        dropDown.show()
         table.reloadData()
-        }
+        
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -308,7 +308,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
 
         }
-        //search bar colors
+        //post button and caption
+        
+        caption.isHidden = true
+        postButton.isHidden = true
         
        
 
