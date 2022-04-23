@@ -19,7 +19,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 718 //or whatever you need
+        return 450//or whatever you need
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,7 +76,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBelowSearch: UIView!
-    
+    @IBOutlet weak var caption: UITextField!
     
     
     @IBAction func onPlayButton(_ sender: Any) {
@@ -125,6 +125,9 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     
+   
+    
+    
     @IBAction func onPost(_ sender: Any) {
         let obj = self.userName[0]
         let name = obj["username"] as! String
@@ -136,9 +139,9 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         posts["genre"] = Genre
         posts["song"] = SongInfo
         let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
-        let caption = cell.caption.text as! String
+        let caption = caption.text as! String
         print("caption", caption)
-        //posts["caption"] = Caption
+        posts["caption"] = caption
         posts["artistName"] = ArtistName
         posts["username"] = username
         
@@ -305,6 +308,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         
 
         }
+        //search bar colors
+        
+       
+
         
         //Keyboard dissmiss
         
@@ -392,7 +399,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             guard cell is SearchMenuCell else {
                 return
             }
-            //cell.albumCover.image = UIImage(systemName: self.images[index])
         }
         
         dropDown.selectionAction = { index, title in

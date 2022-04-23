@@ -183,7 +183,6 @@
 			children = (
 				AAADCD3B27E810F40077CB34 /* Music2.entitlements */,
 				EEC7BF2327E7B3E700A882F6 /* Assets */,
-				EEC7BF2127E7B3BC00A882F6 /* Custom Cells */,
 				EE145246280FC075009EC85B /* Storyboard */,
 				EEC7BF2027E7B3B000A882F6 /* View Controllers */,
 				EEC7BF2227E7B3C900A882F6 /* Delegates */,
@@ -227,6 +226,7 @@
 		EE145240280FC006009EC85B /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B592E2814B52A0031635E /* cells */,
 				254427EB27EE7D5A008198D1 /* profileViewController.swift */,
 				25741ED628060B3E00C5FB23 /* editViewController.swift */,
 				25E218FB2811D4560077ABC3 /* songViewController.swift */,
@@ -237,6 +237,7 @@
 		EE145241280FC034009EC85B /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B592C2814B5110031635E /* cells */,
 				25C42D5527E7FD7300C9C14A /* postViewController.swift */,
 			);
 			path = Post;
@@ -245,6 +246,7 @@
 		EE145242280FC041009EC85B /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B592D2814B51A0031635E /* cells */,
 				EEC7BF3227E7E81D00A882F6 /* HomeViewController.swift */,
 				25E218F72811D41F0077ABC3 /* homeCommentsViewController.swift */,
 				25E218F92811D4310077ABC3 /* userProfileViewController.swift */,
@@ -255,6 +257,7 @@
 		EE145243280FC047009EC85B /* Music Videos */ = {
 			isa = PBXGroup;
 			children = (
+				EE9B592B2814B4FB0031635E /* cells */,
 				EEC7BF3027E7E7F200A882F6 /* MusicVideosViewController.swift */,
 				25F1E5722805EAD600B891DF /* videoCommentsViewController.swift */,
 				EE28469B27F3B15300633677 /* PlayerViewClass.swift */,
@@ -282,6 +285,42 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
+		EE9B592B2814B4FB0031635E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6BD2A2806354400E04300 /* videoCommentCell.swift */,
+				EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		EE9B592C2814B5110031635E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */,
+				EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */,
+				EE3131D32813208F00F023F7 /* PostScreenCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		EE9B592D2814B51A0031635E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		EE9B592E2814B52A0031635E /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */,
+				254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		EEC7BF2027E7B3B000A882F6 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,21 +331,6 @@
 				EE145240280FC006009EC85B /* Profile */,
 			);
 			path = "View Controllers";
-			sourceTree = "<group>";
-		};
-		EEC7BF2127E7B3BC00A882F6 /* Custom Cells */ = {
-			isa = PBXGroup;
-			children = (
-				EEC7BF3427E7E8BB00A882F6 /* MusicVideosCell.swift */,
-				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
-				EE3131D32813208F00F023F7 /* PostScreenCell.swift */,
-				254427ED27EE7F7A008198D1 /* genreCollectionViewCell.swift */,
-				254427EF27EE7F8A008198D1 /* postsCollectionViewCell.swift */,
-				EE380F2827FA6B2900ADF3A1 /* DropDownCell.swift */,
-				EEA6BD2A2806354400E04300 /* videoCommentCell.swift */,
-				EE380F2927FA6B2900ADF3A1 /* DropDownCell.xib */,
-			);
-			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		EEC7BF2227E7B3C900A882F6 /* Delegates */ = {
