@@ -20,15 +20,16 @@ class PostScreenCell: UITableViewCell {
     
     @IBOutlet weak var albumCover: UIImageView!
     
-    @IBOutlet weak var caption: UITextField!
+   
     
     @IBOutlet weak var genres: UILabel!
     
     
     
-    @IBAction func onPost(_ sender: UIButton) {
-        
-    }
+  
+    
+    
+  
     
     //MARK: GENRE STUFF
     
