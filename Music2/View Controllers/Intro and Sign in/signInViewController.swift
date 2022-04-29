@@ -20,11 +20,6 @@ class signInViewController: UIViewController {
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    
-//MARK: FIREBASE FUNCTIONS
-    
-    
-    
 //MARK: SIGN IN BUTTON
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
         

@@ -108,7 +108,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 //MARK: TABLE FUNCTIONS
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 700//or whatever you need
+        return 700          //or whatever you need
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,9 +136,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
         //print(videoURLs)
         cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
-        
-        
-        
         return cell
     }
     

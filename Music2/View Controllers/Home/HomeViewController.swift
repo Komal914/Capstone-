@@ -41,12 +41,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //                print("error quering for posts: \(String(describing: error))")
 //            }
 //        }
-        
-        
-        
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -55,9 +49,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         table.delegate = self
         table.dataSource = self
-        
-        
-
         // Do any additional setup after loading the view.
     }
     
@@ -67,8 +58,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func homeCommentButton(_ sender: Any) {
+        
         performSegue(withIdentifier: "homeComment", sender: self)
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 672 //or whatever you need
     }
@@ -81,50 +74,41 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         reversePosts = posts.reversed()
         let post = reversePosts[indexPath.row]
         
-        //songinfo
+        // songinfo
         cell.albumNameSongName.text = post["song"] as? String
         
-        //song cover
+        // song cover
         let imageFile = post["cover"] as! PFFileObject
         let urlString = imageFile.url!
         let url = URL(string: urlString)!
         cell.albumCover.af.setImage(withURL: url)
         
-        //caption
+        // caption
         let caption = post["caption"] as! String
         cell.captionFromTheUser.text = caption
         
-        //artist name
+        // artist name
         cell.artistNameLabel.text = post["artistName"] as? String
         
-        //genres
+        // genres
         cell.genreLabel.text = post["genre"] as? String
         cell.genreLabel.layer.masksToBounds = true
         cell.genreLabel.layer.cornerRadius = 8
         
         
-        //sound file
-        
+        // sound file
         let sound = post["audio"] as! String
         let soundUrl = URL(string: sound)
         //sendng music url to cell class
         cell.videoPlayerItem = AVPlayerItem.init(url: soundUrl!)
         
         
-        //like button
+        // like button
         //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
         
-        //username
+        // username
         let userName = post["username"] as! String
         cell.userName.text = userName
-        
-                
-        
-    
-            
-       
-       
-        
         return cell
     }
 }

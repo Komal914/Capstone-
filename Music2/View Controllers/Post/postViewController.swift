@@ -13,11 +13,9 @@ import DropDown
 import SwiftUI
 import Parse
 
-
 class postViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    
-    //MARK: Global VARIABLES
+    //MARK: Global Variables
     var userName = [PFObject]()
     var songData = NSDictionary()
     var songMenu = [String]()
@@ -39,7 +37,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
  
     //MARK: - OUTLETS
     
-    
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBelowSearch: UIView!
@@ -60,8 +57,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             sound = audios.last!
         }
         
-        
-        
         do {
             //setting up player settings
             try AVAudioSession.sharedInstance().setMode(.default)
@@ -79,23 +74,15 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             
             player.play()
     
-            
-            
         }
-        catch {print("something went wrong")}
-        
-        
+        catch {
+            print("something went wrong")
+        }
     }
-    
-    
     
     @IBAction func onPauseButton(_ sender: Any) {
         player?.pause()
     }
-    
-    
-   
-    
     
     @IBAction func onPost(_ sender: Any) {
         let obj = self.userName[0]
@@ -108,8 +95,8 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         posts["genre"] = Genre
         posts["song"] = SongInfo
         let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
-        let caption = caption.text as! String
-        print("caption", caption)
+        let caption = caption.text!
+        //print("caption", caption)
         posts["caption"] = caption
         posts["artistName"] = ArtistName
         posts["username"] = username
@@ -117,28 +104,29 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         let imageData = AlbumCover.image!.pngData()
         let file = PFFileObject(data: imageData!)
         posts["cover"] = file
+        
         if audios.count != 0 {
-        posts["audio"] = audios.last!
+            posts["audio"] = audios.last!
         }
         
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
-              print("saved!")
+                print("saved!")
                 print(posts)
-            } else {
+            }
+            
+            else {
                // print("error on saving data: \(error?.localizedDescription)")
             }
-        
-        
-    }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 450//or whatever you need
+        return 450                      //or whatever you need
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -150,6 +138,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
           } else {
               cell.isHidden = false
           }
+        
         //updating data
         let name = self.ArtistName
         cell.artistName.text = name
@@ -161,18 +150,8 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         return cell
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
             //print("searchText \(searchText)")
-           
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -195,8 +174,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
 
         let session = URLSession.shared
-
-          
+        
         let task = session.dataTask(with: request) {(data, response, error) in
             guard let data = data else {
                 return
@@ -232,16 +210,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 print(musicUrl)
                 self.audios.append(musicUrl)
                 
-                
-               
-                
-                
-                
-                
                 let songLabel = songInfo
-                
-                
-                
                 let genres = attributes["genreNames"] as! NSArray
                 self.genre = genres
                 
@@ -316,7 +285,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
        
 
         
-        //Keyboard dissmiss
+        //Keyboard dismisses
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -327,9 +296,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         view.endEditing(true)
     }
 
-    
- 
-    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
             self.searchBar.showsCancelButton = true
     }
@@ -353,9 +319,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @objc func didTapSearchBar() {
         //dropDown.show()
     }
-    
-    
-
     
     override func viewDidLoad() {
         
@@ -417,9 +380,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             // Create a new variable to store the instance of the SecondViewController
             // set the variable from the SecondViewController that will receive the data
         let destinationVC = segue.destination as! profileViewController
-        destinationVC.genre = data 
-        
-        
+        destinationVC.genre = data
     }
     
 }

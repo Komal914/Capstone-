@@ -183,7 +183,7 @@ class SwipeViewController: UIViewController {
                 }
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
-                    print(userGenres)
+                    //print(userGenres)
                     
                     //Disliked Preferences ATTEMPT
 //                    let dislikedGenres = PFObject(className:"likedGenres")
