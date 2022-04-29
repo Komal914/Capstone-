@@ -1,17 +1,16 @@
 //
-//  videoCommentCell.swift
+//  HomeCommentCell.swift
 //  Music2
 //
-//  Created by Komal Kaur on 4/12/22.
+//  Created by Amogh Kalyan on 4/28/22.
 //
 
 import UIKit
 
-class videoCommentCell: UITableViewCell {
-    
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var commentLabel: UILabel!
+class HomeCommentCell: UITableViewCell {
+
+    @IBOutlet var homeCommentsUsername: UILabel!
+    @IBOutlet var homeComment: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
