@@ -886,7 +886,7 @@
             <objects>
                 <viewController id="4Nh-b3-u2E" customClass="profileViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nk2-NF-G95">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="345" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gI0-mG-dv8">
@@ -996,7 +996,6 @@
                                         <size key="customSize" width="189" height="168"/>
                                         <connections>
                                             <outlet property="albumCover" destination="BEZ-20-gth" id="c2B-ID-g5D"/>
-                                            <segue destination="tGY-cO-9jP" kind="presentation" id="Ow4-kv-MMT"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1065,6 +1064,7 @@
                         <outlet property="postsNumberLabel" destination="egs-k4-d0s" id="67J-6a-7HL"/>
                         <outlet property="profileImageView" destination="w8i-Qt-dmF" id="k54-jt-CiW"/>
                         <outlet property="usernameLabel" destination="otm-tW-lTg" id="jWo-Zi-GWM"/>
+                        <segue destination="tGY-cO-9jP" kind="show" id="O8o-Vz-Ii2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1074,17 +1074,51 @@
         <!--Song View Controller-->
         <scene sceneID="XYJ-MG-8At">
             <objects>
-                <viewController id="tGY-cO-9jP" customClass="songViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="songViewController" id="tGY-cO-9jP" customClass="songViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Zcz-cE-4iI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ito-p9-skw">
+                                <rect key="frame" x="20" y="33" width="41" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L59-xi-yAt">
+                                <rect key="frame" x="20" y="91" width="374" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7IH-uv-xMl">
+                                <rect key="frame" x="20" y="62" width="47" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Song info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6N-us-B0z">
+                                <rect key="frame" x="20" y="371" width="72" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="f3W-wg-88F"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
+                    <navigationItem key="navigationItem" id="sHj-gZ-aIq"/>
+                    <connections>
+                        <outlet property="artistLabel" destination="ito-p9-skw" id="Ib3-RH-Tzt"/>
+                        <outlet property="genreLabel" destination="7IH-uv-xMl" id="YbW-Ov-Qmm"/>
+                        <outlet property="songImageView" destination="L59-xi-yAt" id="fjh-LJ-xjK"/>
+                        <outlet property="songInfoLabel" destination="C6N-us-B0z" id="4VC-8m-Eqa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="puC-iM-7Lt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1777" y="2678"/>
+            <point key="canvasLocation" x="1776.8115942028987" y="2677.9017857142858"/>
         </scene>
         <!--Edit View Controller-->
         <scene sceneID="Uf4-Kf-nQw">
@@ -1132,8 +1166,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gbr-Lj-gLV"/>
-        <segue reference="geb-7K-z7u"/>
+        <segue reference="dbd-ov-sEM"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
     <resources>

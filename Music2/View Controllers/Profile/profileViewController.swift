@@ -44,6 +44,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     //var covers = [PFFileObject]()
     var name: String = ""
     var genre: String = ""
+    //var thumbnail: UIImage!
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -181,7 +182,6 @@ extension profileViewController {
             print("empty")
         }
         
-        
 //avoids the app from crashing
 //the lpost array is empty while the database is being queried
         if lPosts.count != 0 {
@@ -195,11 +195,6 @@ extension profileViewController {
             albumCell.albumCover.af.setImage(withURL: url!)
         }
 
-        
-        
-        
-        
-        
         if (collectionView == genreCollectionView)
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
@@ -212,6 +207,15 @@ extension profileViewController {
         // Configure the cell
 
         return albumCell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! postsCollectionViewCell
+        let vc1 = storyboard?.instantiateViewController(withIdentifier: "songViewController") as? songViewController
+        
+        //albumCell = cell.albumCover.image
+        
+        //vc1?.songTitle = smth[indexPath.row]
+        self.navigationController?.pushViewController(vc1!, animated: true)
     }
 }
 
