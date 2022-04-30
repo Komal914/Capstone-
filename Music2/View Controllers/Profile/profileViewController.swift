@@ -168,7 +168,8 @@ extension profileViewController {
         {
             return 4
         }
-        
+        let pCount = lPosts.count
+        postsNumberLabel.text = String(pCount)
         return lPosts.count
     }
     
