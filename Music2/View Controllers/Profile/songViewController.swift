@@ -6,11 +6,22 @@
 //
 
 import UIKit
+import Parse
 
 class songViewController: UIViewController {
-
+    @IBOutlet weak var artistLabel: UILabel!
+    @IBOutlet weak var songInfoLabel: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var songImageView: UIImageView!
+    //var selectedPost = [PFObject]()
+    var songImage: UIImage!
+    var songTitle = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+//        let imageFile = post["cover"] as! PFFileObject
+//        let urlString = imageFile.url!
+//        let url = URL(string: urlString)
+        //songImageView.af.setImage(withURL: url!)
 
         // Do any additional setup after loading the view.
     }
