@@ -1132,6 +1132,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gbr-Lj-gLV"/>
         <segue reference="geb-7K-z7u"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
