@@ -209,9 +209,10 @@ extension profileViewController {
         return albumCell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! postsCollectionViewCell
+        //let cell = collectionView.cellForItem(at: indexPath) as! postsCollectionViewCell
         let vc1 = storyboard?.instantiateViewController(withIdentifier: "songViewController") as? songViewController
         
+        //vc1?.songImage = lPosts[indexPath.row]
         //albumCell = cell.albumCover.image
         
         //vc1?.songTitle = smth[indexPath.row]
