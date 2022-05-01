@@ -37,8 +37,6 @@ class songViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let url = URL(string: self.imageURLS)
-
         let query = PFQuery(className: "posts")
         
         query.includeKey("cover")
