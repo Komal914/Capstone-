@@ -14,10 +14,12 @@ class songViewController: UIViewController {
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var songImageView: UIImageView!
     //var selectedPost = [PFObject]()
+    var imageURLS = String()
     var songImage: UIImage!
     var songTitle = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("MY URLS AS STRINGS: ", imageURLS)
 //        let imageFile = post["cover"] as! PFFileObject
 //        let urlString = imageFile.url!
 //        let url = URL(string: urlString)
