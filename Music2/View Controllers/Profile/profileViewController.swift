@@ -45,6 +45,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     var name: String = ""
     var genre: String = ""
     var CoverUrlString = [String]()
+    //var imageBinFile = [PFFileObject]()
     //var thumbnail: UIImage!
     
     private let itemsPerRow: CGFloat = 2
@@ -191,7 +192,7 @@ extension profileViewController {
             let post = reversePosts[indexPath.row]
             //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
-            
+            //imageBinFile.append(imageFile)
             let urlString = imageFile.url!
             CoverUrlString.append(urlString)
             let url = URL(string: urlString)
@@ -218,7 +219,8 @@ extension profileViewController {
         //print(idk)
         
         let cover = CoverUrlString[indexPath.row]
-        
+        //let binFile = imageBinFile[indexPath.row]
+        //print("MY IMAGE FILES: ", binFile)
         print("MY COVER:", cover)
         
         vc1!.imageURLS = cover

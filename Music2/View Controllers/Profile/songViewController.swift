@@ -13,17 +13,24 @@ class songViewController: UIViewController {
     @IBOutlet weak var songInfoLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var songImageView: UIImageView!
-    //var selectedPost = [PFObject]()
+    //var selectedPost = [PFFileObject]()
     var imageURLS = String()
     var songImage: UIImage!
     var songTitle = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         print("MY URLS AS STRINGS: ", imageURLS)
-//        let imageFile = post["cover"] as! PFFileObject
-//        let urlString = imageFile.url!
-//        let url = URL(string: urlString)
-        //songImageView.af.setImage(withURL: url!)
+        
+        let query = PFQuery(className: "posts")
+        let cover = imageURLS
+        
+        query.whereKey("cover", equalTo: cover)
+        query.findObjectsInBackground{(posts, error) in
+            if posts != nil {
+                let url = URL(string: self.imageURLS)
+                self.songImageView.af.setImage(withURL: url!)
+            }
+        }
 
         // Do any additional setup after loading the view.
     }
