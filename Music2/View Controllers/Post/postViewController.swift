@@ -85,30 +85,30 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     @IBAction func onPost(_ sender: Any) {
+        print("1")
         let obj = self.userName[0]
         let name = obj["username"] as! String
         let username = name
-        
+        print("2")
         let posts = PFObject(className: "posts")
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
         posts["genre"] = Genre
         posts["song"] = SongInfo
-        let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
         let caption = caption.text!
         //print("caption", caption)
         posts["caption"] = caption
         posts["artistName"] = ArtistName
         posts["username"] = username
-        
+        print("3")
         let imageData = AlbumCover.image!.pngData()
         let file = PFFileObject(data: imageData!)
         posts["cover"] = file
-        
+        print("4")
         if audios.count != 0 {
             posts["audio"] = audios.last!
         }
-        
+        print("6")
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
