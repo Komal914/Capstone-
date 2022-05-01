@@ -8,9 +8,28 @@
 import UIKit
 
 class userProfileViewController: UIViewController {
+    
+    
+    @IBOutlet weak var userName: UILabel!
+    
+    
+    @IBOutlet weak var bio: UILabel!
+    
+    
+    @IBOutlet weak var followersLabel: UILabel!
+    
+    
+    @IBOutlet weak var fansLabel: UILabel!
+    
+    
+    @IBOutlet weak var postsCountLabel: UILabel!
+    
+    
+    var name = String()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userName.text = name 
 
         // Do any additional setup after loading the view.
     }

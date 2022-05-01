@@ -14,7 +14,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     var user: User?
     var posts = [PFObject]()
-    var Name = String()
+    var otherUserName = String()
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -30,17 +30,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error quering for posts: \(String(describing: error))")
             }
         }
-        
-//        let query = PFQuery(className: "homeLikes")
-//        query.findObjectsInBackground{(posts, error) in
-//            if posts != nil{
-//                self.posts = posts! //storing from backend to this file
-//                self.table.reloadData()
-//            }
-//            else {
-//                print("error quering for posts: \(String(describing: error))")
-//            }
-//        }
     }
     
     override func viewDidLoad() {
@@ -60,7 +49,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func homeCommentButton(_ sender: Any) {
         
         performSegue(withIdentifier: "homeComment", sender: self)
+        
     }
+    
+    
+    @IBAction func onUsernameButton(_ sender: UIButton) {
+        
+        performSegue(withIdentifier: "userProfile", sender: self)
+        
+    }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 672 //or whatever you need
@@ -103,12 +101,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.videoPlayerItem = AVPlayerItem.init(url: soundUrl!)
         
         
-        // like button
-        //cell.likeButton.setImage(UIImage(systemName: "search"), for: .normal)
-        
         // username
-        let userName = post["username"] as! String
-        cell.userName.text = userName
+        if(post["username"] != nil){
+            let userName = post["username"] as! String
+            cell.usernameButton.setTitle(userName, for: .normal)
+            otherUserName = userName
+            print("TEST")
+            print(userName)
+            print(otherUserName)
+        }
+        
         return cell
     }
+    
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        let vc = segue.destination as! userProfileViewController
+        print(otherUserName)
+    }
+    
 }

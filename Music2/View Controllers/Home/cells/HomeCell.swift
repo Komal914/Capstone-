@@ -42,6 +42,14 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var albumNameSongName: UILabel!
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
+    
+    
+    @IBOutlet weak var usernameButton: UIButton!
+    
+    
+    
+    
+    
     @IBOutlet weak var likeButton: UIButton!
     
     @IBAction func onLike(_ sender: UIButton) {
@@ -113,7 +121,6 @@ class HomeCell: UITableViewCell {
        stopPlayback()
     }
     
-    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var captionFromTheUser: UILabel!
     
     @IBAction func commentButton(_ sender: Any) {
