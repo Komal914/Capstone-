@@ -41,9 +41,10 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     var bioText: String = ""
     var profileUser = [PFObject]()
     var lPosts = [PFObject]()
-    //var covers = [PFFileObject]()
+    //var cover: PFFileObject
     var name: String = ""
     var genre: String = ""
+    var CoverUrlString = [String]()
     //var thumbnail: UIImage!
     
     private let itemsPerRow: CGFloat = 2
@@ -190,7 +191,9 @@ extension profileViewController {
             let post = reversePosts[indexPath.row]
             //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
+            
             let urlString = imageFile.url!
+            CoverUrlString.append(urlString)
             let url = URL(string: urlString)
             albumCell.albumCover.af.setImage(withURL: url!)
         }
@@ -211,6 +214,14 @@ extension profileViewController {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let cell = collectionView.cellForItem(at: indexPath) as! postsCollectionViewCell
         let vc1 = storyboard?.instantiateViewController(withIdentifier: "songViewController") as? songViewController
+        
+        //print(idk)
+        
+        let cover = CoverUrlString[indexPath.row]
+        
+        print("MY COVER:", cover)
+        
+        vc1!.imageURLS = cover
         
         //vc1?.songImage = lPosts[indexPath.row]
         //albumCell = cell.albumCover.image
