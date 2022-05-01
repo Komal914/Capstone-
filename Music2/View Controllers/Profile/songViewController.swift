@@ -17,22 +17,58 @@ class songViewController: UIViewController {
     var imageURLS = String()
     var songImage: UIImage!
     var songTitle = ""
+    var lPosts = [PFObject]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("MY URLS AS STRINGS: ", imageURLS)
         
-        let query = PFQuery(className: "posts")
-        let cover = imageURLS
         
-        query.whereKey("cover", equalTo: cover)
-        query.findObjectsInBackground{(posts, error) in
-            if posts != nil {
-                let url = URL(string: self.imageURLS)
-                self.songImageView.af.setImage(withURL: url!)
-            }
-        }
+        let url = URL(string: self.imageURLS)
+        self.songImageView.af.setImage(withURL: url!)
+        
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let url = URL(string: self.imageURLS)
+
+        let query = PFQuery(className: "posts")
+        
+        query.includeKey("cover")
+        query.findObjectsInBackground{(posts, error) in
+            if posts != nil {
+                self.lPosts = posts!
+                for post in self.lPosts{
+                    print("post: ", post)
+                    let imageFile = post["cover"] as? PFFileObject
+                    let fileString = imageFile?.url
+                    if fileString == self.imageURLS
+                    {
+                        self.songInfoLabel.text = post["song"] as? String
+                        self.genreLabel.text = post["genre"] as? String
+                        self.artistLabel.text = post["artistName"] as? String
+                    }
+                    //print("here lies the image: ", imageFile)
+                }
+                //print("Here Lies All the POsts: ", self.lPosts)
+                
+            }
+        }
+        updateValues()
+    }
+    
+    
+    
+    func updateValues ()
+    {
+        print("Round TWO: ", lPosts)
     }
     
 

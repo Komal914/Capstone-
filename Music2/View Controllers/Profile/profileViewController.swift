@@ -133,7 +133,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 
         query.whereKey("appleID", equalTo: userID)
         query.includeKey("author")
-        query.limit = 20
+        //query.limit = 20
         
         query.findObjectsInBackground{ (posts, error) in
             if posts != nil {
@@ -219,14 +219,11 @@ extension profileViewController {
         //print(idk)
         
         let cover = CoverUrlString[indexPath.row]
-        //let binFile = imageBinFile[indexPath.row]
-        //print("MY IMAGE FILES: ", binFile)
+
         print("MY COVER:", cover)
         
         vc1!.imageURLS = cover
         
-        //vc1?.songImage = lPosts[indexPath.row]
-        //albumCell = cell.albumCover.image
         
         //vc1?.songTitle = smth[indexPath.row]
         self.navigationController?.pushViewController(vc1!, animated: true)
