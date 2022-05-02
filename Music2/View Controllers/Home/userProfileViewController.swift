@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Parse
 
 class userProfileViewController: UIViewController {
     
@@ -26,12 +27,33 @@ class userProfileViewController: UIViewController {
     
     
     var name = String()
+    var lprofile = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userName.text = name 
+        let query = PFQuery(className: "profileInfo")
+        query.whereKey("username", equalTo: name)
+        
+        query.findObjectsInBackground{(profiles, error) in
+            if profiles != nil{
+                let profile = profiles![0]
+                self.bio.text = profile["bio"] as? String
+                self.userName.text = self.name
+            }
+
+            else {
+                print("error quering for posts: \(String(describing: error))")
+            }
+
+        }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+
     }
     
 
