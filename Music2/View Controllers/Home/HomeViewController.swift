@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var aboutToBecomeInvisibleCell = -1
     var visibleIP : IndexPath?
     var currentPostUsername = String()
+    
 
         
     override func viewDidAppear(_ animated: Bool) {
@@ -27,12 +28,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         query.findObjectsInBackground{(posts, error) in
             if posts != nil{
                 self.posts = posts! //storing from backend to this file
+                var reversePosts = [PFObject]()
+                reversePosts = posts!.reversed()
+                let first = reversePosts[0]
+                self.currentPostUsername = first["username"] as! String
+                print(self.currentPostUsername)
                 self.table.reloadData()
             }
             else {
                 print("error quering for posts: \(String(describing: error))")
             }
         }
+        
+
     }
     
     override func viewDidLoad() {
@@ -40,6 +48,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.navigationController?.navigationBar.isHidden = true
         table.delegate = self
         table.dataSource = self
+   
         // Do any additional setup after loading the view.
         
         visibleIP = IndexPath.init(row: 0, section: 0)
@@ -50,7 +59,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //                cells.append(HomeCell)
 //            }
 //        }
-//        
+//
 //        let firstCell = cells.first as! HomeCell
 //        let firstUser = firstCell.usernameButton.currentTitle!
 //        print(firstUser)
@@ -189,6 +198,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         let vc = segue.destination as! userProfileViewController
+        vc.name = currentPostUsername
         
     }
     
