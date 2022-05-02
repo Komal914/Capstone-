@@ -8,7 +8,31 @@
 import UIKit
 import Parse
 
-class userProfileViewController: UIViewController {
+class userProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (collectionView == genreCollectionView)
+        {
+            return 4
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+//        if (collectionView == genreCollectionView)
+//        {
+            let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
+            //cell2.backgroundColor = .systemTeal
+            genreCell.genreLabel.text = "Genre"
+            genreCell.genreLabel.backgroundColor = .purple
+            return genreCell
+        //}
+        
+        
+
+        
+    }
+    
     
     
     @IBOutlet weak var userName: UILabel!
@@ -26,11 +50,15 @@ class userProfileViewController: UIViewController {
     @IBOutlet weak var postsCountLabel: UILabel!
     
     
+    @IBOutlet weak var genreCollectionView: UICollectionView!
+    
+    
     var name = String()
     var lprofile = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        genreCollectionView.dataSource = self
         let query = PFQuery(className: "profileInfo")
         query.whereKey("username", equalTo: name)
         
