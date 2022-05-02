@@ -36,6 +36,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var name = String()
     //var lprofile = [PFObject]()
     var lPosts = [PFObject]()
+    var isActive:Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +128,17 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         //change the label to unfollow for this profile
         // store the follow unfollow property on parse for the current user
+        
+        if isActive {
+            isActive = false
+            followButton.setTitle("Unfollow", for: .normal)
+
+        }
+        
+        else{
+            isActive = true
+            followButton.setTitle("Follow", for: .normal)
+        }
 
         
     }
