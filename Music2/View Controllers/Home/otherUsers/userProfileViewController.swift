@@ -9,33 +9,11 @@ import UIKit
 import Parse
 
 class userProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (collectionView == genreCollectionView)
-        {
-            return 4
-        }
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-//        if (collectionView == genreCollectionView)
-//        {
-            let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
-            //cell2.backgroundColor = .systemTeal
-            genreCell.genreLabel.text = "Genre"
-            genreCell.genreLabel.backgroundColor = .purple
-            return genreCell
-        //}
-        
-        
-
-        
-    }
-    
-    
     
     @IBOutlet weak var userName: UILabel!
+    
+    
+    @IBOutlet weak var followButton: UIButton!
     
     
     @IBOutlet weak var bio: UILabel!
@@ -52,13 +30,20 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     
+    @IBOutlet weak var postsCollectionView: UICollectionView!
+    
     
     var name = String()
-    var lprofile = [PFObject]()
+    //var lprofile = [PFObject]()
+    var lPosts = [PFObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //datasources for collecion views
         genreCollectionView.dataSource = self
+        postsCollectionView.dataSource = self
+        
+        //query for the profile bio
         let query = PFQuery(className: "profileInfo")
         query.whereKey("username", equalTo: name)
         
@@ -74,14 +59,76 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             }
 
         }
-
-        // Do any additional setup after loading the view.
+        
+        //query for the posts from this user
+        let query2 = PFQuery(className: "posts")
+        query2.whereKey("username", equalTo: name)
+        query2.findObjectsInBackground{ (posts, error) in
+            if posts != nil {
+                self.lPosts = posts!
+                self.postsCollectionView.reloadData()
+                
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        
+        
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if (collectionView == genreCollectionView)
+        {
+            return 4
+        }
+        return lPosts.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let albumCell = postsCollectionView.dequeueReusableCell(withReuseIdentifier: "PostsCollectionViewCell", for: indexPath) as! PostsCollectionViewCell
+        
+        if lPosts.count == 0 {
+            print("empty")
+        }
+        
+        if lPosts.count != 0 {
+            var reversePosts = [PFObject]()
+            reversePosts = self.lPosts.reversed()
+            let post = reversePosts[indexPath.row]
+            //let user = post["author"] as! PFUser
+            let imageFile = post["cover"] as! PFFileObject
+            //imageBinFile.append(imageFile)
+            let urlString = imageFile.url!
+           // CoverUrlString.append(urlString)
+            let url = URL(string: urlString)
+            albumCell.albumCover.af.setImage(withURL: url!)
+        }
+        if (collectionView == genreCollectionView)
+        {
+            let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
+            //cell2.backgroundColor = .systemTeal
+            genreCell.genreLabel.text = "Genre"
+            genreCell.genreLabel.backgroundColor = .purple
+            return genreCell
+        }
+        
+        return albumCell
+
+        
+    }
+    
+    
+    @IBAction func onFollow(_ sender: UIButton) {
+        
+        //change the label to unfollow for this profile
+        // store the follow unfollow property on parse for the current user
+
+        
     }
     
 
