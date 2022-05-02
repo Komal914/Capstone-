@@ -14,7 +14,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     var user: User?
     var posts = [PFObject]()
-    var otherUserName = String()
+    var aboutToBecomeInvisibleCell = -1
+    var visibleIP : IndexPath?
+    var currentPostUsername = String()
+
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,10 +38,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = true
-        
         table.delegate = self
         table.dataSource = self
         // Do any additional setup after loading the view.
+        
+        visibleIP = IndexPath.init(row: 0, section: 0)
+//        let indexPaths = self.table.indexPathsForVisibleRows
+//        var cells = [Any]()
+//        for ip in indexPaths!{
+//            if let HomeCell = self.table.cellForRow(at: ip) as? HomeCell{
+//                cells.append(HomeCell)
+//            }
+//        }
+//        
+//        let firstCell = cells.first as! HomeCell
+//        let firstUser = firstCell.usernameButton.currentTitle!
+//        print(firstUser)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,11 +68,63 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
+        
     @IBAction func onUsernameButton(_ sender: UIButton) {
         
         performSegue(withIdentifier: "userProfile", sender: self)
         
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let indexPaths = self.table.indexPathsForVisibleRows
+        var cells = [Any]()
+        for ip in indexPaths!{
+            if let HomeCell = self.table.cellForRow(at: ip) as? HomeCell{
+                cells.append(HomeCell)
+            }
+        }
+    
+        let cellCount = cells.count
+        if cellCount == 0 {return}
+        if cellCount == 1{
+            if visibleIP != indexPaths?[0]{
+                visibleIP = indexPaths?[0]
+            }
+            if let homeCell = cells.last! as? HomeCell{
+                currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?.last)!)
+                print("POST 0",currentPostUsername)
+            }
+        }
+    
+        if cellCount >= 2 {
+            for i in 0..<cellCount{
+                let cellRect = self.table.rectForRow(at: (indexPaths?[i])!)
+                let intersect = cellRect.intersection(self.table.bounds)
+
+                // curerntHeight is the height of the cell that is visible
+                let currentHeight = intersect.height
+                //print("\n \(currentHeight)")
+                let cellHeight = (cells[i] as AnyObject).frame.size.height
+                
+                // 0.95 here denotes how much you want the cell to display for it to mark itself as visible, .95 denotes 95 percent, you can change the values accordingly
+                if currentHeight > (cellHeight * 0.95){
+                    if visibleIP != indexPaths?[i]{
+                        visibleIP = indexPaths?[i]
+                        print ("visible = \(indexPaths?[i])")
+                        if let homeCell = cells[i] as? HomeCell{
+                            currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?[i])!)
+                            print("USERNAMEEEE ", currentPostUsername)
+                        }
+                    }
+                }
+        
+            }
+        }
+    }
+    
+    func getUserName(cell : HomeCell, indexPath : IndexPath) -> String{
+        return cell.usernameButton.currentTitle!
     }
     
     
@@ -70,6 +138,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         var reversePosts = [PFObject]()
         reversePosts = posts.reversed()
+        
+
         let post = reversePosts[indexPath.row]
         
         // songinfo
@@ -105,10 +175,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if(post["username"] != nil){
             let userName = post["username"] as! String
             cell.usernameButton.setTitle(userName, for: .normal)
-            otherUserName = userName
-            print("TEST")
-            print(userName)
-            print(otherUserName)
+            
         }
         
         return cell
@@ -122,7 +189,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         let vc = segue.destination as! userProfileViewController
-        print(otherUserName)
+        
     }
     
 }
