@@ -1170,26 +1170,26 @@
                                     <outlet property="delegate" destination="4Nh-b3-u2E" id="7Cw-GL-HLB"/>
                                 </connections>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-MX-NZm">
-                                <rect key="frame" x="0.0" y="221" width="414" height="85"/>
+                            <collectionView userInteractionEnabled="NO" contentMode="redraw" fixedFrame="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cCk-MX-NZm">
+                                <rect key="frame" x="0.0" y="226" width="414" height="85"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pJH-cs-BOP">
-                                    <size key="itemSize" width="75" height="26"/>
+                                    <size key="itemSize" width="88" height="32"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genreCollectionViewCell" id="oU5-K1-GFr" customClass="genreCollectionViewCell" customModule="Music2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="75" height="26"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="genreCollectionViewCell" id="oU5-K1-GFr" customClass="genreCollectionViewCell" customModule="Music2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="88" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3EZ-yc-GcZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="75" height="26"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="32"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="pop" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUZ-hE-cw7">
-                                                    <rect key="frame" x="0.0" y="2" width="75" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="pop" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUZ-hE-cw7">
+                                                    <rect key="frame" x="0.0" y="2" width="88" height="30"/>
                                                     <color key="backgroundColor" red="0.51712202389999995" green="0.4569342535" blue="0.84258943799999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1201,7 +1201,7 @@
                                                 <constraint firstItem="yUZ-hE-cw7" firstAttribute="centerX" secondItem="3EZ-yc-GcZ" secondAttribute="centerX" id="qGP-Bt-i3Q"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="75" height="26"/>
+                                        <size key="customSize" width="88" height="32"/>
                                         <connections>
                                             <outlet property="genreLabel" destination="yUZ-hE-cw7" id="7yT-GF-FsY"/>
                                         </connections>
@@ -1235,7 +1235,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QO2-cM-YM6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2464" y="1908"/>
+            <point key="canvasLocation" x="2462.3188405797105" y="1907.8125"/>
         </scene>
         <!--Song View Controller-->
         <scene sceneID="XYJ-MG-8At">
@@ -1354,6 +1354,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="gbr-Lj-gLV"/>
         <segue reference="geb-7K-z7u"/>
         <segue reference="BWV-Gj-bZk"/>
     </inferredMetricsTieBreakers>
