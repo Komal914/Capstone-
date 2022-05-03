@@ -147,6 +147,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             if posts != nil {
                 self.lPosts = posts!
                 self.postsCollectionView.reloadData()
+                self.genreCollectionView.reloadData()
                 
             }
         }
@@ -177,7 +178,7 @@ extension profileViewController {
         
         if (collectionView == genreCollectionView)
         {
-            return 4
+            return lPosts.count
         }
         let pCount = lPosts.count
         postsNumberLabel.text = String(pCount)
@@ -268,12 +269,14 @@ extension profileViewController: UICollectionViewDelegateFlowLayout {
         
         if (collectionView == genreCollectionView)
         {
-            let itemsPerRow: CGFloat = 4
+            let someCount = lPosts.count
+            let cgfx = CGFloat(someCount)
+            let itemsPerRow: CGFloat = cgfx
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
             let widthPerItem = availableWidth / itemsPerRow
             
-            return CGSize(width: widthPerItem, height: widthPerItem/5)
+            return CGSize(width: widthPerItem, height: widthPerItem/4)
         }
         let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
         let availableWidth = view.frame.width - paddingSpace
