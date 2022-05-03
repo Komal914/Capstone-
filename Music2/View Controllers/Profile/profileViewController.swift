@@ -41,12 +41,10 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     var bioText: String = ""
     var profileUser = [PFObject]()
     var lPosts = [PFObject]()
-    //var cover: PFFileObject
     var name: String = ""
     var genre: String = ""
     var CoverUrlString = [String]()
-    //var imageBinFile = [PFFileObject]()
-    //var thumbnail: UIImage!
+
     
     private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
@@ -106,17 +104,27 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         query2.findObjectsInBackground{(bio, error) in
             if bio != nil {
                 //print(bio!)
-                var newInfo = bio?.first
+                let newInfo = bio?.first
                 //print(newInfo!)
-                var data = newInfo!["bio"] as! String
+                let data = newInfo!["bio"] as! String
                 self.bioText = data
-                //data = self.editBioTextField.text!
-                //self.bioLabel.text = data
                 //print(data)
                 self.bioLabel.text = self.bioText
 
             }
         }
+//        let query3 = PFQuery(className: "posts")
+//        query3.whereKey("appleID", equalTo: userID)
+//        query3.findObjectsInBackground{(posts, error) in
+//            if posts != nil {
+//                self.lPosts = posts!
+//                for post in self.lPosts{
+//                    //print("for the genres: ", post)
+//
+//                }
+//            }
+//
+//        }
         
         
     }
@@ -202,8 +210,25 @@ extension profileViewController {
         if (collectionView == genreCollectionView)
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
+            
+            let query3 = PFQuery(className: "posts")
+            let user = PFUser.current()
+            let userID = user!["username"] as! String
+            query3.whereKey("appleID", equalTo: userID)
+            query3.findObjectsInBackground{(posts, error) in
+                if posts != nil {
+                    self.lPosts = posts!
+                    for post in self.lPosts{
+                        let genres = self.lPosts[indexPath.row]
+                        genreCell.genreLabel.text = genres["genre"] as? String
+                        //print("for the genres: ", post)
+                        
+                    }
+                }
+                
+            }
             //cell2.backgroundColor = .systemTeal
-            genreCell.genreLabel.text = "Genre"
+            //genreCell.genreLabel.text = "Genre"
             genreCell.genreLabel.backgroundColor = .purple
             return genreCell
         }
