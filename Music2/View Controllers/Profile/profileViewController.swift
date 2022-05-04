@@ -49,11 +49,11 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     var CoverUrlString = [String]()
 
     
-    private let itemsPerRow: CGFloat = 2
+    //private let itemsPerRow: CGFloat = 2
     private let sectionInsets = UIEdgeInsets(
-        top: 50.0,
+        top: 10.0,
         left: 10.0,
-        bottom: 50.0,
+        bottom: 10.0,
         right: 10.0)
     
     
@@ -241,15 +241,12 @@ extension profileViewController {
             query3.findObjectsInBackground{(posts, error) in
                 if posts != nil {
                     self.lPosts = posts!
-                    for post in self.lPosts{
-                        let genres = self.lPosts[indexPath.row]
-                        genreCell.genreLabel.text = genres["genre"] as? String
-                        genreCell.genreLabel.backgroundColor = random(colors: myColors)
-                        genreCell.genreLabel.layer.masksToBounds = true
-                        genreCell.genreLabel.layer.cornerRadius = 8
-                        //print("for the genres: ", post)
-                        
-                    }
+                    let genres = self.lPosts[indexPath.row]
+                    genreCell.genreLabel.text = genres["genre"] as? String
+                    genreCell.genreLabel.backgroundColor = random(colors: myColors)
+                    genreCell.genreLabel.layer.masksToBounds = true
+                    genreCell.genreLabel.layer.cornerRadius = 8
+                    //print("for the genres: ", post)
                 }
                 
             }
@@ -294,20 +291,13 @@ extension profileViewController: UICollectionViewDelegateFlowLayout {
         
         if (collectionView == genreCollectionView)
         {
-            let someCount = lPosts.count
-            let cgfx = CGFloat(someCount)
-            let itemsPerRow: CGFloat = cgfx
+            let itemsPerRow: CGFloat = 4
             let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
             let availableWidth = view.frame.width - paddingSpace
             let widthPerItem = availableWidth / itemsPerRow
-            
-            return CGSize(width: widthPerItem, height: widthPerItem/4)
+
+            return CGSize(width: widthPerItem, height: widthPerItem/3)
         }
-//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-//        let availableWidth = view.frame.width - paddingSpace
-//        let widthPerItem = availableWidth / itemsPerRow
-//
-//        return CGSize(width: widthPerItem, height: widthPerItem)
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
         let size:CGFloat = (postsCollectionView.frame.size.width - space) / 2.0
