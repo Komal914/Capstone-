@@ -109,12 +109,34 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             let url = URL(string: urlString)
             albumCell.albumCover.af.setImage(withURL: url!)
         }
+        
+        //MARK: GENRE STUFF
+        let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
+        let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
+        let myRed = UIColor(red: 247.0/255, green: 118.0/255, blue: 113.0/255, alpha: 1.0)
+        let myYellow = UIColor(red: 255.0/255, green: 190.0/255, blue: 106.0/255, alpha: 1.0)
+        let hotpink = UIColor(red: 1.00, green: 0.00, blue: 0.82, alpha: 1.00)
+        let yellowgreen = UIColor(red: 0.87, green: 1.00, blue: 0.00, alpha: 1.00)
+        let lavender = UIColor(red: 0.87, green: 0.78, blue: 1.00, alpha: 1.00)
+        let blue = UIColor(red: 0.66, green: 1.00, blue: 0.97, alpha: 1.00)
+        let purple = UIColor(red: 0.50, green: 0.00, blue: 1.00, alpha: 1.00)
+        let orange = UIColor(red: 1.00, green: 0.55, blue: 0.00, alpha: 1.00)
+        let pink = UIColor(red: 1.00, green: 0.73, blue: 0.85, alpha: 1.00)
+                        
+        let myColors = [myRed, myBlue, myGreen, myYellow, hotpink, yellowgreen, lavender, blue, purple, orange, pink]
+                        
+        func random(colors: [UIColor]) -> UIColor {
+            return colors[Int(arc4random_uniform(UInt32(myColors.count)))]
+        }
+        
         if (collectionView == genreCollectionView)
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
             //cell2.backgroundColor = .systemTeal
             genreCell.genreLabel.text = "Genre"
-            genreCell.genreLabel.backgroundColor = .purple
+            genreCell.genreLabel.backgroundColor = random(colors: myColors)
+            genreCell.genreLabel.layer.masksToBounds = true
+            genreCell.genreLabel.layer.cornerRadius = 8
             return genreCell
         }
         
