@@ -47,7 +47,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     var name: String = ""
     var genre: String = ""
     var CoverUrlString = [String]()
-    var genres = Set<String>()
 
     
     private let itemsPerRow: CGFloat = 2
@@ -150,11 +149,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         query.findObjectsInBackground{ (posts, error) in
             if posts != nil {
                 self.lPosts = posts!
-                for post in self.lPosts{
-                    let genreSet = post["genre"] as? String
-                    self.genres.insert(genreSet!)
-                }
-
                 self.postsCollectionView.reloadData()
                 self.genreCollectionView.reloadData()
                 
@@ -187,7 +181,7 @@ extension profileViewController {
         
         if (collectionView == genreCollectionView)
         {
-            return genres.count
+            return lPosts.count
         }
         let pCount = lPosts.count
         postsNumberLabel.text = String(pCount)
@@ -240,6 +234,14 @@ extension profileViewController {
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
             
+            let query3 = PFQuery(className: "posts")
+            let user = PFUser.current()
+            let userID = user!["username"] as! String
+            query3.whereKey("appleID", equalTo: userID)
+            query3.findObjectsInBackground{(posts, error) in
+                if posts != nil {
+                    self.lPosts = posts!
+                    for post in self.lPosts{
                         let genres = self.lPosts[indexPath.row]
                         genreCell.genreLabel.text = genres["genre"] as? String
                         genreCell.genreLabel.backgroundColor = random(colors: myColors)
@@ -247,9 +249,10 @@ extension profileViewController {
                         genreCell.genreLabel.layer.cornerRadius = 8
                         //print("for the genres: ", post)
                         
+                    }
+                }
                 
-                
-            
+            }
             //cell2.backgroundColor = .systemTeal
             //genreCell.genreLabel.text = "Genre"
             //genreCell.genreLabel.backgroundColor = .purple
