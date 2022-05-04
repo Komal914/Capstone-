@@ -303,11 +303,15 @@ extension profileViewController: UICollectionViewDelegateFlowLayout {
             
             return CGSize(width: widthPerItem, height: widthPerItem/4)
         }
-        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
-        let availableWidth = view.frame.width - paddingSpace
-        let widthPerItem = availableWidth / itemsPerRow
-        
-        return CGSize(width: widthPerItem, height: widthPerItem)
+//        let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+//        let availableWidth = view.frame.width - paddingSpace
+//        let widthPerItem = availableWidth / itemsPerRow
+//
+//        return CGSize(width: widthPerItem, height: widthPerItem)
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size:CGFloat = (postsCollectionView.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: size)
     }
     
     // 3
