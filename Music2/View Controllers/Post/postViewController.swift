@@ -146,6 +146,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         let cover = self.AlbumCover.image
         cell.albumCover.image = cover
         cell.genres.text = Genre
+        let pink = UIColor(red: 0.91, green: 0.27, blue: 0.62, alpha: 1.00)
+        cell.genres.backgroundColor = pink 
+        cell.genres.layer.masksToBounds = true
+        cell.genres.layer.cornerRadius = 8
         
         return cell
     }
