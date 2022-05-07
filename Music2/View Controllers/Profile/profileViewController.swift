@@ -79,7 +79,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             if profileInfo != nil{
                 
                 let array = profileInfo
-              
                 let obj = array?[0]
                 let userName = obj!["username"] as! String
                 let followCount = obj!["following"] as! String
@@ -107,32 +106,14 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         
         query2.whereKey("appleID", equalTo: userID)
-        //print(profInfo)
         query2.findObjectsInBackground{(bio, error) in
             if bio != nil {
-                //print(bio!)
                 let newInfo = bio?.first
-                //print(newInfo!)
                 let data = newInfo!["bio"] as! String
                 self.bioText = data
-                //print(data)
                 self.bioLabel.text = self.bioText
-
             }
         }
-//        let query3 = PFQuery(className: "posts")
-//        query3.whereKey("appleID", equalTo: userID)
-//        query3.findObjectsInBackground{(posts, error) in
-//            if posts != nil {
-//                self.lPosts = posts!
-//                for post in self.lPosts{
-//                    //print("for the genres: ", post)
-//
-//                }
-//            }
-//
-//        }
-        
         
     }
     
@@ -166,10 +147,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
         updateLabels()
-        
-        
-        //print(bioText)
-        
     }
     
         
@@ -208,14 +185,11 @@ extension profileViewController {
         }
         
 //avoids the app from crashing
-//the lpost array is empty while the database is being queried
         if lPosts.count != 0 {
             var reversePosts = [PFObject]()
             reversePosts = self.lPosts.reversed()
             let post = reversePosts[indexPath.row]
-            //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
-            //imageBinFile.append(imageFile)
             let urlString = imageFile.url!
             CoverUrlString.append(urlString)
             let url = URL(string: urlString)
@@ -245,20 +219,10 @@ extension profileViewController {
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "genreCollectionViewCell", for: indexPath) as! genreCollectionViewCell
             
-            //self.lPosts = posts!
-            //let genres = self.lPosts[indexPath.row]
-            //genreCell.genreLabel.text = genres["genre"] as? String
             genreCell.genreLabel.text = uniqueGenre[indexPath.row]
-//            genreCell.genreLabel.text = uniqueGenre[indexPath.row]
-            //print(uniqueGenre)
             genreCell.genreLabel.backgroundColor = random(colors: myColors)
             genreCell.genreLabel.layer.masksToBounds = true
             genreCell.genreLabel.layer.cornerRadius = 8
-            //print("for the genres: ", post)
-                
-            //cell2.backgroundColor = .systemTeal
-            //genreCell.genreLabel.text = "Genre"
-            //genreCell.genreLabel.backgroundColor = .purple
             return genreCell
         }
 

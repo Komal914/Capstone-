@@ -13,6 +13,10 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var userName: UILabel!
     
     
+    @IBOutlet weak var followCountLabel: UILabel!
+    
+    @IBOutlet weak var fansCountLabel: UILabel!
+    
     @IBOutlet weak var followButton: UIButton!
     
     
@@ -37,6 +41,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var lPosts = [PFObject]() //posts for user
     var isActive:Bool = true //follow button
     var followCount:Int = 0 //follow count is zero unless user is followed
+    var uniqueGenre = [String]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,12 +56,16 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         query.findObjectsInBackground{(profiles, error) in
             if profiles != nil{
-                let profile = profiles![0]
-                //print("Profile Info")
-              //  print(profile)
-               // print (self.followCount)
+                let profile = profiles![0] //going inside array
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
+               
+                let followCount = profile["following"] as! String
+                let fanCount = profile["fans"] as! String
+                print("print(followCount)")
+                print(followCount)
+                self.followCountLabel.text = followCount
+                self.fansCountLabel.text = fanCount
             }
 
             else {
@@ -70,8 +80,17 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         query2.findObjectsInBackground{ (posts, error) in
             if posts != nil {
                 self.lPosts = posts!
+                for post in self.lPosts{
+                    //getting unique genres from the posts the user has posted
+                    let genres = post["genre"] as! String
+                    if self.uniqueGenre.contains(genres) == false {
+                        self.uniqueGenre.append(genres)
+                        print("uniqueGenre")
+                        print(self.uniqueGenre)
+                    }
+                }
                 self.postsCollectionView.reloadData()
-                
+                self.genreCollectionView.reloadData()
             }
         }
     }
@@ -87,7 +106,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == genreCollectionView)
         {
-            return 4
+            return uniqueGenre.count
         }
         return lPosts.count
     }
@@ -104,11 +123,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             var reversePosts = [PFObject]()
             reversePosts = self.lPosts.reversed()
             let post = reversePosts[indexPath.row]
-            //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
-            //imageBinFile.append(imageFile)
             let urlString = imageFile.url!
-           // CoverUrlString.append(urlString)
             let url = URL(string: urlString)
             albumCell.albumCover.af.setImage(withURL: url!)
         }
@@ -135,12 +151,14 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         if (collectionView == genreCollectionView)
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
-            //cell2.backgroundColor = .systemTeal
-            genreCell.genreLabel.text = "Genre"
-            genreCell.genreLabel.backgroundColor = random(colors: myColors)
-            genreCell.genreLabel.layer.masksToBounds = true
-            genreCell.genreLabel.layer.cornerRadius = 8
-            return genreCell
+            
+            genreCell.genreLabel.text = uniqueGenre[indexPath.row]
+            print("uniqueGenre")
+            print(uniqueGenre)
+                genreCell.genreLabel.backgroundColor = random(colors: myColors)
+                genreCell.genreLabel.layer.masksToBounds = true
+                genreCell.genreLabel.layer.cornerRadius = 8
+                return genreCell
         }
         
         return albumCell
