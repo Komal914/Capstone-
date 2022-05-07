@@ -20,7 +20,8 @@ class welcomeViewController: UIViewController {
         let profileInfo = PFObject(className:"profileInfo")
         profileInfo["appleID"] = PFUser.current()?.username
         profileInfo["username"] = nameTextField.text!
-        profileInfo["followers"] = "0" 
+        profileInfo["following"] = "0"
+        profileInfo["fans"] = "0"
         //name = nameTextField.text!
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
