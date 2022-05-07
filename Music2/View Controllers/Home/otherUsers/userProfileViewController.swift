@@ -95,14 +95,6 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        
-
-    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == genreCollectionView)
         {
@@ -172,11 +164,30 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         //change the label to unfollow for this profile
         // store the follow unfollow property on parse for the current user
         
-       
+        let query = PFQuery(className: "profileInfo")
+        query.whereKey("username", equalTo: name)
+        
         
         if isActive {
             isActive = false
             followButton.setTitle("Unfollow", for: .normal)
+            query.findObjectsInBackground{(profile, error) in
+                if profile != nil {
+                    //print(bio!)
+                    var userProfile = profile?.first
+                    print(userProfile!)
+                    var followCount = userProfile!["following"] as! String
+                    let followNum = Int(followCount) ?? 0
+                    print(followNum)
+                    let newFollowNum = followNum + 1
+                    var myString = String(newFollowNum)
+                    print("NEW")
+                    print(myString)
+                    userProfile!["following"] = myString
+                    userProfile!.saveInBackground()
+                }
+            }
+
 
         }
         
@@ -184,8 +195,22 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             isActive = true
             followButton.setTitle("Follow", for: .normal)
             //followCount = 1
-            let profileInfo = PFObject(className: "profileInfo")
-            //profileInfo["followCount"] = followCount
+            query.findObjectsInBackground{(profile, error) in
+                if profile != nil {
+                    //print(bio!)
+                    var userProfile = profile?.first
+                    print(userProfile!)
+                    var followCount = userProfile!["following"] as! String
+                    let followNum = Int(followCount) ?? 0
+                    print(followNum)
+                    let newFollowNum = followNum - 1
+                    var myString = String(newFollowNum)
+                    print("NEW")
+                    print(myString)
+                    userProfile!["following"] = myString
+                    userProfile!.saveInBackground()
+                }
+            }
         }
 
         

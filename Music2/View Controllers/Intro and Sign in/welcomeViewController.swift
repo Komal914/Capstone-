@@ -22,6 +22,7 @@ class welcomeViewController: UIViewController {
         profileInfo["username"] = nameTextField.text!
         profileInfo["following"] = "0"
         profileInfo["fans"] = "0"
+        profileInfo["bio"] = "Hello!"
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
