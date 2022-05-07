@@ -174,15 +174,11 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             query.findObjectsInBackground{(profile, error) in
                 if profile != nil {
                     //print(bio!)
-                    var userProfile = profile?.first
-                    print(userProfile!)
-                    var followCount = userProfile!["following"] as! String
+                    let userProfile = profile?.first
+                    let followCount = userProfile!["following"] as! String
                     let followNum = Int(followCount) ?? 0
-                    print(followNum)
                     let newFollowNum = followNum + 1
-                    var myString = String(newFollowNum)
-                    print("NEW")
-                    print(myString)
+                    let myString = String(newFollowNum)
                     userProfile!["following"] = myString
                     userProfile!.saveInBackground()
                 }
@@ -194,19 +190,13 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         else{
             isActive = true
             followButton.setTitle("Follow", for: .normal)
-            //followCount = 1
             query.findObjectsInBackground{(profile, error) in
                 if profile != nil {
-                    //print(bio!)
-                    var userProfile = profile?.first
-                    print(userProfile!)
-                    var followCount = userProfile!["following"] as! String
+                    let userProfile = profile?.first
+                    let followCount = userProfile!["following"] as! String
                     let followNum = Int(followCount) ?? 0
-                    print(followNum)
                     let newFollowNum = followNum - 1
-                    var myString = String(newFollowNum)
-                    print("NEW")
-                    print(myString)
+                    let myString = String(newFollowNum)
                     userProfile!["following"] = myString
                     userProfile!.saveInBackground()
                 }
