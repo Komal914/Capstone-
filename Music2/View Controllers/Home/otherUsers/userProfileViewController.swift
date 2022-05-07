@@ -33,10 +33,10 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
     
-    var name = String()
-    //var lprofile = [PFObject]()
-    var lPosts = [PFObject]()
-    var isActive:Bool = true
+    var name = String() //username coming in from home
+    var lPosts = [PFObject]() //posts for user
+    var isActive:Bool = true //follow button
+    var followCount:Int = 0 //follow count is zero unless user is followed
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,9 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         query.findObjectsInBackground{(profiles, error) in
             if profiles != nil{
                 let profile = profiles![0]
+                //print("Profile Info")
+              //  print(profile)
+               // print (self.followCount)
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
             }
@@ -151,6 +154,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         //change the label to unfollow for this profile
         // store the follow unfollow property on parse for the current user
         
+       
+        
         if isActive {
             isActive = false
             followButton.setTitle("Unfollow", for: .normal)
@@ -160,20 +165,25 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         else{
             isActive = true
             followButton.setTitle("Follow", for: .normal)
+            //followCount = 1
+            let profileInfo = PFObject(className: "profileInfo")
+            //profileInfo["followCount"] = followCount
         }
 
         
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+         
     }
-    */
+    
 
 }

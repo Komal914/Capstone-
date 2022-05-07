@@ -20,6 +20,7 @@ class welcomeViewController: UIViewController {
         let profileInfo = PFObject(className:"profileInfo")
         profileInfo["appleID"] = PFUser.current()?.username
         profileInfo["username"] = nameTextField.text!
+        profileInfo["followers"] = "0" 
         //name = nameTextField.text!
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
@@ -31,15 +32,6 @@ class welcomeViewController: UIViewController {
         
         let name = nameTextField.text!
         print("this is the user name : ",name)
-        //let tabCtrl = segue.destination as! UITabBarController
-       // let destinationVC = tabCtrl.viewControllers![3] as! profileViewController // Assuming home view controller is in the first tab, else update the array index
-        
-//
-//        let navVC = tabBarController?.viewControllers![3] as! UINavigationController
-//        let cartTableViewController = navVC.topViewController as! profileViewController
-//
-//        cartTableViewController.usernameLabel.text = name
-        
         
         
     }

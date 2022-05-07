@@ -82,10 +82,11 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
               
                 let obj = array?[0]
                 let userName = obj!["username"] as! String
-                //let bio = obj!["bio"] as! String
-                //self.bioLabel.text = bio
-                //self.bioLabel.reloadInputViews()
+                let followCount = obj!["followers"] as! String
+                print("print(followCount)")
+                print(followCount)
                 self.usernameLabel.text = userName
+                self.followingNumberLabel.text = followCount
             }
             else {print("error quering for posts: \(String(describing: error))")}
         }
