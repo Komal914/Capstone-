@@ -12,13 +12,13 @@ import AVFoundation
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var table: UITableView!
+    
+    let model = try? genreRecommender();
     var user: User?
     var posts = [PFObject]()
     var aboutToBecomeInvisibleCell = -1
     var visibleIP : IndexPath?
     var currentPostUsername = String()
-    
-
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -35,12 +35,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print(self.currentPostUsername)
                 self.table.reloadData()
             }
+            
             else {
                 print("error quering for posts: \(String(describing: error))")
             }
         }
-        
-
     }
     
     override func viewDidLoad() {
@@ -63,6 +62,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        let firstCell = cells.first as! HomeCell
 //        let firstUser = firstCell.usernameButton.currentTitle!
 //        print(firstUser)
+        
+        /*let interactions = NSMutableDictionary();
+        interactions["comedy"] = 1;
+        interactions["hip hop"] = 1;
+        print(interactions)
+        
+        let modelInput = genreRecommenderInput(interactions: interactions as! [String : Double], k: 1);
+        guard let modelOutput = try? model.prediction(input: modelInput) else {
+            fatalError("Unexpected runtime error.");
+        }
+        
+        print(modelOutput.probabilities);
+        print(modelOutput.recommendations);*/
         
     }
     

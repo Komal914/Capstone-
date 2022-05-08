@@ -119,7 +119,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
-        
                 
         let video = videoData[indexPath.row] as NSDictionary        //each video data
         let attributes = video["attributes"] as! NSDictionary       //attributes for each video

@@ -13,7 +13,6 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var addCommentTextfield: UITextField!
     @IBOutlet weak var commentButton: UIButton!
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 25
     }

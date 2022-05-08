@@ -198,7 +198,6 @@ class SwipeViewController: UIViewController {
 //                    }
 //
                 }
-                
                 return
             }
             
@@ -226,7 +225,7 @@ class SwipeViewController: UIViewController {
                 
                 else {
                     performSegue(withIdentifier: "afterSelection", sender: self)
-                    print(userGenres)
+                    //print(userGenres)
                     
                     //Preferences ATTEMPT
                     let likedGenres = PFObject(className:"likedGenres")
@@ -235,11 +234,12 @@ class SwipeViewController: UIViewController {
                     likedGenres.saveInBackground { (succeeded, error)  in
                         if (succeeded) {
                             // The object has been saved.
-                        } else {
+                        }
+                        
+                        else {
                             print("error on saving data: \(String(describing: error?.localizedDescription))")
                         }
                     }
-
                 }
                 return
             }
