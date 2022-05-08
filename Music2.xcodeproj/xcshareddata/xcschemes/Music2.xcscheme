@@ -48,16 +48,6 @@
                ReferencedContainer = "container:Music2.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EE1DADED2828489A0082542D"
-               BuildableName = "MyAlgoTests.xctest"
-               BlueprintName = "MyAlgoTests"
-               ReferencedContainer = "container:Music2.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
