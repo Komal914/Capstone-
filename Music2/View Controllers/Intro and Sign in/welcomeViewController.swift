@@ -20,7 +20,9 @@ class welcomeViewController: UIViewController {
         let profileInfo = PFObject(className:"profileInfo")
         profileInfo["appleID"] = PFUser.current()?.username
         profileInfo["username"] = nameTextField.text!
-        //name = nameTextField.text!
+        profileInfo["following"] = "0"
+        profileInfo["fans"] = "0"
+        profileInfo["bio"] = "Hello!"
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
@@ -31,15 +33,6 @@ class welcomeViewController: UIViewController {
         
         let name = nameTextField.text!
         print("this is the user name : ",name)
-        //let tabCtrl = segue.destination as! UITabBarController
-       // let destinationVC = tabCtrl.viewControllers![3] as! profileViewController // Assuming home view controller is in the first tab, else update the array index
-        
-//
-//        let navVC = tabBarController?.viewControllers![3] as! UINavigationController
-//        let cartTableViewController = navVC.topViewController as! profileViewController
-//
-//        cartTableViewController.usernameLabel.text = name
-        
         
         
     }
@@ -66,21 +59,7 @@ class welcomeViewController: UIViewController {
      //MARK: - Navigation
 
    //  In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let name = nameTextField.text!
-        print("this is the user name : ",name)
-//        //let tabCtrl = segue.destination as! UITabBarController
-//       // let destinationVC = tabCtrl.viewControllers![3] as! profileViewController // Assuming home view controller is in the first tab, else update the array index
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //
-//
-//        let tabCtrl: UITabBarController = segue.destination as! UITabBarController
-//        let destinationVC = tabCtrl.viewControllers![3] as! UINavigationController
-//
-//        let last = destinationVC.viewControllers as! profileViewController
-//        
-//        print("TEST: ", last.usernameLabel.text)
-
-       // last.usernameLabel.text = name
-        //self.navigationController?.pushViewController(destinationVC, animated: false)
-    }
+//    }
 }

@@ -13,6 +13,10 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var userName: UILabel!
     
     
+    @IBOutlet weak var followCountLabel: UILabel!
+    
+    @IBOutlet weak var fansCountLabel: UILabel!
+    
     @IBOutlet weak var followButton: UIButton!
     
     
@@ -33,10 +37,12 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var postsCollectionView: UICollectionView!
     
     
-    var name = String()
-    //var lprofile = [PFObject]()
-    var lPosts = [PFObject]()
-    var isActive:Bool = true
+    var name = String() //username coming in from home
+    var lPosts = [PFObject]() //posts for user
+    var isActive:Bool = true //follow button
+    var followCount:Int = 0 //follow count is zero unless user is followed
+    var uniqueGenre = [String]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +56,16 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         query.findObjectsInBackground{(profiles, error) in
             if profiles != nil{
-                let profile = profiles![0]
+                let profile = profiles![0] //going inside array
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
+               
+                let followCount = profile["following"] as! String
+                let fanCount = profile["fans"] as! String
+                print("print(followCount)")
+                print(followCount)
+                self.followCountLabel.text = followCount
+                self.fansCountLabel.text = fanCount
             }
 
             else {
@@ -67,24 +80,25 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         query2.findObjectsInBackground{ (posts, error) in
             if posts != nil {
                 self.lPosts = posts!
+                for post in self.lPosts{
+                    //getting unique genres from the posts the user has posted
+                    let genres = post["genre"] as! String
+                    if self.uniqueGenre.contains(genres) == false {
+                        self.uniqueGenre.append(genres)
+                        print("uniqueGenre")
+                        print(self.uniqueGenre)
+                    }
+                }
                 self.postsCollectionView.reloadData()
-                
+                self.genreCollectionView.reloadData()
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        
-
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if (collectionView == genreCollectionView)
         {
-            return 4
+            return uniqueGenre.count
         }
         return lPosts.count
     }
@@ -101,11 +115,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             var reversePosts = [PFObject]()
             reversePosts = self.lPosts.reversed()
             let post = reversePosts[indexPath.row]
-            //let user = post["author"] as! PFUser
             let imageFile = post["cover"] as! PFFileObject
-            //imageBinFile.append(imageFile)
             let urlString = imageFile.url!
-           // CoverUrlString.append(urlString)
             let url = URL(string: urlString)
             albumCell.albumCover.af.setImage(withURL: url!)
         }
@@ -132,12 +143,14 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         if (collectionView == genreCollectionView)
         {
             let genreCell = genreCollectionView.dequeueReusableCell(withReuseIdentifier: "UsersGenresCollectionViewCell", for: indexPath) as! UsersGenresCollectionViewCell
-            //cell2.backgroundColor = .systemTeal
-            genreCell.genreLabel.text = "Genre"
-            genreCell.genreLabel.backgroundColor = random(colors: myColors)
-            genreCell.genreLabel.layer.masksToBounds = true
-            genreCell.genreLabel.layer.cornerRadius = 8
-            return genreCell
+            
+            genreCell.genreLabel.text = uniqueGenre[indexPath.row]
+            print("uniqueGenre")
+            print(uniqueGenre)
+                genreCell.genreLabel.backgroundColor = random(colors: myColors)
+                genreCell.genreLabel.layer.masksToBounds = true
+                genreCell.genreLabel.layer.cornerRadius = 8
+                return genreCell
         }
         
         return albumCell
@@ -151,29 +164,59 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         //change the label to unfollow for this profile
         // store the follow unfollow property on parse for the current user
         
+        let query = PFQuery(className: "profileInfo")
+        query.whereKey("username", equalTo: name)
+        
+        
         if isActive {
             isActive = false
             followButton.setTitle("Unfollow", for: .normal)
+            query.findObjectsInBackground{(profile, error) in
+                if profile != nil {
+                    //print(bio!)
+                    let userProfile = profile?.first
+                    let followCount = userProfile!["following"] as! String
+                    let followNum = Int(followCount) ?? 0
+                    let newFollowNum = followNum + 1
+                    let myString = String(newFollowNum)
+                    userProfile!["following"] = myString
+                    userProfile!.saveInBackground()
+                }
+            }
+
 
         }
         
         else{
             isActive = true
             followButton.setTitle("Follow", for: .normal)
+            query.findObjectsInBackground{(profile, error) in
+                if profile != nil {
+                    let userProfile = profile?.first
+                    let followCount = userProfile!["following"] as! String
+                    let followNum = Int(followCount) ?? 0
+                    let newFollowNum = followNum - 1
+                    let myString = String(newFollowNum)
+                    userProfile!["following"] = myString
+                    userProfile!.saveInBackground()
+                }
+            }
         }
 
         
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+         
     }
-    */
+    
 
 }
