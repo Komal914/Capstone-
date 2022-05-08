@@ -32,19 +32,6 @@
 		AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCD8827F26FE80077CB34 /* swipeViewController.swift */; };
 		C5E51134E16BC36C3DF00FDE /* Pods_Music2_Music2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B65C0FBCBA1712F0FED5AD9E /* Pods_Music2_Music2UITests.framework */; };
 		D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46F27C0800CE832FE4EE6053 /* Pods_Music2.framework */; };
-		EE1DADDB282846FE0082542D /* genreRecommender.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = EE1DADDA282846FE0082542D /* genreRecommender.mlmodel */; };
-		EE1DADDD2828485C0082542D /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EE1DADDC2828485C0082542D /* libAudioPreprocessing.dylib */; };
-		EE1DADDF282848670082542D /* libRecommender.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EE1DADDE282848670082542D /* libRecommender.dylib */; };
-		EE1DADE92828489A0082542D /* MyAlgo.docc in Sources */ = {isa = PBXBuildFile; fileRef = EE1DADE82828489A0082542D /* MyAlgo.docc */; };
-		EE1DADEF2828489A0082542D /* MyAlgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1DADE52828489A0082542D /* MyAlgo.framework */; };
-		EE1DADF62828489A0082542D /* MyAlgoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE1DADF52828489A0082542D /* MyAlgoTests.swift */; };
-		EE1DADF72828489A0082542D /* MyAlgo.h in Headers */ = {isa = PBXBuildFile; fileRef = EE1DADE72828489A0082542D /* MyAlgo.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EE1DADFA2828489A0082542D /* MyAlgo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE1DADE52828489A0082542D /* MyAlgo.framework */; };
-		EE1DADFC2828489A0082542D /* MyAlgo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EE1DADE52828489A0082542D /* MyAlgo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		EE1DAE04282848BC0082542D /* libRecommender.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = EE1DADDE282848670082542D /* libRecommender.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		EE1DAE07282848C30082542D /* libAudioPreprocessing.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = EE1DADDC2828485C0082542D /* libAudioPreprocessing.dylib */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		EE1DAE092828495E0082542D /* libRecommender.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EE1DAE082828495E0082542D /* libRecommender.dylib */; };
-		EE1DAE0A282849620082542D /* libAudioPreprocessing.dylib in Resources */ = {isa = PBXBuildFile; fileRef = EE1DADDC2828485C0082542D /* libAudioPreprocessing.dylib */; platformFilter = ios; };
 		EE28469C27F3B15300633677 /* PlayerViewClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE28469B27F3B15300633677 /* PlayerViewClass.swift */; };
 		EE3131D42813208F00F023F7 /* PostScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3131D32813208F00F023F7 /* PostScreenCell.swift */; };
 		EE31F0A12820565D00C06F8F /* UsersGenresCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE31F0A02820565D00C06F8F /* UsersGenresCollectionViewCell.swift */; };
@@ -79,54 +66,7 @@
 			remoteGlobalIDString = AAADCCF127E7A58E0077CB34;
 			remoteInfo = Music2;
 		};
-		EE1DADF02828489A0082542D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAADCCEA27E7A58E0077CB34 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EE1DADE42828489A0082542D;
-			remoteInfo = MyAlgo;
-		};
-		EE1DADF22828489A0082542D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAADCCEA27E7A58E0077CB34 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AAADCCF127E7A58E0077CB34;
-			remoteInfo = Music2;
-		};
-		EE1DADF82828489A0082542D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AAADCCEA27E7A58E0077CB34 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EE1DADE42828489A0082542D;
-			remoteInfo = MyAlgo;
-		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		EE1DADFB2828489A0082542D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EE1DADFC2828489A0082542D /* MyAlgo.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE1DAE05282848BC0082542D /* Embed Libraries */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EE1DAE07282848C30082542D /* libAudioPreprocessing.dylib in Embed Libraries */,
-				EE1DAE04282848BC0082542D /* libRecommender.dylib in Embed Libraries */,
-			);
-			name = "Embed Libraries";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0D1143DE614A96CA28BC69C6 /* Pods-Music2-Music2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2-Music2UITests.release.xcconfig"; path = "Target Support Files/Pods-Music2-Music2UITests/Pods-Music2-Music2UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -165,15 +105,6 @@
 		AAADCD8827F26FE80077CB34 /* swipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swipeViewController.swift; sourceTree = "<group>"; };
 		B65C0FBCBA1712F0FED5AD9E /* Pods_Music2_Music2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Music2_Music2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D82320016FA93CDA8DD8982F /* Pods-Music2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2.debug.xcconfig"; path = "Target Support Files/Pods-Music2/Pods-Music2.debug.xcconfig"; sourceTree = "<group>"; };
-		EE1DADDA282846FE0082542D /* genreRecommender.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = genreRecommender.mlmodel; sourceTree = "<group>"; };
-		EE1DADDC2828485C0082542D /* libAudioPreprocessing.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libAudioPreprocessing.dylib; sourceTree = "<group>"; };
-		EE1DADDE282848670082542D /* libRecommender.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libRecommender.dylib; sourceTree = "<group>"; };
-		EE1DADE52828489A0082542D /* MyAlgo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MyAlgo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE1DADE72828489A0082542D /* MyAlgo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAlgo.h; sourceTree = "<group>"; };
-		EE1DADE82828489A0082542D /* MyAlgo.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = MyAlgo.docc; sourceTree = "<group>"; };
-		EE1DADEE2828489A0082542D /* MyAlgoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAlgoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EE1DADF52828489A0082542D /* MyAlgoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAlgoTests.swift; sourceTree = "<group>"; };
-		EE1DAE082828495E0082542D /* libRecommender.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libRecommender.dylib; sourceTree = "<group>"; };
 		EE28469B27F3B15300633677 /* PlayerViewClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewClass.swift; sourceTree = "<group>"; };
 		EE3131D32813208F00F023F7 /* PostScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenCell.swift; sourceTree = "<group>"; };
 		EE31F0A02820565D00C06F8F /* UsersGenresCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersGenresCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -198,7 +129,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */,
-				EE1DADFA2828489A0082542D /* MyAlgo.framework in Frameworks */,
 				D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,21 +149,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE1DADE22828489A0082542D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE1DADEB2828489A0082542D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE1DADEF2828489A0082542D /* MyAlgo.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -250,14 +165,9 @@
 		AAADCCE927E7A58E0077CB34 = {
 			isa = PBXGroup;
 			children = (
-				EE1DADDE282848670082542D /* libRecommender.dylib */,
-				EE1DAE082828495E0082542D /* libRecommender.dylib */,
-				EE1DADDC2828485C0082542D /* libAudioPreprocessing.dylib */,
 				AAADCCF427E7A58E0077CB34 /* Music2 */,
 				AAADCD0E27E7A5910077CB34 /* Music2Tests */,
 				AAADCD1827E7A5920077CB34 /* Music2UITests */,
-				EE1DADE62828489A0082542D /* MyAlgo */,
-				EE1DADF42828489A0082542D /* MyAlgoTests */,
 				AAADCCF327E7A58E0077CB34 /* Products */,
 				B81ECEA1BB35ACCCD708534D /* Pods */,
 				641EC123B813413A39BC5924 /* Frameworks */,
@@ -270,8 +180,6 @@
 				AAADCCF227E7A58E0077CB34 /* Music2.app */,
 				AAADCD0B27E7A5910077CB34 /* Music2Tests.xctest */,
 				AAADCD1527E7A5920077CB34 /* Music2UITests.xctest */,
-				EE1DADE52828489A0082542D /* MyAlgo.framework */,
-				EE1DADEE2828489A0082542D /* MyAlgoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -279,7 +187,6 @@
 		AAADCCF427E7A58E0077CB34 /* Music2 */ = {
 			isa = PBXGroup;
 			children = (
-				EE1DADDA282846FE0082542D /* genreRecommender.mlmodel */,
 				AAADCD3B27E810F40077CB34 /* Music2.entitlements */,
 				EEC7BF2327E7B3E700A882F6 /* Assets */,
 				EE145246280FC075009EC85B /* Storyboard */,
@@ -384,23 +291,6 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		EE1DADE62828489A0082542D /* MyAlgo */ = {
-			isa = PBXGroup;
-			children = (
-				EE1DADE72828489A0082542D /* MyAlgo.h */,
-				EE1DADE82828489A0082542D /* MyAlgo.docc */,
-			);
-			path = MyAlgo;
-			sourceTree = "<group>";
-		};
-		EE1DADF42828489A0082542D /* MyAlgoTests */ = {
-			isa = PBXGroup;
-			children = (
-				EE1DADF52828489A0082542D /* MyAlgoTests.swift */,
-			);
-			path = MyAlgoTests;
-			sourceTree = "<group>";
-		};
 		EE31F0A22820566C00C06F8F /* otherUsers */ = {
 			isa = PBXGroup;
 			children = (
@@ -490,17 +380,6 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		EE1DADE02828489A0082542D /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE1DADF72828489A0082542D /* MyAlgo.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		AAADCCF127E7A58E0077CB34 /* Music2 */ = {
 			isa = PBXNativeTarget;
@@ -511,12 +390,10 @@
 				AAADCCEF27E7A58E0077CB34 /* Frameworks */,
 				AAADCCF027E7A58E0077CB34 /* Resources */,
 				7E9328CF2457633B318E17A5 /* [CP] Embed Pods Frameworks */,
-				EE1DADFB2828489A0082542D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				EE1DADF92828489A0082542D /* PBXTargetDependency */,
 			);
 			name = Music2;
 			packageProductDependencies = (
@@ -565,44 +442,6 @@
 			productReference = AAADCD1527E7A5920077CB34 /* Music2UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		EE1DADE42828489A0082542D /* MyAlgo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EE1DADFD2828489A0082542D /* Build configuration list for PBXNativeTarget "MyAlgo" */;
-			buildPhases = (
-				EE1DADE02828489A0082542D /* Headers */,
-				EE1DADE12828489A0082542D /* Sources */,
-				EE1DADE22828489A0082542D /* Frameworks */,
-				EE1DADE32828489A0082542D /* Resources */,
-				EE1DAE05282848BC0082542D /* Embed Libraries */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MyAlgo;
-			productName = MyAlgo;
-			productReference = EE1DADE52828489A0082542D /* MyAlgo.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		EE1DADED2828489A0082542D /* MyAlgoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = EE1DAE002828489A0082542D /* Build configuration list for PBXNativeTarget "MyAlgoTests" */;
-			buildPhases = (
-				EE1DADEA2828489A0082542D /* Sources */,
-				EE1DADEB2828489A0082542D /* Frameworks */,
-				EE1DADEC2828489A0082542D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				EE1DADF12828489A0082542D /* PBXTargetDependency */,
-				EE1DADF32828489A0082542D /* PBXTargetDependency */,
-			);
-			name = MyAlgoTests;
-			productName = MyAlgoTests;
-			productReference = EE1DADEE2828489A0082542D /* MyAlgoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -610,7 +449,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1320;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					AAADCCF127E7A58E0077CB34 = {
@@ -622,13 +461,6 @@
 					};
 					AAADCD1427E7A5920077CB34 = {
 						CreatedOnToolsVersion = 13.3;
-						TestTargetID = AAADCCF127E7A58E0077CB34;
-					};
-					EE1DADE42828489A0082542D = {
-						CreatedOnToolsVersion = 13.2.1;
-					};
-					EE1DADED2828489A0082542D = {
-						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = AAADCCF127E7A58E0077CB34;
 					};
 				};
@@ -652,8 +484,6 @@
 				AAADCCF127E7A58E0077CB34 /* Music2 */,
 				AAADCD0A27E7A5910077CB34 /* Music2Tests */,
 				AAADCD1427E7A5920077CB34 /* Music2UITests */,
-				EE1DADE42828489A0082542D /* MyAlgo */,
-				EE1DADED2828489A0082542D /* MyAlgoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -663,8 +493,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EE1DADDF282848670082542D /* libRecommender.dylib in Resources */,
-				EE1DADDD2828485C0082542D /* libAudioPreprocessing.dylib in Resources */,
 				AAADCD0527E7A5910077CB34 /* LaunchScreen.storyboard in Resources */,
 				EEC7BF2827E7B40200A882F6 /* logo.png in Resources */,
 				EE9507D827EFBEE90098FD6C /* rock.png in Resources */,
@@ -684,22 +512,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		AAADCD1327E7A5920077CB34 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE1DADE32828489A0082542D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE1DAE0A282849620082542D /* libAudioPreprocessing.dylib in Resources */,
-				EE1DAE092828495E0082542D /* libRecommender.dylib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE1DADEC2828489A0082542D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -826,7 +638,6 @@
 				25C42D5627E7FD7300C9C14A /* postViewController.swift in Sources */,
 				254427EE27EE7F7A008198D1 /* genreCollectionViewCell.swift in Sources */,
 				AA92D16E281B5A5600BE2BFB /* HomeCommentCell.swift in Sources */,
-				EE1DADDB282846FE0082542D /* genreRecommender.mlmodel in Sources */,
 				25F1E56F2802318000B891DF /* welcomeViewController.swift in Sources */,
 				AAADCD8927F26FE80077CB34 /* swipeViewController.swift in Sources */,
 				EEC7BF3327E7E81D00A882F6 /* HomeViewController.swift in Sources */,
@@ -864,22 +675,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EE1DADE12828489A0082542D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE1DADE92828489A0082542D /* MyAlgo.docc in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		EE1DADEA2828489A0082542D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EE1DADF62828489A0082542D /* MyAlgoTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -892,21 +687,6 @@
 			isa = PBXTargetDependency;
 			target = AAADCCF127E7A58E0077CB34 /* Music2 */;
 			targetProxy = AAADCD1627E7A5920077CB34 /* PBXContainerItemProxy */;
-		};
-		EE1DADF12828489A0082542D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EE1DADE42828489A0082542D /* MyAlgo */;
-			targetProxy = EE1DADF02828489A0082542D /* PBXContainerItemProxy */;
-		};
-		EE1DADF32828489A0082542D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = AAADCCF127E7A58E0077CB34 /* Music2 */;
-			targetProxy = EE1DADF22828489A0082542D /* PBXContainerItemProxy */;
-		};
-		EE1DADF92828489A0082542D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EE1DADE42828489A0082542D /* MyAlgo */;
-			targetProxy = EE1DADF82828489A0082542D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1186,118 +966,6 @@
 			};
 			name = Release;
 		};
-		EE1DADFE2828489A0082542D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4VS3XAPXTV;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaur.MyAlgo;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		EE1DADFF2828489A0082542D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4VS3XAPXTV;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaur.MyAlgo;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		EE1DAE012828489A0082542D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WHG5893ZRV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaur.MyAlgoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music2.app/Music2";
-			};
-			name = Debug;
-		};
-		EE1DAE022828489A0082542D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CLANG_CXX_LIBRARY = "libc++";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WHG5893ZRV;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kaur.MyAlgoTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Music2.app/Music2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1333,24 +1001,6 @@
 			buildConfigurations = (
 				AAADCD2627E7A5920077CB34 /* Debug */,
 				AAADCD2727E7A5920077CB34 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EE1DADFD2828489A0082542D /* Build configuration list for PBXNativeTarget "MyAlgo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EE1DADFE2828489A0082542D /* Debug */,
-				EE1DADFF2828489A0082542D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EE1DAE002828489A0082542D /* Build configuration list for PBXNativeTarget "MyAlgoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EE1DAE012828489A0082542D /* Debug */,
-				EE1DAE022828489A0082542D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

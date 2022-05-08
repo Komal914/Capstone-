@@ -173,6 +173,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             followButton.setTitle("Unfollow", for: .normal)
             query.findObjectsInBackground{(profile, error) in
                 if profile != nil {
+                    //print(bio!)
                     let userProfile = profile?.first
                     let followCount = userProfile!["following"] as! String
                     let followNum = Int(followCount) ?? 0
@@ -182,6 +183,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                     userProfile!.saveInBackground()
                 }
             }
+
+
         }
         
         else{
