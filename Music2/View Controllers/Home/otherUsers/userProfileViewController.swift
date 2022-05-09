@@ -208,8 +208,6 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBAction func onFollow(_ sender: UIButton) {
     
         //MARK: Follow class
-        print("USER TO FOLLOW")
-        print(self.userToFollowId)
         //the user logged in
         let currentUser = PFUser.current()
         let currentUserID = currentUser!["username"] as! String
@@ -232,12 +230,16 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                     print(first)
                     let followingArray = first["following"] as! NSMutableArray
                     
-                    //check if userTofollow in inside FollowingArray
-                    if(followingArray.contains(self.userToFollowId)){
-                        print("already followed")
-                        self.followButton.setTitle("unfollow", for: .normal)
+                    //if user is already followed
+                    if(followingArray.contains(self.userToFollowId) == true){
+                        //unfollow user
+                        followingArray.remove(self.userToFollowId)
+                        first["following"] = followingArray
+                        first.saveInBackground()
+                        self.followButton.setTitle("follow", for: .normal)
                     }
-                    else{
+                    //user needs to be followed
+                    else if (followingArray.contains(self.userToFollowId) == false){
                         followingArray.add(self.userToFollowId)
                         first["following"] = followingArray
                         first.saveInBackground()
