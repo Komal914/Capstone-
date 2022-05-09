@@ -41,6 +41,7 @@
 		EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = EE72603627F0F4100083A171 /* AlamofireImage */; };
 		EE9507D827EFBEE90098FD6C /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = EE9507D727EFBEE90098FD6C /* rock.png */; };
 		EEA6BD2B2806354400E04300 /* videoCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6BD2A2806354400E04300 /* videoCommentCell.swift */; };
+		EEC4A6512829C49D0091046E /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = EEC4A6502829C49D0091046E /* Lottie */; };
 		EEC7BF2727E7B40200A882F6 /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2427E7B40100A882F6 /* message.png */; };
 		EEC7BF2827E7B40200A882F6 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2527E7B40200A882F6 /* logo.png */; };
 		EEC7BF2927E7B40200A882F6 /* love.png in Resources */ = {isa = PBXBuildFile; fileRef = EEC7BF2627E7B40200A882F6 /* love.png */; };
@@ -130,6 +131,7 @@
 			files = (
 				EE72603727F0F4100083A171 /* AlamofireImage in Frameworks */,
 				D2E5F6043237F450289AF413 /* Pods_Music2.framework in Frameworks */,
+				EEC4A6512829C49D0091046E /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +400,7 @@
 			name = Music2;
 			packageProductDependencies = (
 				EE72603627F0F4100083A171 /* AlamofireImage */,
+				EEC4A6502829C49D0091046E /* Lottie */,
 			);
 			productName = Music2;
 			productReference = AAADCCF227E7A58E0077CB34 /* Music2.app */;
@@ -476,6 +479,7 @@
 			mainGroup = AAADCCE927E7A58E0077CB34;
 			packageReferences = (
 				EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				EEC4A64F2829C49C0091046E /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = AAADCCF327E7A58E0077CB34 /* Products */;
 			projectDirPath = "";
@@ -1016,6 +1020,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		EEC4A64F2829C49C0091046E /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1023,6 +1035,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EE72603527F0F4100083A171 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
+		};
+		EEC4A6502829C49D0091046E /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EEC4A64F2829C49C0091046E /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 
