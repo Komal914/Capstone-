@@ -31,6 +31,7 @@ class welcomeViewController: UIViewController {
             }
         }
         
+        
         let name = nameTextField.text!
         print("this is the user name : ",name)
         
