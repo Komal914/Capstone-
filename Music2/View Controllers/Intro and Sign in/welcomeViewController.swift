@@ -13,7 +13,7 @@ class welcomeViewController: UIViewController {
     @IBOutlet weak var instructionsLabel: UILabel!
     
     @IBOutlet weak var nameTextField: UITextField!
-    //var name = String()
+    var emptyArray = [String]()
     @IBAction func onDoneButton(_ sender: Any) {
         performSegue(withIdentifier: "afterName" , sender: nil)
         
@@ -33,8 +33,8 @@ class welcomeViewController: UIViewController {
         
         let follow = PFObject(className:"follow")
         follow["user"] = PFUser.current()?.username
-        follow["fans"] = [String()]
-        follow["following"] = [String()]
+        follow["fans"] = self.emptyArray
+        follow["following"] = self.emptyArray
         follow.saveInBackground{(succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
