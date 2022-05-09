@@ -33,8 +33,8 @@ class welcomeViewController: UIViewController {
         
         let follow = PFObject(className:"follow")
         follow["user"] = PFUser.current()?.username
-        follow["fans"] = String()
-        follow["following"] = String()
+        follow["fans"] = [String()]
+        follow["following"] = [String()]
         follow.saveInBackground{(succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
