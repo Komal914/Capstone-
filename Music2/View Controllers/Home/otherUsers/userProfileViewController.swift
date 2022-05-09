@@ -167,6 +167,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBAction func onFollow(_ sender: UIButton) {
         
+        var followingArray = [String()]
+        
         
         //MARK: Follow class
         print("USER TO FOLLOW")
@@ -175,14 +177,41 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         let currentUser = PFUser.current()
         let currentUserID = currentUser!["username"] as! String
         
-//If the user to follow is the same user loggeg in
+//If the user to follow is the same user logged in
         if(self.userToFollowId == currentUserID){
             self.followButton.setTitle("Cannot follow :(", for: .normal)
             return
         }
         
+        //if I am not the user in this profile
         if(self.userToFollowId != currentUserID){
-            //need to query whether this person follows this user or not 
+            //need to query to see if I follow Nisha
+            let query = PFQuery(className: "follow")
+            query.whereKey("user", equalTo: currentUserID)
+            
+            query.findObjectsInBackground{(follow, error) in
+                if follow != nil{
+                    let first = follow![0]
+                    let followingList = first["following"] as! String
+                    //I do not follow anyone
+                    if(followingList == ""){
+                        print("I do not follow anyone")
+                        //need to add Nisha to follow list and update title
+                        let userToAdd = self.name //username of the person to follow
+                        
+                        followingArray.append(userToAdd)
+                        first["following"] = followingArray
+                        first.saveInBackground()
+                       
+                    }
+                }
+
+                else {
+                    print("error quering for posts: \(String(describing: error))")
+                }
+
+            }
+
         }
 
         
