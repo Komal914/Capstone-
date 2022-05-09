@@ -31,6 +31,17 @@ class welcomeViewController: UIViewController {
             }
         }
         
+        let follow = PFObject(className:"follow")
+        follow["user"] = PFUser.current()?.username
+        follow["fans"] = String()
+        follow["following"] = String()
+        follow.saveInBackground{(succeeded, error)  in
+            if (succeeded) {
+                // The object has been saved.
+            } else {
+                print("error on saving data: \(error?.localizedDescription)")
+            }}
+        
         
         let name = nameTextField.text!
         print("this is the user name : ",name)

@@ -175,11 +175,14 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         let currentUser = PFUser.current()
         let currentUserID = currentUser!["username"] as! String
         
-//If the user to follow is the same user loggeg in 
+//If the user to follow is the same user loggeg in
         if(self.userToFollowId == currentUserID){
             self.followButton.setTitle("Cannot follow :(", for: .normal)
             return
-            
+        }
+        
+        if(self.userToFollowId != currentUserID){
+            //need to query whether this person follows this user or not 
         }
 
         
