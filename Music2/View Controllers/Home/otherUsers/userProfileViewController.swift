@@ -166,10 +166,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     
     @IBAction func onFollow(_ sender: UIButton) {
-        
-        var followingArray = [String()]
-        
-        
+    
         //MARK: Follow class
         print("USER TO FOLLOW")
         print(self.userToFollowId)
@@ -192,20 +189,21 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
             query.findObjectsInBackground{(follow, error) in
                 if follow != nil{
                     let first = follow![0]
-                    let followingList = first["following"] as! String
-                    //I do not follow anyone
-                    if(followingList == ""){
-                        print("I do not follow anyone")
-                        //need to add Nisha to follow list and update title
-                        let userToAdd = self.name //username of the person to follow
-                        
-                        followingArray.append(userToAdd)
+                    print(first)
+                    let followingArray = first["following"] as! NSMutableArray
+                    print("array here, ", followingArray)
+                    
+                    //check if userTofollow in inside FollowingArray
+                    if(followingArray.contains(self.userToFollowId)){
+                        print("already followed")
+                    }
+                    else{
+                        followingArray.add(self.userToFollowId)
                         first["following"] = followingArray
                         first.saveInBackground()
-                       
                     }
                 }
-
+      
                 else {
                     print("error quering for posts: \(String(describing: error))")
                 }
@@ -265,10 +263,10 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
 //                    userProfile!.saveInBackground()
 //                }
 //            }
-//        }
+        }
 
         
-    }
+
     
 
     
