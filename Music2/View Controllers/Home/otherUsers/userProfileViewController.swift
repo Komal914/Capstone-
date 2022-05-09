@@ -42,6 +42,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var isActive:Bool = true //follow button
     var followCount:Int = 0 //follow count is zero unless user is followed
     var uniqueGenre = [String]()
+    var userToFollowId = String()
 
 
     override func viewDidLoad() {
@@ -57,6 +58,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         query.findObjectsInBackground{(profiles, error) in
             if profiles != nil{
                 let profile = profiles![0] //going inside array
+                self.userToFollowId = profile["appleID"] as! String
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
                
@@ -87,12 +89,14 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                         self.uniqueGenre.append(genres)
                         print("uniqueGenre")
                         print(self.uniqueGenre)
+                        
                     }
                 }
                 self.postsCollectionView.reloadData()
                 self.genreCollectionView.reloadData()
             }
         }
+      
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -100,6 +104,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         {
             return uniqueGenre.count
         }
+        let pCount = lPosts.count
+        postsCountLabel.text = String(pCount)
         return lPosts.count
     }
     
@@ -161,47 +167,76 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBAction func onFollow(_ sender: UIButton) {
         
-        //change the label to unfollow for this profile
-        // store the follow unfollow property on parse for the current user
         
-        let query = PFQuery(className: "profileInfo")
-        query.whereKey("username", equalTo: name)
+        //MARK: Follow class
+        print("USER TO FOLLOW")
+        print(self.userToFollowId)
+        //the user logged in
+        let currentUser = PFUser.current()
+        let currentUserID = currentUser!["username"] as! String
         
-        
-        if isActive {
-            isActive = false
-            followButton.setTitle("Unfollow", for: .normal)
-            query.findObjectsInBackground{(profile, error) in
-                if profile != nil {
-                    //print(bio!)
-                    let userProfile = profile?.first
-                    let followCount = userProfile!["following"] as! String
-                    let followNum = Int(followCount) ?? 0
-                    let newFollowNum = followNum + 1
-                    let myString = String(newFollowNum)
-                    userProfile!["following"] = myString
-                    userProfile!.saveInBackground()
-                }
-            }
-
-
+//If the user to follow is the same user loggeg in
+        if(self.userToFollowId == currentUserID){
+            self.followButton.setTitle("Cannot follow :(", for: .normal)
+            return
         }
         
-        else{
-            isActive = true
-            followButton.setTitle("Follow", for: .normal)
-            query.findObjectsInBackground{(profile, error) in
-                if profile != nil {
-                    let userProfile = profile?.first
-                    let followCount = userProfile!["following"] as! String
-                    let followNum = Int(followCount) ?? 0
-                    let newFollowNum = followNum - 1
-                    let myString = String(newFollowNum)
-                    userProfile!["following"] = myString
-                    userProfile!.saveInBackground()
-                }
-            }
+        if(self.userToFollowId != currentUserID){
+            //need to query whether this person follows this user or not 
         }
+
+        
+        
+       
+        
+        //let followers = PFObject(className: "followers")
+        
+        //check if the user is the same as current user
+        // -> the button should not work, do nothing
+        
+        //when the user is not the current user
+        //then check if this person is in the following list
+        //if not, then update the label to "follow"
+        //else update the label as "unfollow"
+        
+        
+        
+        
+        
+//        if isActive {
+//            isActive = false
+//            followButton.setTitle("Unfollow", for: .normal)
+//            query.findObjectsInBackground{(profile, error) in
+//                if profile != nil {
+//                    //print(bio!)
+//                    let userProfile = profile?.first
+//                    let followCount = userProfile!["following"] as! String
+//                    let followNum = Int(followCount) ?? 0
+//                    let newFollowNum = followNum + 1
+//                    let myString = String(newFollowNum)
+//                    userProfile!["following"] = myString
+//                    userProfile!.saveInBackground()
+//                }
+//            }
+//
+//
+//        }
+//
+//        else{
+//            isActive = true
+//            followButton.setTitle("Follow", for: .normal)
+//            query.findObjectsInBackground{(profile, error) in
+//                if profile != nil {
+//                    let userProfile = profile?.first
+//                    let followCount = userProfile!["following"] as! String
+//                    let followNum = Int(followCount) ?? 0
+//                    let newFollowNum = followNum - 1
+//                    let myString = String(newFollowNum)
+//                    userProfile!["following"] = myString
+//                    userProfile!.saveInBackground()
+//                }
+//            }
+//        }
 
         
     }
