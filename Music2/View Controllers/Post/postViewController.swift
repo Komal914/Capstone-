@@ -33,16 +33,12 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var Genre = String()
     var Caption = String()
     var searched = false
-
  
     //MARK: - OUTLETS
-    
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var viewBelowSearch: UIView!
     @IBOutlet weak var caption: UITextField!
-    
-    
     @IBOutlet weak var postButton: UIButton!
     
     @IBAction func onPlayButton(_ sender: Any) {
@@ -73,7 +69,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             }
             
             player.play()
-    
         }
         catch {
             print("something went wrong")
@@ -85,11 +80,11 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     @IBAction func onPost(_ sender: Any) {
-        print("1")
+        //print("1")
         let obj = self.userName[0]
         let name = obj["username"] as! String
         let username = name
-        print("2")
+        //print("2")
         let posts = PFObject(className: "posts")
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
@@ -100,20 +95,21 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         posts["caption"] = caption
         posts["artistName"] = ArtistName
         posts["username"] = username
-        print("3")
+        //print("3")
         let imageData = AlbumCover.image!.pngData()
         let file = PFFileObject(data: imageData!)
         posts["cover"] = file
-        print("4")
+        //print("4")
         if audios.count != 0 {
             posts["audio"] = audios.last!
         }
-        print("6")
+        //print("6")
         posts.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
                 print("saved!")
-                print(posts)
+                //print(posts)
+                self.tabBarController!.selectedIndex = 1
             }
             
             else {
@@ -132,14 +128,16 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = table.dequeueReusableCell(withIdentifier: "PostScreenCell") as! PostScreenCell
-        //hiding cell until user searches
+        // hiding cell until user searches
         if searched == false {
             cell.isHidden = true
-          } else {
-              cell.isHidden = false
-          }
+        }
         
-        //updating data
+        else {
+            cell.isHidden = false
+        }
+        
+        // updating data
         let name = self.ArtistName
         cell.artistName.text = name
         cell.songInfo.text = SongInfo
@@ -178,91 +176,86 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
 
         let session = URLSession.shared
-        
         let task = session.dataTask(with: request) {(data, response, error) in
-            guard let data = data else {
+        guard let data = data else {
                 return
-            }
+        }
             
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                self.songData = json?["results"] as! NSDictionary
-                let songs = self.songData["songs"] as! NSDictionary
-                let numberOfSongs = songs["data"] as! NSArray
-            
+        do {
+            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            self.songData = json?["results"] as! NSDictionary
+            let songs = self.songData["songs"] as! NSDictionary
+            let numberOfSongs = songs["data"] as! NSArray
     
 //MARK: ONE SONG DATA
-                let firstSong = numberOfSongs[0] as! NSDictionary
-                // print(firstSong) api data for one song
-                let attributes = firstSong["attributes"] as! NSDictionary
-                let artWork = attributes["artwork"] as! NSDictionary
-                let name = attributes["name"] as! String
-                let artistName = attributes["artistName"] as! String
-                
+            let firstSong = numberOfSongs[0] as! NSDictionary
+            // print(firstSong) api data for one song
+            let attributes = firstSong["attributes"] as! NSDictionary
+            let artWork = attributes["artwork"] as! NSDictionary
+            let name = attributes["name"] as! String
+            let artistName = attributes["artistName"] as! String
     
-                self.songMenu.append(name)
+            self.songMenu.append(name)
                
 //MARK: DROPDOWN DATASOURCE
-                self.dropDown.dataSource = self.songMenu
-                let albumName = attributes["albumName"] as! String
-                let songInfo = albumName + "- " + name
-                let previews = attributes["previews"] as! NSArray  //music audio
-                print("Music Audio: ",previews)
-                let audioDic = previews[0] as! NSDictionary //going inside the music preview array
-                print(audioDic)
-                let musicUrl = audioDic["url"] as! String
-                print(musicUrl)
-                self.audios.append(musicUrl)
+            self.dropDown.dataSource = self.songMenu
+            let albumName = attributes["albumName"] as! String
+            let songInfo = albumName + "- " + name
+            let previews = attributes["previews"] as! NSArray  //music audio
+            //print("Music Audio: ",previews)
+            let audioDic = previews[0] as! NSDictionary //going inside the music preview array
+            print(audioDic)
+            let musicUrl = audioDic["url"] as! String
+            //print(musicUrl)
+            self.audios.append(musicUrl)
                 
-                let songLabel = songInfo
-                let genres = attributes["genreNames"] as! NSArray
-                self.genre = genres
+            let songLabel = songInfo
+            let genres = attributes["genreNames"] as! NSArray
+            self.genre = genres
                 
-                let genreInfo = self.genre[0] as! String
+            let genreInfo = self.genre[0] as! String
                 
-                DispatchQueue.main.async {
-                    //STORE THIS
+            DispatchQueue.main.async {
+                //STORE THIS
                 self.Genre = genreInfo
                 self.ArtistName = artistName
-//                self.genresLabel.backgroundColor = random(colors: myColors)
-//                self.genresLabel.layer.masksToBounds = true
-//                self.genresLabel.layer.cornerRadius = 8
+//              self.genresLabel.backgroundColor = random(colors: myColors)
+//              self.genresLabel.layer.masksToBounds = true
+//              self.genresLabel.layer.cornerRadius = 8
+                self.table.reloadData()
+            }
+            
+            let urlOfArt = artWork["url"] as! String
+                    
+            let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
+            let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
+                        
+            let url = NSURL(string:finalUrl)
+            let imagedata = NSData.init(contentsOf: url! as URL)
+//MARK: imageData
+                
+            //MARK: UI Settings
+            //adding this dispatch queue elimates warnings
+            DispatchQueue.main.async {
+                if imagedata != nil {
+                    //STORE THESE TWO
+                    self.AlbumCover.image = UIImage(data:imagedata! as Data)
+                    self.SongInfo = songLabel
                     self.table.reloadData()
                 }
                 
-                let urlOfArt = artWork["url"] as! String
-                    
-                let replaced = urlOfArt.replacingOccurrences(of: "{w}", with: "212" )
-                let finalUrl = replaced.replacingOccurrences(of: "{h}", with: "431")
-                        
-                let url = NSURL(string:finalUrl)
-                let imagedata = NSData.init(contentsOf: url! as URL)
-//MARK: imageData
-                
-                //MARK: UI Settings
-                //adding this dispatch queue elimates warnings
-                DispatchQueue.main.async {
-                    if imagedata != nil {
-                        //STORE THESE TWO
-                        self.AlbumCover.image = UIImage(data:imagedata! as Data)
-                        self.SongInfo = songLabel
-                        self.table.reloadData()
-                    }
-                            
-                    else {
-                       // print("NO IMAGE")
-                    }
+                else {
+                   // print("NO IMAGE")
                 }
             }
-                    
+        }
             catch {
+            
             }
         }
-        
         task.resume()
         dropDown.show()
         table.reloadData()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -277,20 +270,16 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 //accessing the data inside
                 self.userName = profileInfo!
             }
-            else {print("error quering for posts: \(String(describing: error))")}
-        
-
+            else {
+                print("error quering for posts: \(String(describing: error))")
+            }
         }
-        //post button and caption
         
+        //post button and caption
         caption.isHidden = true
         postButton.isHidden = true
         
-       
-
-        
         //Keyboard dismisses
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -301,13 +290,13 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-            self.searchBar.showsCancelButton = true
+        self.searchBar.showsCancelButton = true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-            searchBar.showsCancelButton = false
-            searchBar.text = ""
-            searchBar.resignFirstResponder()
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -330,7 +319,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         self.navigationController?.navigationBar.isHidden = true
         table.delegate = self
         table.dataSource = self
-        
         
         //MARK: Storefront Gathering
         //store front
@@ -377,12 +365,11 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         let data = Genre
         print(data)
                 
-            // Create a new variable to store the instance of the SecondViewController
-            // set the variable from the SecondViewController that will receive the data
+        // Create a new variable to store the instance of the SecondViewController
+        // set the variable from the SecondViewController that will receive the data
         let destinationVC = segue.destination as! profileViewController
         destinationVC.genre = data
     }
