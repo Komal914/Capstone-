@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var aboutToBecomeInvisibleCell = -1
     var visibleIP : IndexPath?
     var currentPostUsername = String()
+    var currentSong = String()
     
 
         
@@ -102,7 +103,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
             if let homeCell = cells.last! as? HomeCell{
                 currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?.last)!)
+                currentSong = self.getcurrentSong(cell: homeCell, indexPath: (indexPaths?.last)!)
+
                 print("POST 0",currentPostUsername)
+                print("POST 0", currentSong)
+
             }
         }
     
@@ -123,13 +128,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         print ("visible = \(indexPaths?[i])")
                         if let homeCell = cells[i] as? HomeCell{
                             currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?[i])!)
+                            currentSong = self.getcurrentSong(cell: homeCell, indexPath: (indexPaths?[i])!)
+
                             print("USERNAMEEEE ", currentPostUsername)
+                            print("SONGGG ", currentSong)
+
                         }
                     }
                 }
         
             }
         }
+    }
+    
+    func getcurrentSong(cell: HomeCell, indexPath: IndexPath) -> String{
+        return cell.albumNameSongName.text!
     }
     
     func getUserName(cell : HomeCell, indexPath : IndexPath) -> String{
@@ -206,7 +219,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if (segue.identifier == "homeComment") {
             let vc = segue.destination as! homeCommentsViewController
-            //vc.name = currentPostUsername
+            vc.songInfo = currentSong
 
          }
         
