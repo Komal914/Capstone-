@@ -27,6 +27,8 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     @IBOutlet weak var followButton: UIButton!
     
+    var currentUserfollowCount = Int()
+    
 
     
     @IBAction func editButton(_ sender: Any) {
@@ -59,19 +61,14 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     
     override func viewDidLoad() {
-        //print("Genres: ", genre)
         super.viewDidLoad()
+        print("HELLO",self.currentUserfollowCount)
         self.navigationController?.navigationBar.isHidden = true
-        
-        //bioLabel.text = bioText
-        
         
         let query = PFQuery(className: "profileInfo")
         
         let user = PFUser.current()
-        //print("user: ", user)
         let userID = user!["username"] as! String
-        //print(userID)
         
         query.whereKey("appleID", equalTo: userID)
         
@@ -91,6 +88,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
             else {print("error quering for posts: \(String(describing: error))")}
         }
+        
         
    
         genreCollectionView.dataSource = self
