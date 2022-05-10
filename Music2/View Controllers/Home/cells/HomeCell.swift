@@ -13,6 +13,7 @@ class HomeCell: UITableViewCell {
     
     //MARK: GLOBAL VARS
     
+    @IBOutlet weak var commentButton: UIButton!
     var avPlayer: AVPlayer?
     var isActive: Bool = true
     var homeLikes = [PFObject]()

@@ -814,6 +814,7 @@
                                             <outlet property="albumNameSongName" destination="ajy-HM-Hy6" id="9cA-mR-k05"/>
                                             <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="DbL-JG-SaT"/>
                                             <outlet property="captionFromTheUser" destination="G1B-lo-ypF" id="Uwb-eM-Zhk"/>
+                                            <outlet property="commentButton" destination="tzn-Vv-KgN" id="kOf-rP-xY8"/>
                                             <outlet property="genreLabel" destination="Ud2-DE-QHY" id="HuC-xx-Rpo"/>
                                             <outlet property="likeButton" destination="dtf-K2-NY6" id="okg-sF-wa9"/>
                                             <outlet property="usernameButton" destination="AoH-XK-7sz" id="VsP-Ei-nbw"/>

@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var aboutToBecomeInvisibleCell = -1
     var visibleIP : IndexPath?
     var currentPostUsername = String()
+    var currentSong = String()
     
 
         
@@ -71,10 +72,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return posts.count
     }
     
-    @IBAction func homeCommentButton(_ sender: Any) {
+    @IBAction func homeCommentButton(_ sender: UIButton) {
         
-        performSegue(withIdentifier: "homeComment", sender: self)
-        
+//        let vc1 = storyboard?.instantiateViewController(withIdentifier: "homeComment") as? homeCommentsViewController
+//
+//        //print(idk)
+//
+//        let songTitle = currentSong
+//
+//        print("MY SONG:", currentSong)
+//        
+//        vc1!.songInfo = songTitle
+//        self.navigationController?.pushViewController(vc1!, animated: true)
+
     }
     
         
@@ -103,6 +113,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let homeCell = cells.last! as? HomeCell{
                 currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?.last)!)
                 print("POST 0",currentPostUsername)
+                //FIX
+                currentSong = self.getCurrentSong(cell: homeCell, indexPath: (indexPaths?.last)!)
+                print("CURRENT SONG PLS", currentSong)
             }
         }
     
@@ -120,10 +133,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if currentHeight > (cellHeight * 0.95){
                     if visibleIP != indexPaths?[i]{
                         visibleIP = indexPaths?[i]
-                        print ("visible = \(indexPaths?[i])")
+                        print ("visible = \(String(describing: indexPaths?[i]))")
                         if let homeCell = cells[i] as? HomeCell{
                             currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?[i])!)
+                            //FIX
+                            currentSong = self.getCurrentSong(cell: homeCell, indexPath: (indexPaths?[i])!)
                             print("USERNAMEEEE ", currentPostUsername)
+                            print("SONGGGGG", currentSong)
                         }
                     }
                 }
@@ -132,6 +148,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    func getCurrentSong(cell: HomeCell, indexPath: IndexPath) -> String{
+        return cell.albumNameSongName.text!
+        //FIX THAT ^
+    }
     func getUserName(cell : HomeCell, indexPath : IndexPath) -> String{
         return cell.usernameButton.currentTitle!
     }
@@ -153,6 +173,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // songinfo
         cell.albumNameSongName.text = post["song"] as? String
+        //currentSong = self.albumNameSongName.text
         
         // song cover
         let imageFile = post["cover"] as! PFFileObject
@@ -197,8 +218,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let vc = segue.destination as! userProfileViewController
-        vc.name = currentPostUsername
+            let vc = segue.destination as! userProfileViewController
+            vc.name = currentPostUsername
         
     }
     

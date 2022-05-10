@@ -14,6 +14,7 @@ class homeCommentsViewController: UIViewController {
     @IBOutlet var homeCommentsTextField: UITextField!
     
     var posts = [PFObject]()
+    var songInfo = String()
     var commentsArray = [String]()
     
     override func viewDidLoad() {
