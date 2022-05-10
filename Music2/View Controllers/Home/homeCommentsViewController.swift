@@ -13,9 +13,11 @@ class homeCommentsViewController: UIViewController {
     @IBOutlet var homeCommentsTable: UITableView!
     @IBOutlet var homeCommentsTextField: UITextField!
     
-    var posts = [PFObject]()
+    //var posts = [PFObject]()
     var songInfo = String()
     var commentsArray = [String]()
+    var commentObject = [PFObject]()
+    var username = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,20 +29,46 @@ class homeCommentsViewController: UIViewController {
         // dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let query = PFQuery(className: "comments")
+        query.includeKey("song")
+        query.findObjectsInBackground{(comments, error) in
+            if comments != nil{
+                self.commentObject = comments!
+                for comment in self.commentObject{
+                    let songFile = comment["song"] as? String
+                    if songFile == self.songInfo
+                    {
+                        self.username = (comment["user"] as? String)!
+                        self.homeCommentsTable.reloadData()
+                    }
+                }
+                //self.username = first["user"] as! String
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //should return number of posts
+        return commentObject.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = homeCommentsTable.dequeueReusableCell(withIdentifier: "HomeCommentCell") as! HomeCommentCell
+        var reverseComments = [PFObject]()
+        reverseComments = commentObject.reversed()
         
-        /*
-        let query = PFQuery(className: "posts")
-        query.findObjectsInBackground{(posts, error) in
-            if posts != nil{
-                self.posts = posts! //storing from backend to this file
-                //self.commentsArray = posts["comments"]
-                self.homeCommentsTable.reloadData()
-            }
-            
-            else {
-                print("error quering for posts: \(String(describing: error))")
-            }
-        }*/
+        let comment = reverseComments[indexPath.row]
+        
+        let commentUser = comment["user"] as? String
+        cell.homeCommentsUsername.text = commentUser
+        
+        let caption = comment["comments"] as! String
+        cell.homeComment.text = caption
+        
+        return cell
     }
     
     
@@ -67,21 +95,20 @@ class homeCommentsViewController: UIViewController {
 
     @IBAction func homeCommentButton(_ sender: Any) {
         
-        /*let posts = PFObject(className: "posts")
-        posts["comments"] = homeCommentsTextview.text
+        let comments = PFObject(className: "comments")
+        comments["comments"] = homeCommentsTextField.text
+        comments["song"] = songInfo
+        comments["user"] = PFUser.current
         
-        if homeCommentsTextview.text != nil {
-            posts.saveInBackground { (succeeded, error)  in
-                if (succeeded) {
-                    // The object has been saved.
+        if homeCommentsTextField.text != nil {
+            comments.saveInBackground{(succeeded, error) in
+                if(succeeded){
                     print("saved!")
-                    print(posts)
                 }
-                
                 else {
-                   // print("error on saving data: \(error?.localizedDescription)")
+                    
                 }
             }
-        }*/
+        }
     }
 }
