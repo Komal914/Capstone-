@@ -815,6 +815,7 @@
                                             <outlet property="artistNameLabel" destination="uND-Ag-Nxk" id="DbL-JG-SaT"/>
                                             <outlet property="captionFromTheUser" destination="G1B-lo-ypF" id="Uwb-eM-Zhk"/>
                                             <outlet property="genreLabel" destination="Ud2-DE-QHY" id="HuC-xx-Rpo"/>
+                                            <outlet property="homeButton" destination="tzn-Vv-KgN" id="tLG-cg-iKV"/>
                                             <outlet property="likeButton" destination="dtf-K2-NY6" id="okg-sF-wa9"/>
                                             <outlet property="usernameButton" destination="AoH-XK-7sz" id="VsP-Ei-nbw"/>
                                         </connections>

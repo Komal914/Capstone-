@@ -11,6 +11,8 @@ import AVFoundation
 
 class HomeCell: UITableViewCell {
     
+    @IBOutlet weak var homeButton: UIButton!
+    
     //MARK: GLOBAL VARS
     
     var avPlayer: AVPlayer?

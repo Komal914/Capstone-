@@ -14,11 +14,12 @@ class homeCommentsViewController: UIViewController {
     @IBOutlet var homeCommentsTextField: UITextField!
     
     var posts = [PFObject]()
+    var songInfo = String()
     var commentsArray = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("comment view", songInfo)
         // sends keyboard height to view controller for adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -26,7 +27,7 @@ class homeCommentsViewController: UIViewController {
         // dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
+        
         /*
         let query = PFQuery(className: "posts")
         query.findObjectsInBackground{(posts, error) in
@@ -65,6 +66,7 @@ class homeCommentsViewController: UIViewController {
     }
 
     @IBAction func homeCommentButton(_ sender: Any) {
+        
         /*let posts = PFObject(className: "posts")
         posts["comments"] = homeCommentsTextview.text
         
