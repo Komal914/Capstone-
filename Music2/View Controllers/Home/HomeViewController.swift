@@ -197,8 +197,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        let vc = segue.destination as! userProfileViewController
-        vc.name = currentPostUsername
+        
+        if (segue.identifier == "userProfile") {
+            let vc = segue.destination as! userProfileViewController
+            vc.name = currentPostUsername
+
+         }
+        
+        if (segue.identifier == "homeComment") {
+            let vc = segue.destination as! homeCommentsViewController
+            //vc.name = currentPostUsername
+
+         }
+        
         
     }
     
