@@ -43,6 +43,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var followCount:Int = 0 //follow count is zero unless user is followed
     var uniqueGenre = [String]()
     var userToFollowId = String()
+    var userFollowed =  Bool()
+    
 
 
     override func viewDidLoad() {
@@ -117,15 +119,14 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                 if follow != nil{
                     let first = follow![0]
                     let followingArray = first["following"] as! NSMutableArray
-                    print("MY ARRAY FOR FOLLOWING")
-                    print(followingArray)
                     //check if userTofollow in inside FollowingArray
                     if(followingArray.contains(self.userToFollowId)){
-                        print("I AM FOLLOWING U")
                         self.followButton.setTitle("unfollow", for: .normal) //already followed
+                        self.followCount = followingArray.count
                     }
                     else{
                         self.followButton.setTitle("follow", for: .normal) //not followed yet
+                        self.followCount = followingArray.count
                     }
                 }
       
@@ -237,6 +238,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                         first["following"] = followingArray
                         first.saveInBackground()
                         self.followButton.setTitle("follow", for: .normal)
+                        self.followCount = followingArray.count
                     }
                     //user needs to be followed
                     else if (followingArray.contains(self.userToFollowId) == false){
@@ -244,6 +246,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                         first["following"] = followingArray
                         first.saveInBackground()
                         self.followButton.setTitle("unfollow", for: .normal)
+                        self.followCount = followingArray.count
                     }
                 }
       
@@ -252,61 +255,17 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                 }
 
             }
-
+            
         }
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        print("COUNT")
+        print(self.followCount)
 
-        
-        
-       
-        
-        //let followers = PFObject(className: "followers")
-        
-        //check if the user is the same as current user
-        // -> the button should not work, do nothing
-        
-        //when the user is not the current user
-        //then check if this person is in the following list
-        //if not, then update the label to "follow"
-        //else update the label as "unfollow"
-        
-        
-        
-        
-        
-//        if isActive {
-//            isActive = false
-//            followButton.setTitle("Unfollow", for: .normal)
-//            query.findObjectsInBackground{(profile, error) in
-//                if profile != nil {
-//                    //print(bio!)
-//                    let userProfile = profile?.first
-//                    let followCount = userProfile!["following"] as! String
-//                    let followNum = Int(followCount) ?? 0
-//                    let newFollowNum = followNum + 1
-//                    let myString = String(newFollowNum)
-//                    userProfile!["following"] = myString
-//                    userProfile!.saveInBackground()
-//                }
-//            }
-//
-//
-//        }
-//
-//        else{
-//            isActive = true
-//            followButton.setTitle("Follow", for: .normal)
-//            query.findObjectsInBackground{(profile, error) in
-//                if profile != nil {
-//                    let userProfile = profile?.first
-//                    let followCount = userProfile!["following"] as! String
-//                    let followNum = Int(followCount) ?? 0
-//                    let newFollowNum = followNum - 1
-//                    let myString = String(newFollowNum)
-//                    userProfile!["following"] = myString
-//                    userProfile!.saveInBackground()
-//                }
-//            }
-        }
+    }
 
         
 
@@ -319,6 +278,9 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        let vc = segue.destination as! profileViewController
+        vc.currentUserfollowCount = self.followCount
         
          
     }
