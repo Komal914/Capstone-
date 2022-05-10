@@ -11,29 +11,12 @@ import Parse
 class PostScreenCell: UITableViewCell {
     var userName = [PFObject]()
   
-    
-    
     @IBOutlet weak var artistName: UILabel!
-    
     @IBOutlet weak var songInfo: UILabel!
-    
-    
     @IBOutlet weak var albumCover: UIImageView!
-    
-   
-    
     @IBOutlet weak var genres: UILabel!
     
-    
-    
-  
-    
-    
-  
-    
     //MARK: GENRE STUFF
-    
-    
     func random(colors: [UIColor]) -> UIColor {
         let myBlue = UIColor(red: 62.0/255, green: 174.0/255, blue: 206.0/255, alpha: 1.0)
         let myGreen = UIColor(red: 110.0/255, green: 186.0/255, blue: 64.0/255, alpha: 1.0)
@@ -57,12 +40,6 @@ class PostScreenCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        //MARK: USERNAME
-        
-       
-
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

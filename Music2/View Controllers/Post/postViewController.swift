@@ -200,7 +200,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
 //MARK: DROPDOWN DATASOURCE
             self.dropDown.dataSource = self.songMenu
             let albumName = attributes["albumName"] as! String
-            let songInfo = albumName + "- " + name
+            let songInfo = albumName + " - " + name
             let previews = attributes["previews"] as! NSArray  //music audio
             //print("Music Audio: ",previews)
             let audioDic = previews[0] as! NSDictionary //going inside the music preview array
