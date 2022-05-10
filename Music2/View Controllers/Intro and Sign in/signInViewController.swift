@@ -3,6 +3,7 @@ import StoreKit
 import MediaPlayer
 import AuthenticationServices
 import Parse
+import Lottie
 
 class AuthDelegate:NSObject, PFUserAuthenticationDelegate {
     func restoreAuthentication(withAuthData authData: [String : String]?) -> Bool {
@@ -19,21 +20,27 @@ class signInViewController: UIViewController {
 //MARK: OUTLETS
     @IBOutlet weak var usernameTextfield: UITextField!
     @IBOutlet weak var passwordTextfield: UITextField!
+    var waveView: AnimationView?
     
 //MARK: SIGN IN BUTTON
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
         
         //we need to authenticate the user here with the apple API
         //for now, you can log in by just clicking the button
-                performSegue(withIdentifier: "loginToAppleMusic", sender: self)
-        
+        performSegue(withIdentifier: "loginToAppleMusic", sender: self)
     }
-    
     
 //MARK: VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.waveView = .init(name: "waves")
+        self.waveView?.frame = self.view.bounds
+        self.waveView?.loopMode = .loop
+        self.view.addSubview(self.waveView!)
+        self.waveView?.play()
+        view.sendSubviewToBack(waveView!)
         
         // sets up signIn apple button
         setupView()
@@ -123,6 +130,7 @@ class signInViewController: UIViewController {
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
             }
+            
             catch {
             }
 
@@ -141,7 +149,7 @@ class signInViewController: UIViewController {
         // add button to view
         view.addSubview(appleButton)
         NSLayoutConstraint.activate([
-            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            appleButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 150),
             appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 70),
             appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -70)
         ])

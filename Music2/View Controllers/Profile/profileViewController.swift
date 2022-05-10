@@ -59,7 +59,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         bottom: 10.0,
         right: 10.0)
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HELLO",self.currentUserfollowCount)
@@ -86,15 +85,12 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 self.followingNumberLabel.text = followCount
                 self.fansNumberLabel.text = fanCount
             }
-            else {print("error quering for posts: \(String(describing: error))")}
+            else {
+                print("error quering for posts: \(String(describing: error))")
+            }
         }
-        
-        
-   
         genreCollectionView.dataSource = self
         postsCollectionView.dataSource = self
-
-
     }
     
     func updateLabels() {
@@ -112,7 +108,6 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 self.bioLabel.text = self.bioText
             }
         }
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -165,10 +160,10 @@ extension profileViewController {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if (collectionView == genreCollectionView)
-        {
+        if (collectionView == genreCollectionView) {
             return uniqueGenre.count
         }
+        
         let pCount = lPosts.count
         postsNumberLabel.text = String(pCount)
         return lPosts.count
@@ -228,6 +223,7 @@ extension profileViewController {
 
         return albumCell
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         //let cell = collectionView.cellForItem(at: indexPath) as! postsCollectionViewCell
         let vc1 = storyboard?.instantiateViewController(withIdentifier: "songViewController") as? songViewController
