@@ -25,14 +25,13 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
-                    self.commentsTableView.reloadData()
                 }
                 else {
                     
                 }
             }
+            self.commentsTableView.reloadData()
         }
-        //self.commentsTableView.reloadData()
     }
     
     var videoInfo = String()
@@ -51,10 +50,11 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
         let comment = reverseComments[indexPath.row]
         let commentUser = comment["user"] as? String
         let caption = comment["comments"] as! String
+        
 
         cell.usernameLabel.text = commentUser
         cell.commentLabel.text = caption
-        
+                        
         return cell
     }
 
@@ -100,12 +100,8 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
                 let first = comments?[0]
 
                 self.username = first?["user"] as! String
-                self.commentsTableView.reloadData()
-                
             }
-//            if comments == nil {
-//                print("no comments yet")
-//            }
+            self.commentsTableView.reloadData()
         }
     }
     
