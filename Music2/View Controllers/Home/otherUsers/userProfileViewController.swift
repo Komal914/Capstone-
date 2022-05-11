@@ -44,6 +44,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var uniqueGenre = [String]()
     var userToFollowId = String()
     var userFollowed =  Bool()
+    var followList = [String]()
+    var fanList = [String]()
     
 
 
@@ -66,6 +68,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                 self.userName.text = self.name
                 let followCount = profile["following"] as! String
                 let fanCount = profile["fans"] as! String
+                self.fanList = profile["fanList"] as! Array
+                self.followList = profile["followList"] as! Array
                 self.followCountLabel.text = followCount
                 self.fansCountLabel.text = fanCount
             }
@@ -101,42 +105,42 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let currentUser = PFUser.current()
-        let currentUserID = currentUser!["username"] as! String
-        
-//If the user to follow is the same user logged in
-        if(self.userToFollowId == currentUserID){
-            self.followButton.setTitle("Cannot follow :(", for: .normal)
-            return
-        }
-        
-        //if I am not the user in this profile
-        if(self.userToFollowId != currentUserID){
-            //need to query to see if I follow Nisha
-            let query = PFQuery(className: "follow")
-            query.whereKey("user", equalTo: currentUserID)
-            query.findObjectsInBackground{(follow, error) in
-                if follow != nil{
-                    let first = follow![0]
-                    let followingArray = first["following"] as! NSMutableArray
-                    //check if userTofollow in inside FollowingArray
-                    if(followingArray.contains(self.userToFollowId)){
-                        self.followButton.setTitle("unfollow", for: .normal) //already followed
-                        self.followCount = followingArray.count
-                    }
-                    else{
-                        self.followButton.setTitle("follow", for: .normal) //not followed yet
-                        self.followCount = followingArray.count
-                    }
-                }
-      
-                else {
-                    print("error quering for posts: \(String(describing: error))")
-                }
-
-            }
-
-        }
+//        let currentUser = PFUser.current()
+//        let currentUserID = currentUser!["username"] as! String
+//
+////If the user to follow is the same user logged in
+//        if(self.userToFollowId == currentUserID){
+//            self.followButton.setTitle("Cannot follow :(", for: .normal)
+//            return
+//        }
+//
+//        //if I am not the user in this profile
+//        if(self.userToFollowId != currentUserID){
+//            //need to query to see if I follow Nisha
+//            let query = PFQuery(className: "follow")
+//            query.whereKey("user", equalTo: currentUserID)
+//            query.findObjectsInBackground{(follow, error) in
+//                if follow != nil{
+//                    let first = follow![0]
+//                    let followingArray = first["following"] as! NSMutableArray
+//                    //check if userTofollow in inside FollowingArray
+//                    if(followingArray.contains(self.userToFollowId)){
+//                        self.followButton.setTitle("unfollow", for: .normal) //already followed
+//                        self.followCount = followingArray.count
+//                    }
+//                    else{
+//                        self.followButton.setTitle("follow", for: .normal) //not followed yet
+//                        self.followCount = followingArray.count
+//                    }
+//                }
+//
+//                else {
+//                    print("error quering for posts: \(String(describing: error))")
+//                }
+//
+//            }
+//
+//        }
 
     }
     
@@ -207,6 +211,9 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     
     @IBAction func onFollow(_ sender: UIButton) {
+        
+        print( "fanlsit: ",self.fanList )
+        print("follow list: ", self.followList)
     
         //MARK: Follow class
         //the user logged in
@@ -222,14 +229,15 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         //if I am not the user in this profile
         if(self.userToFollowId != currentUserID){
             //need to query to see if I follow Nisha
-            let query = PFQuery(className: "follow")
+            let query = PFQuery(className: "profileInfo")
             query.whereKey("user", equalTo: currentUserID)
             
-            query.findObjectsInBackground{(follow, error) in
-                if follow != nil{
-                    let first = follow![0]
-                    print(first)
-                    let followingArray = first["following"] as! NSMutableArray
+            query.findObjectsInBackground{(profile, error) in
+                if profile != nil{
+                    let first = profile![0]
+                    print("MY PROFILE: ", first)
+                    
+                    let followingArray = first["followList"] as! NSMutableArray
                     
                     //if user is already followed
                     if(followingArray.contains(self.userToFollowId) == true){

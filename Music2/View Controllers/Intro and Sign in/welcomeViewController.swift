@@ -23,6 +23,8 @@ class welcomeViewController: UIViewController {
         profileInfo["following"] = "0"
         profileInfo["fans"] = "0"
         profileInfo["bio"] = "Hello!"
+        profileInfo["fanList"] = self.emptyArray
+        profileInfo["followList"] = self.emptyArray
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
@@ -31,16 +33,16 @@ class welcomeViewController: UIViewController {
             }
         }
         
-        let follow = PFObject(className:"follow")
-        follow["user"] = PFUser.current()?.username
-        follow["fans"] = self.emptyArray
-        follow["following"] = self.emptyArray
-        follow.saveInBackground{(succeeded, error)  in
-            if (succeeded) {
-                // The object has been saved.
-            } else {
-                print("error on saving data: \(error?.localizedDescription)")
-            }}
+//        let follow = PFObject(className:"follow")
+//        follow["user"] = PFUser.current()?.username
+//        follow["fans"] = self.emptyArray
+//        follow["following"] = self.emptyArray
+//        follow.saveInBackground{(succeeded, error)  in
+//            if (succeeded) {
+//                // The object has been saved.
+//            } else {
+//                print("error on saving data: \(error?.localizedDescription)")
+//            }}
         
         
         let name = nameTextField.text!
