@@ -18,6 +18,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     var videoURLs = Array<URL>()
     var firstLoad = true
     var visibleIP : IndexPath?
+    var currentVideo = String()
     
     var videoData = [[String: Any?]]() //array of dictionaries
     var filteredVideoData = [[String: Any?]]()
@@ -26,7 +27,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var table: UITableView!
     
     @IBAction func commentsButton(_ sender: Any) {
-        performSegue(withIdentifier: "musicCommentSegue", sender: nil)
+        performSegue(withIdentifier: "musicCommentSegue", sender: self)
 
     }
 
@@ -124,6 +125,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let video = videoData[indexPath.row] as NSDictionary        //each video data
         let attributes = video["attributes"] as! NSDictionary       //attributes for each video
         let name = attributes["name"] as! String
+        //currentVideo = name
         let previews = attributes["previews"] as! NSArray
         let artwork = previews[0] as! NSDictionary
         let musicVideoUrl = artwork["url"] as! String
@@ -156,6 +158,8 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             }
             if let videoCell = cells.last! as? MusicVideosCell{
                 self.playVideoOnTheCell(cell: videoCell, indexPath: (indexPaths?.last)!)
+                currentVideo = self.getCurrentVideo(cell: videoCell, indexPath: (indexPaths?.last)!)
+                print("pls get video", currentVideo)
             }
         }
     
@@ -176,6 +180,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                         //print ("visible = \(indexPaths?[i])")
                         if let videoCell = cells[i] as? MusicVideosCell{
                             self.playVideoOnTheCell(cell: videoCell, indexPath: (indexPaths?[i])!)
+                            currentVideo = self.getCurrentVideo(cell: videoCell, indexPath: (indexPaths?[i])!)
+                            print("pls get video part 2", currentVideo)
+
                         }
                     }
                 }
@@ -190,6 +197,10 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 }
             }
         }
+    }
+    
+    func getCurrentVideo(cell: MusicVideosCell, indexPath: IndexPath) -> String {
+        return cell.albumNameandSongNameLabel.text!
     }
     
     func playVideoOnTheCell(cell : MusicVideosCell, indexPath : IndexPath){
@@ -217,5 +228,21 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         //print("centerIndex - \(centerIndex.row)")
         let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
         autoPlayCell?.stopPlayback()
+    }
+    
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        
+        if (segue.identifier == "musicCommentSegue") {
+            let vc = segue.destination as! videoCommentsViewController
+            vc.videoInfo = currentVideo
+            
+        }
+        
+        
     }
 }

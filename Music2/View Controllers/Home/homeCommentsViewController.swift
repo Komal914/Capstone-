@@ -15,7 +15,6 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
     
     //var posts = [PFObject]()
     var songInfo = String()
-    var commentsArray = [String]()
     var commentObject = [PFObject]()
     var username = String()
     
