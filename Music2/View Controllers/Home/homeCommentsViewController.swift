@@ -49,21 +49,17 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidAppear(_ animated: Bool) {
         let query = PFQuery(className: "comments")
-        query.includeKey("song")
+        query.whereKey("song", equalTo: songInfo)
         query.findObjectsInBackground{(comments, error) in
             if comments != nil{
                 print("holy comments", comments!)
                 self.commentObject = comments!
-                
-                var reverseComments = [PFObject]()
-                reverseComments = comments!.reversed()
-                let first = reverseComments[0]
-                let songFile = first["song"] as? String
-                if songFile == self.songInfo {
-                    self.username = first["user"] as! String
-                    self.homeCommentsTable.reloadData()
-                }
-        
+            
+                let first = comments?[0]
+
+                self.username = first?["user"] as! String
+                self.homeCommentsTable.reloadData()
+            
             }
         }
     }

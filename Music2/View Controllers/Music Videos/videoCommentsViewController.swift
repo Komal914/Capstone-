@@ -25,14 +25,14 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
-                    //   self.homeCommentsTable.reloadData()
+                    self.commentsTableView.reloadData()
                 }
                 else {
                     
                 }
             }
         }
-        self.commentsTableView.reloadData()
+        //self.commentsTableView.reloadData()
     }
     
     var videoInfo = String()
@@ -90,22 +90,22 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidAppear(_ animated: Bool) {
         let query = PFQuery(className: "comments")
-        query.includeKey("song")
+        //query.includeKey("song")
+        query.whereKey("song", equalTo: videoInfo)
         query.findObjectsInBackground{(comments, error) in
             if comments != nil{
                 print("holy comments", comments!)
                 self.commentObject = comments!
                 
-                var reverseComments = [PFObject]()
-                reverseComments = comments!.reversed()
-                let first = reverseComments[0]
-                let songFile = first["song"] as? String
-                if songFile == self.videoInfo {
-                    self.username = first["user"] as! String
-                    self.commentsTableView.reloadData()
-                }
+                let first = comments?[0]
+
+                self.username = first?["user"] as! String
+                self.commentsTableView.reloadData()
                 
             }
+//            if comments == nil {
+//                print("no comments yet")
+//            }
         }
     }
     
