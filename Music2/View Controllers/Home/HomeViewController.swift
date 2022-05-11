@@ -125,7 +125,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if currentHeight > (cellHeight * 0.95){
                     if visibleIP != indexPaths?[i]{
                         visibleIP = indexPaths?[i]
-                        print ("visible = \(indexPaths?[i])")
+                        //print ("visible = \(indexPaths?[i])")
                         if let homeCell = cells[i] as? HomeCell{
                             currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?[i])!)
                             currentSong = self.getcurrentSong(cell: homeCell, indexPath: (indexPaths?[i])!)
