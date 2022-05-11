@@ -8,7 +8,7 @@
 import UIKit
 import Parse
 
-class homeCommentsViewController: UIViewController {
+class homeCommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet var homeCommentsTable: UITableView!
     @IBOutlet var homeCommentsTextField: UITextField!
@@ -29,6 +29,23 @@ class homeCommentsViewController: UIViewController {
         // dismiss keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        
+        homeCommentsTable.dataSource = self
+        homeCommentsTable.delegate = self
+        
+        let currentUser = PFUser.current()
+        let query = PFQuery(className: "profileInfo")
+        let userID = currentUser!["username"] as! String
+        query.whereKey("appleID", equalTo: userID)
+        query.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil {
+                let first = profileInfo![0]
+                self.username = first["username"] as! String
+                print("query user", self.username)
+            }
+        }
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,16 +53,18 @@ class homeCommentsViewController: UIViewController {
         query.includeKey("song")
         query.findObjectsInBackground{(comments, error) in
             if comments != nil{
+                print("holy comments", comments!)
                 self.commentObject = comments!
-                for comment in self.commentObject{
-                    let songFile = comment["song"] as? String
-                    if songFile == self.songInfo
-                    {
-                        self.username = (comment["user"] as? String)!
-                        self.homeCommentsTable.reloadData()
-                    }
+                
+                var reverseComments = [PFObject]()
+                reverseComments = comments!.reversed()
+                let first = reverseComments[0]
+                let songFile = first["song"] as? String
+                if songFile == self.songInfo {
+                    self.username = first["user"] as! String
+                    self.homeCommentsTable.reloadData()
                 }
-                //self.username = first["user"] as! String
+        
             }
         }
     }
@@ -59,14 +78,18 @@ class homeCommentsViewController: UIViewController {
         let cell = homeCommentsTable.dequeueReusableCell(withIdentifier: "HomeCommentCell") as! HomeCommentCell
         var reverseComments = [PFObject]()
         reverseComments = commentObject.reversed()
+        print("this pf object", reverseComments)
         
         let comment = reverseComments[indexPath.row]
+        print("this comments", comment)
         
         let commentUser = comment["user"] as? String
         cell.homeCommentsUsername.text = commentUser
+        print("user 2.0", commentUser!)
         
         let caption = comment["comments"] as! String
         cell.homeComment.text = caption
+        print("holy fkn caption", caption)
         
         return cell
     }
@@ -95,20 +118,27 @@ class homeCommentsViewController: UIViewController {
 
     @IBAction func homeCommentButton(_ sender: Any) {
         
+        
+        print("dis user", self.username)
+        let thisSong = songInfo
+        print("pls work", thisSong)
         let comments = PFObject(className: "comments")
-        comments["comments"] = homeCommentsTextField.text
-        comments["song"] = songInfo
-        comments["user"] = PFUser.current
+        comments["comments"] = homeCommentsTextField.text!
+        comments["song"] = thisSong
+        comments["user"] = username
         
         if homeCommentsTextField.text != nil {
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
+                 //   self.homeCommentsTable.reloadData()
                 }
                 else {
                     
                 }
             }
         }
+        self.homeCommentsTable.reloadData()
+        
     }
 }
