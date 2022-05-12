@@ -47,6 +47,7 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "videoCommentCell") as! videoCommentCell
         var reverseComments = [PFObject]()
         reverseComments = commentObject.reversed()
+        
         let comment = reverseComments[indexPath.row]
         let commentUser = comment["user"] as? String
         let caption = comment["comments"] as! String
@@ -100,6 +101,9 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
                 let first = comments?[0]
 
                 self.username = first?["user"] as! String
+            }
+            else {
+                print("no comments?")
             }
             self.commentsTableView.reloadData()
         }
