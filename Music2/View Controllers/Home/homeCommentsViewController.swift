@@ -54,10 +54,16 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
             if comments != nil{
                 print("holy comments", comments!)
                 self.commentObject = comments!
-            
-                let first = comments?[0]
-
-                self.username = first?["user"] as! String
+                
+                for comment in comments! {
+                    //let first = comments?[0]
+                    self.username = comment["user"] as! String
+                    //print("does it reach this username part")
+                }
+//                let first = comments?[0]
+//
+//                self.username = first?["user"] as! String
+//                print("does it reach this username part")
                 self.homeCommentsTable.reloadData()
             
             }
@@ -71,6 +77,7 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = homeCommentsTable.dequeueReusableCell(withIdentifier: "HomeCommentCell") as! HomeCommentCell
+        
         var reverseComments = [PFObject]()
         reverseComments = commentObject.reversed()
         print("this pf object", reverseComments)
@@ -126,14 +133,21 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
-                 //   self.homeCommentsTable.reloadData()
-                }
-                else {
-                    
+                    let query2 = PFQuery(className: "comments")
+                    query2.whereKey("song", equalTo: self.songInfo)
+                    query2.findObjectsInBackground{(comments, error) in
+                        if comments != nil{
+                            print("holy comments part 2", comments!)
+                            self.commentObject = comments!
+                            
+                            for comment in comments! {
+                                self.username = comment["user"] as! String
+                            }
+                        }
+                    self.homeCommentsTable.reloadData()
+                    }
                 }
             }
         }
-        self.homeCommentsTable.reloadData()
-        
     }
 }
