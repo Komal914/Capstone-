@@ -66,12 +66,15 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                 self.userToFollowId = profile["appleID"] as! String
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
-                let followCount = profile["following"] as! String
-                let fanCount = profile["fans"] as! String
                 self.fanList = profile["fanList"] as! Array
                 self.followList = profile["followList"] as! Array
-                self.followCountLabel.text = followCount
-                self.fansCountLabel.text = fanCount
+                let fans = self.fanList.count
+                let fansString = String(fans)
+                let followers = self.followList.count
+                let followersString = String(followers)
+                self.followCountLabel.text = followersString
+                self.fansCountLabel.text = fansString
+                
             }
 
             else {
@@ -105,6 +108,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
 //        let currentUser = PFUser.current()
 //        let currentUserID = currentUser!["username"] as! String
 //
@@ -213,6 +218,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     @IBAction func onFollow(_ sender: UIButton) {
         
         var isFollowed: Bool = false
+
         
         print( "fanlsit: ",self.fanList )
         print("follow list: ", self.followList)
@@ -246,10 +252,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                                 myFollowList.remove(self.userToFollowId)
                                 profile["followList"] = myFollowList
                                 profile.saveInBackground()
-                                self.followButton.setTitle("follow", for: .normal)
+                                self.followButton.setTitle("follow❤️", for: .normal)
                                 isFollowed = false
-                                
-                               
                             }
                             //I dont follow you, so I will follow you
                             else{
@@ -257,7 +261,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                                 myFollowList.add(self.userToFollowId)
                                 profile["followList"] = myFollowList
                                 profile.saveInBackground()
-                                self.followButton.setTitle("unfollow", for: .normal)
+                                self.followButton.setTitle("unfollow💔", for: .normal)
                                 isFollowed = true
                             }
                             
@@ -265,7 +269,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                         //user to follow
                         if (ID == self.userToFollowId){
                             //print("YOUUUU", profile)}
-                            var myFanList = profile["fanList"] as! NSMutableArray
+                            let myFanList = profile["fanList"] as! NSMutableArray
                             if isFollowed{
                                 print("ITS TRUEEE")
                                 myFanList.add(currentUserID)
@@ -281,16 +285,11 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                                     profile.saveInBackground()
                                     print(myFanList)
                                 }
-                                
                             }
-                            
+                        }
                     }
                 }
-                }
-
-
             }
-
         }
     }
     
