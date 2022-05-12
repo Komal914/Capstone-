@@ -20,6 +20,8 @@
 		A721DA9907EC69912CAB0B61 /* Pods_Music2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 782BDE178D9065D7A64D2C89 /* Pods_Music2Tests.framework */; };
 		AA7D29DF282A0AF100706621 /* check.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7D29DD282A0AF100706621 /* check.json */; };
 		AA7D29E0282A0AF100706621 /* waves.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7D29DE282A0AF100706621 /* waves.json */; };
+		AA7D29E2282DAFB100706621 /* RecommenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA7D29E1282DAFB100706621 /* RecommenderCell.swift */; };
+		AA7D29E4282DC66C00706621 /* welcome.json in Resources */ = {isa = PBXBuildFile; fileRef = AA7D29E3282DC66C00706621 /* welcome.json */; };
 		AA92D16E281B5A5600BE2BFB /* HomeCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA92D16D281B5A5600BE2BFB /* HomeCommentCell.swift */; };
 		AAADCCF627E7A58E0077CB34 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */; };
 		AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */; };
@@ -91,6 +93,8 @@
 		8F9BD356DFCD64B7DEDD61AB /* Pods-Music2-Music2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Music2-Music2UITests.debug.xcconfig"; path = "Target Support Files/Pods-Music2-Music2UITests/Pods-Music2-Music2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AA7D29DD282A0AF100706621 /* check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check.json; sourceTree = "<group>"; };
 		AA7D29DE282A0AF100706621 /* waves.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = waves.json; sourceTree = "<group>"; };
+		AA7D29E1282DAFB100706621 /* RecommenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderCell.swift; sourceTree = "<group>"; };
+		AA7D29E3282DC66C00706621 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		AA92D16D281B5A5600BE2BFB /* HomeCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCell.swift; sourceTree = "<group>"; };
 		AAADCCF227E7A58E0077CB34 /* Music2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -339,6 +343,7 @@
 			children = (
 				EEC7BF3627E7F22700A882F6 /* HomeCell.swift */,
 				AA92D16D281B5A5600BE2BFB /* HomeCommentCell.swift */,
+				AA7D29E1282DAFB100706621 /* RecommenderCell.swift */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -382,6 +387,7 @@
 				EE9507D727EFBEE90098FD6C /* rock.png */,
 				AA7D29DD282A0AF100706621 /* check.json */,
 				AA7D29DE282A0AF100706621 /* waves.json */,
+				AA7D29E3282DC66C00706621 /* welcome.json */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -512,6 +518,7 @@
 				AAADCCFD27E7A58E0077CB34 /* Main.storyboard in Resources */,
 				EEC7BF2727E7B40200A882F6 /* message.png in Resources */,
 				AA7D29E0282A0AF100706621 /* waves.json in Resources */,
+				AA7D29E4282DC66C00706621 /* welcome.json in Resources */,
 				EEC7BF2927E7B40200A882F6 /* love.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -667,6 +674,7 @@
 				AAADCCF827E7A58E0077CB34 /* SceneDelegate.swift in Sources */,
 				EE31F0A12820565D00C06F8F /* UsersGenresCollectionViewCell.swift in Sources */,
 				EE31F0A72820689100C06F8F /* PostsCollectionViewCell.swift in Sources */,
+				AA7D29E2282DAFB100706621 /* RecommenderCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,12 +7,14 @@
 
 import UIKit
 import Parse
+import Lottie
 
 class welcomeViewController: UIViewController {
     
     @IBOutlet weak var instructionsLabel: UILabel!
-    
+    @IBOutlet weak var welcomeAnimation: AnimationView!
     @IBOutlet weak var nameTextField: UITextField!
+    
     var emptyArray = [String]()
     @IBAction func onDoneButton(_ sender: Any) {
         performSegue(withIdentifier: "afterName" , sender: nil)
@@ -29,7 +31,7 @@ class welcomeViewController: UIViewController {
             if (succeeded) {
                 // The object has been saved.
             } else {
-                print("error on saving data: \(error?.localizedDescription)")
+                print("error on saving data: \(String(describing: error?.localizedDescription))")
             }
         }
         
@@ -55,6 +57,11 @@ class welcomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        //self.welcomeAnimation = .init(name: "welcome")
+        welcomeAnimation.loopMode = .loop
+        //welcomeAnimation.backgroundColor = .clear
+        welcomeAnimation.play()
+        
         //Looks for single or multiple taps.
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         
