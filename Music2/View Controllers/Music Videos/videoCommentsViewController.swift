@@ -13,25 +13,34 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var addCommentTextfield: UITextField!
     @IBOutlet weak var commentButton: UIButton!
     @IBAction func onComment(_ sender: Any) {
-        //print("dis user", self.username)
-        let thisSong = videoInfo
-        //print("pls work", thisSong)
-        let comments = PFObject(className: "comments")
-        comments["comments"] = addCommentTextfield.text!
-        comments["song"] = thisSong
-        comments["user"] = username
-        
-        if addCommentTextfield.text != nil {
-            comments.saveInBackground{(succeeded, error) in
-                if(succeeded){
-                    print("saved!")
-                }
-                else {
-                    
-                }
-            }
-            self.commentsTableView.reloadData()
-        }
+//        //print("dis user", self.username)
+//        let thisSong = videoInfo
+//        //print("pls work", thisSong)
+//        let comments = PFObject(className: "comments")
+//        comments["comments"] = addCommentTextfield.text!
+//        comments["song"] = thisSong
+//        comments["user"] = username
+//
+//        if addCommentTextfield.text != nil {
+//            comments.saveInBackground{(succeeded, error) in
+//                if(succeeded){
+//                    print("saved!")
+//                    let query2 = PFQuery(className: "comments")
+//                    query2.whereKey("song", equalTo: self.videoInfo)
+//                    query2.findObjectsInBackground{(comments, error) in
+//                        if comments != nil{
+//                            print("holy comments part 2", comments!)
+//                            self.commentObject = comments!
+//
+//                            for comment in comments! {
+//                                self.username = comment["user"] as! String
+//                            }
+//                        }
+//                        self.commentsTableView.reloadData()
+//                    }
+//                }
+//            }
+//        }
     }
     
     var videoInfo = String()
@@ -45,16 +54,16 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "videoCommentCell") as! videoCommentCell
-        var reverseComments = [PFObject]()
-        reverseComments = commentObject.reversed()
-        
-        let comment = reverseComments[indexPath.row]
-        let commentUser = comment["user"] as? String
-        let caption = comment["comments"] as! String
-        
-
-        cell.usernameLabel.text = commentUser
-        cell.commentLabel.text = caption
+//        var reverseComments = [PFObject]()
+//        reverseComments = commentObject.reversed()
+//
+//        let comment = reverseComments[indexPath.row]
+//        let commentUser = comment["user"] as? String
+//        let caption = comment["comments"] as! String
+//
+//
+//        cell.usernameLabel.text = commentUser
+//        cell.commentLabel.text = caption
                         
         return cell
     }
@@ -74,39 +83,36 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-        let currentUser = PFUser.current()
-        let query = PFQuery(className: "profileInfo")
-        let userID = currentUser!["username"] as! String
-        query.whereKey("appleID", equalTo: userID)
-        query.findObjectsInBackground{(profileInfo, error) in
-            if profileInfo != nil {
-                let first = profileInfo![0]
-                self.username = first["username"] as! String
-                print("query user", self.username)
-            }
-        }
+//        let currentUser = PFUser.current()
+//        let query = PFQuery(className: "profileInfo")
+//        let userID = currentUser!["username"] as! String
+//        query.whereKey("appleID", equalTo: userID)
+//        query.findObjectsInBackground{(profileInfo, error) in
+//            if profileInfo != nil {
+//                let first = profileInfo![0]
+//                self.username = first["username"] as! String
+//                print("query user", self.username)
+//            }
+//        }
 
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let query = PFQuery(className: "comments")
-        //query.includeKey("song")
-        query.whereKey("song", equalTo: videoInfo)
-        query.findObjectsInBackground{(comments, error) in
-            if comments != nil{
-                print("holy comments", comments!)
-                self.commentObject = comments!
-                
-                let first = comments?[0]
-
-                self.username = first?["user"] as! String
-            }
-            else {
-                print("no comments?")
-            }
-            self.commentsTableView.reloadData()
-        }
+//        let query = PFQuery(className: "comments")
+//        //query.includeKey("song")
+//        query.whereKey("song", equalTo: videoInfo)
+//        query.findObjectsInBackground{(comments, error) in
+//            if comments != nil{
+//                print("holy comments", comments!)
+//                self.commentObject = comments!
+//
+//                for comment in comments! {
+//                    self.username = comment["user"] as! String
+//                }
+//                self.commentsTableView.reloadData()
+//            }
+//        }
     }
     
     // sends keyboard notification to self controller about height
