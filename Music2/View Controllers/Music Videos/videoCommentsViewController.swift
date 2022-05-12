@@ -12,6 +12,22 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var addCommentTextfield: UITextField!
     @IBOutlet weak var commentButton: UIButton!
+    
+    func updatePFObject(){
+        let query2 = PFQuery(className: "comments")
+        query2.whereKey("song", equalTo: self.videoInfo)
+        query2.findObjectsInBackground{(comments, error) in
+            if comments != nil{
+                print("holy comments part 2", comments!)
+                self.commentObject = comments!
+                
+                for comment in comments! {
+                    self.username = comment["user"] as! String
+                }
+            }
+        }
+    }
+
     @IBAction func onComment(_ sender: Any) {
         //print("dis user", self.username)
         let thisSong = videoInfo
@@ -25,12 +41,10 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
-                }
-                else {
-                    
+                    self.updatePFObject()
+                    self.commentsTableView.reloadData()
                 }
             }
-            self.commentsTableView.reloadData()
         }
     }
     
@@ -97,15 +111,13 @@ class videoCommentsViewController: UIViewController, UITableViewDelegate, UITabl
             if comments != nil{
                 print("holy comments", comments!)
                 self.commentObject = comments!
-                
-                let first = comments?[0]
-
-                self.username = first?["user"] as! String
+                for comment in comments! {
+                    //let first = comments?[0]
+                    self.username = comment["user"] as! String
+                    //print("does it reach this username part")
+                }
+                self.commentsTableView.reloadData()
             }
-            else {
-                print("no comments?")
-            }
-            self.commentsTableView.reloadData()
         }
     }
     

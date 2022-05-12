@@ -60,10 +60,6 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
                     self.username = comment["user"] as! String
                     //print("does it reach this username part")
                 }
-//                let first = comments?[0]
-//
-//                self.username = first?["user"] as! String
-//                print("does it reach this username part")
                 self.homeCommentsTable.reloadData()
             
             }
@@ -117,9 +113,23 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func updatePFObject(){
+        let query2 = PFQuery(className: "comments")
+        query2.whereKey("song", equalTo: self.songInfo)
+        query2.findObjectsInBackground{(comments, error) in
+            if comments != nil{
+                print("holy comments part 2", comments!)
+                self.commentObject = comments!
+                
+                for comment in comments! {
+                    self.username = comment["user"] as! String
+                }
+            }
+        }
+    }
 
     @IBAction func homeCommentButton(_ sender: Any) {
-        
         
         print("dis user", self.username)
         let thisSong = songInfo
@@ -133,21 +143,11 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
             comments.saveInBackground{(succeeded, error) in
                 if(succeeded){
                     print("saved!")
-                    let query2 = PFQuery(className: "comments")
-                    query2.whereKey("song", equalTo: self.songInfo)
-                    query2.findObjectsInBackground{(comments, error) in
-                        if comments != nil{
-                            print("holy comments part 2", comments!)
-                            self.commentObject = comments!
-                            
-                            for comment in comments! {
-                                self.username = comment["user"] as! String
-                            }
-                        }
+                    self.updatePFObject()
                     self.homeCommentsTable.reloadData()
-                    }
                 }
             }
         }
     }
+    
 }
