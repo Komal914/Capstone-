@@ -66,12 +66,15 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
                 self.userToFollowId = profile["appleID"] as! String
                 self.bio.text = profile["bio"] as? String
                 self.userName.text = self.name
-                let followCount = profile["following"] as! String
-                let fanCount = profile["fans"] as! String
                 self.fanList = profile["fanList"] as! Array
                 self.followList = profile["followList"] as! Array
-                self.followCountLabel.text = followCount
-                self.fansCountLabel.text = fanCount
+                let fans = self.fanList.count
+                let fansString = String(fans)
+                let followers = self.followList.count
+                let followersString = String(followers)
+                self.followCountLabel.text = followersString
+                self.fansCountLabel.text = fansString
+                
             }
 
             else {
@@ -105,6 +108,8 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
 //        let currentUser = PFUser.current()
 //        let currentUserID = currentUser!["username"] as! String
 //
@@ -212,12 +217,16 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBAction func onFollow(_ sender: UIButton) {
         
+        var isFollowed: Bool = false
+
+        
         print( "fanlsit: ",self.fanList )
         print("follow list: ", self.followList)
     
         //MARK: Follow class
         //the user logged in
         let currentUser = PFUser.current()
+
         let currentUserID = currentUser!["username"] as! String
         
 //If the user to follow is the same user logged in
@@ -228,44 +237,60 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
         
         //if I am not the user in this profile
         if(self.userToFollowId != currentUserID){
-            //need to query to see if I follow Nisha
+            //look for all users
             let query = PFQuery(className: "profileInfo")
-            query.whereKey("user", equalTo: currentUserID)
-            
-            query.findObjectsInBackground{(profile, error) in
-                if profile != nil{
-                    let first = profile![0]
-                    print("MY PROFILE: ", first)
-                    
-                    let followingArray = first["followList"] as! NSMutableArray
-                    
-                    //if user is already followed
-                    if(followingArray.contains(self.userToFollowId) == true){
-                        //unfollow user
-                        followingArray.remove(self.userToFollowId)
-                        first["following"] = followingArray
-                        first.saveInBackground()
-                        self.followButton.setTitle("follow", for: .normal)
-                        self.followCount = followingArray.count
-                    }
-                    //user needs to be followed
-                    else if (followingArray.contains(self.userToFollowId) == false){
-                        followingArray.add(self.userToFollowId)
-                        first["following"] = followingArray
-                        first.saveInBackground()
-                        self.followButton.setTitle("unfollow", for: .normal)
-                        self.followCount = followingArray.count
+            query.findObjectsInBackground{(profiles, error) in
+                if profiles != nil{
+                    for profile in profiles!{
+                        let ID = profile["appleID"] as! String   //ID for all users
+                        //me
+                        if (ID == currentUserID){
+                            var myFollowList = profile["followList"] as! NSMutableArray
+                            //if I already follow you, i will unfollow
+                            if myFollowList.contains(self.userToFollowId){
+                                print("booo unfollowed you!")
+                                myFollowList.remove(self.userToFollowId)
+                                profile["followList"] = myFollowList
+                                profile.saveInBackground()
+                                self.followButton.setTitle("follow❤️", for: .normal)
+                                isFollowed = false
+                            }
+                            //I dont follow you, so I will follow you
+                            else{
+                                print("Followed ya!")
+                                myFollowList.add(self.userToFollowId)
+                                profile["followList"] = myFollowList
+                                profile.saveInBackground()
+                                self.followButton.setTitle("unfollow💔", for: .normal)
+                                isFollowed = true
+                            }
+                            
+                        }
+                        //user to follow
+                        if (ID == self.userToFollowId){
+                            //print("YOUUUU", profile)}
+                            let myFanList = profile["fanList"] as! NSMutableArray
+                            if isFollowed{
+                                print("ITS TRUEEE")
+                                myFanList.add(currentUserID)
+                                profile["fanList"] = myFanList
+                                profile.saveInBackground()
+                                print(myFanList)
+                            }
+                            if !isFollowed{
+                                print("FALSEEEE")
+                                if (myFanList.count != 0){
+                                    myFanList.remove(currentUserID)
+                                    profile["fanList"] = myFanList
+                                    profile.saveInBackground()
+                                    print(myFanList)
+                                }
+                            }
+                        }
                     }
                 }
-      
-                else {
-                    print("error quering for posts: \(String(describing: error))")
-                }
-
             }
-            
         }
-        
     }
     
     override func viewDidDisappear(_ animated: Bool) {

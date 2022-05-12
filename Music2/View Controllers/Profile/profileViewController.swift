@@ -62,7 +62,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         print("HELLO",self.currentUserfollowCount)
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         
         let query = PFQuery(className: "profileInfo")
         
