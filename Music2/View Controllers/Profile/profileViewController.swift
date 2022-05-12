@@ -77,13 +77,16 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
                 let array = profileInfo
                 let obj = array?[0]
                 let userName = obj!["username"] as! String
-                let followCount = obj!["following"] as! String
-                let fanCount = obj!["fans"] as! String
-                print("print(followCount)")
+                let followCount = obj!["followList"] as! NSArray
+                let fanCount = obj!["fanList"] as! NSArray
+                let followNum = followCount.count
+                let fanNum = fanCount.count
+                let followS = String(followNum)
+                let fanS = String(fanNum)
                 print(followCount)
                 self.usernameLabel.text = userName
-                self.followingNumberLabel.text = followCount
-                self.fansNumberLabel.text = fanCount
+                self.followingNumberLabel.text = followS
+                self.fansNumberLabel.text = fanS
             }
             else {
                 print("error quering for posts: \(String(describing: error))")
