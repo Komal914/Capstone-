@@ -80,10 +80,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         
     @IBAction func onUsernameButton(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "userProfile", sender: self)
-        
-        
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -97,7 +94,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
         let cellCount = cells.count
         if cellCount == 0 {return}
-        if cellCount == 1{
+        if cellCount == 1 {
             if visibleIP != indexPaths?[0]{
                 visibleIP = indexPaths?[0]
             }
@@ -110,9 +107,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             }
         }
+        
+        /*
+        if cellCount == 2 {
+            if visibleIP != indexPaths?[1] {
+                visibleIP = indexPaths?[1]
+            }
+        }*/
     
         if cellCount >= 2 {
-            for i in 0..<cellCount{
+            for i in 0..<cellCount {
                 let cellRect = self.table.rectForRow(at: (indexPaths?[i])!)
                 let intersect = cellRect.intersection(self.table.bounds)
 
@@ -132,11 +136,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
                             print("USERNAMEEEE ", currentPostUsername)
                             print("SONGGG ", currentSong)
-
                         }
                     }
                 }
-        
             }
         }
     }
@@ -184,7 +186,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.genreLabel.text = post["genre"] as? String
         cell.genreLabel.layer.masksToBounds = true
         cell.genreLabel.layer.cornerRadius = 8
-        
         
         // sound file
         let sound = post["audio"] as! String

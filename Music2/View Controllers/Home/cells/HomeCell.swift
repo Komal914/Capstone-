@@ -11,10 +11,7 @@ import AVFoundation
 
 class HomeCell: UITableViewCell {
     
-    @IBOutlet weak var homeButton: UIButton!
-    
     //MARK: GLOBAL VARS
-    
     var avPlayer: AVPlayer?
     var isActive: Bool = true
     var homeLikes = [PFObject]()
@@ -35,24 +32,18 @@ class HomeCell: UITableViewCell {
        }
     
     func setUpPlayer(){
-            self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)
+        self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)
                        avPlayer?.volume = 3
-            avPlayer?.actionAtItemEnd = .none
+        avPlayer?.actionAtItemEnd = .none
     }
 
     //MARK: Outlets
     @IBOutlet weak var albumNameSongName: UILabel!
     @IBOutlet weak var albumCover: UIImageView!
     @IBOutlet weak var artistNameLabel: UILabel!
-    
-    
     @IBOutlet weak var usernameButton: UIButton!
-    
-    
-    
-    
-    
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var homeButton: UIButton!
     
     @IBAction func onLike(_ sender: UIButton) {
         //creating a new object here to save in my backend
