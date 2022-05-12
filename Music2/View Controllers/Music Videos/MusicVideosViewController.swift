@@ -21,7 +21,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     var currentVideo = String()
     var searchText = " "
     
-    var videoData = NSDictionary()
+    var videoData = NSArray()
     var filteredVideoData = [[String: Any?]]()
     
 //MARK: OUTLETS
@@ -69,7 +69,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let terms = ["billie", "pop", "doja", "selena", "bad"]
+        let terms = ["billie", "pop", "doja", "bad", "chainsmoakers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass"]
         
         func random(terms: [String]) -> String {
             return terms[Int(arc4random_uniform(UInt32(terms.count)))]
@@ -100,15 +100,13 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 print("MY DATA")
-               // print(json)
                 let data = json?["results"] as! NSDictionary
                 let musicVideos = data["music-videos"] as! NSDictionary
-                print(musicVideos)
-                
-                
-                self.videoData = (json?["results"] as! NSDictionary)
-                //print("videoData")
-                //print(self.videoData)
+                let data2 = musicVideos["data"] as! NSArray
+                let count = data2.count
+                print("COUUUUUUUNT")
+                print(count)
+                self.videoData = data2
                 DispatchQueue.main.async {
                     self.table.reloadData()
                 }
@@ -145,31 +143,44 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         //should return .count of the number of music videos
-        return videoData.count
+        return videoData.count/2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
         
                 
-        //let video = videoData[indexPath.row] as NSDictionary        //each video data
+        let video = videoData[indexPath.row] as! NSDictionary        //each video data
+        print("VIDEOOOOOOOOOOOOOO")
+        print(video)
         
+        let attributes = video["attributes"] as! NSDictionary
+        //attributes for each video
+//        print("atttributes")
+//        print(attributes)
+        let artistName = attributes["artistName"] as! String
+        print("NAAAAME", artistName)
+        cell.artistNameLabel.text = artistName
         
-//        let attributes = video["attributes"] as! NSDictionary       //attributes for each video
-//        let name = attributes["name"] as! String
+        let previews = attributes["previews"] as! NSArray
+
+        //let albumName = array["albumName"] as! String
+        let name = attributes["name"] as! String
 //        //currentVideo = name
 //        let previews = attributes["previews"] as! NSArray
-//        let artwork = previews[0] as! NSDictionary
-//        let musicVideoUrl = artwork["url"] as! String
+        let artwork = previews[0] as! NSDictionary
+        let musicVideoUrl = artwork["url"] as! String
+        print("URL")
+        print(musicVideoUrl)
 //        let artistName = attributes["artistName"] as! String
-//        cell.artistNameLabel!.text = artistName
-//        cell.albumNameandSongNameLabel!.text = name
-//        let videoURL = URL(string: musicVideoUrl)                   //turn string into URL
-//
-//        self.videoURLs.append(videoURL!)
+        cell.artistNameLabel!.text = artistName
+        cell.albumNameandSongNameLabel!.text = name
+        let videoURL = URL(string: musicVideoUrl)                   //turn string into URL
+
+        self.videoURLs.append(videoURL!)
 //
 //        //print(videoURLs)
-//        cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
+        cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
         return cell
     }
     
