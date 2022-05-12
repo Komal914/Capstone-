@@ -34,7 +34,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         
         table.delegate = self
         table.dataSource = self

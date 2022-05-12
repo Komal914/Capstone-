@@ -316,7 +316,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isHidden = true
+        //self.navigationController?.navigationBar.isHidden = true
         table.delegate = self
         table.dataSource = self
         
