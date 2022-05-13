@@ -29,16 +29,10 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     var currentUserfollowCount = Int()
     
-
-    
     @IBAction func editButton(_ sender: Any) {
         performSegue(withIdentifier: "afterEdit", sender: nil)
         
     }
-    
-    
-    
-
     
     @IBOutlet weak var genreCollectionView: UICollectionView!
     @IBOutlet weak var postsCollectionView: UICollectionView!
@@ -144,19 +138,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         updateLabels()
     }
-    
-        
 }
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 // MARK: UICollectionViewDataSource
 extension profileViewController {
@@ -238,7 +220,6 @@ extension profileViewController {
         print("MY COVER:", cover)
         
         vc1!.imageURLS = cover
-        
         
         //vc1?.songTitle = smth[indexPath.row]
         self.navigationController?.pushViewController(vc1!, animated: true)
