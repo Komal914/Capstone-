@@ -26,12 +26,10 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     
 //MARK: OUTLETS
     @IBOutlet weak var table: UITableView!
-    
     @IBOutlet weak var searchBar: UISearchBar!
     
     @IBAction func commentsButton(_ sender: Any) {
         performSegue(withIdentifier: "musicCommentSegue", sender: self)
-
     }
 
     //MARK: VIEWDIDLOAD
@@ -69,7 +67,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let terms = ["billie", "pop", "doja", "bad", "chainsmoakers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass"]
+        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass"]
         
         func random(terms: [String]) -> String {
             return terms[Int(arc4random_uniform(UInt32(terms.count)))]
@@ -229,13 +227,13 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                         }
                     }
                 }
-                else{
+                
+                else {
                     if aboutToBecomeInvisibleCell != indexPaths?[i].row{
                         aboutToBecomeInvisibleCell = (indexPaths?[i].row)!
                         if let videoCell = cells[i] as? MusicVideosCell{
                             self.stopPlayBack(cell: videoCell, indexPath: (indexPaths?[i])!)
                         }
-
                     }
                 }
             }
@@ -326,7 +324,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 ////              self.genresLabel.layer.masksToBounds = true
 ////              self.genresLabel.layer.cornerRadius = 8
 //                self.table.reloadData()
-            }
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -340,9 +338,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         autoPlayCell?.stopPlayback()
     }
     
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -350,9 +345,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         if (segue.identifier == "musicCommentSegue") {
             let vc = segue.destination as! videoCommentsViewController
             vc.videoInfo = currentVideo
-            
         }
-        
-        
     }
 }

@@ -20,7 +20,7 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("comment view", songInfo)
+        //print("comment view", songInfo)
         // sends keyboard height to view controller for adjustment
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -43,8 +43,6 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
                 print("query user", self.username)
             }
         }
-        
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,13 +50,12 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
         query.whereKey("song", equalTo: songInfo)
         query.findObjectsInBackground{(comments, error) in
             if comments != nil{
-                print("holy comments", comments!)
+                //print("holy comments", comments!)
                 self.commentObject = comments!
                 
                 for comment in comments! {
                     //let first = comments?[0]
                     self.username = comment["user"] as! String
-                    //print("does it reach this username part")
                 }
 //                let first = comments?[0]
 //
@@ -120,10 +117,7 @@ class homeCommentsViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBAction func homeCommentButton(_ sender: Any) {
         
-        
-        print("dis user", self.username)
         let thisSong = songInfo
-        print("pls work", thisSong)
         let comments = PFObject(className: "comments")
         comments["comments"] = homeCommentsTextField.text!
         comments["song"] = thisSong

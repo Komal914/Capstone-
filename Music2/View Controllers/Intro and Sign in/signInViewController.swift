@@ -22,11 +22,11 @@ class signInViewController: UIViewController {
     @IBOutlet weak var passwordTextfield: UITextField!
     var waveView: AnimationView?
     
-//MARK: SIGN IN BUTTON
+    // OLD SIGN IN BUTTON
     @IBAction func onSignInToAppleMusicButton(_ sender: Any) {
         
-        //we need to authenticate the user here with the apple API
-        //for now, you can log in by just clicking the button
+        // we need to authenticate the user here with the apple API
+        // for now, you can log in by just clicking the button
         performSegue(withIdentifier: "loginToAppleMusic", sender: self)
     }
     
@@ -55,7 +55,7 @@ class signInViewController: UIViewController {
             MPMediaLibrary.requestAuthorization() { status in
                 if status == .authorized {
                     DispatchQueue.main.async {
-                        // // Get Media
+                        // Get Media
                     }
                 }
             }
@@ -87,8 +87,8 @@ class signInViewController: UIViewController {
         }
         
         
-        //user token
-        let developerToken = "[REDACTED]"
+        // developerToken
+        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
 
         /*
         controller.requestUserToken(forDeveloperToken: developerToken) { userToken, error in
@@ -113,7 +113,7 @@ class signInViewController: UIViewController {
         }
         
         // MARK: API REQUEST
-        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/artists/36954")!
+        /*let url = URL(string:"https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Hip+Hop")!
 
         var request = URLRequest(url: url)
         request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
@@ -129,13 +129,14 @@ class signInViewController: UIViewController {
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                print(json!)
             }
             
             catch {
+            
             }
-
         }
-        task.resume()
+        task.resume()*/
     }
     
     func setupView() {
@@ -176,13 +177,9 @@ class signInViewController: UIViewController {
             sender as? User {
             mainVC.user = user
             print("The User: ", user.firstName)
-        
         }
     }
-
-
 }
-
 
 extension signInViewController: ASAuthorizationControllerDelegate {
     // if fails
@@ -209,6 +206,7 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                 if success {
                     self.performSegue(withIdentifier: "loginToAppleMusic", sender: nil)
                 }
+                
                 else{
                     print("error on sign up: \(String(describing: error?.localizedDescription))")
                 }
@@ -218,9 +216,11 @@ extension signInViewController: ASAuthorizationControllerDelegate {
             PFUser.logInWithUsername(inBackground: userID, password: "no password") { (user, error) in
                 if user != nil {
                     self.performSegue(withIdentifier: "currentUserSignIn", sender: userID)
-            } else {
-                print("error on sign in: \(String(describing: error?.localizedDescription))")
-            }
+                }
+                
+                else {
+                    print("error on sign in: \(String(describing: error?.localizedDescription))")
+                }
             }
             
             // if needed, save it to user defaults by uncommenting the line below
@@ -241,7 +241,6 @@ extension signInViewController: ASAuthorizationControllerDelegate {
                 authorizationCode = String(bytes: code, encoding: .utf8)
                 print("Authorization Code: " + (authorizationCode ?? "no auth code") )
             }
-            
         }
     }
 }

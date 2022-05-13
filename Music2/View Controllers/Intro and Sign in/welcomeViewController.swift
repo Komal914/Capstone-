@@ -30,7 +30,9 @@ class welcomeViewController: UIViewController {
         profileInfo.saveInBackground { (succeeded, error)  in
             if (succeeded) {
                 // The object has been saved.
-            } else {
+            }
+            
+            else {
                 print("error on saving data: \(String(describing: error?.localizedDescription))")
             }
         }
@@ -46,27 +48,21 @@ class welcomeViewController: UIViewController {
 //                print("error on saving data: \(error?.localizedDescription)")
 //            }}
         
-        
         let name = nameTextField.text!
-        print("this is the user name : ",name)
-        
-        
+        //print("this is the user name : ",name)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        //self.welcomeAnimation = .init(name: "welcome")
+        
+        // Animation for welcome screen
         welcomeAnimation.loopMode = .loop
-        //welcomeAnimation.backgroundColor = .clear
         welcomeAnimation.play()
         
-        //Looks for single or multiple taps.
+        // Looks for single or multiple taps.
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        
-        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
-        //tap.cancelsTouchesInView = false
         
         view.addGestureRecognizer(tap)
     }
@@ -75,12 +71,4 @@ class welcomeViewController: UIViewController {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
-
-     //MARK: - Navigation
-
-   //  In a storyboard-based application, you will often want to do a little preparation before navigation
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//    }
 }

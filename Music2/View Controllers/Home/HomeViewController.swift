@@ -14,12 +14,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var table: UITableView!
     var user: User?
     var posts = [PFObject]()
+    var username = String()
+    var likedGenres = [String]()
+    var randomGenre = String()
     var aboutToBecomeInvisibleCell = -1
     var visibleIP : IndexPath?
     var currentPostUsername = String()
     var currentSong = String()
-    
-
         
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -28,20 +29,43 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFQuery(className: "posts")
         query.findObjectsInBackground{(posts, error) in
             if posts != nil{
-                self.posts = posts! //storing from backend to this file
+                self.posts = posts!                     //storing from backend to this file
                 var reversePosts = [PFObject]()
                 reversePosts = posts!.reversed()
                 let first = reversePosts[0]
                 self.currentPostUsername = first["username"] as! String
-                print(self.currentPostUsername)
                 self.table.reloadData()
             }
+            
             else {
                 print("error quering for posts: \(String(describing: error))")
             }
         }
         
-
+        let currentUser = PFUser.current()
+        let userQuery = PFQuery(className: "profileInfo")
+        let userID = currentUser!["username"] as! String
+        userQuery.whereKey("appleID", equalTo: userID)
+        userQuery.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil {
+                let first = profileInfo![0]
+                self.username = first["username"] as! String
+                //print("query user", self.username)
+            }
+        }
+        
+        // query for likedGenres
+        let genreQuery = PFQuery(className: "likedGenres")
+        genreQuery.whereKey("username", equalTo: userID)
+        genreQuery.findObjectsInBackground{(genres, error) in
+            if genres != nil {
+                let temp = genres![0]
+                self.likedGenres = temp["genre"] as! [String]
+                self.randomGenre = self.likedGenres.randomElement()!
+            }
+        }
+        
+        //createRandomGenre()
     }
     
     override func viewDidLoad() {
@@ -67,15 +91,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    /*
+    // fetches random genre
+    func createRandomGenre() {
+        // checks if genre list is NOT empty
+        if likedGenres.isEmpty == false {
+            randomGenre = likedGenres.randomElement()!
+            print(randomGenre)
+        }
+    }*/
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //should return number of posts
         return posts.count
     }
     
     @IBAction func homeCommentButton(_ sender: Any) {
-        
         performSegue(withIdentifier: "homeComment", sender: self)
-        
     }
     
         
@@ -98,22 +130,16 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if visibleIP != indexPaths?[0]{
                 visibleIP = indexPaths?[0]
             }
+            
             if let homeCell = cells.last! as? HomeCell{
                 currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?.last)!)
                 currentSong = self.getcurrentSong(cell: homeCell, indexPath: (indexPaths?.last)!)
 
-                print("POST 0",currentPostUsername)
-                print("POST 0", currentSong)
+                //print("POST 0",currentPostUsername)
+                //print("POST 0", currentSong)
 
             }
         }
-        
-        /*
-        if cellCount == 2 {
-            if visibleIP != indexPaths?[1] {
-                visibleIP = indexPaths?[1]
-            }
-        }*/
     
         if cellCount >= 2 {
             for i in 0..<cellCount {
@@ -134,8 +160,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                             currentPostUsername = self.getUserName(cell: homeCell, indexPath: (indexPaths?[i])!)
                             currentSong = self.getcurrentSong(cell: homeCell, indexPath: (indexPaths?[i])!)
 
-                            print("USERNAMEEEE ", currentPostUsername)
-                            print("SONGGG ", currentSong)
+                            //print("USERNAMEEEE ", currentPostUsername)
+                            //print("SONGGG ", currentSong)
                         }
                     }
                 }
@@ -153,7 +179,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 672 //or whatever you need
+        return 672          //or whatever you need
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -163,7 +189,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         var reversePosts = [PFObject]()
         reversePosts = posts.reversed()
         
-
         let post = reversePosts[indexPath.row]
         
         // songinfo
@@ -193,21 +218,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //sendng music url to cell class
         cell.videoPlayerItem = AVPlayerItem.init(url: soundUrl!)
         
-        
         // username
-        if(post["username"] != nil){
+        if (post["username"] != nil){
             let userName = post["username"] as! String
             cell.usernameButton.setTitle(userName, for: .normal)
-            
         }
         
         return cell
     }
     
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
@@ -215,16 +234,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if (segue.identifier == "userProfile") {
             let vc = segue.destination as! userProfileViewController
             vc.name = currentPostUsername
-
          }
         
         if (segue.identifier == "homeComment") {
             let vc = segue.destination as! homeCommentsViewController
             vc.songInfo = currentSong
-
          }
-        
-        
     }
-    
 }

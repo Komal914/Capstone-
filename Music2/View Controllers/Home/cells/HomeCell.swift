@@ -18,8 +18,6 @@ class HomeCell: UITableViewCell {
     var objID = String()
     var userID = String()
     
-    @IBOutlet weak var genreLabel: UILabel!
-    
     //This will be called everytime a new value is set on the videoplayer item
        var videoPlayerItem: AVPlayerItem? = nil {
            didSet {
@@ -44,6 +42,8 @@ class HomeCell: UITableViewCell {
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var homeButton: UIButton!
+    @IBOutlet weak var captionFromTheUser: UILabel!
+    @IBOutlet weak var genreLabel: UILabel!
     
     @IBAction func onLike(_ sender: UIButton) {
         //creating a new object here to save in my backend
@@ -52,14 +52,13 @@ class HomeCell: UITableViewCell {
         if isActive {
             isActive = false
             likeButton.tintColor = .systemPink
+            
             homeLikes["author"] = PFUser.current()
             homeLikes["appleID"] = PFUser.current()?.username
             homeLikes["username"] = " "
-            
             homeLikes["genre"] = self.genreLabel.text
-           
             homeLikes["artistName"] = self.artistNameLabel.text
-            
+
             homeLikes.saveInBackground { (succeeded, error) in
                 if (succeeded) {
                     // The object has been saved
@@ -72,22 +71,21 @@ class HomeCell: UITableViewCell {
                    // print("error on saving data: \(error?.localizedDescription)")
                 }
             }
-    }
-        
+        }
         
         else {
             isActive = true
             likeButton.tintColor = .white
             
-            print(self.objID)
+            //print(self.objID)
             let query = PFQuery(className: "homeLikes")
             query.whereKey("appleID", equalTo: userID)
             
             query.findObjectsInBackground{(like, error) in
                 if like != nil{
                     self.homeLikes = like! //storing from backend to this file
-                    for like in self.homeLikes{
-                        if(like.objectId == self.objID){
+                    for like in self.homeLikes {
+                        if (like.objectId == self.objID) {
                             like.deleteInBackground{(success, error) in
                                 if (success) {
                                     // The object has been saved
@@ -101,7 +99,6 @@ class HomeCell: UITableViewCell {
                 else {
                     print("error quering for posts: \(String(describing: error))")
                 }
-                
             }
         }
     }
@@ -114,8 +111,6 @@ class HomeCell: UITableViewCell {
        stopPlayback()
     }
     
-    @IBOutlet weak var captionFromTheUser: UILabel!
-    
     @IBAction func commentButton(_ sender: Any) {
     
     }
@@ -124,23 +119,17 @@ class HomeCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         self.setUpPlayer()
-        let query = PFQuery(className: "profileInfo") //search this class
+        let query = PFQuery(className: "profileInfo")   //search this class
         let user = PFUser.current()
         self.userID = user!["username"] as! String
-        query.whereKey("appleID", equalTo: userID) //search by current user
+        query.whereKey("appleID", equalTo: userID)      //search by current user
     }
     
     func stopPlayback(){
-            self.avPlayer?.pause()
-        }
+        self.avPlayer?.pause()
+    }
 
-        func startPlayback(){
-            self.avPlayer?.play()
-        }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func startPlayback(){
+        self.avPlayer?.play()
     }
 }
