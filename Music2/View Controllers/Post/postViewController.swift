@@ -19,7 +19,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var userName = [PFObject]()
     var songData = NSDictionary()
     var songMenu = [String]()
-    var genre = NSArray()
+    var genreArray = NSArray()
     var audios = [String]()
     var searchText = " "
     var audioIndex = 0
@@ -30,7 +30,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var ArtistName = String()
     var SongInfo = String()
     var AlbumCover = UIImageView()
-    var Genre = String()
+    var genre = String()
     var Caption = String()
     var searched = false
  
@@ -88,7 +88,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         let posts = PFObject(className: "posts")
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
-        posts["genre"] = Genre
+        posts["genre"] = genre
         posts["song"] = SongInfo
         let caption = caption.text!
         //print("caption", caption)
@@ -143,7 +143,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         cell.songInfo.text = SongInfo
         let cover = self.AlbumCover.image
         cell.albumCover.image = cover
-        cell.genres.text = Genre
+        cell.genres.text = genre
         let pink = UIColor(red: 0.91, green: 0.27, blue: 0.62, alpha: 1.00)
         cell.genres.backgroundColor = pink 
         cell.genres.layer.masksToBounds = true
@@ -211,13 +211,13 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 
             let songLabel = songInfo
             let genres = attributes["genreNames"] as! NSArray
-            self.genre = genres
+            self.genreArray = genres
                 
-            let genreInfo = self.genre[0] as! String
+            let genreInfo = self.genreArray[0] as! String
                 
             DispatchQueue.main.async {
                 //STORE THIS
-                self.Genre = genreInfo
+                self.genre = genreInfo
                 self.ArtistName = artistName
 //              self.genresLabel.backgroundColor = random(colors: myColors)
 //              self.genresLabel.layer.masksToBounds = true
@@ -365,7 +365,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let data = Genre
+        let data = genre
         print(data)
                 
         // Create a new variable to store the instance of the SecondViewController
