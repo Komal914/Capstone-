@@ -12,6 +12,7 @@ import AlamofireImage
 import DropDown
 import SwiftUI
 import Parse
+import Lottie
 
 class postViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -33,6 +34,9 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var genre = String()
     var Caption = String()
     var searched = false
+    
+    var girlAnimation: AnimationView?
+    
  
     //MARK: - OUTLETS
     @IBOutlet weak var table: UITableView!
@@ -40,6 +44,76 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @IBOutlet weak var viewBelowSearch: UIView!
     @IBOutlet weak var caption: UITextField!
     @IBOutlet weak var postButton: UIButton!
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        startAnimation()
+        
+        
+        //self.navigationController?.navigationBar.isHidden = true
+        table.delegate = self
+        table.dataSource = self
+        
+        //MARK: Storefront Gathering
+        //store front
+        let controller = SKCloudServiceController()
+        controller.requestStorefrontCountryCode { countryCode, error in
+            // Use the value in countryCode for subsequent API requests
+            if #available(iOS 15.0, *) {
+                //print("Storyboard:", Storefront.self)
+                //print(countryCode)
+            }
+            
+            else {
+                // Fallback on earlier versions
+                // print("NO storefront")
+            }
+        }
+        
+        func requestUserToken(forDeveloperToken developerToken: String,
+                              completionHandler: @escaping (String?, Error?) -> Void){
+            
+        }
+        
+        // Do any additional setup after loading the view.
+        //MARK: SEARCH BAR SETTINGS
+        searchBar.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(gesture)
+        
+        //MARK: Dropdown settings
+        dropDown.anchorView = viewBelowSearch
+        dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        dropDown.customCellConfiguration = {index, title, cell in
+            guard cell is SearchMenuCell else {
+                return
+            }
+        }
+        
+        dropDown.selectionAction = { index, title in
+           // print("index \(index) at \(title)")
+        }
+    }
+    
+    //MARK: Animation
+    func startAnimation(){
+        girlAnimation = .init(name: "girl-listening")
+        girlAnimation!.frame = CGRect(x: view.frame.width/3, y:20 , width: 500, height: 500)
+        girlAnimation!.contentMode = .scaleAspectFit
+        view.addSubview(girlAnimation!)
+        girlAnimation!.loopMode = .loop
+        girlAnimation!.animationSpeed = 1
+        girlAnimation!.play()
+    }
+    
+    @objc func stopAnimation(){
+        girlAnimation?.stop()
+        view.subviews.last?.removeFromSuperview()
+    }
     
     @IBAction func onPlayButton(_ sender: Any) {
         //incase the user did not search and my array is empty
@@ -157,6 +231,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        stopAnimation()
         caption.isHidden = false
         postButton.isHidden = false
         searchText = searchBar.text! //user input
@@ -313,56 +388,6 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         //dropDown.show()
     }
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        //self.navigationController?.navigationBar.isHidden = true
-        table.delegate = self
-        table.dataSource = self
-        
-        //MARK: Storefront Gathering
-        //store front
-        let controller = SKCloudServiceController()
-        controller.requestStorefrontCountryCode { countryCode, error in
-            // Use the value in countryCode for subsequent API requests
-            if #available(iOS 15.0, *) {
-                //print("Storyboard:", Storefront.self)
-                //print(countryCode)
-            }
-            
-            else {
-                // Fallback on earlier versions
-                // print("NO storefront")
-            }
-        }
-        
-        func requestUserToken(forDeveloperToken developerToken: String,
-                              completionHandler: @escaping (String?, Error?) -> Void){
-            
-        }
-        
-        // Do any additional setup after loading the view.
-        //MARK: SEARCH BAR SETTINGS
-        searchBar.delegate = self
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
-        gesture.numberOfTouchesRequired = 1
-        gesture.numberOfTapsRequired = 1
-        searchBar.addGestureRecognizer(gesture)
-        
-        //MARK: Dropdown settings
-        dropDown.anchorView = viewBelowSearch
-        dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-        dropDown.customCellConfiguration = {index, title, cell in
-            guard cell is SearchMenuCell else {
-                return
-            }
-        }
-        
-        dropDown.selectionAction = { index, title in
-           // print("index \(index) at \(title)")
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let data = genre

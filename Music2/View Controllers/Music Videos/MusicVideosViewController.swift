@@ -67,7 +67,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass", "weeknd", "ariana", "ed", "jay-z", "miley", "katy", "drake", "justin", "post", "j-cole", "juice", "nicki"]
+        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass", "weeknd", "ariana", "ed", "jay-z", "miley", "katy", "drake", "justin", "post", "j-cole", "juice", "nicki", "keshi", "070", "yatchy", "Asap", "willow", "avicii", "boogie", "hwa+sa"]
         
         func random(terms: [String]) -> String {
             return terms[Int(arc4random_uniform(UInt32(terms.count)))]
@@ -121,8 +121,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let center = CGPoint(x: table.center.x + table.contentOffset.x,y: table.center.y + table.contentOffset.y)
         
         guard let centerIndex = self.table.indexPathForRow(at: center) else {return}
-        //print("center point - \(center)")
-        //print("centerIndex - \(centerIndex.row)")
         let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
         autoPlayCell?.startPlayback()
     }
@@ -158,7 +156,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         cell.albumNameandSongNameLabel!.text = name
         let videoURL = URL(string: musicVideoUrl) //turn string into URL
         self.videoURLs.append(videoURL!)
-        print(self.videoURLs)
         cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
         return cell
     }
@@ -234,7 +231,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //print("end = \(indexPath)")
         if let videoCell = cell as? MusicVideosCell {
             videoCell.stopPlayback()
         }
@@ -271,10 +267,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 let data = json?["results"] as! NSDictionary
                 let musicVideos = data["music-videos"] as! NSDictionary
                 let data2 = musicVideos["data"] as! NSArray
-                let count = data2.count
-                print("COUUUUUUUNT")
-                print(count)
-                self.videoURLs.removeAll()
+                self.videoURLs.removeAll() //i need to remove them so the table reload can add the new data
                 self.videoData = data2
                 DispatchQueue.main.async {
                     self.table.reloadData()
@@ -282,11 +275,11 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
             }
             
             catch {
+                //error
             }
         }
         task.resume()
         table.reloadData()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
