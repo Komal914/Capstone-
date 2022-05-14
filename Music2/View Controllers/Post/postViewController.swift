@@ -12,6 +12,7 @@ import AlamofireImage
 import DropDown
 import SwiftUI
 import Parse
+import Lottie
 
 class postViewController: UIViewController, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
     
@@ -19,7 +20,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var userName = [PFObject]()
     var songData = NSDictionary()
     var songMenu = [String]()
-    var genre = NSArray()
+    var genreArray = NSArray()
     var audios = [String]()
     var searchText = " "
     var audioIndex = 0
@@ -30,9 +31,12 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var ArtistName = String()
     var SongInfo = String()
     var AlbumCover = UIImageView()
-    var Genre = String()
+    var genre = String()
     var Caption = String()
     var searched = false
+    
+    var girlAnimation: AnimationView?
+    
  
     //MARK: - OUTLETS
     @IBOutlet weak var table: UITableView!
@@ -40,6 +44,76 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @IBOutlet weak var viewBelowSearch: UIView!
     @IBOutlet weak var caption: UITextField!
     @IBOutlet weak var postButton: UIButton!
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        startAnimation()
+        
+        
+        //self.navigationController?.navigationBar.isHidden = true
+        table.delegate = self
+        table.dataSource = self
+        
+        //MARK: Storefront Gathering
+        //store front
+        let controller = SKCloudServiceController()
+        controller.requestStorefrontCountryCode { countryCode, error in
+            // Use the value in countryCode for subsequent API requests
+            if #available(iOS 15.0, *) {
+                //print("Storyboard:", Storefront.self)
+                //print(countryCode)
+            }
+            
+            else {
+                // Fallback on earlier versions
+                // print("NO storefront")
+            }
+        }
+        
+        func requestUserToken(forDeveloperToken developerToken: String,
+                              completionHandler: @escaping (String?, Error?) -> Void){
+            
+        }
+        
+        // Do any additional setup after loading the view.
+        //MARK: SEARCH BAR SETTINGS
+        searchBar.delegate = self
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        searchBar.addGestureRecognizer(gesture)
+        
+        //MARK: Dropdown settings
+        dropDown.anchorView = viewBelowSearch
+        dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
+        dropDown.customCellConfiguration = {index, title, cell in
+            guard cell is SearchMenuCell else {
+                return
+            }
+        }
+        
+        dropDown.selectionAction = { index, title in
+           // print("index \(index) at \(title)")
+        }
+    }
+    
+    //MARK: Animation
+    func startAnimation(){
+        girlAnimation = .init(name: "girl-listening")
+        girlAnimation!.frame = CGRect(x: view.frame.width/3, y:20 , width: 500, height: 500)
+        girlAnimation!.contentMode = .scaleAspectFit
+        view.addSubview(girlAnimation!)
+        girlAnimation!.loopMode = .loop
+        girlAnimation!.animationSpeed = 1
+        girlAnimation!.play()
+    }
+    
+    @objc func stopAnimation(){
+        girlAnimation?.stop()
+        view.subviews.last?.removeFromSuperview()
+    }
     
     @IBAction func onPlayButton(_ sender: Any) {
         //incase the user did not search and my array is empty
@@ -88,7 +162,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         let posts = PFObject(className: "posts")
         posts["author"] = PFUser.current()
         posts["appleID"] = PFUser.current()?.username
-        posts["genre"] = Genre
+        posts["genre"] = genre
         posts["song"] = SongInfo
         let caption = caption.text!
         //print("caption", caption)
@@ -143,7 +217,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         cell.songInfo.text = SongInfo
         let cover = self.AlbumCover.image
         cell.albumCover.image = cover
-        cell.genres.text = Genre
+        cell.genres.text = genre
         let pink = UIColor(red: 0.91, green: 0.27, blue: 0.62, alpha: 1.00)
         cell.genres.backgroundColor = pink 
         cell.genres.layer.masksToBounds = true
@@ -157,6 +231,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        stopAnimation()
         caption.isHidden = false
         postButton.isHidden = false
         searchText = searchBar.text! //user input
@@ -211,13 +286,13 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 
             let songLabel = songInfo
             let genres = attributes["genreNames"] as! NSArray
-            self.genre = genres
+            self.genreArray = genres
                 
-            let genreInfo = self.genre[0] as! String
+            let genreInfo = self.genreArray[0] as! String
                 
             DispatchQueue.main.async {
                 //STORE THIS
-                self.Genre = genreInfo
+                self.genre = genreInfo
                 self.ArtistName = artistName
 //              self.genresLabel.backgroundColor = random(colors: myColors)
 //              self.genresLabel.layer.masksToBounds = true
@@ -260,7 +335,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        startAnimation()
         let query = PFQuery(className: "profileInfo") //search this class
         let user = PFUser.current()
         let userID = user!["username"] as! String
@@ -313,59 +388,9 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
         //dropDown.show()
     }
     
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        //self.navigationController?.navigationBar.isHidden = true
-        table.delegate = self
-        table.dataSource = self
-        
-        //MARK: Storefront Gathering
-        //store front
-        let controller = SKCloudServiceController()
-        controller.requestStorefrontCountryCode { countryCode, error in
-            // Use the value in countryCode for subsequent API requests
-            if #available(iOS 15.0, *) {
-                //print("Storyboard:", Storefront.self)
-                //print(countryCode)
-            }
-            
-            else {
-                // Fallback on earlier versions
-                // print("NO storefront")
-            }
-        }
-        
-        func requestUserToken(forDeveloperToken developerToken: String,
-                              completionHandler: @escaping (String?, Error?) -> Void){
-            
-        }
-        
-        // Do any additional setup after loading the view.
-        //MARK: SEARCH BAR SETTINGS
-        searchBar.delegate = self
-        
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearchBar))
-        gesture.numberOfTouchesRequired = 1
-        gesture.numberOfTapsRequired = 1
-        searchBar.addGestureRecognizer(gesture)
-        
-        //MARK: Dropdown settings
-        dropDown.anchorView = viewBelowSearch
-        dropDown.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-        dropDown.customCellConfiguration = {index, title, cell in
-            guard cell is SearchMenuCell else {
-                return
-            }
-        }
-        
-        dropDown.selectionAction = { index, title in
-           // print("index \(index) at \(title)")
-        }
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let data = Genre
+        let data = genre
         print(data)
                 
         // Create a new variable to store the instance of the SecondViewController

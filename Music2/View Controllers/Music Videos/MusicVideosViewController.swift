@@ -67,7 +67,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass"]
+        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass", "weeknd", "ariana", "ed", "jay-z", "miley", "katy", "drake", "justin", "post", "j-cole", "juice", "nicki", "keshi", "070", "yatchy", "Asap", "willow", "avicii", "boogie", "hwa+sa"]
         
         func random(terms: [String]) -> String {
             return terms[Int(arc4random_uniform(UInt32(terms.count)))]
@@ -79,10 +79,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let replaced = term
         let base = "https://api.music.apple.com/v1/catalog/us/search?types=music-videos&term="
         let final = base + replaced
-
-        
-        
-//        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/music-videos?ids=1553279848,1549013065")!
         
         let url = URL(string: final)!
 
@@ -125,8 +121,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let center = CGPoint(x: table.center.x + table.contentOffset.x,y: table.center.y + table.contentOffset.y)
         
         guard let centerIndex = self.table.indexPathForRow(at: center) else {return}
-        //print("center point - \(center)")
-        //print("centerIndex - \(centerIndex.row)")
         let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
         autoPlayCell?.startPlayback()
     }
@@ -147,37 +141,21 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
         
-                
-        let video = videoData[indexPath.row] as! NSDictionary        //each video data
-        print("VIDEOOOOOOOOOOOOOO")
-        print(video)
-        
+        print("hai from the table")
+
+        let video = videoData[indexPath.row] as! NSDictionary     //each video data
         let attributes = video["attributes"] as! NSDictionary
-        //attributes for each video
-//        print("atttributes")
-//        print(attributes)
         let artistName = attributes["artistName"] as! String
-        print("NAAAAME", artistName)
         cell.artistNameLabel.text = artistName
         
         let previews = attributes["previews"] as! NSArray
-
-        //let albumName = array["albumName"] as! String
         let name = attributes["name"] as! String
-//        //currentVideo = name
-//        let previews = attributes["previews"] as! NSArray
         let artwork = previews[0] as! NSDictionary
         let musicVideoUrl = artwork["url"] as! String
-        print("URL")
-        print(musicVideoUrl)
-//        let artistName = attributes["artistName"] as! String
         cell.artistNameLabel!.text = artistName
         cell.albumNameandSongNameLabel!.text = name
-        let videoURL = URL(string: musicVideoUrl)                   //turn string into URL
-
+        let videoURL = URL(string: musicVideoUrl) //turn string into URL
         self.videoURLs.append(videoURL!)
-//
-//        //print(videoURLs)
         cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
         return cell
     }
@@ -253,7 +231,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        //print("end = \(indexPath)")
         if let videoCell = cell as? MusicVideosCell {
             videoCell.stopPlayback()
         }
@@ -263,67 +240,46 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         searchText = searchBar.text! //user input
         print(searchText)
         
-//        //MARK: Replace api call
-//        let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
-//        let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
-//        let final = base + replaced
-//
-//        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
-//
-//
-//        let url = URL(string: final)!
-//
-//        var request = URLRequest(url: url)
-//        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-//
-//        let session = URLSession.shared
-//        let task = session.dataTask(with: request) {(data, response, error) in
-//        guard let data = data else {
-//                return
-//        }
-//
-//        do {
-//            let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-//            self.songData = json?["results"] as! NSDictionary
-//            let songs = self.songData["songs"] as! NSDictionary
-//            let numberOfSongs = songs["data"] as! NSArray
-//
-////MARK: ONE SONG DATA
-//            let firstSong = numberOfSongs[0] as! NSDictionary
-//            // print(firstSong) api data for one song
-//            let attributes = firstSong["attributes"] as! NSDictionary
-//            let artWork = attributes["artwork"] as! NSDictionary
-//            let name = attributes["name"] as! String
-//            let artistName = attributes["artistName"] as! String
-//
-//            self.songMenu.append(name)
-//
-////MARK: DROPDOWN DATASOURCE
-//            self.dropDown.dataSource = self.songMenu
-//            let albumName = attributes["albumName"] as! String
-//            let songInfo = albumName + " - " + name
-//            let previews = attributes["previews"] as! NSArray  //music audio
-//            //print("Music Audio: ",previews)
-//            let audioDic = previews[0] as! NSDictionary //going inside the music preview array
-//            print(audioDic)
-//            let musicUrl = audioDic["url"] as! String
-//            //print(musicUrl)
-//            self.audios.append(musicUrl)
-//
-//            let songLabel = songInfo
-//            let genres = attributes["genreNames"] as! NSArray
-//            self.genre = genres
-//
-//            let genreInfo = self.genre[0] as! String
-//
-//            DispatchQueue.main.async {
-//                //STORE THIS
-//                self.Genre = genreInfo
-//                self.ArtistName = artistName
-////              self.genresLabel.backgroundColor = random(colors: myColors)
-////              self.genresLabel.layer.masksToBounds = true
-////              self.genresLabel.layer.cornerRadius = 8
-//                self.table.reloadData()
+        //MARK: Replace api call
+        let replaced = searchText.replacingOccurrences(of: " ", with: "+" )
+        let base = "https://api.music.apple.com/v1/catalog/us/search?types=music-videos&term="
+        let final = base + replaced
+
+        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+
+
+        let url = URL(string: final)!
+
+        var request = URLRequest(url: url)
+        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) {(data, response, error) in
+        guard let data = data else {
+                return
+        }
+            do {
+                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                if (json?["results"] == nil){
+                    print("i am empty")
+                    return
+                }
+                let data = json?["results"] as! NSDictionary
+                let musicVideos = data["music-videos"] as! NSDictionary
+                let data2 = musicVideos["data"] as! NSArray
+                self.videoURLs.removeAll() //i need to remove them so the table reload can add the new data
+                self.videoData = data2
+                DispatchQueue.main.async {
+                    self.table.reloadData()
+                }
+            }
+            
+            catch {
+                //error
+            }
+        }
+        task.resume()
+        table.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -332,8 +288,6 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let center = CGPoint(x: table.center.x + table.contentOffset.x,y: table.center.y + table.contentOffset.y)
         
         guard let centerIndex = self.table.indexPathForRow(at: center) else {return}
-        //print("center point - \(center)")
-        //print("centerIndex - \(centerIndex.row)")
         let autoPlayCell = table.cellForRow(at: centerIndex) as? MusicVideosCell
         autoPlayCell?.stopPlayback()
     }

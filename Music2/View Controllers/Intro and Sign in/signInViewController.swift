@@ -111,32 +111,6 @@ class signInViewController: UIViewController {
                 }
             }
         }
-        
-        // MARK: API REQUEST
-        /*let url = URL(string:"https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Hip+Hop")!
-
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-
-        let session = URLSession.shared
-
-        //print("Starting task")
-        let task = session.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                print(json!)
-            }
-            
-            catch {
-            
-            }
-        }
-        task.resume()*/
     }
     
     func setupView() {
