@@ -41,6 +41,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         table.dataSource = self
         searchBar.delegate = self
         visibleIP = IndexPath.init(row: 0, section: 0)
+        //dismiss keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
     //MARK: API REQUEST
         //store front
@@ -135,7 +138,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         //should return .count of the number of music videos
-        return videoData.count/2
+        return videoData.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -156,9 +159,14 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         cell.albumNameandSongNameLabel!.text = name
         let videoURL = URL(string: musicVideoUrl) //turn string into URL
         self.videoURLs.append(videoURL!)
-        cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row % 2])
+        print(self.videoURLs)
+        print("COUNT:", self.videoURLs.count)
+        print("INDEX:", indexPath.row)
+        cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row])
         return cell
     }
+    
+    //need to add the video urls in a func, loop videos and call the func once needed only
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let indexPaths = self.table.indexPathsForVisibleRows
@@ -236,7 +244,16 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.videoURLs.removeAll() //i need to remove them so the table reload can add the new data
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         searchText = searchBar.text! //user input
         print(searchText)
         
@@ -267,11 +284,18 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 let data = json?["results"] as! NSDictionary
                 let musicVideos = data["music-videos"] as! NSDictionary
                 let data2 = musicVideos["data"] as! NSArray
-                self.videoURLs.removeAll() //i need to remove them so the table reload can add the new data
+                let datacount = data2.count
+                print("################################################################")
+                print("")
+                print("")
+                print("")
+                print("COUNT", datacount)
+                print("###############################################################")
+                
                 self.videoData = data2
-                DispatchQueue.main.async {
-                    self.table.reloadData()
-                }
+//                DispatchQueue.main.async {
+//                    self.table.reloadData()
+//                }
             }
             
             catch {
@@ -280,6 +304,12 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         }
         task.resume()
         table.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
