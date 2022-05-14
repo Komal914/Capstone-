@@ -713,7 +713,7 @@
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="2845.9821428571427"/>
         </scene>
-        <!--Home-->
+        <!--Aria-->
         <scene sceneID="WW4-j3-kLn">
             <objects>
                 <viewController id="aOw-Tz-Yuw" customClass="HomeViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
@@ -865,7 +865,7 @@
                         <viewLayoutGuide key="safeArea" id="HHC-G1-Nii"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="3MX-ec-ETs"/>
+                    <navigationItem key="navigationItem" title="Aria" id="3MX-ec-ETs"/>
                     <connections>
                         <outlet property="table" destination="lD9-wQ-bTP" id="RCd-0M-dex"/>
                     </connections>
@@ -934,7 +934,7 @@
             </objects>
             <point key="canvasLocation" x="-752" y="1097"/>
         </scene>
-        <!--Post Songs-->
+        <!--Search to Post-->
         <scene sceneID="JF8-w0-F0j">
             <objects>
                 <viewController id="RNR-p3-rEx" customClass="postViewController" customModule="Music2" customModuleProvider="target" sceneMemberID="viewController">
@@ -1067,7 +1067,7 @@
                             <constraint firstItem="hf9-3g-N94" firstAttribute="top" secondItem="nBl-Op-rd6" secondAttribute="top" constant="44" id="p79-k8-IjK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Post Songs" id="6VG-Bw-aTK"/>
+                    <navigationItem key="navigationItem" title="Search to Post" id="6VG-Bw-aTK"/>
                     <value key="contentSizeForViewInPopover" type="size" width="414" height="808"/>
                     <connections>
                         <outlet property="caption" destination="yt5-Xp-BPn" id="T1n-Xw-WeA"/>
