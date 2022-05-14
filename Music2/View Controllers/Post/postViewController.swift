@@ -102,7 +102,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     //MARK: Animation
     func startAnimation(){
         girlAnimation = .init(name: "girl-listening")
-        girlAnimation!.frame = CGRect(x: view.frame.width/3, y:20 , width: 500, height: 500)
+        girlAnimation!.frame = CGRect(x: 50, y:view.frame.width/2 , width: 300, height: 300)
         girlAnimation!.contentMode = .scaleAspectFit
         view.addSubview(girlAnimation!)
         girlAnimation!.loopMode = .loop

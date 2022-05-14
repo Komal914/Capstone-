@@ -98,6 +98,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
                 print("MY DATA")
                 let data = json?["results"] as! NSDictionary
+                if(data["music-videos"] == nil){
+                    return
+                }
                 let musicVideos = data["music-videos"] as! NSDictionary
                 let data2 = musicVideos["data"] as! NSArray
                 let count = data2.count
@@ -142,6 +145,10 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("**************************************************")
+        print("INDEX BEFORE:")
+        print(indexPath.row)
+        print("**************************************************")
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
         
         print("hai from the table")
@@ -162,6 +169,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         print(self.videoURLs)
         print("COUNT:", self.videoURLs.count)
         print("INDEX:", indexPath.row)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//           cell.videoPlayerItem = AVPlayerItem.init(url: self.videoURLs[indexPath.row])
+//        }
         cell.videoPlayerItem = AVPlayerItem.init(url: videoURLs[indexPath.row])
         return cell
     }
@@ -250,7 +260,21 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         self.videoURLs.removeAll() //i need to remove them so the table reload can add the new data
+        print("Emptied")
+        print(self.videoURLs)
+        
+        //MARK: HELP 
+       
+        for video in videoData {
+            if videoData.count != 0 {
+                videoData.dropFirst()
+                print("dropped")
+            }
+        }
+        
+        print(self.videoData)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
