@@ -335,7 +335,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        startAnimation()
         let query = PFQuery(className: "profileInfo") //search this class
         let user = PFUser.current()
         let userID = user!["username"] as! String
