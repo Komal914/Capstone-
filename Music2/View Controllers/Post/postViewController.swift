@@ -34,6 +34,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     var genre = String()
     var Caption = String()
     var searched = false
+    var check = 0
     
     var girlAnimation: AnimationView?
     
@@ -46,10 +47,9 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @IBOutlet weak var postButton: UIButton!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        startAnimation()
         
+        //startAnimation()
         
         //self.navigationController?.navigationBar.isHidden = true
         table.delegate = self
@@ -113,6 +113,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     @objc func stopAnimation(){
         girlAnimation?.stop()
         view.subviews.last?.removeFromSuperview()
+        girlAnimation?.sendSubviewToBack(view)
     }
     
     @IBAction func onPlayButton(_ sender: Any) {
@@ -123,7 +124,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
             sound = audios[0]
         }
         //more than one audio in array
-        else{
+        else {
             sound = audios.last!
         }
         
@@ -232,6 +233,8 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         stopAnimation()
+        self.check = 1
+        
         caption.isHidden = false
         postButton.isHidden = false
         searchText = searchBar.text! //user input
@@ -335,7 +338,11 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        //startAnimation()
+        
+        if self.check == 0 {
+            startAnimation()
+        }
+        
         let query = PFQuery(className: "profileInfo") //search this class
         let user = PFUser.current()
         let userID = user!["username"] as! String
@@ -345,6 +352,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
                 //accessing the data inside
                 self.userName = profileInfo!
             }
+            
             else {
                 print("error quering for posts: \(String(describing: error))")
             }
@@ -366,6 +374,7 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
+        //stopAnimation()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -375,11 +384,10 @@ class postViewController: UIViewController, UISearchBarDelegate, UITableViewDele
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        //menu.show()
+        
     }
     
     //MARK: SEARCH BAR SELECTOR
