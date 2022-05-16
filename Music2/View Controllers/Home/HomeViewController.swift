@@ -61,9 +61,41 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if genres != nil {
                 let temp = genres![0]
                 self.likedGenres = temp["genre"] as! [String]
+                print(self.likedGenres)
                 self.randomGenre = self.likedGenres.randomElement()!
             }
         }
+        
+        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+        
+        print("load ", self.likedGenres)
+        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Hip+Hop")!
+                var request = URLRequest(url: url)
+                request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+                let session = URLSession.shared
+                //print("Starting task")
+                let task = session.dataTask(with: request) { data, response, error in
+                    guard let data = data else {
+                        return
+                    }
+                    
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                        let results = json!["results"] as! NSDictionary
+                        print(results)
+                        let songs = results["songs"] as! NSDictionary
+                        let data = songs["data"] as! NSArray
+                        let attribute = data[0] as! NSDictionary
+                        let songInfo = attribute["attributes"] as! NSDictionary
+                        let albumName = songInfo["albumName"] as! String
+                        print(albumName)
+                    }
+                    
+                    catch {
+                        
+                    }
+                }
+                task.resume()
         
         //createRandomGenre()
     }
@@ -125,7 +157,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     
         let cellCount = cells.count
-        if cellCount == 0 {return}
+        
+        if cellCount == 0 {
+            return
+        }
+        
         if cellCount == 1 {
             if visibleIP != indexPaths?[0]{
                 visibleIP = indexPaths?[0]
@@ -185,6 +221,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = table.dequeueReusableCell(withIdentifier: "HomeCell") as! HomeCell
+        let recommenderCell = table.dequeueReusableCell(withIdentifier: "RecommenderCell") as! RecommenderCell
         
         var reversePosts = [PFObject]()
         reversePosts = posts.reversed()
