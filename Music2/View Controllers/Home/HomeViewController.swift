@@ -21,7 +21,114 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var visibleIP : IndexPath?
     var currentPostUsername = String()
     var currentSong = String()
+    var recommendData = NSDictionary()
         
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //self.navigationController?.navigationBar.isHidden = true
+        table.delegate = self
+        table.dataSource = self
+   
+        // Do any additional setup after loading the view.
+        
+        visibleIP = IndexPath.init(row: 0, section: 0)
+        
+        let currentUser = PFUser.current()
+        let userQuery = PFQuery(className: "profileInfo")
+        let userID = currentUser!["username"] as! String
+        userQuery.whereKey("appleID", equalTo: userID)
+        userQuery.findObjectsInBackground{(profileInfo, error) in
+            if profileInfo != nil {
+                let first = profileInfo![0]
+                self.username = first["username"] as! String
+                //print("query user", self.username)
+            }
+        }
+
+        // query for likedGenres
+        let genreQuery = PFQuery(className: "likedGenres")
+        genreQuery.whereKey("username", equalTo: userID)
+        genreQuery.findObjectsInBackground{(genres, error) in
+            if genres != nil {
+                let temp = genres![0]
+                self.likedGenres = temp["genre"] as! [String]
+                print(self.likedGenres)
+                self.randomGenre = self.likedGenres.randomElement()!
+                print("oh my lord",self.randomGenre)
+                
+                let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+                
+              let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
+                let end = self.randomGenre
+                let final = base + end
+                let url = URL(string:final)!
+                        var request = URLRequest(url: url)
+                        request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+                        let session = URLSession.shared
+                        //print("Starting task")
+                        let task = session.dataTask(with: request) { data, response, error in
+                            guard let data = data else {
+                                return
+                            }
+                            
+                            do {
+                                let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                                let results = json!["results"] as! NSDictionary
+                                //print(results)
+                                let songs = results["songs"] as! NSDictionary
+                                let data = songs["data"] as! NSArray
+                                let attribute = data[0] as! NSDictionary
+                                let songInfo = attribute["attributes"] as! NSDictionary
+                                self.recommendData = songInfo
+                                let albumName = songInfo["albumName"] as! String
+                                //print(albumName)
+                            }
+                            
+                            catch {
+                                
+                            }
+                        }
+                        task.resume()
+            }
+        }
+        
+        print("oh my",self.randomGenre)
+        
+//        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
+//
+//        print("load ", self.likedGenres)
+//        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Hip+Hop")!
+//                var request = URLRequest(url: url)
+//                request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
+//                let session = URLSession.shared
+//                //print("Starting task")
+//                let task = session.dataTask(with: request) { data, response, error in
+//                    guard let data = data else {
+//                        return
+//                    }
+//
+//                    do {
+//                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+//                        let results = json!["results"] as! NSDictionary
+//                        print(results)
+//                        let songs = results["songs"] as! NSDictionary
+//                        let data = songs["data"] as! NSArray
+//                        let attribute = data[0] as! NSDictionary
+//                        let songInfo = attribute["attributes"] as! NSDictionary
+//                        let albumName = songInfo["albumName"] as! String
+//                        print(albumName)
+//                    }
+//
+//                    catch {
+//
+//                    }
+//                }
+//                task.resume()
+        
+        //createRandomGenre()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -41,88 +148,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error quering for posts: \(String(describing: error))")
             }
         }
+        print("I AM HERE")
         
-        let currentUser = PFUser.current()
-        let userQuery = PFQuery(className: "profileInfo")
-        let userID = currentUser!["username"] as! String
-        userQuery.whereKey("appleID", equalTo: userID)
-        userQuery.findObjectsInBackground{(profileInfo, error) in
-            if profileInfo != nil {
-                let first = profileInfo![0]
-                self.username = first["username"] as! String
-                //print("query user", self.username)
-            }
-        }
+       
         
-        // query for likedGenres
-        let genreQuery = PFQuery(className: "likedGenres")
-        genreQuery.whereKey("username", equalTo: userID)
-        genreQuery.findObjectsInBackground{(genres, error) in
-            if genres != nil {
-                let temp = genres![0]
-                self.likedGenres = temp["genre"] as! [String]
-                print(self.likedGenres)
-                self.randomGenre = self.likedGenres.randomElement()!
-            }
-        }
-        
-        let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
-        
-        print("load ", self.likedGenres)
-        let url = URL(string:"https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Hip+Hop")!
-                var request = URLRequest(url: url)
-                request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
-                let session = URLSession.shared
-                //print("Starting task")
-                let task = session.dataTask(with: request) { data, response, error in
-                    guard let data = data else {
-                        return
-                    }
-                    
-                    do {
-                        let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
-                        let results = json!["results"] as! NSDictionary
-                        print(results)
-                        let songs = results["songs"] as! NSDictionary
-                        let data = songs["data"] as! NSArray
-                        let attribute = data[0] as! NSDictionary
-                        let songInfo = attribute["attributes"] as! NSDictionary
-                        let albumName = songInfo["albumName"] as! String
-                        print(albumName)
-                    }
-                    
-                    catch {
-                        
-                    }
-                }
-                task.resume()
-        
-        //createRandomGenre()
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //self.navigationController?.navigationBar.isHidden = true
-        table.delegate = self
-        table.dataSource = self
-   
-        // Do any additional setup after loading the view.
+    
         
-        visibleIP = IndexPath.init(row: 0, section: 0)
-//        let indexPaths = self.table.indexPathsForVisibleRows
-//        var cells = [Any]()
-//        for ip in indexPaths!{
-//            if let HomeCell = self.table.cellForRow(at: ip) as? HomeCell{
-//                cells.append(HomeCell)
-//            }
-//        }
-//
-//        let firstCell = cells.first as! HomeCell
-//        let firstUser = firstCell.usernameButton.currentTitle!
-//        print(firstUser)
         
     }
-    
     /*
     // fetches random genre
     func createRandomGenre() {
@@ -148,6 +182,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        print("HAIIIIII",self.recommendData)
         let indexPaths = self.table.indexPathsForVisibleRows
         var cells = [Any]()
         for ip in indexPaths!{
