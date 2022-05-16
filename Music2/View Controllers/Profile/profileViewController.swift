@@ -24,9 +24,7 @@ class profileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    
-    @IBOutlet weak var followButton: UIButton!
-    
+        
     var currentUserfollowCount = Int()
     
     @IBAction func editButton(_ sender: Any) {

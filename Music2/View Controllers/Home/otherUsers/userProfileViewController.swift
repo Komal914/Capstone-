@@ -22,6 +22,7 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     
     @IBOutlet weak var bio: UILabel!
     
+    @IBOutlet weak var postsLabel: UILabel!
     
     @IBOutlet weak var followersLabel: UILabel!
     
