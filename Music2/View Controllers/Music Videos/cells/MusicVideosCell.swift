@@ -20,6 +20,13 @@ class MusicVideosCell: UITableViewCell {
     @IBOutlet weak var likeButton: UIButton!
     
     
+    @IBOutlet weak var genreLabel: UILabel!
+    
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var moreInfo: UILabel!
+    
     @IBAction func onLike(_ sender: UIButton) {
         
         if isActive {

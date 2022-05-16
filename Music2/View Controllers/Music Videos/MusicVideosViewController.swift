@@ -28,6 +28,11 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
+   
+    
+    
+    
+    
     @IBAction func commentsButton(_ sender: Any) {
         performSegue(withIdentifier: "musicCommentSegue", sender: self)
     }
@@ -70,7 +75,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         
 //MARK: API REQUEST
         
-        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass", "weeknd", "ariana", "ed", "jay-z", "miley", "katy", "drake", "justin", "post", "j-cole", "juice", "nicki", "keshi", "070", "yatchy", "Asap", "willow", "avicii", "boogie", "hwa+sa"]
+        let terms = ["billie", "pop", "doja", "bad", "chainsmokers", "impala", "kendrick", "future", "cardi", "baby", "lil", "glass", "weeknd", "ariana", "ed", "jay-z", "miley", "katy", "drake", "justin", "post", "j-cole", "juice", "nicki", "keshi", "070", "Asap", "willow", "avicii", "boogie", "hwa+sa"]
         
         func random(terms: [String]) -> String {
             return terms[Int(arc4random_uniform(UInt32(terms.count)))]
@@ -103,6 +108,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 let musicVideos = data["music-videos"] as! NSDictionary
                 let data2 = musicVideos["data"] as! NSArray
+                print(data)
                 let count = data2.count
                 print("COUUUUUUUNT")
                 print(count)
@@ -135,7 +141,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
 //MARK: TABLE FUNCTIONS
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 700          //or whatever you need
+        return 600       //or whatever you need
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -156,10 +162,21 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         let video = videoData[indexPath.row] as! NSDictionary     //each video data
         let attributes = video["attributes"] as! NSDictionary
         let artistName = attributes["artistName"] as! String
+        let genre = attributes["genreNames"] as! NSArray
+        let actualG = genre[0] as! String
         cell.artistNameLabel.text = artistName
+        cell.genreLabel.text = actualG
+        cell.genreLabel.layer.masksToBounds = true
+        cell.genreLabel.layer.cornerRadius = 8
+        let pink = UIColor(red: 0.91, green: 0.27, blue: 0.62, alpha: 1.00)
+        cell.genreLabel.backgroundColor = pink
         
         let previews = attributes["previews"] as! NSArray
         let name = attributes["name"] as! String
+        let link = attributes["url"] as! String
+        let releaseDate = attributes["releaseDate"] as! String
+        cell.dateLabel.text = "Release Date: " + releaseDate
+        cell.moreInfo.text = "More info: " + link
         let artwork = previews[0] as! NSDictionary
         let musicVideoUrl = artwork["url"] as! String
         cell.artistNameLabel!.text = artistName
@@ -214,7 +231,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 if currentHeight > (cellHeight * 0.95){
                     if visibleIP != indexPaths?[i]{
                         visibleIP = indexPaths?[i]
-                        //print ("visible = \(indexPaths?[i])")
+                        print ("visible = \(indexPaths?[i])")
                         if let videoCell = cells[i] as? MusicVideosCell{
                             self.playVideoOnTheCell(cell: videoCell, indexPath: (indexPaths?[i])!)
                             currentVideo = self.getCurrentVideo(cell: videoCell, indexPath: (indexPaths?[i])!)
