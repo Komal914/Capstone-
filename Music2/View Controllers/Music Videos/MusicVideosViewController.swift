@@ -151,13 +151,11 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("**************************************************")
-        print("INDEX BEFORE:")
-        print(indexPath.row)
-        print("**************************************************")
+        //print("**************************************************")
+        //print("INDEX BEFORE:")
+        //print(indexPath.row)
+        //print("**************************************************")
         let cell = table.dequeueReusableCell(withIdentifier: "MusicVideosCell") as! MusicVideosCell
-        
-        print("hai from the table")
 
         let video = videoData[indexPath.row] as! NSDictionary     //each video data
         let attributes = video["attributes"] as! NSDictionary
@@ -183,9 +181,9 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
         cell.albumNameandSongNameLabel!.text = name
         let videoURL = URL(string: musicVideoUrl) //turn string into URL
         self.videoURLs.append(videoURL!)
-        print(self.videoURLs)
-        print("COUNT:", self.videoURLs.count)
-        print("INDEX:", indexPath.row)
+        //print(self.videoURLs)
+        //print("COUNT:", self.videoURLs.count)
+        //print("INDEX:", indexPath.row)
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 //           cell.videoPlayerItem = AVPlayerItem.init(url: self.videoURLs[indexPath.row])
 //        }
@@ -231,7 +229,7 @@ class MusicVideosViewController: UIViewController, UITableViewDelegate, UITableV
                 if currentHeight > (cellHeight * 0.95){
                     if visibleIP != indexPaths?[i]{
                         visibleIP = indexPaths?[i]
-                        print ("visible = \(indexPaths?[i])")
+                        //print ("visible = \(indexPaths?[i])")
                         if let videoCell = cells[i] as? MusicVideosCell{
                             self.playVideoOnTheCell(cell: videoCell, indexPath: (indexPaths?[i])!)
                             currentVideo = self.getCurrentVideo(cell: videoCell, indexPath: (indexPaths?[i])!)

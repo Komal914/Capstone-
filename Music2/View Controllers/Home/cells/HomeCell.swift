@@ -110,10 +110,6 @@ class HomeCell: UITableViewCell {
     @IBAction func onPause(_ sender: Any) {
        stopPlayback()
     }
-    
-    @IBAction func commentButton(_ sender: Any) {
-    
-    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
