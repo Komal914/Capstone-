@@ -247,19 +247,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         if indexPath.row == posts.count / 2 {
             let recommenderCell = table.dequeueReusableCell(withIdentifier: "RecommenderCell") as! RecommenderCell
             
-            // songInfo
-            recommenderCell.songLabel.text = recommendedSong
-            recommenderCell.artistLabel.text = recommendedArtist
-            
-            // image
-            print(recommendedAlbumURL, randomGenre)
-            let recommenderUrl = URL(string: recommendedAlbumURL)!
-            recommenderCell.albumView.af.setImage(withURL: recommenderUrl)
-            
-            // player
-            let soundURL = URL(string: recommendedPreview)
-            recommenderCell.videoPlayerItem = AVPlayerItem.init(url: soundURL!)
-            
+            let secondsToDelay = 5.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
+               print("This message is delayed")
+               // Put any code you want to be delayed here
+                
+                
+                // songInfo
+                recommenderCell.songLabel.text = self.recommendedSong
+                recommenderCell.artistLabel.text = self.recommendedArtist
+                
+                // image
+                let recommenderUrl = URL(string: self.recommendedAlbumURL)!
+                recommenderCell.albumView.af.setImage(withURL: recommenderUrl)
+                
+                // player
+                let soundURL = URL(string: self.recommendedPreview)
+                recommenderCell.videoPlayerItem = AVPlayerItem.init(url: soundURL!)
+            }
+          
             return recommenderCell
         }
         
