@@ -63,10 +63,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let developerToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiIsImtpZCI6IjQ1OVlDU0NWN04ifQ.eyJpc3MiOiI0VlMzWEFQWFRWIiwiZXhwIjoxNjYzNTcyNzMzLCJpYXQiOjE2NDc4MDQ3MzN9.J-jb_NnC82o7oSlFvLt84mf7AkNJ3o8Fhhld4ADIDmgY6NfUBVprpD7y1yqX3pjtIUFI85RDxE2yKS12TFmVuA"
                 
                 // get data from random genre
-                let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term=Blues"
-                //let end = self.randomGenre.replacingOccurrences(of: " ", with: "+")
-                //let final = base + end
-                let url = URL(string:base)!
+                let base = "https://api.music.apple.com/v1/catalog/us/search?types=songs&term="
+                let end = self.randomGenre.replacingOccurrences(of: " ", with: "+")
+                let final = base + end
+                let url = URL(string:final)!
                 
                 var request = URLRequest(url: url)
                 request.setValue("Bearer \(developerToken)", forHTTPHeaderField: "Authorization")
