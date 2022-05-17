@@ -48,8 +48,12 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     var followList = [String]()
     var fanList = [String]()
     
-
-
+    private let sectionInsets = UIEdgeInsets(
+        top: 10.0,
+        left: 10.0,
+        bottom: 10.0,
+        right: 10.0)
+    
     override func viewDidLoad() {
     
         super.viewDidLoad()
@@ -320,4 +324,48 @@ class userProfileViewController: UIViewController, UICollectionViewDataSource, U
     }
     
 
+}
+
+extension userProfileViewController: UICollectionViewDelegateFlowLayout {
+    // 1
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        // 2
+        
+        if (collectionView == genreCollectionView)
+        {
+            let itemsPerRow: CGFloat = 4
+            let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+            let availableWidth = view.frame.width - paddingSpace
+            let widthPerItem = availableWidth / itemsPerRow
+            
+            return CGSize(width: widthPerItem, height: widthPerItem/3)
+        }
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size:CGFloat = (postsCollectionView.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: size)
+    }
+    
+    // 3
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        return sectionInsets
+    }
+    
+    // 4
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        
+        return sectionInsets.left
+    }
 }
