@@ -959,11 +959,11 @@
                                             <outlet property="usernameButton" destination="AoH-XK-7sz" id="VsP-Ei-nbw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecommenderCell" rowHeight="530" id="Cv3-zw-FNd" customClass="RecommenderCell" customModule="Music2" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="574.5" width="414" height="530"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecommenderCell" rowHeight="488" id="Cv3-zw-FNd" customClass="RecommenderCell" customModule="Music2" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="574.5" width="414" height="488"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Cv3-zw-FNd" id="G5P-HY-8TK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="530"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="488"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recommended" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Asy-6g-GI0">
@@ -974,7 +974,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2U-7l-fWj" userLabel="Play">
-                                                    <rect key="frame" x="159" y="489" width="45" height="30"/>
+                                                    <rect key="frame" x="159" y="412" width="45" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" red="0.68438058140000002" green="0.96921318769999998" blue="0.85198162649999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -982,17 +982,6 @@
                                                     <buttonConfiguration key="configuration" style="plain" image="play" catalog="system" title=" "/>
                                                     <connections>
                                                         <action selector="playButton:" destination="Cv3-zw-FNd" eventType="touchUpInside" id="qzC-GI-lVH"/>
-                                                    </connections>
-                                                </button>
-                                                <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8L-qk-4sj" userLabel="Pause">
-                                                    <rect key="frame" x="212" y="489" width="45" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <color key="tintColor" red="0.53725490200000003" green="0.35686274509999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" image="pause" catalog="system" title=" "/>
-                                                    <connections>
-                                                        <action selector="pauseButton:" destination="Cv3-zw-FNd" eventType="touchUpInside" id="nVN-Qe-hrk"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QrJ-Fh-zPu">
@@ -1019,6 +1008,17 @@
                                                     <rect key="frame" x="82" y="78" width="250" height="250"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8L-qk-4sj" userLabel="Pause">
+                                                    <rect key="frame" x="212" y="412" width="45" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="tintColor" red="0.53725490200000003" green="0.35686274509999999" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="pause" catalog="system" title=" "/>
+                                                    <connections>
+                                                        <action selector="pauseButton:" destination="Cv3-zw-FNd" eventType="touchUpInside" id="nVN-Qe-hrk"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>

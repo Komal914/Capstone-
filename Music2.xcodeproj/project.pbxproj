@@ -94,7 +94,7 @@
 		AA7D29E1282DAFB100706621 /* RecommenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommenderCell.swift; sourceTree = "<group>"; };
 		AA7D29E3282DC66C00706621 /* welcome.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = welcome.json; sourceTree = "<group>"; };
 		AA92D16D281B5A5600BE2BFB /* HomeCommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCommentCell.swift; sourceTree = "<group>"; };
-		AAADCCF227E7A58E0077CB34 /* Music2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Music2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AAADCCF227E7A58E0077CB34 /* Aria.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aria.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAADCCF527E7A58E0077CB34 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAADCCF727E7A58E0077CB34 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		AAADCCFC27E7A58E0077CB34 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		AAADCCF327E7A58E0077CB34 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AAADCCF227E7A58E0077CB34 /* Music2.app */,
+				AAADCCF227E7A58E0077CB34 /* Aria.app */,
 				AAADCD0B27E7A5910077CB34 /* Music2Tests.xctest */,
 				AAADCD1527E7A5920077CB34 /* Music2UITests.xctest */,
 			);
@@ -392,9 +392,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		AAADCCF127E7A58E0077CB34 /* Music2 */ = {
+		AAADCCF127E7A58E0077CB34 /* Aria */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = AAADCD1F27E7A5920077CB34 /* Build configuration list for PBXNativeTarget "Music2" */;
+			buildConfigurationList = AAADCD1F27E7A5920077CB34 /* Build configuration list for PBXNativeTarget "Aria" */;
 			buildPhases = (
 				367C035D4AF4155B85264B25 /* [CP] Check Pods Manifest.lock */,
 				AAADCCEE27E7A58E0077CB34 /* Sources */,
@@ -406,13 +406,13 @@
 			);
 			dependencies = (
 			);
-			name = Music2;
+			name = Aria;
 			packageProductDependencies = (
 				EE72603627F0F4100083A171 /* AlamofireImage */,
 				EEC4A6502829C49D0091046E /* Lottie */,
 			);
 			productName = Music2;
-			productReference = AAADCCF227E7A58E0077CB34 /* Music2.app */;
+			productReference = AAADCCF227E7A58E0077CB34 /* Aria.app */;
 			productType = "com.apple.product-type.application";
 		};
 		AAADCD0A27E7A5910077CB34 /* Music2Tests */ = {
@@ -494,7 +494,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				AAADCCF127E7A58E0077CB34 /* Music2 */,
+				AAADCCF127E7A58E0077CB34 /* Aria */,
 				AAADCD0A27E7A5910077CB34 /* Music2Tests */,
 				AAADCD1427E7A5920077CB34 /* Music2UITests */,
 			);
@@ -696,12 +696,12 @@
 /* Begin PBXTargetDependency section */
 		AAADCD0D27E7A5910077CB34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAADCCF127E7A58E0077CB34 /* Music2 */;
+			target = AAADCCF127E7A58E0077CB34 /* Aria */;
 			targetProxy = AAADCD0C27E7A5910077CB34 /* PBXContainerItemProxy */;
 		};
 		AAADCD1727E7A5920077CB34 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = AAADCCF127E7A58E0077CB34 /* Music2 */;
+			target = AAADCCF127E7A58E0077CB34 /* Aria */;
 			targetProxy = AAADCD1627E7A5920077CB34 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -994,7 +994,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AAADCD1F27E7A5920077CB34 /* Build configuration list for PBXNativeTarget "Music2" */ = {
+		AAADCD1F27E7A5920077CB34 /* Build configuration list for PBXNativeTarget "Aria" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				AAADCD2027E7A5920077CB34 /* Debug */,
